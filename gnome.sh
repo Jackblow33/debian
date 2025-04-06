@@ -45,7 +45,7 @@ for PKG in "${PKGS[@]}"; do
 done
 
 #remove apps
-sudo apt purge ifupdown gnome-text-editor -y && sudo apt autoremove gnome-text-editor -y
+sudo apt purge ifupdown -y      #gnome-text-editor -y && sudo apt autoremove gnome-text-editor -y
 
 sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf  #Editing NetworkManager file: managed=false to managed=true
 #Check system|network|IPv4 and make sure static ip address or dhcp is set properly
