@@ -7,7 +7,8 @@
 #VARIABLE
 PKGS=(
         'gnome-core'                #  Core components of the GNOME Desktop environment
-        'gedit'                     # Text editor
+#        'gedit'                     # Text editor
+        'kate'                      # Kde advanced test editor
         'make'                      # general purpose dependency solver
         'gettext'                   # build depends for dash-to-dock
         'sassc'                     # build depends for dash-to-dock
