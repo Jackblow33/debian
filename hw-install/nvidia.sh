@@ -4,7 +4,7 @@
 
 #NVIDIA Driver install for 6.11 kernel +
 apt-get update && apt-get upgrade
-sudo apt-get install linux-headers-$(uname -r) linux-devel
+sudo apt-get install linux-headers-$(uname -r) build-essential  #linux-devel
 wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
 sudo chmod +x NVIDIA-Linux-x86_64-570.86.16.run
 ./NVIDIA-Linux-x86_64-570.86.16.run
