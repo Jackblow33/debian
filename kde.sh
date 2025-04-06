@@ -119,8 +119,9 @@ read -p "$(echo -e $GREEN"Installation completed! Press Enter to reboot.........
 #    sudo systemctl start sddm
 sudo reboot
 
+
+
     
-    ### Jackblow33 2025 #####################
 
 
 
