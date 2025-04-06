@@ -1,0 +1,14 @@
+#Example:
+#diff -Naru file_original file_updated > file.patch
+
+#where
+
+ #   -N: treat absent files as empty
+ #   -a: treat all files as text
+ #   -r: recursively compare any subdirectories found
+ #   -u: output NUM (default 3) lines of unified context
+
+
+#diff -Naru OG_metadata.json metadata.json > appindicator.patch
+diff -u metadata.json metadata48.json > appindicator.diff
+patch metadata.json appindicator.diff
