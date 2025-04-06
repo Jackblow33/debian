@@ -1,26 +1,43 @@
-#For Debian Trixie
+#!/bin/bash
+
+#NVIDIA Driver install for 6.11 kernel +
+wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
+sudo chmod +x NVIDIA-Linux-x86_64-570.86.16.run
+./NVIDIA-Linux-x86_64-570.86.16.run
+
+
+
+
+
+
+
+
+
+
+
+#For Debian Trixie           OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD OLD
 #NV Version 535.216.03
 
 #Source https://wiki.debian.org/NvidiaGraphicsDrivers
 
 #GPU Identification
-lspci -nn | egrep -i "3d|display|vga"
+#lspci -nn | egrep -i "3d|display|vga"
 
 #Check for driver version before installing
 # If driver: nouveau. Then you have open sources driver. Update might be a good idea...
-lspci -v
+#lspci -v
 
 #Add contrib non-free & non-free-firmware components to /etc/apt/sources.list
 
 #detect gpu and suggest drivers
-sudo apt install nvidia-detect
-nvidia-detect
+#sudo apt install nvidia-detect
+#nvidia-detect
 
 #If your system uses dracut  - NOT in my case
 #Make a dracut configuration file /etc/dracut.conf.d/10-nvidia.conf with this
 #install_items+=" /etc/modprobe.d/nvidia-blacklists-nouveau.conf /etc/modprobe.d/nvidia.conf /etc/modprobe.d/nvidia-options.conf "
 
-sudo apt update
+#sudo apt update
 #To install "proprietary" flavor, packages 
 sudo apt install nvidia-kernel-dkms nvidia-driver firmware-misc-nonfree
 #To install "open" flavor,
@@ -30,13 +47,13 @@ sudo apt install nvidia-kernel-dkms nvidia-driver firmware-misc-nonfree
 #Restart your system to load the new driver
 
 #wayland desktop
-sudo cat /sys/module/nvidia_drm/parameters/modeset
-If this command returns N you need to set nvidia-drm modeset by adding options nvidia-drm modeset=1 to /etc/modprobe.d/nvidia-options.conf. For example
-sudo echo "options nvidia-drm modeset=1" >> /etc/modprobe.d/nvidia-options.conf
+#sudo cat /sys/module/nvidia_drm/parameters/modeset
+#If this command returns N you need to set nvidia-drm modeset by adding options nvidia-drm modeset=1 to /etc/modprobe.d/nvidia-options.conf. For example
+#sudo echo "options nvidia-drm modeset=1" >> /etc/modprobe.d/nvidia-options.conf
 
 
 #If you plan to use suspend/hibernate functionality under KDE desktop environment, you may want to add another option to avoid graphics "glitches" after wakeup/restore:
 ### Warning: skip this step if you have Optimus hybrid graphics
-sudo echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" >> /etc/modprobe.d/nvidia-options.conf
+#sudo echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" >> /etc/modprobe.d/nvidia-options.conf
 
 #Then reboot your system (check again if modeset is properly set, as described above) and Nvidia card should be properly recognized and used under wayland desktop.
