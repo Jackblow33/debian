@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#run the script as root
+
+apt update
 #NVIDIA Driver install for 6.11 kernel +
 wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
 sudo chmod +x NVIDIA-Linux-x86_64-570.86.16.run
