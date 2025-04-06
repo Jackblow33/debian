@@ -84,8 +84,14 @@ for PKG in "${PKGS[@]}"; do
 done
 
 #Removing some packages
-    sudo apt purge zutty kwalletmanager kdeconnect partitionmanager -y  #|| Arch
-
+        sudo apt purge zutty kwalletmanager kdeconnect partitionmanager -y  #|| Arch
+------------------------------------------------------------------------------------------------------
+#remove apps -untested
+        sudo apt purge ifupdown
+#untested
+sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf  #Editing NetworkManager file: managed=false to managed=true
+#Check system|network|IPv4 and make sure static ip address or dhcp is set properly
+-----------------------------------------------------------------------------------------------------
     #Turn NumLock on - numlockx KDE
     #Make a copy of sddm.conf before edit
     cp /etc/sddm.conf /etc/sddm.conf.$TIMESTAMP
