@@ -16,7 +16,9 @@ TIMESTAMP=`date +%Y%m%d.%R`
 
 #NVIDIA Driver install for 6.11 kernel +
     apt update && apt upgrade
-    apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
+    apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
+    apt install linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev dracut libc-dev
+    #apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
     wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
     chmod +x NVIDIA-Linux-x86_64-570.86.16.run
 ./NVIDIA-Linux-x86_64-570.86.16.run
