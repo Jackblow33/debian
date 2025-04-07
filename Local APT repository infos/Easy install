@@ -1,0 +1,10 @@
+You can use different paths:
+
+via apt - sudo apt install /path/to/package
+
+or via dpkg - sudo dpkg -i /path/to/package
+
+If you want to install all packages in directory you can use something like:
+
+sudo apt install /path/to/packages/*
+
