@@ -14,6 +14,11 @@ TIMESTAMP=`date +%Y%m%d.%R`
     cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
     bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
     bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    #cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nvidia-nouveau.conf 
+    #> blacklist nouveau
+    #> options nouveau modeset =0
+    #>EOF
+    #or /etc/modprobe.d/blacklist-nouveau.conf
     update-initramfs -u
 #reboot
 
