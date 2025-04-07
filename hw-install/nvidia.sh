@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #run the script as root
+#Blacklist, update system & install Nvidia driver
 
 #VARIABLES
 TIMESTAMP=`date +%Y%m%d.%R`
