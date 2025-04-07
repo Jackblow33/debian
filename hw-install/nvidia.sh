@@ -2,6 +2,12 @@
 
 #run the script as root
 
+#Blacklist Nouveau driver
+bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+update-initramfs -u
+#reboot
+
 #NVIDIA Driver install for 6.11 kernel +
 apt update && apt upgrade
 apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
@@ -10,13 +16,7 @@ chmod +x NVIDIA-Linux-x86_64-570.86.16.run
 ./NVIDIA-Linux-x86_64-570.86.16.run
 
 
-#Blacklisting Nouveau driver
-#Create a file: sudo nano /etc/modprobe.d/blacklist-nouveau.conf
-#echo blacklist nouveau > /etc/modprobe.d/blacklist-nouveau.conf
-#Add options nouveau modeset=0 to the file
-#Save and close the file.
-#update-initramfs -u
-#Reboot.
+
 
 
 
