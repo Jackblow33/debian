@@ -1,0 +1,53 @@
+
+
+
+To download Debian packages using apt without installing them, you can use the -d option with the apt install command, which will download the packages but not install them.
+Here's how to do it:
+Download packages.
+
+
+
+To download Debian packages using apt without installing them, you can use the -d option with the apt install command, which will download the packages but not install them.
+Here's how to do it:
+Download packages.
+Code
+
+    sudo apt install -d <package_name>
+
+Replace <package_name> with the name of the package you want to download. example.
+Code
+
+    sudo apt install -d mariadb-server
+
+This command will download the mariadb-server package to your system, but it won't be installed. Location of downloaded packages.
+The downloaded packages will typically be stored in the /var/cache/apt/archives/ directory. Alternative Method (using apt-get).
+You can also use apt-get with the -d option:
+Code
+
+    sudo apt-get install -d <package_name>
+
+
+
+    Note:
+        Ensure you have the necessary permissions (using sudo) to execute these commands.
+        You can then move the downloaded packages to a location of your choosing.Code
+
+    sudo apt install -d <package_name>
+
+Replace <package_name> with the name of the package you want to download. example.
+Code
+
+    sudo apt install -d mariadb-server
+
+This command will download the mariadb-server package to your system, but it won't be installed. Location of downloaded packages.
+The downloaded packages will typically be stored in the /var/cache/apt/archives/ directory. Alternative Method (using apt-get).
+You can also use apt-get with the -d option:
+Code
+
+    sudo apt-get install -d <package_name>
+
+
+
+    Note:
+        Ensure you have the necessary permissions (using sudo) to execute these commands.
+        You can then move the downloaded packages to a location of your choosing.
