@@ -8,3 +8,11 @@ If you want to install all packages in directory you can use something like:
 
 sudo apt install /path/to/packages/*
 
+
+Another way if all packages (with depencecies are in one folder)
+
+sudo apt-get -o dir::cache::archives="Path/to/folder/with/debs" install what ever.
+
+Only tested from me with apt-get not with apt.
+
+
