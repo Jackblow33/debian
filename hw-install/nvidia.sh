@@ -2,17 +2,22 @@
 
 #run the script as root
 
+#VARIABLES
+TIMESTAMP=`date +%Y%m%d.%R`
+
+
 #Blacklist Nouveau driver
-bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-update-initramfs -u
+    cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
+    bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    update-initramfs -u
 #reboot
 
 #NVIDIA Driver install for 6.11 kernel +
-apt update && apt upgrade
-apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
-wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
-chmod +x NVIDIA-Linux-x86_64-570.86.16.run
+    apt update && apt upgrade
+    apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
+    wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
+    chmod +x NVIDIA-Linux-x86_64-570.86.16.run
 ./NVIDIA-Linux-x86_64-570.86.16.run
 
 
