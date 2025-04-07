@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #CachyOS Nvidia ver = 570.133.07 -  Mar 18, 2025
+##kernel 6.11 and beyond
 
 #run the script as root
 #Blacklist, update system & install Nvidia driver
