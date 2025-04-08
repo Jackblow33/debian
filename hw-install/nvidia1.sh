@@ -52,13 +52,31 @@ TIMESTAMP=`date +%Y%m%d.%R`
 ./NVIDIA-Linux-x86_64-570.86.16.run
 sudo update-initramfs -u
 
+    
+     #fastfetch auto load in terminal
+    #Make a copy of .bashrc before edit
+    cp ~/.bashrc ~/.bashrc.$TIMESTAMP
+    echo "fastfetch" >> ~/.bashrc  #|| Arch
+    
+    cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
+    echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' >> /etc/default/grub.d/nvidia-modeset.cfg
+    nano /etc/default/grub.d/nvidia-modeset.cfg
+    sudo update-grub
+    echo "Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so)."
+    read -p "Press to reboot   ............................>>>"
+    sudo reboot
+    
     #UBUNTU ref.
-    #Once the installer has completed installing the driver, run sudo update-initramfs -u to update the initramfs.
-    #Edit /etc/default/grub using sudo nano /etc/default/grub
-    #Add nvidia-drm.modeset=1 and nvidia-drm.fbdev=1 inside your GRUB_CMDLINE_LINUX (i.e. GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1")
-    #Run sudo update-grub
-    #Reboot the system
-    #Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so).
+    #echo "Once the installer has completed installing the driver, run sudo update-initramfs -u to update the initramfs."
+    ###echo "Edit /etc/default/grub using sudo nano /etc/default/grub"
+    ###echo 'Add nvidia-drm.modeset=1 and nvidia-drm.fbdev=1 inside your GRUB_CMDLINE_LINUX (i.e. GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1")'
+    #echo 'Need to add the nvidia-drm.modeset=1 to the grub config for your kernel. Create the file /etc/default/grub.d/nvidia-modeset.cfg'
+    #echo 'Add the line:'
+    #echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"'
+    #echo "Run sudo update-grub"
+    #echo "Reboot the system"
+    #echo "Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so)."
+    #read -p "Press    -Enter-   ............................>>>"
 
 #Source https://github.com/oddmario/NVIDIA-Ubuntu-Driver-Guide/tree/main?tab=readme-ov-file#installing-through-the-official-nvidia-installer-from-the-nvidiacom-website
 
