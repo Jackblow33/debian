@@ -1,0 +1,1 @@
+https://askubuntu.com/questions/156771/run-a-script-only-at-the-very-first-boot
