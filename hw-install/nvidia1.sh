@@ -1,19 +1,20 @@
 #!/bin/bash
-
+#nvidia1.sh
 #CachyOS Nvidia ver = 570.133.07 -  Mar 18, 2025
 ##kernel 6.11 and beyond
 
 #run the script as root
+#Switch to the terminal view of your system by pressing Ctrl + Alt + F3 and then launch the script ./nvidia1.sh
 #Blacklist, update system & install Nvidia driver
 
 #VARIABLES
 TIMESTAMP=`date +%Y%m%d.%R`
 
 
-#Blacklist Nouveau driver
-    cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
-    bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-    bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+#Blacklist Nouveau driver Nvidia drv seems to do it properly
+    #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
+    #bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    #bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
     #cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nvidia-nouveau.conf 
     #> blacklist nouveau
     #> options nouveau modeset =0
@@ -24,13 +25,40 @@ TIMESTAMP=`date +%Y%m%d.%R`
 
 #NVIDIA Driver install for 6.11 kernel +
     apt update && apt upgrade
+
+    #NEW
+    apt-get remove --purge '^nvidia-.*'
+    apt purge libnvidia-*
+    apt autoremove
+    
     apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
-    apt install linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev dracut libc-dev
-    #apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
-    #wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
+                      #Working  apt install linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev dracut libc-dev pkg-config
+    apt install pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
+                      #apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
+                      #OLD  wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
+
     wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-570.133.07.run
     chmod +x NVIDIA-Linux-x86_64-570.86.16.run
+                      
+    
+
+#Stop the GDM service:
+    sudo systemctl stop gdm
+    sudo systemctl stop gdm3 || sudo systemctl stop lightdm
+
+    read -p "Press Enter to start installing Nvidia driver ............................>>>"
+
+    
 ./NVIDIA-Linux-x86_64-570.86.16.run
+sudo update-initramfs -u
+
+    #UBUNTU ref.
+    #Once the installer has completed installing the driver, run sudo update-initramfs -u to update the initramfs.
+    #Edit /etc/default/grub using sudo nano /etc/default/grub
+    #Add nvidia-drm.modeset=1 and nvidia-drm.fbdev=1 inside your GRUB_CMDLINE_LINUX (i.e. GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1")
+    #Run sudo update-grub
+    #Reboot the system
+    #Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so).
 
 
 
