@@ -51,6 +51,11 @@ sudo apt purge ifupdown gnome-text-editor -y && sudo apt autoremove gnome-text-e
 sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf  #Editing NetworkManager file: managed=false to managed=true
 #Check system|network|IPv4 and make sure static ip address or dhcp is set properly
 
+ #fastfetch auto load in terminal
+    #Make a copy of .bashrc before edit
+    cp ~/.bashrc ~/.bashrc.$TIMESTAMP
+    echo "fastfetch" >> ~/.bashrc
+
 timer_stop
 echo "Press [enter] to reboot"; read enterKey
 sudo shutdown -r now      #reboot
