@@ -9,6 +9,7 @@
 
 #VARIABLES
 TIMESTAMP=`date +%Y%m%d.%R`
+NV_VER="570.133.07" # Nvidia Driver version
 
 
 #Blacklist Nouveau driver - Nvidia driver seems to do it properly
@@ -37,8 +38,8 @@ TIMESTAMP=`date +%Y%m%d.%R`
                       #apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
                       #OLD  wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
 
-    wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-570.133.07.run
-    chmod +x NVIDIA-Linux-x86_64-570.86.16.run
+    wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-"$NV_VER".run
+    chmod +x NVIDIA-Linux-x86_64-"$NV_VER".run
                       
     
 
@@ -49,7 +50,7 @@ TIMESTAMP=`date +%Y%m%d.%R`
     read -p "Press Enter to start installing Nvidia driver ............................>>>"
 
     
-./NVIDIA-Linux-x86_64-570.86.16.run
+./NVIDIA-Linux-x86_64-"$NV_VER".run
 sudo update-initramfs -u
     
     cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
