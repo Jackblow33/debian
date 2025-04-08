@@ -60,7 +60,7 @@ sudo update-initramfs -u
     #Reboot the system
     #Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so).
 
-
+#Source https://github.com/oddmario/NVIDIA-Ubuntu-Driver-Guide/tree/main?tab=readme-ov-file#installing-through-the-official-nvidia-installer-from-the-nvidiacom-website
 
 
 
