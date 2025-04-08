@@ -1,6 +1,6 @@
 #!/bin/bash
 #nvidia1.sh
-#CachyOS Nvidia ver = 570.133.07 -  Mar 18, 2025
+#Nvidia ver = 570.133.07 -  Mar 18, 2025
 ##kernel 6.11 and beyond
 
 #run the script as root
@@ -59,15 +59,30 @@ sudo update-initramfs -u
     nano /etc/default/grub.d/nvidia-modeset.cfg
     sudo update-grub
     ln -s /dev/null /etc/udev/rules.d/61-gdm.rules           #source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
-    nvidia-smi
     echo
     echo
     echo
     echo "Your newly installed driver should be up and running."
     read -p "Press to reboot   ............................>>>"
     sudo shutdown -r now    #reboot
+
+
+    #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable
+    #nvidia-smi
+
+
+
+
+
+
+
+
+
+
+
     
-    #UBUNTU ref.
+    
+    #UBUNTU references
     #echo "Once the installer has completed installing the driver, run sudo update-initramfs -u to update the initramfs."
     ###echo "Edit /etc/default/grub using sudo nano /etc/default/grub"
     ###echo 'Add nvidia-drm.modeset=1 and nvidia-drm.fbdev=1 inside your GRUB_CMDLINE_LINUX (i.e. GRUB_CMDLINE_LINUX="nvidia-drm.modeset=1 nvidia-drm.fbdev=1")'
@@ -78,7 +93,6 @@ sudo update-initramfs -u
     #echo "Reboot the system"
     #echo "Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so)."
     #read -p "Press    -Enter-   ............................>>>"
-
 #Source https://github.com/oddmario/NVIDIA-Ubuntu-Driver-Guide/tree/main?tab=readme-ov-file#installing-through-the-official-nvidia-installer-from-the-nvidiacom-website
 
 
