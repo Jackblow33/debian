@@ -12,7 +12,7 @@ TIMESTAMP=`date +%Y%m%d.%R`
 NV_VER="570.133.07" # Nvidia Driver version
 
 
-#Blacklist Nouveau driver - Nvidia driver seems to do it properly
+#Blacklist Nouveau driver - DISABLE -  Nvidia driver seems to do it properly
     #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
     #bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
     #bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
@@ -54,10 +54,16 @@ NV_VER="570.133.07" # Nvidia Driver version
 sudo update-initramfs -u
     
     cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
+    rm -f /etc/default/grub.d/nvidia-modeset.cfg
     echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' >> /etc/default/grub.d/nvidia-modeset.cfg
     nano /etc/default/grub.d/nvidia-modeset.cfg
     sudo update-grub
-    echo "Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so)."
+    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules           #source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
+    nvidia-smi
+    echo
+    echo
+    echo
+    echo "Your newly installed driver should be up and running."
     read -p "Press to reboot   ............................>>>"
     sudo shutdown -r now    #reboot
     
