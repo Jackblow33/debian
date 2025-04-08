@@ -51,12 +51,6 @@ TIMESTAMP=`date +%Y%m%d.%R`
     
 ./NVIDIA-Linux-x86_64-570.86.16.run
 sudo update-initramfs -u
-
-    
-     #fastfetch auto load in terminal
-    #Make a copy of .bashrc before edit
-    cp ~/.bashrc ~/.bashrc.$TIMESTAMP
-    echo "fastfetch" >> ~/.bashrc  #|| Arch
     
     cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
     echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' >> /etc/default/grub.d/nvidia-modeset.cfg
