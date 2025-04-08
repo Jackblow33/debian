@@ -11,7 +11,7 @@
 TIMESTAMP=`date +%Y%m%d.%R`
 
 
-#Blacklist Nouveau driver Nvidia drv seems to do it properly
+#Blacklist Nouveau driver - Nvidia driver seems to do it properly
     #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
     #bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
     #bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
