@@ -1,7 +1,7 @@
 #!/bin/bash
 #nvidia1.sh
-#Nvidia ver = 570.133.07 -  Mar 18, 2025
-##kernel 6.11 and beyond
+
+##linux kernel 6.11 and beyond required
 
 #run the script as root
 #Switch to the terminal view of your system by pressing Ctrl + Alt + F3 and then launch the script ./nvidia1.sh
@@ -12,7 +12,7 @@ TIMESTAMP=`date +%Y%m%d.%R`
 NV_VER="570.133.07" # Nvidia Driver version
 
 
-#Blacklist Nouveau driver - DISABLE -  Nvidia driver seems to do it properly
+#Blacklist Nouveau driver ---DISABLE--- Nvidia installer seems to do it properly
     #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
     #bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
     #bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
