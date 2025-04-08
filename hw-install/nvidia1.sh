@@ -58,7 +58,7 @@ sudo update-initramfs -u
     sudo update-grub
     echo "Your newly installed driver should be up and running once the system boots up (you may run nvidia-smi to confirm so)."
     read -p "Press to reboot   ............................>>>"
-    sudo reboot
+    sudo shutdown -r now    #reboot
     
     #UBUNTU ref.
     #echo "Once the installer has completed installing the driver, run sudo update-initramfs -u to update the initramfs."
