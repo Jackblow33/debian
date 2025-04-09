@@ -69,6 +69,9 @@ sudo update-initramfs -u
 
     #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable
     #nvidia-smi
+    #sudo systemctl disable  nvidia-resume.service
+    #sudo systemctl disable  nvidia-suspend.service
+    #sudo systemctl disable nvidia-hibernate.service
 
 
 
