@@ -19,3 +19,17 @@ sudo apt install  gnome-shell-extension-freon
 
 
 #gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+
+
+
+###appindicator -Compilation works
+#cd ~/
+#sudo apt-get install ninja-build meson    #build-essential  lm-sensors
+#git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git
+###workaround patch for metadata.json file to support gnome 48
+#patch ~/gnome-shell-extension-appindicator/metadata.json ~/debianmultiscripts/appindicator.diff
+###Patch or: gsettings set org.gnome.shell disable-extension-version-validation true
+#meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build
+#ninja -C /tmp/g-s-appindicators-build install
+
+#gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
