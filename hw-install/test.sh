@@ -29,11 +29,7 @@ echo "Components: contrib non-free"                               >> /etc/apt/so
 echo "Signed-By: /usr/share/keyrings/debian-archive-keyring.gpg"  >> /etc/apt/sources.list.d/sources.list
 
 
-# OLD
-# Add the non-free contrib repository to the sources.list file
-#echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
-
 # Update the package lists
 apt-get update
-
 echo "The non-free contrib repository has been added to the sources.list file."
+
