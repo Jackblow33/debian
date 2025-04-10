@@ -59,3 +59,24 @@ sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.c
 timer_stop
 echo "Press [enter] to reboot"; read enterKey
 sudo shutdown -r now      #reboot
+
+
+# For a full debian install...
+# The following lines purges every application that could be removed in the software center:
+# sudo apt purge aisleriot cheese evolution five-or-more four-in-a-row gnome-2048 gnome-calendar gnome-chess gnome-clocks gnome-color-manager
+# sudoapt purge gnome-contacts gnome-disk-utility gnome-documents gnome-klotski gnome-logs gnome-mahjongg gnome-maps gnome-mines gnome-music
+# sudo apt purge gnome-nibbles gnome-robots gnome-sound-recorder gnome-shell-extension-prefs gnome-sudoku gnome-taquin gnome-tetravex gnome-todo
+# sudo apt purge gnome-tweaks gnome-weather hitori iagno im-config libreoffice-calc libreoffice-draw libreoffice-impress libreoffice-writer lightsoff
+# sudo apt purge malcontent nautilus quadrapassel rhythmbox seahorse shotwell simple-scan software-properties-gtk swell-foop synaptic tali transmission-gtk
+
+# Next lines  purges the applications that can only be removed through the terminal.
+# sudo apt purge aisleriot baobab cheese eog evince evolution file-roller firefox-esr five-or-more four-in-a-row gedit gnome-2048 gnome-calculator
+# sudo apt purge gnome-calendar gnome-characters gnome-chess gnome-clocks gnome-color-manager gnome-contacts gnome-disk-utility gnome-documents
+# sudo apt purge gnome-font-viewer gnome-klotski gnome-logs gnome-mahjongg gnome-maps gnome-mines gnome-music gnome-nibbles gnome-robots gnome-screenshot
+# sudo apt purge gnome-software gnome-sound-recorder gnome-shell-extension-prefs gnome-sudoku gnome-system-monitor gnome-taquin gnome-tetravex gnome-todo
+# sudo apt purge gnome-tweaks gnome-weather hitori iagno im-config libreoffice-calc libreoffice-common libreoffice-draw libreoffice-impress
+# sudo apt purge libreoffice-writer lightsoff malcontent nautilus quadrapassel rhythmbox seahorse shotwell simple-scan software-properties-gtk swell-foop
+# sudo apt purge synaptic tali totem transmission-gtk yelp 
+
+
+
