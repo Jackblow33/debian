@@ -11,8 +11,9 @@
 #deb http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free
 
 #Update the list of available packages. Install the relevant/latest linux-image, linux-headers and broadcom-sta-dkms packages
+#Copy debian.soueces file
 cp /etc/apt/debian.sources /etc/apt/debian.sources.$TIMESTAMP
-cp /home/$USER/debian/files/debian.sources /etc/apt
+cp /home/$USER/debian/files/debian.sources /etc/apt/sources.list.d
 sudo apt-get update
 sudo apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
 
