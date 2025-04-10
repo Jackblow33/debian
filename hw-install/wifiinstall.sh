@@ -3,7 +3,7 @@
 #Execute as root
 #wifiinstall   Broadcom - imac BCM4360 & +++
 
-#Source: https://wiki.debian.org/wl
+# Source: https://wiki.debian.org/wl
 
 # Check if the script is running as root
 if [ "$EUID" -ne 0 ]; then
@@ -22,15 +22,16 @@ apt-get update
 
 echo "The non-free contrib repository has been added to the sources.list file."
 
+# Install
 sudo apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
 
-#(Optional) Check all the built DKMS kernel modules. There should be "wl.ko" in the list. 
+# (Optional) Check all the built DKMS kernel modules. There should be "wl.ko" in the list. 
 # find /lib/modules/$(uname -r)/updates
 
-#Unload conflicting modules:
+# Unload conflicting modules:
 modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 
-#Unloading and reloading modules
+# Unloading and reloading modules
 modprobe -r wl && sudo modprobe wl
 
 
