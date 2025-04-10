@@ -1,30 +1,37 @@
 #!/bin/bash
 
+#Execute as root
 #wifiinstall   Broadcom - imac BCM4360 & +++
 
 #Source: https://wiki.debian.org/wl
 
-#Before executing!!! Add a "non-free" component to /etc/apt/sources.list for your Debian version, for example: 
-#Debian 12 "Bookworm"
-#deb http://deb.debian.org/debian bookworm main contrib non-free-firmware non-free
-#OR
-#deb http://deb.debian.org/debian/ trixie main non-free-firmware contrib non-free
+# Check if the script is running as root
+if [ "$EUID" -ne 0 ]; then
+    echo "This script must be run as root."
+    exit 1
+fi
 
-#Update the list of available packages. Install the relevant/latest linux-image, linux-headers and broadcom-sta-dkms packages
-#Copy debian.soueces file
-cp /etc/apt/debian.sources /etc/apt/debian.sources.$TIMESTAMP
-cp /home/$USER/debian/files/debian.sources /etc/apt/sources.list.d
-sudo apt-get update
+# Backup the original sources.list file
+cp /etc/apt/sources.list /etc/apt/sources.list.$TIMESTAMP
+
+# Add the non-free contrib repository to the sources.list file
+echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
+
+# Update the package lists
+apt-get update
+
+echo "The non-free contrib repository has been added to the sources.list file."
+
 sudo apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
 
 #(Optional) Check all the built DKMS kernel modules. There should be "wl.ko" in the list. 
 # find /lib/modules/$(uname -r)/updates
 
 #Unload conflicting modules:
-sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
+modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 
 #Unloading and reloading modules
-sudo modprobe -r wl && sudo modprobe wl
+modprobe -r wl && sudo modprobe wl
 
 
 
