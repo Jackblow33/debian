@@ -77,6 +77,18 @@ sudo shutdown -r now      #reboot
 # sudo apt purge gnome-tweaks gnome-weather hitori iagno im-config libreoffice-calc libreoffice-common libreoffice-draw libreoffice-impress
 # sudo apt purge libreoffice-writer lightsoff malcontent nautilus quadrapassel rhythmbox seahorse shotwell simple-scan software-properties-gtk swell-foop
 # sudo apt purge synaptic tali totem transmission-gtk yelp 
+# sudo autoremove xyz
+
+# If you want the Gnome desktop environment without the "extra components", take a look at the Depends.
+# Recommends: and Suggests: section and choose which parts you want to manually install
+# sudo apt show gnome-core    #gnome
+
+
+# Choose the components you want,
+# Either sudo apt install <pkg>... or sudo apt-mark manual <pkg>... each of these components. This will mark them as "manually installed".
+# sudo apt purge gnome to remove the gnome metapackage.
+# sudo apt autoremove to remove all of gnome's dependencies which were not manually installed.
+
 
 
 
