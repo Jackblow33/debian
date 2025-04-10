@@ -20,7 +20,7 @@ sudo apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-header
 # find /lib/modules/$(uname -r)/updates
 
 #Unload conflicting modules:
-modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
+sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 
 #Unloading and reloading modules
 sudo modprobe -r wl && sudo modprobe wl
