@@ -58,7 +58,7 @@ sudo update-initramfs -u
     echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' >> /etc/default/grub.d/nvidia-modeset.cfg
     nano /etc/default/grub.d/nvidia-modeset.cfg
     sudo update-grub
-    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules           #source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
+    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules    #GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
     echo
     echo
     echo
@@ -69,9 +69,7 @@ sudo update-initramfs -u
 
     #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable
     #nvidia-smi
-    #sudo systemctl disable  nvidia-resume.service
-    #sudo systemctl disable  nvidia-suspend.service
-    #sudo systemctl disable nvidia-hibernate.service
+    
 
 
 
