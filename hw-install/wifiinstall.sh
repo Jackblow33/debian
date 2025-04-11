@@ -5,6 +5,8 @@
 
 # Source: https://wiki.debian.org/wl
 
+USR=jack
+
 # Check if the script is running as root
 if [ "$EUID" -ne 0 ]; then
     echo "This script must be run as root."
@@ -15,7 +17,9 @@ fi
 cp /etc/apt/sources.list /etc/apt/$TIMESTAMP.sources.list
 
 # Add the non-free contrib repository to the sources.list file
-echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
+#echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
+
+cp /home/$USR/debian/files/sources.list /etc/apt/sources.list.d
 
 # Update the package lists
 apt-get update
@@ -32,7 +36,7 @@ sudo apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-header
 modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 
 # Unloading and reloading modules
-modprobe -r wl && sudo modprobe wl
+modprobe -r wl && modprobe wl
 
 
 
