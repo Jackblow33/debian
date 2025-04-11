@@ -1,4 +1,5 @@
-https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend
+
+# Source  https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend
 
 # Next lines into file /etc/modprobe.d/nvidia-power-management.conf
 options nvidia NVreg_PreserveVideoMemoryAllocations=1 
