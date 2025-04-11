@@ -1,5 +1,5 @@
 #!/bin/bash
-#nvidia1.sh
+#nvidia.sh
 
 ##linux kernel 6.11 and beyond required
 
