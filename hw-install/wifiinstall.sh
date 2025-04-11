@@ -14,12 +14,12 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Backup the original sources.list file
-cp /etc/apt/sources.list /etc/apt/$TIMESTAMP.sources.list
+cp /etc/apt/sources.list /etc/apt/sources_$TIMESTAMP.list
 
 # Add the non-free contrib repository to the sources.list file
-#echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
 
-cp /home/$USR/debian/files/sources.list /etc/apt/sources.list.d
+
 
 # Update the package lists
 apt-get update
