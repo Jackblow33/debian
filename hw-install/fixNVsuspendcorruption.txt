@@ -1,1 +1,15 @@
 https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend
+
+# Next lines into file /etc/modprobe.d/nvidia-power-management.conf
+options nvidia NVreg_PreserveVideoMemoryAllocations=1 
+NVreg_TemporaryFilePath=/var/tmp
+
+# Enable next 3 services -option: enable disable & status
+#VARIABLE
+OPTIONS=enable    #disable, status
+sudo systemctl $OPTIONS nvidia-suspend.service
+sudo systemctl $OPTIONS nvidia-hibernate.service
+sudo systemctl $OPTIONS nvidia-resume.service 
+
+
+
