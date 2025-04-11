@@ -56,6 +56,9 @@ sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.c
     cp ~/.bashrc ~/.bashrc.$TIMESTAMP
     echo "fastfetch" >> ~/.bashrc
 
+# Add fonction to right-click and create new text file
+    sudo touch ~/Templates/Text.txt
+
 timer_stop
 echo "Press [enter] to reboot"; read enterKey
 sudo shutdown -r now      #reboot
