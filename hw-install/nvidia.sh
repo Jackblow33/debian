@@ -43,7 +43,7 @@ NV_VER="570.133.07" # Nvidia Driver version
                       
     
 
-#Stop the GDM service:
+#Stop the GDM service - Just in case
     sudo systemctl stop gdm
     sudo systemctl stop gdm3 || sudo systemctl stop lightdm
 
