@@ -1,6 +1,7 @@
 #!/bin/bash
 #nvidia.sh
 
+# Execute as root 
 ##linux kernel 6.11 and beyond required
 
 #run the script as root
@@ -58,12 +59,24 @@ sudo update-initramfs -u
     echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' >> /etc/default/grub.d/nvidia-modeset.cfg
     nano /etc/default/grub.d/nvidia-modeset.cfg
     sudo update-grub
-    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules    #GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
+
+# GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver    
+# Detect desktop environment and apply fix accordingly
+if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
+    echo "GNOME desktop environment detected"
+    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules   #FIX
+elif [ "$XDG_CURRENT_DESKTOP" = "KDE" ]; then
+    echo "KDE desktop environment detected"
+else
+    echo "Unknown desktop environment"
+fi
+
+    #ln -s /dev/null /etc/udev/rules.d/61-gdm.rules    #GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
     echo
     echo
     echo
     echo "Your newly installed driver should be up and running."
-    read -p "Press to reboot   ............................>>>"
+    read -p "Press ENTER to reboot ............................>>>"
     sudo shutdown -r now    #reboot
 
 
