@@ -5,7 +5,9 @@
 
 # Source: https://wiki.debian.org/wl
 
-USR=jack
+#VARIABLES
+TIMESTAMP=`date +%Y%m%d.%R`
+
 
 # Check if the script is running as root
 if [ "$EUID" -ne 0 ]; then
