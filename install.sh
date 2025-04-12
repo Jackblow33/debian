@@ -32,7 +32,7 @@ timer_stop()
     echo Time elapsed: $MINS:`printf %02d $SECS`
 }
 
-
+# Makes all script executable that are in the debian folder recursively
 sudo find /home/$USR/debian -type f -name "*.sh" -exec chmod +x {} \;
 
 while true; do
