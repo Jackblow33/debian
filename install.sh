@@ -45,7 +45,8 @@ while true; do
     echo "2. Install Install wifi BCM4360"
     echo "3. Install custom kernel $KERNEL from USB"
     echo "4. Install Gnome"
-    echo "5. Exit"
+    echo "5. Install Gnome-extensions and customize"
+    echo "6. Exit"
     read -p "Enter your choice (1-5): " choice
 
     case $choice in
@@ -62,6 +63,9 @@ while true; do
             source /home/$USR/debian/gnome.sh
             ;;
         5)
+            source /home/$USR/debian/gnome-extension.sh
+            ;;    
+        6)
             echo "Exiting..."
             exit 0
             ;;
