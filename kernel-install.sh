@@ -1,4 +1,4 @@
-#!/bin/bash
+vu#!/bin/bash
 
 #KERNEL=6.14.1-tkg-eevdf
 
@@ -27,7 +27,7 @@ fi
     cd /mnt/usb/_MyFiles/kernels/$KERNEL
     sudo dpkg -i *.deb
     read -p "Press Enter to reboot and load kernel $KERNEL............................>>>"
-    sudo shutdown -r now
+    #sudo shutdown -r now
 
 
 
