@@ -22,7 +22,7 @@ cp -r '/home/'$USR'/dash-to-panel@jderose9.github.com /home/$USR/.local/share/gn
 echo "Press [enter] "; read enterKey
 
 #freon gnome-shell-extension-sensors
-sudo sensors-detect --auto #need lm-sensors dep
+sudo sensors-detect --auto
 sudo apt install  gnome-shell-extension-freon
 
 # appindicator -Compilation works
