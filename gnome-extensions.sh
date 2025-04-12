@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Gnome extensions
+# Gnome extensions install
 
 # dash-to-dock
 mkdir '/home/'$USR'/.local/share/gnome-shell/extensions/'
@@ -25,10 +25,37 @@ echo "Press [enter] "; read enterKey
 sudo sensors-detect --auto #need lm-sensors dep
 sudo apt install  gnome-shell-extension-freon
 
+# appindicator -Compilation works
+#USR=jack #### REMOVE before commit
+#cd /home/$USR
+#apt-get install ninja-build meson    #build-essential  lm-sensors
+#git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git
+#cd gnome-shell-extension-appindicator
+#meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build
+#ninja -C /tmp/g-s-appindicators-build install
+#echo "Press [enter] "; read enterKey
+
+echo "Press [enter] to reboot"; read enterKey
+sudo shutdown -r now
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Enable extensnsions and customize
-gnome-extensions enable dash-to-dock@micxgx.gmail.com
+#gsettings set org.gnome.shell disable-extension-version-validation true
+#gnome-extensions enable dash-to-dock@micxgx.gmail.com
 #gnome-extensions enable dash-to-panel@jderose9.github.com
 #gnome-extensions enable freon@UshakovVasilii_Github.yahoo.com
+#gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
 #gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 #gsettings set org.gnome.shell.extensions.dash-to-dock show-volume false
 #gsettings set org.gnome.shell.extensions.dash-to-dock show-device false
@@ -38,19 +65,15 @@ gnome-extensions enable dash-to-dock@micxgx.gmail.com
 #gsettings get org.gnome.shell favorite-apps
 #gsettings set org.gnome.shell favorite-apps "['firefox-esr.desktop', 'org.gnome.gedit.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']" ### ADD varible to choosed web browser
 
-echo "Press [enter] to reboot"; read enterKey
-sudo shutdown -r now      #reboot
 
 
 
-###appindicator -Compilation works
-#cd ~/
-#sudo apt-get install ninja-build meson    #build-essential  lm-sensors
-#git clone https://github.com/ubuntu/gnome-shell-extension-appindicator.git
+
+
+
+
+
 ###workaround patch for metadata.json file to support gnome 48
 #patch ~/gnome-shell-extension-appindicator/metadata.json ~/debianmultiscripts/appindicator.diff
 ###Patch or: gsettings set org.gnome.shell disable-extension-version-validation true
-#meson gnome-shell-extension-appindicator /tmp/g-s-appindicators-build
-#ninja -C /tmp/g-s-appindicators-build install
-
 #gnome-extensions enable appindicatorsupport@rgcjonas.gmail.com
