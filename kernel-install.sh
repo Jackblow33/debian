@@ -5,7 +5,9 @@ vu#!/bin/bash
 
 lsblk
 # Enter a device name for your usb
-read -p "Enter the USB device name (e.g., sdb, sdc): " usb_device_name
+echo ´´
+echo ´´
+read -p "Enter the USB device name (e.g.,  sdd1, sdc1): " usb_device_name
 
 # Get information about the specified device
 usb_device_info=$(lsblk -o NAME,SIZE,TYPE,MOUNTPOINT | grep "$usb_device_name")
