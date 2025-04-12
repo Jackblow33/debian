@@ -29,24 +29,16 @@ timer_stop()
 }
 
 
+# Check if the script is running as root
+if [ "$EUID" -ne 0 ]; then
+    echo "This script must be run as root."
+    exit 1
+fi
 
-#Blacklist Nouveau driver ---DISABLE--- Nvidia installer seems to do it properly
-    #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
-    #bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-    #bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
-    #cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nvidia-nouveau.conf 
-    #> blacklist nouveau
-    #> options nouveau modeset =0
-    #>EOF
-    #or /etc/modprobe.d/blacklist-nouveau.conf
-    update-initramfs -u
-#reboot
 
 #NVIDIA Driver install for 6.11 kernel +
     timer_start
     apt update && apt upgrade
-
-    #NEW
     apt-get remove --purge '^nvidia-.*'
     apt purge libnvidia-*
     apt autoremove
@@ -98,7 +90,7 @@ OPTIONS=enable    #disable, status
   sudo systemctl $OPTIONS nvidia-resume.service 
 
 
-# Error checking
+# Error check
     if [ $? -ne 0 ]; then
        echo "Driver $NV_VER install successfully." #>> $LOGFILE
        echo "Install did not run successfully"; press_enter; exit 1
@@ -129,7 +121,17 @@ OPTIONS=enable    #disable, status
 
 
 
-
+#Blacklist Nouveau driver ---DISABLE--- Nvidia installer seems to do it properly
+    #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
+    #bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    #bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
+    #cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nvidia-nouveau.conf 
+    #> blacklist nouveau
+    #> options nouveau modeset =0
+    #>EOF
+    #or /etc/modprobe.d/blacklist-nouveau.conf
+    update-initramfs -u
+#reboot
 
 
 
