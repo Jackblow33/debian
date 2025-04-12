@@ -70,7 +70,7 @@ sudo update-initramfs -u
     sudo update-grub
 
 # FIX Gnome - source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver    
-    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules    #GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
+    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules
 
 
 # FIX NVIDIA - Graphical glitches and unresponsive after waking from sleep
