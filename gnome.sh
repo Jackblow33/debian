@@ -46,7 +46,7 @@ for PKG in "${PKGS[@]}"; do
 done
 
 #remove apps
-sudo apt purge ifupdown totem totem-plugins systemsettings -y && sudo apt autoremove systemsettings -y   #gnome-text-editor
+sudo apt purge ifupdown gnome-tour totem totem-plugins systemsettings -y && sudo apt autoremove systemsettings -y   #gnome-text-editor
 
 sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf  #Editing NetworkManager file: managed=false to managed=true
 #Check system|network|IPv4 and make sure static ip address or dhcp is set properly
