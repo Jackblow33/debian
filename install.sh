@@ -49,30 +49,31 @@ while true; do
     echo ''
     echo ''
     echo "Please select an option:"
-    echo "1. Install NVIDIA driver $NV_VER"
-    echo "2. Install Install wifi BCM4360"
-    echo "3. Install custom kernel $KERNEL from USB"
-    echo "4. Install Gnome"
-    echo "5. Install Gnome-extensions and customize"
+    echo "1. Update System"
+    echo "2. Install NVIDIA driver $NV_VER"
+    echo "3. Install Install wifi BCM4360"
+    echo "4. Install custom kernel $KERNEL from USB"
+    echo "5. Install Gnome"
     echo "6. Exit"
     read -p "Enter your choice (1-5): " choice
 
     case $choice in
+        
         1)
-            source /home/$USR/debian/hw-install/nvidia.sh
+            apt update && apt upgrade
             ;;
         2)
-            source /home/$USR/debian/hw-install/wifiinstall.sh
+            source /home/$USR/debian/hw-install/nvidia.sh
             ;;
         3)
-            source /home/$USR/debian/kernel-install.sh
+            source /home/$USR/debian/hw-install/wifiinstall.sh
             ;;
         4)
-            source /home/$USR/debian/gnome.sh
+            source /home/$USR/debian/kernel-install.sh
             ;;
         5)
-            source /home/$USR/debian/gnome-extensions.sh
-            ;;    
+            source /home/$USR/debian/gnome.sh
+            ;;
         6)
             echo "Exiting..."
             exit 0
