@@ -45,6 +45,9 @@ for PKG in "${PKGS[@]}"; do
     sudo apt install "$PKG" -y #|| sudo pacman -S "$PKG" --noconfirm --needed
 done
 
+# Install brave # Privacy oriented web browser
+source /home/$USER/debian/brave.sh
+
 #remove apps
 sudo apt purge ifupdown gnome-tour totem totem-plugins systemsettings -y && sudo apt autoremove systemsettings -y   #gnome-text-editor
 
@@ -53,11 +56,11 @@ sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.c
 
  #fastfetch auto load in terminal
     #Make a copy of .bashrc before edit
-    cp ~/.bashrc ~/.bashrc.$TIMESTAMP
+    cp /home/$USER/.bashrc /home/$USER/.bashrc.$TIMESTAMP
     echo "fastfetch" >> ~/.bashrc
 
 # Add fonction to right-click and create new text file
-    sudo touch ~/Templates/Text.txt
+    sudo touch /home/$USER/Templates/Text.txt
 
 timer_stop
 echo "Press [enter] "; read enterKey
