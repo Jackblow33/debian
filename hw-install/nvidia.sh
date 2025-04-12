@@ -12,6 +12,11 @@
 TIMESTAMP=`date +%Y%m%d.%R`
 NV_VER="570.133.07" # Nvidia Driver version
 
+#VARIABLES
+# Colors
+GREEN='\033[0;32m'
+NC='\033[0m' #no color
+
 #fonctions
 timer_start()
 {
@@ -85,18 +90,20 @@ OPTIONS=enable    #disable, status
   sudo systemctl $OPTIONS nvidia-suspend.service
   sudo systemctl $OPTIONS nvidia-hibernate.service
   sudo systemctl $OPTIONS nvidia-resume.service 
-
-
+       echo
+       echo
+       echo
 # Error check
     if [ $? -ne 0 ]; then
-       echo "Driver $NV_VER install successfully." #>> $LOGFILE
+       #echo "Driver $NV_VER install successfully." #>> $LOGFILE
+       read -p "$(echo -e $GREEN"Driver $NV_VER install successfully."$NC)"
        echo "Install did not run successfully"; press_enter; exit 1
     else
        echo "Install successful" #>> $LOGFILE
     fi
 
     timer_stop
-    read -p "Press ENTER to reboot ............................>>>"
+    read -p "$(echo -e $GREEN"Installation completed! Press Enter to reboot............................>>> "$NC)"
     sudo shutdown -r now    #reboot
 
 
