@@ -37,6 +37,9 @@ sudo find /home/$USR/debian -type f -name "*.sh" -exec chmod +x {} \;
 
 while true; do
     clear
+    echo ''
+    echo ''
+    echo ''
     echo "Please select an option:"
     echo "1. Install NVIDIA driver $NV_VER"
     echo "2. Install kernel $KERNEL from USB"
