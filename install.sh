@@ -1,26 +1,28 @@
 #!/bin/bash
 
-#NV_VER="570.133.07"
-#KERNEL=6.14.1-tkg-eevdf
-USR=jack        #put your own user there instead of jack
+# Execute as root
+
+# EDIT THIS VARIABLE ######################################
+USR=jack    ### Put your own user there instead of jack ###
+###########################################################
+
 
 while true; do
     clear
     echo "Please select an option:"
-    echo "1. Install NVIDIA $NV_VER"
-    echo "2. Install kernel $KERNEL"
+    echo "1. Install NVIDIA driver $NV_VER"
+    echo "2. Install kernel $KERNEL from USB"
     echo "3. Install Gnome"
-    echo "4. Install Gnome extension"
-    echo "5. Install BCM_4360 wifi"
-    echo "6. Exit"
+    echo "4. Install Gnome extensions"
+    echo "5. Exit"
     read -p "Enter your choice (1-5): " choice
 
     case $choice in
         1)
-            source /home/$USR/debian/hw-install/nvidia.sh        #./nvidia.sh
+            source /home/$USR/debian/hw-install/nvidia.sh   #./script1.sh
             ;;
         2)
-            source /home/$USR/debian/kernel.sh    #./kernel.sh
+            source /home/$USR/debian/kernel.sh              #./script2.sh
             ;;
         3)
             ./gnome.sh
@@ -29,10 +31,12 @@ while true; do
             ./gnome-extensions.sh
             ;;
         5)
-            source /home/$USR/debian/hw-install/wifiinstall.sh       #./gkjhhjb.sh
-            ;;
-        6)
             echo "Exiting..."
             exit 0
             ;;
         *)
+            echo "Invalid choice. Please try again."
+            sleep 2
+            ;;
+    esac
+done
