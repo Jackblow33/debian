@@ -55,8 +55,8 @@ sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.c
 
  #fastfetch auto load in terminal
     #Make a copy of .bashrc before edit
-    cp sudo /home/$USR/.bashrc /home/$USR/.bashrc.$TIMESTAMP
-    echo "fastfetch" >> ~/.bashrc
+    sudo cp sudo /home/$USR/.bashrc /home/$USR/.bashrc.$TIMESTAMP
+    sudo echo "fastfetch" >> ~/.bashrc
 
 # Getting lm-sensor ready
 sensors-detect --auto
