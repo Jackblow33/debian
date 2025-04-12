@@ -71,7 +71,7 @@ while true; do
             source /home/$USR/debian/gnome.sh
             ;;
         5)
-            source /home/$USR/debian/gnome-extension.sh
+            source /home/$USR/debian/gnome-extensions.sh
             ;;    
         6)
             echo "Exiting..."
