@@ -38,6 +38,8 @@ modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 
 # Unloading and reloading modules
 modprobe -r wl && modprobe wl
+echo '' ; echo '' ; echo '' ; echo '' 
+echo "Press [enter] to continue"; read enterKey
 
 
 
