@@ -7,8 +7,8 @@
 #VARIABLE
 PKGS=(
         'gnome-core'                #  Core components of the GNOME Desktop environment
-        'gedit'                     # Text editor
-#        'kate'                      # Kde advanced test editor
+#        'gedit'                     # Text editor
+        'kate'                      # Kde advanced test editor
         'make'                      # general purpose dependency solver
         'gettext'                   # build depends for dash-to-dock
         'sassc'                     # build depends for dash-to-dock
@@ -46,7 +46,7 @@ for PKG in "${PKGS[@]}"; do
 done
 
 #remove apps
-sudo apt purge ifupdown gnome-text-editor totem totem-plugins -y && sudo apt autoremove gnome-text-editor -y
+sudo apt purge ifupdown totem totem-plugins systemsettings -y && sudo apt autoremove systemsettings -y   #gnome-text-editor
 
 sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf  #Editing NetworkManager file: managed=false to managed=true
 #Check system|network|IPv4 and make sure static ip address or dhcp is set properly
