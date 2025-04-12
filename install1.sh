@@ -49,9 +49,9 @@ sudo find /home/$USR/debian -type f -name "*.sh" -exec chmod +x {} \;
 # Function to display the menu
 display_menu() {
     echo "Please select one or more options (separated by spaces):"
-    echo "1. Install NVIDIA"
+    echo "1. Install NVIDIA driver $NV_VER"
     echo "2. Install BCM4360"
-    echo "3. Install custom kernel from USB"
+    echo "3. Install custom kernel $KERNEL from USB "
     echo "4. Exit"
 }
 
@@ -67,15 +67,15 @@ handle_input() {
         case $choice in
             1)
                 echo "You selected Option 1"
-                source /home/jack/debian/nvidia.sh
+                source /home/$USR/debian/nvidia.sh
                 ;;
             2)
                 echo "You selected Option 2"
-                source /home/jack/debian/hw-install/wifiinstall.sh
+                source /home/$USR/debian/hw-install/wifiinstall.sh
                 ;;
             3)
                 echo "You selected Option 3"
-                source /home/jack/debian/kernel-install.sh
+                source /home/$USR/debian/kernel-install.sh
                 ;;
             4)
                 echo "Exiting..."
