@@ -1,6 +1,6 @@
 #!/bin/bash
 
-KERNEL=6.14.1-tkg-eevdf
+#KERNEL=6.14.1-tkg-eevdf
 
 
 lsblk
