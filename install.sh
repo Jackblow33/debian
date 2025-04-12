@@ -53,7 +53,7 @@ while true; do
             source /home/$USR/debian/hw-install/nvidia.sh
             ;;
         2)
-            source /home/$USR/debian/hw-install/wifiinstall
+            source /home/$USR/debian/hw-install/wifiinstall.sh
             ;;
         3)
             source /home/$USR/debian/kernel-install.sh
