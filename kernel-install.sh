@@ -22,12 +22,15 @@ else
     echo "USB device not found. Please check the device name and try again."
     exit 1
 fi
-
+    timer_start
     echo "Mounting USB device: $usb_device"
     sudo mkdir /mnt/usb
     sudo mount /dev/$usb_device_name /mnt/usb
     cd /mnt/usb/_MyFiles/kernels/$KERNEL
     sudo dpkg -i *.deb
+    echo '' ; echo '' ; echoe ''
+    timer_stop
+    echo ''
     read -p "Press Enter to reboot and load kernel $KERNEL............................>>>"
     #sudo shutdown -r now
 
