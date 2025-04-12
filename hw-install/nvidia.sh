@@ -12,6 +12,23 @@
 TIMESTAMP=`date +%Y%m%d.%R`
 NV_VER="570.133.07" # Nvidia Driver version
 
+#fonctions
+timer_start()
+{
+BEGIN=$(date +%s)
+}
+
+#fonctions
+timer_stop()
+{
+    NOW=$(date +%s)
+    let DIFF=$(($NOW - $BEGIN))
+    let MINS=$(($DIFF / 60))
+    let SECS=$(($DIFF % 60))
+    echo Time elapsed: $MINS:`printf %02d $SECS`
+}
+
+
 
 #Blacklist Nouveau driver ---DISABLE--- Nvidia installer seems to do it properly
     #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
@@ -26,6 +43,7 @@ NV_VER="570.133.07" # Nvidia Driver version
 #reboot
 
 #NVIDIA Driver install for 6.11 kernel +
+    timer_start
     apt update && apt upgrade
 
     #NEW
@@ -44,7 +62,7 @@ NV_VER="570.133.07" # Nvidia Driver version
                       
     
 
-#Stop the GDM service - Just in case
+# Stop the GDM service - Just in case
     sudo systemctl stop gdm
     sudo systemctl stop gdm3 || sudo systemctl stop lightdm
 
@@ -61,25 +79,44 @@ sudo update-initramfs -u
     sudo update-grub
 
 # GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver    
-# Detect desktop environment and apply fix accordingly
-if [ "$XDG_CURRENT_DESKTOP" = "GNOME" ]; then
-    echo "GNOME desktop environment detected"
-    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules   #FIX
-elif [ "$XDG_CURRENT_DESKTOP" = "KDE" ]; then
-    echo "KDE desktop environment detected"
-else
-    echo "Unknown desktop environment"
-fi
+    ln -s /dev/null /etc/udev/rules.d/61-gdm.rules    #GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
 
-    #ln -s /dev/null /etc/udev/rules.d/61-gdm.rules    #GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
-    echo
-    echo
-    echo
-    echo "Your newly installed driver should be up and running."
+
+# FIX NVIDIA Graphical glitches and unresponsive after waking from sleep
+# Source  https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend
+
+# Next lines into file /etc/modprobe.d/nvidia-power-management.conf
+  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' >>  /etc/modprobe.d/nvidia-power-management.conf
+  echo '#NVreg_TemporaryFilePath=/var/tmp' >>  /etc/modprobe.d/nvidia-power-management.conf
+  nano /etc/modprobe.d/nvidia-power-management.conf
+
+# Making sure next 3 services are enable  --options enable disable & status
+#VARIABLE
+OPTIONS=enable    #disable, status
+  sudo systemctl $OPTIONS nvidia-suspend.service
+  sudo systemctl $OPTIONS nvidia-hibernate.service
+  sudo systemctl $OPTIONS nvidia-resume.service 
+
+
+# Error checking
+    if [ $? -ne 0 ]; then
+       echo "Driver $NV_VER install successfully." #>> $LOGFILE
+       echo "Install did not run successfully"; press_enter; exit 1
+    else
+       echo "Install successful" #>> $LOGFILE
+    fi
+
+    timer_stop
     read -p "Press ENTER to reboot ............................>>>"
     sudo shutdown -r now    #reboot
 
 
+    
+    
+    
+    
+    
+    
     #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable
     #nvidia-smi
 
