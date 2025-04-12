@@ -9,22 +9,22 @@
 #Blacklist, update system & install Nvidia driver
 
 #VARIABLES
-TIMESTAMP=`date +%Y%m%d.%R`
-NV_VER="570.133.07" # Nvidia Driver version
+#TIMESTAMP=`date +%Y%m%d.%R`
+#NV_VER="570.133.07" # Nvidia Driver version
 
 #VARIABLES
 # Colors
-GREEN='\033[0;32m'
-NC='\033[0m' #no color
+#GREEN='\033[0;32m'
+#NC='\033[0m' #no color
 
 #fonctions
-timer_start()
+#timer_start()
 {
 BEGIN=$(date +%s)
 }
 
 #fonctions
-timer_stop()
+#timer_stop()
 {
     NOW=$(date +%s)
     let DIFF=$(($NOW - $BEGIN))
@@ -86,24 +86,27 @@ sudo update-initramfs -u
 
 # Making sure next 3 services are enable  --options enable(default), disable & status
 #VARIABLE
-OPTIONS=enable    #disable, status
-  sudo systemctl $OPTIONS nvidia-suspend.service
-  sudo systemctl $OPTIONS nvidia-hibernate.service
-  sudo systemctl $OPTIONS nvidia-resume.service 
+OPTION=enable    #disable, status
+  sudo systemctl $OPTION nvidia-suspend.service
+  sudo systemctl $OPTION nvidia-hibernate.service
+  sudo systemctl $OPTION nvidia-resume.service 
        echo
        echo
        echo
 # Error check
     if [ $? -ne 0 ]; then
-       #echo "Driver install successfully." #>> $LOGFILE
+       echo "Driver install successfully." #>> $LOGFILE
+       timer_stop
        read -p "$(echo -e $GREEN"Driver $NV_VER install successfully."$NC)"
-       echo "Install did not run successfully"; press_enter; exit 1
+       
     else
-       echo "Install successful" #>> $LOGFILE
+       echo "Install did not run successfully"; press_enter; exit 1
     fi
 
-    timer_stop
-    read -p "$(echo -e $GREEN"Installation completed! Press Enter to reboot............................>>> "$NC)"
+   echo ''
+   echo ''
+   echo ''
+   read -p "$(echo -e $GREEN"Installation completed! Press Enter to reboot............................>>> "$NC)"
     #sudo shutdown -r now    #reboot
 
 
