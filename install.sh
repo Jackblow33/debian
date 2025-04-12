@@ -1,27 +1,38 @@
 #!/bin/bash
 
-#Placeholder
-#selection menu to install
+#NV_VER="570.133.07"
+#KERNEL=6.14.1-tkg-eevdf
+USR=jack        #put your own user there instead of jack
 
-# Bash Menu Script Example
+while true; do
+    clear
+    echo "Please select an option:"
+    echo "1. Install NVIDIA $NV_VER"
+    echo "2. Install kernel $KERNEL"
+    echo "3. Install Gnome"
+    echo "4. Install Gnome extension"
+    echo "5. Install BCM_4360 wifi"
+    echo "6. Exit"
+    read -p "Enter your choice (1-5): " choice
 
-PS3='Please enter your choice: '
-options=("Option 1" "Option 2" "Option 3" "Quit")
-select opt in "${options[@]}"
-do
-    case $opt in
-        "Option 1")
-            echo "you chose choice 1"
+    case $choice in
+        1)
+            source /home/$USR/debian/hw-install/nvidia.sh        #./nvidia.sh
             ;;
-        "Option 2")
-            echo "you chose choice 2"
+        2)
+            source /home/$USR/debian/kernel.sh    #./kernel.sh
             ;;
-        "Option 3")
-            echo "you chose choice $REPLY which is $opt"
+        3)
+            ./gnome.sh
             ;;
-        "Quit")
-            break
+        4)
+            ./gnome-extensions.sh
             ;;
-        *) echo "invalid option $REPLY";;
-    esac
-done
+        5)
+            source /home/$USR/debian/hw-install/wifiinstall.sh       #./gkjhhjb.sh
+            ;;
+        6)
+            echo "Exiting..."
+            exit 0
+            ;;
+        *)
