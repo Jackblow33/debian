@@ -32,6 +32,8 @@ timer_stop()
 }
 
 
+sudo find /home/$USR/debian -type f -name "*.sh" -exec chmod +x {} \;
+
 while true; do
     clear
     echo "Please select an option:"
