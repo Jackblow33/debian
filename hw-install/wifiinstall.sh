@@ -6,17 +6,17 @@
 # Source: https://wiki.debian.org/wl
 
 #VARIABLES
-TIMESTAMP=`date +%Y%m%d.%R`
+#TIMESTAMP=`date +%Y%m%d.%R`
 
 
 # Check if the script is running as root
-if [ "$EUID" -ne 0 ]; then
-    echo "This script must be run as root."
-    exit 1
-fi
+#if [ "$EUID" -ne 0 ]; then
+#    echo "This script must be run as root."
+#    exit 1
+#fi
 
 # Backup the original sources.list file
-cp /etc/apt/sources.list /etc/apt/sources_$TIMESTAMP.list
+sudo cp /etc/apt/sources.list /etc/apt/sources_$TIMESTAMP.list
 
 # Add the non-free contrib repository to the sources.list file
 echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
@@ -24,7 +24,7 @@ echo "The non-free contrib repository has been added to the sources.list file."
 
 
 # Update the package lists
-apt-get update && apt-get upgrade
+#apt-get update && apt-get upgrade
 
 
 # Install
@@ -34,10 +34,10 @@ sudo apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-header
 # find /lib/modules/$(uname -r)/updates
 
 # Unload conflicting modules:
-modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
+sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 
 # Unloading and reloading modules
-modprobe -r wl && modprobe wl
+sudo modprobe -r wl && sudo modprobe wl
 echo '' ; echo '' ; echo '' ; echo '' 
 echo "Press [enter] to continue"; read enterKey
 
