@@ -39,6 +39,14 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+# Check if the user is not root
+#if [ "$EUID" -eq 0 ]; then
+#    echo "This script should not be run as the root user."
+#    exit 1
+#fi
+
+# Rest of the script goes here
+echo "Script is running as a non-root user."
 
 # Makes all script executable that are in the debian folder recursively
 sudo find /home/$USR/debian -type f -name "*.sh" -exec chmod +x {} \;
