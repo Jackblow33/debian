@@ -3,7 +3,6 @@
 #https://wiki.debian.org/Gnome  &&  https://www.youtube.com/watch?v=zy-5UHC3t-Q
 
 
-
 #VARIABLE
 PKGS=(
         'gnome-core'                #  Core components of the GNOME Desktop environment
@@ -20,24 +19,24 @@ PKGS=(
 )
 
 #fonctions
-timer_start()
-{
-BEGIN=$(date +%s)
-}
+#timer_start()
+#{
+#BEGIN=$(date +%s)
+#}
 
 #fonctions
-timer_stop()
-{
-    NOW=$(date +%s)
-    let DIFF=$(($NOW - $BEGIN))
-    let MINS=$(($DIFF / 60))
-    let SECS=$(($DIFF % 60))
-    echo Time elapsed: $MINS:`printf %02d $SECS`
-}
+#timer_stop()
+#{
+#    NOW=$(date +%s)
+#    let DIFF=$(($NOW - $BEGIN))
+#    let MINS=$(($DIFF / 60))
+#    let SECS=$(($DIFF % 60))
+#    echo Time elapsed: $MINS:`printf %02d $SECS`
+#}
 
 
 timer_start
-sudo apt update && sudo apt upgrade
+#sudo apt update && sudo apt upgrade
 
 #Packages installer
 for PKG in "${PKGS[@]}"; do
@@ -45,7 +44,7 @@ for PKG in "${PKGS[@]}"; do
     sudo apt install "$PKG" -y #|| sudo pacman -S "$PKG" --noconfirm --needed
 done
 # Install brave # Privacy oriented web browser
-source /home/$USER/debian/brave.sh
+source /home/$USR/debian/brave.sh
 
 
 #remove apps
@@ -56,14 +55,14 @@ sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.c
 
  #fastfetch auto load in terminal
     #Make a copy of .bashrc before edit
-    cp /home/$USER/.bashrc /home/$USER/.bashrc.$TIMESTAMP
+    cp sudo /home/$USR/.bashrc /home/$USR/.bashrc.$TIMESTAMP
     echo "fastfetch" >> ~/.bashrc
 
 # Getting lm-sensor ready
 sensors-detect --auto
 
 # Add fonction to right-click and create new text file
-    sudo touch /home/$USER/Templates/Text.txt
+    sudo touch /home/$USR/Templates/Text.txt
 
 timer_stop
 echo "Press [enter] "; read enterKey
