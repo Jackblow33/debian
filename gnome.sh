@@ -65,8 +65,9 @@ sensors-detect --auto
     sudo touch /home/$USR/Templates/Text.txt
 
 timer_stop
-clear
-echo "Press [enter] "; read enterKey
+#clear
+echo '' ; echo '' ; echo '' ; echo ''
+echo "Press [enter] to continue "; read enterKey
 #sudo shutdown -r now      #reboot
 
 
