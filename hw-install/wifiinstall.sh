@@ -38,8 +38,13 @@ sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 
 # Unloading and reloading modules
 sudo modprobe -r wl && sudo modprobe wl
+
 echo '' ; echo '' ; echo '' ; echo '' 
-echo "Press [enter] to continue"; read enterKey
+ clear
+   echo ''
+   echo ''
+   echo ''
+   read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
 
 
 
