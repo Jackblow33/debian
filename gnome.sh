@@ -66,8 +66,10 @@ sensors-detect --auto
 
 timer_stop
 #clear
-echo '' ; echo '' ; echo '' ; echo ''
-echo "Press [enter] to continue "; read enterKey
+   echo ''
+   echo ''
+   echo ''
+   read -p "$(echo -e $GREEN"Installation completed! Press Enter to Reboot ...........................>>> "$NC)"
 #sudo shutdown -r now      #reboot
 
 
