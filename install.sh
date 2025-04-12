@@ -6,6 +6,31 @@
 USR=jack    ### Put your own user there instead of jack ###
 ###########################################################
 
+#VARIABLES
+TIMESTAMP=`date +%Y%m%d.%R`
+NV_VER="570.133.07" # Nvidia Driver version
+
+#VARIABLES
+# Colors
+GREEN='\033[0;32m'
+NC='\033[0m' #no color
+
+#fonctions
+timer_start()
+{
+BEGIN=$(date +%s)
+}
+
+#fonctions
+timer_stop()
+{
+    NOW=$(date +%s)
+    let DIFF=$(($NOW - $BEGIN))
+    let MINS=$(($DIFF / 60))
+    let SECS=$(($DIFF % 60))
+    echo Time elapsed: $MINS:`printf %02d $SECS`
+}
+
 
 while true; do
     clear
@@ -19,13 +44,13 @@ while true; do
 
     case $choice in
         1)
-            source /home/$USR/debian/hw-install/nvidia.sh   #./script1.sh
+            source /home/$USR/debian/hw-install/nvidia.sh
             ;;
         2)
-            source /home/$USR/debian/kernel.sh              #./script2.sh
+            source /home/$USR/debian/kernel-install.sh
             ;;
         3)
-            ./gnome.sh
+            source /home/$USR/debian/gnome.sh
             ;;
         4)
             ./gnome-extensions.sh
