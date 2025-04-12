@@ -49,7 +49,7 @@
     apt autoremove
     apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
     
-    apt install pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
+    apt install -y pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
                       #apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
                       #OLD  wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
                       #Working  apt install linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev dracut libc-dev pkg-config
