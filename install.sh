@@ -9,6 +9,7 @@ USR=jack    ### Put your own user there instead of jack ###
 #VARIABLES
 TIMESTAMP=`date +%Y%m%d.%R`
 NV_VER="570.133.07" # Nvidia Driver version
+KERNEL=6.14.1-tkg-eevdf
 
 #VARIABLES
 # Colors
