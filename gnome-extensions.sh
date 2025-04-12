@@ -14,7 +14,7 @@ cp -r ~/dash-to-dock@micxgx.gmail.com ~/.local/share/gnome-shell/extensions/
 sudo sensors-detect --auto #need lm-sensors dep
 sudo apt install  gnome-shell-extension-freon
 
-# Enable extensnsions ans customize
+# Enable extensnsions and customize
 #gnome-extensions enable dash-to-dock@micxgx.gmail.com
 #gnome-extensions enable freon@UshakovVasilii_Github.yahoo.com
 #gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
