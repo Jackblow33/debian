@@ -16,7 +16,7 @@ PKGS=(
         'gparted'                   # Partition utility
         'timeshift'                 # Timeshift is a program used to make system back-ups/snapshots easily
         'vlc'                       # VLC is free software to play, transcode and broadcast video and audio files
-#        'lm-sensors'                # Hardware health monitoring
+        'lm-sensors'                # Hardware health monitoring
 )
 
 #fonctions
