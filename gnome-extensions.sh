@@ -11,14 +11,13 @@ sudo make && sudo make install     #Run the following commands to build the exte
 cp -r /home/$USR/dash-to-dock@micxgx.gmail.com /home/$USR/.local/share/gnome-shell/extensions/
 
 # dash to panel
-cd /home/$USR
-git clone https://github.com/home-sweet-gnome/dash-to-panel.git
-cd /home/$USR/dash-to-panel
-make install
-USR=jack
-cd ..
-mv /home/$USR/dash-to-panel dash-to-panel@jderose9.github.com
-cp -r /home/$USR/dash-to-panel@jderose9.github.com /home/$USR/.local/share/gnome-shell/extensions/
+#cd /home/$USR
+#git clone https://github.com/home-sweet-gnome/dash-to-panel.git
+#cd /home/$USR/dash-to-panel
+#make install
+#cd ..
+#mv /home/$USR/dash-to-panel dash-to-panel@jderose9.github.com
+#cp -r /home/$USR/dash-to-panel@jderose9.github.com /home/$USR/.local/share/gnome-shell/extensions/
 
 
 
@@ -28,7 +27,7 @@ sudo apt install  gnome-shell-extension-freon
 
 # Enable extensnsions and customize
 gnome-extensions enable dash-to-dock@micxgx.gmail.com
-gnome-extensions enable dash-to-panel@jderose9.github.com
+#gnome-extensions enable dash-to-panel@jderose9.github.com
 gnome-extensions enable freon@UshakovVasilii_Github.yahoo.com
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 gsettings set org.gnome.shell.extensions.dash-to-dock show-volume false
