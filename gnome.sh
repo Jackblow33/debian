@@ -60,8 +60,8 @@ sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.c
     sudo touch ~/Templates/Text.txt
 
 timer_stop
-echo "Press [enter] to reboot"; read enterKey
-sudo shutdown -r now      #reboot
+echo "Press [enter] "; read enterKey
+#sudo shutdown -r now      #reboot
 
 
 # For a full debian install...
