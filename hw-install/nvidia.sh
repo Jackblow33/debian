@@ -95,7 +95,7 @@ OPTIONS=enable    #disable, status
        echo
 # Error check
     if [ $? -ne 0 ]; then
-       #echo "Driver $NV_VER install successfully." #>> $LOGFILE
+       #echo "Driver install successfully." #>> $LOGFILE
        read -p "$(echo -e $GREEN"Driver $NV_VER install successfully."$NC)"
        echo "Install did not run successfully"; press_enter; exit 1
     else
@@ -104,7 +104,7 @@ OPTIONS=enable    #disable, status
 
     timer_stop
     read -p "$(echo -e $GREEN"Installation completed! Press Enter to reboot............................>>> "$NC)"
-    sudo shutdown -r now    #reboot
+    #sudo shutdown -r now    #reboot
 
 
     
