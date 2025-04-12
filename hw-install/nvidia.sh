@@ -60,13 +60,12 @@ OPTION=enable    #disable, status
   sudo systemctl $OPTION nvidia-hibernate.service
   sudo systemctl $OPTION nvidia-resume.service 
 
-   echo ''
-   echo ''
-   echo ''
    timer_stop
+   clear
    echo ''
    echo ''
-   read -p "$(echo -e $GREEN"Installation completed! Press Enter to reboot............................>>> "$NC)"
+   echo ''
+   read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
     #sudo shutdown -r now    #reboot
 
 
