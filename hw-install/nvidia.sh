@@ -90,18 +90,6 @@ OPTION=enable    #disable, status
   sudo systemctl $OPTION nvidia-suspend.service
   sudo systemctl $OPTION nvidia-hibernate.service
   sudo systemctl $OPTION nvidia-resume.service 
-       echo
-       echo
-       echo
-# Error check
-    if [ $? -ne 0 ]; then
-       echo "Driver install successfully." #>> $LOGFILE
-       timer_stop
-       read -p "$(echo -e $GREEN"Driver $NV_VER install successfully."$NC)"
-       
-    else
-       echo "Install did not run successfully"; press_enter; exit 1
-    fi
 
    echo ''
    echo ''
