@@ -15,6 +15,7 @@
 #    exit 1
 #fi
 
+timer_start
 # Backup the original sources.list file
 sudo cp /etc/apt/sources.list /etc/apt/sources_$TIMESTAMP.list
 
@@ -40,11 +41,9 @@ sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
 sudo modprobe -r wl && sudo modprobe wl
 
 echo '' ; echo '' ; echo '' ; echo '' 
- clear
-   echo ''
-   echo ''
-   echo ''
-   read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
+timer_stop
+echo ''
+read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
 
 
 
