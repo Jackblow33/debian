@@ -17,7 +17,8 @@ sudo apt install  gnome-shell-extension-freon
 gnome-extensions enable dash-to-dock@micxgx.gmail.com
 gnome-extensions enable freon@UshakovVasilii_Github.yahoo.com
 gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
-sudo systemctl restart gnome-shell
+gsettings set org.gnome.shell favorite-apps "['firefox-esr.desktop', 'org.gnome.gedit.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']"
+#sudo systemctl restart gnome-shell
 
 
 
