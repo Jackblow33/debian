@@ -42,13 +42,12 @@ fi
     apt-get remove --purge '^nvidia-.*'
     apt purge libnvidia-*
     apt autoremove
-    
     apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
-                      #Working  apt install linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev dracut libc-dev pkg-config
+    
     apt install pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
                       #apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
                       #OLD  wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.86.16/NVIDIA-Linux-x86_64-570.86.16.run
-
+                      #Working  apt install linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev dracut libc-dev pkg-config
     wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-"$NV_VER".run
     chmod +x NVIDIA-Linux-x86_64-"$NV_VER".run
                       
@@ -70,19 +69,17 @@ sudo update-initramfs -u
     nano /etc/default/grub.d/nvidia-modeset.cfg
     sudo update-grub
 
-# GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver    
+# FIX Gnome - source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver    
     ln -s /dev/null /etc/udev/rules.d/61-gdm.rules    #GNOME fix, source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver
 
 
-# FIX NVIDIA Graphical glitches and unresponsive after waking from sleep
+# FIX NVIDIA - Graphical glitches and unresponsive after waking from sleep
 # Source  https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend
-
-# Next lines into file /etc/modprobe.d/nvidia-power-management.conf
   echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' >>  /etc/modprobe.d/nvidia-power-management.conf
   echo '#NVreg_TemporaryFilePath=/var/tmp' >>  /etc/modprobe.d/nvidia-power-management.conf
   nano /etc/modprobe.d/nvidia-power-management.conf
 
-# Making sure next 3 services are enable  --options enable disable & status
+# Making sure next 3 services are enable  --options enable(default), disable & status
 #VARIABLE
 OPTIONS=enable    #disable, status
   sudo systemctl $OPTIONS nvidia-suspend.service
