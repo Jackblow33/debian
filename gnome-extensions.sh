@@ -38,7 +38,8 @@ gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false
 #gsettings get org.gnome.shell favorite-apps
 gsettings set org.gnome.shell favorite-apps "['firefox-esr.desktop', 'org.gnome.gedit.desktop', 'org.gnome.Terminal.desktop', 'org.gnome.Nautilus.desktop']" ### ADD varible to choosed web browser
 
-
+echo "Press [enter] "; read enterKey
+sudo shutdown -r now      #reboot
 
 
 
