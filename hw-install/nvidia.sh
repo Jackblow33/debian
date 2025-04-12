@@ -94,6 +94,9 @@ OPTION=enable    #disable, status
    echo ''
    echo ''
    echo ''
+   timer_stop
+   echo ''
+   echo ''
    read -p "$(echo -e $GREEN"Installation completed! Press Enter to reboot............................>>> "$NC)"
     #sudo shutdown -r now    #reboot
 
