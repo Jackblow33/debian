@@ -12,9 +12,6 @@
 #    echo "This script must be run as root."
 #    exit 1
 #fi
-
-
-#NVIDIA Driver install for 6.11 kernel +
     timer_start
     #apt update -y && apt upgrade -y
     #apt-get remove --purge '^nvidia-.*'
@@ -24,7 +21,7 @@
     
                       #Working too apt install -y pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
                       #apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
-    apt install -y linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev libc-dev pkg-config  # dracut
+    apt install -y linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev libc-dev #pkg-config
     wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-"$NV_VER".run
     chmod +x NVIDIA-Linux-x86_64-"$NV_VER".run
                       
