@@ -1,4 +1,4 @@
-vu#!/bin/bash
+#!/bin/bash
 
 #KERNEL=6.14.1-tkg-eevdf
 
@@ -24,11 +24,11 @@ else
 fi
     timer_start
     echo "Mounting USB device: $usb_device"
-    sudo mkdir /mnt/usb
-    sudo mount /dev/$usb_device_name /mnt/usb
+    mkdir /mnt/usb
+    mount /dev/$usb_device_name /mnt/usb
     cd /mnt/usb/_MyFiles/kernels/$KERNEL
-    sudo dpkg -i *.deb
-    echo '' ; echo '' ; echoe ''
+    dpkg -i *.deb
+    echo '' ; echo '' ; echo ''
     timer_stop
     echo ''
     read -p "Press Enter to reboot and load kernel $KERNEL............................>>>"
