@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# DOESN'T WORK
+
 # Uninstall previous driver and install Nouveau Driver on Debian 12
 
 
