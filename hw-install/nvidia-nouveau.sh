@@ -7,6 +7,8 @@
 # Install the necessary packages for Nouveau
   sudo apt install xserver-xorg-video-nouveau libdrm-nouveau2 libdrm-nouveau-dev   # Error: Unable to locate package libdrm-nouveau-dev ???
 # NVIDIA proprietary driver removal
+  #sudo apt autoremove nvidia* --purge
+  #sudo /usr/bin/nvidia-uninstall
   sudo apt-get purge nvidia*
   sudo apt-get autoremove
 # Blacklist the NVIDIA kernel module
