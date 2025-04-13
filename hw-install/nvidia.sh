@@ -81,8 +81,9 @@ OPTION=enable    #disable, status
     
     
     
-    
+    # Checks
     #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable
+    #sudo cat /proc/driver/nvidia/params | grep "PreserveVideoMemoryAllocations" #1 is expected if PreserveVideoMemoryAllocations is enable
     #nvidia-smi
 
     #If you plan to use suspend/hibernate functionality under KDE desktop environment, you may want to add another option to avoid graphics "glitches" after wakeup/restore:
