@@ -21,10 +21,10 @@
 
     timer_start
     apt update           # && apt upgrade -y
-    apt-get remove --purge '^nvidia-.*'
-    apt purge libnvidia-*
-    apt autoremove
-    apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
+    #apt-get remove --purge '^nvidia-.*'
+    #apt purge libnvidia-*
+    #apt autoremove
+    #apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
     
                       #Working too apt install -y pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
     sudo apt install -y linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config libcuda1-i386 nvidia-driver-libs-i386
@@ -38,7 +38,7 @@
     sudo systemctl stop gdm
     sudo systemctl stop gdm3 || sudo systemctl stop lightdm
 
-    #read -p "Press Enter to start installing Nvidia driver ............................>>>"
+    read -p "Press Enter to start installing Nvidia driver ............................>>>"
 
     
 ./NVIDIA-Linux-x86_64-"$NV_VER".run
