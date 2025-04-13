@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Install Nouveau Driver on Debian 12
+# Uninstall previous driver and nstall Nouveau Driver on Debian 12
 
 
   sudo apt update && sudo apt upgrade
