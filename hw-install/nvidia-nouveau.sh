@@ -9,7 +9,8 @@
 # NVIDIA proprietary driver removal
   #sudo apt autoremove nvidia* --purge
   #sudo /usr/bin/nvidia-uninstall
-  sudo apt-get purge nvidia*
+  sudo apt-get purge *nvidia*
+  #sudo apt-get purge nvidia*
   sudo apt-get autoremove
 # Blacklist the NVIDIA kernel module
   sudo rm -f /etc/modprobe.d/nvidia*    # delete nvidia* config files from previous install
