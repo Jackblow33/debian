@@ -53,15 +53,16 @@ sudo find /home/$USR/debian -type f -name "*.sh" -exec chmod +x {} \;
 
 while true; do
     clear
-    echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo ''
-    echo "                                                                                                  Please select an option:"
-    echo "                                                                                                    1. Update System"
-    echo "                                                                                                    2. Install NVIDIA driver $NV_VER"
-    echo "                                                                                                    3. Install Install wifi BCM4360"
-    echo "                                                                                                    4. Install custom kernel $KERNEL from USB"
-    echo "                                                                                                    5. Install Gnome"
-    echo "                                                                                                    6. Exit"
-    read -p "                                                                                                    Enter your choice (1-5): " choice
+    echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo ''
+    echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo '' ; echo ''
+    echo "                                                                                          Please select an option:"
+    echo "                                                                                            1. Update System"
+    echo "                                                                                            2. Install NVIDIA driver $NV_VER"
+    echo "                                                                                            3. Install Install wifi BCM4360"
+    echo "                                                                                            4. Install custom kernel $KERNEL from USB"
+    echo "                                                                                            5. Install Gnome"
+    echo "                                                                                            6. Exit"
+    read -p "                                                                                           Enter your choice (1-5): " choice
     
     case $choice in
         
