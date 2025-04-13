@@ -1,52 +1,42 @@
 #!/bin/bash
 
-#Execute as root
-#wifiinstall   Broadcom - imac BCM4360 & +++
-
-# Source: https://wiki.debian.org/wl
-
-#VARIABLES
-#TIMESTAMP=`date +%Y%m%d.%R`
+#KERNEL=6.14.1-tkg-eevdf
 
 
-# Check if the script is running as root
-#if [ "$EUID" -ne 0 ]; then
-#    echo "This script must be run as root."
-#    exit 1
-#fi
+lsblk
+# Enter a device name for your usb
+echo ´´
+echo ´´
+read -p "Enter the USB device name (e.g.,  sdd1, sdc1): " usb_device_name
 
-timer_start
-# Backup the original sources.list file
-sudo cp /etc/apt/sources.list /etc/apt/sources_$TIMESTAMP.list
+# Get information about the specified device
+usb_device_info=$(lsblk -o NAME,SIZE,TYPE,MOUNTPOINT | grep "$usb_device_name")
 
-# Add the non-free contrib repository to the sources.list file
-echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
-echo "The non-free contrib repository has been added to the sources.list file."
-apt-get update
-
-
-# Install
-sudo apt-get install linux-image-$(uname -r|sed 's,[^-]*-[^-]*-,,') linux-headers-$(uname -r|sed 's,[^-]*-[^-]*-,,') broadcom-sta-dkms
-
-# (Optional) Check all the built DKMS kernel modules. There should be "wl.ko" in the list. 
-# find /lib/modules/$(uname -r)/updates
-
-# Unload conflicting modules:
-sudo modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
-
-# Unloading and reloading modules
-sudo modprobe -r wl && sudo modprobe wl
-
-echo '' ; echo '' ; echo '' ; echo '' 
-timer_stop
-echo ''
-read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
+# Check if the device was found
+if [ -n "$usb_device_info" ]; then
+    echo "USB device information:"
+    echo "$usb_device_info"
+    usb_device=/dev/$usb_device_name
+    echo "USB device path: $usb_device"
+else
+    echo "USB device not found. Please check the device name and try again."
+    exit 1
+fi
+    timer_start
+    echo "Mounting USB device: $usb_device"
+    sudo mkdir /mnt/usb
+    sudo mount /dev/$usb_device_name /mnt/usb
+    cd /mnt/usb/_MyFiles/kernels/$KERNEL
+    sudo dpkg -i *.deb
+    echo '' ; echo '' ; echo ''
+    timer_stop
+    echo ''
+    read -p "Press Enter to reboot and load kernel $KERNEL............................>>>"
+    #sudo shutdown -r now
 
 
 
 
-
-#OLD
-#cd /home/$USER/Downloads
-#sudo wget http://http.us.debian.org/debian/pool/non-free/b/broadcom-sta/broadcom-sta-dkms_6.30.223.271-26_amd64.deb
-#sudo apt install linux-image-amd64 linux-headers-amd64 wireless-tools #broadcom-sta-dkms
+# In case your system is not booting to the new kernel, you can update initramfs and your GRUB configuration manually
+#sudo update-initramfs -c -k $KERNEL
+#sudo update-grub
