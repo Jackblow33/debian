@@ -28,4 +28,5 @@
     #cat /var/log/Xorg.0.log
 
   # Check
+    #cat /proc/driver/nvidia/version
     #lsmod | grep nouveau
