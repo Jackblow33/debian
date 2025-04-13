@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Uninstall previous driver and nstall Nouveau Driver on Debian 12
+# Uninstall previous driver and install Nouveau Driver on Debian 12
 
 
   sudo apt update && sudo apt upgrade
@@ -33,3 +33,32 @@
     #cat /proc/driver/nvidia/version
     #cat /sys/module/nvidia/version
     #lsmod | grep nouveau
+
+
+# Second test doesn't seems to work.
+# Here's a step-by-step guide:
+# 1. Check if nouveau is loaded:
+# Open a terminal and run: 
+  #lsmod | grep -i nouveau.
+#If the output contains "nouveau", it means the nouveau driver is loaded.
+#If the output is empty, the nouveau driver is not loaded. 
+# 2. Blacklist the NVIDIA driver (if it's still present):
+# If necessary, create or edit a blacklist file:
+# Create a new file in /etc/modprobe.d/ with a descriptive name, like blacklist-nvidia.conf.
+# Add the following line to the file: blacklist nvidiafb.
+# Add the following line to the file: blacklist nouveau.
+# Apply the blacklist to unload the modules.
+  #sudo modprobe -r nvidiafb
+  #sudo modprobe -r nouveau 
+# Run sudo update-initramfs -u to update the initial ramdisk. 
+# 3. Ensure nouveau is loaded:
+# If nouveau is not loaded, install the nouveau package: sudo apt-get install xserver-xorg-video-nouveau.
+# Restart your system: This ensures the changes are applied. 
+# 4. Verify nouveau is loaded:
+# After restarting, run lsmod | grep -i nouveau again.
+# The output should now contain "nouveau", confirming it's loaded. 
+# Explanation:
+# Blacklisting: Blacklisting prevents a module from loading during system boot. In this case, we blacklist nvidiafb and nouveau to ensure the NVIDIA driver is not loaded and the nouveau driver is not inadvertently loaded alongside the NVIDIA driver.
+# sudo modprobe -r: This command removes a kernel module from memory.
+# sudo update-initramfs -u: This updates the initial ramdisk, which is a file system that is loaded before the root file system. This is necessary to ensure that the changes made to the blacklist are picked up during boot. 
+# By following these steps, you should be able to successfully disable the NVIDIA proprietary driver and enable the open-source nouveau driver in Debian 12. 
