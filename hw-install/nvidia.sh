@@ -20,11 +20,11 @@
 #fi
 
     timer_start
-    apt update           # && apt upgrade -y
-    apt-get remove --purge '^nvidia-.*'
-    apt purge libnvidia-*
-    apt autoremove
-    apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
+    #apt update           # && apt upgrade -y
+    #apt-get remove --purge '^nvidia-.*'
+    #apt purge libnvidia-*
+    #apt autoremove
+    #apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
     
     apt install pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
                      # WasWorkingapt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
@@ -103,7 +103,7 @@ OPTION=enable    #disable, status
     #> options nouveau modeset =0
     #>EOF
     #or /etc/modprobe.d/blacklist-nouveau.conf
-    update-initramfs -u
+    #update-initramfs -u
 #reboot
 
 
@@ -155,7 +155,7 @@ OPTION=enable    #disable, status
 
 #sudo apt update
 #To install "proprietary" flavor, packages 
-sudo apt install nvidia-kernel-dkms nvidia-driver firmware-misc-nonfree
+#sudo apt install nvidia-kernel-dkms nvidia-driver firmware-misc-nonfree
 #To install "open" flavor,
 #sudo apt install nvidia-open-kernel-dkms nvidia-driver firmware-misc-nonfree
 #DKMS will build the nvidia module for your system
