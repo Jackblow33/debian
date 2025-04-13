@@ -9,5 +9,9 @@ nvidia-detect
 echo '' ; echo '' ; echo ''
 read -p "Press Enter to start installing Nvidia driver ............................>>>"
 sudo apt install nvidia-driver  #for sid add: firmware-misc-nonfree
-#sudo systemctl --user enable --now nvidia-x11-xserver-settings.service
+
+# NOUVEAU driver ???
+  #sudo apt-get install --no-install-recommends nvidia-driver
+#Enable the NVIDIA driver
+  #sudo systemctl --user enable --now nvidia-x11-xserver-settings.service
 
