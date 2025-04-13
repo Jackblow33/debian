@@ -22,10 +22,7 @@ sudo cp /etc/apt/sources.list /etc/apt/sources_$TIMESTAMP.list
 # Add the non-free contrib repository to the sources.list file
 echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
 echo "The non-free contrib repository has been added to the sources.list file."
-
-
-# Update the package lists
-#apt-get update && apt-get upgrade
+apt-get update
 
 
 # Install
