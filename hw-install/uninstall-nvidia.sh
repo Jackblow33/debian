@@ -1,6 +1,8 @@
+#!/bin/bash
 
 # Uninstaller for the official NVIDIA installer from the Nvidia.com website
 # Source: https://github.com/oddmario/NVIDIA-Ubuntu-Driver-Guide/blob/main/README.md#uninstalling-the-driver-when-installed-through-the-official-nvidia-installer-from-the-nvidiacom-website
+
 
 # To ensure that we can boot into the system graphically through the Nouveau driver after uninstalling the Nvidia driver 
 # remove any Nouveau-blacklist entries that might have been created by the installer previously
