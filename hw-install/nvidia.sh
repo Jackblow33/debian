@@ -86,6 +86,8 @@ OPTION=enable    #disable, status
     #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable
     #sudo cat /proc/driver/nvidia/params | grep "PreserveVideoMemoryAllocations" #1 is expected if PreserveVideoMemoryAllocations is enable
     #glxinfo | egrep "OpenGL vendor|OpenGL renderer*"    # Check if using Mesa driver instead of the NVIDIA one on Wayland sessions - NVIDIA expected
+    #glxinfo | grep NVIDIA
+    #lsmod | grep nouveau
     #nvidia-smi
 
     #If you plan to use suspend/hibernate functionality under KDE desktop environment, you may want to add another option to avoid graphics "glitches" after wakeup/restore:
