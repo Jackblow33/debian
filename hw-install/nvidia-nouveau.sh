@@ -29,4 +29,5 @@
 
   # Check
     #cat /proc/driver/nvidia/version
+    #cat /sys/module/nvidia/version
     #lsmod | grep nouveau
