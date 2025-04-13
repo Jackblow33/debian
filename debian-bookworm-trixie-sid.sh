@@ -9,6 +9,7 @@ if ! grep -q "contrib" /etc/apt/sources.list || ! grep -q "non-free" /etc/apt/so
 else
     echo "contrib and non-free repositories are already present in /etc/apt/sources.list."
 fi
+    sudo nano /etc/apt/sources.list
     read -p "Press Enter to continue ..."
 
 
