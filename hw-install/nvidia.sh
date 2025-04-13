@@ -83,8 +83,8 @@ OPTION=enable    #disable, status
     
     
     # Checks
-    #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable
-    #sudo cat /sys/module/nvidia_drm/parameters/fbdev     #Nothing expected there as of now
+    #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable (modeset=1)
+    #sudo cat /sys/module/nvidia_drm/parameters/fbdev     #Nothing expected there. fbdev driver is generally considered deprecated in favor of DRM (modeset=1)
     #sudo cat /proc/driver/nvidia/params | grep "PreserveVideoMemoryAllocations" #1 is expected if PreserveVideoMemoryAllocations is enable
     #glxinfo | egrep "OpenGL vendor|OpenGL renderer*"    # Check if using Mesa driver instead of the NVIDIA one on Wayland sessions - NVIDIA expected
     #glxinfo | grep NVIDIA
