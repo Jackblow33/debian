@@ -1,16 +1,46 @@
 #!/bin/bash
 
-
 # Check if contrib and non-free repositories are present
-if ! grep -q "contrib" /etc/apt/sources.list || ! grep -q "non-free" /etc/apt/sources.list; then
-    echo "Adding contrib and non-free repositories to /etc/apt/sources.list..."
+if ! grep -q "contrib" /etc/apt/sources.list && ! grep -q "non-free" /etc/apt/sources.list; then
+    echo "Adding both contrib and non-free repositories to /etc/apt/sources.list..."
     sudo sed -i 's/main$/main contrib non-free/g' /etc/apt/sources.list
+    sudo apt update
+elif ! grep -q "contrib" /etc/apt/sources.list; then
+    echo "Adding contrib repository to /etc/apt/sources.list..."
+    sudo sed -i 's/main$/main contrib/g' /etc/apt/sources.list
+    sudo apt update
+elif ! grep -q "non-free" /etc/apt/sources.list; then
+    echo "Adding non-free repository to /etc/apt/sources.list..."
+    sudo sed -i 's/main$/main non-free/g' /etc/apt/sources.list
     sudo apt update
 else
     echo "contrib and non-free repositories are already present in /etc/apt/sources.list."
 fi
-    sudo nano /etc/apt/sources.list
-    read -p "Press Enter to continue ..."
+
+# Verify if sources.list is ok
+sudo nano /etc/apt/sources.list
+
+read -p "Press Enter to continue ..."
+
+
+
+
+
+
+
+
+
+
+# Check if contrib and non-free repositories are present
+#if ! grep -q "contrib" /etc/apt/sources.list || ! grep -q "non-free" /etc/apt/sources.list; then
+#    echo "Adding contrib and non-free repositories to /etc/apt/sources.list..."
+#    sudo sed -i 's/main$/main contrib non-free/g' /etc/apt/sources.list
+#    sudo apt update
+#else
+#    echo "contrib and non-free repositories are already present in /etc/apt/sources.list."
+#fi
+#    sudo nano /etc/apt/sources.list
+#    read -p "Press Enter to continue ..."
 
 
 
