@@ -58,6 +58,11 @@
 # 4. Verify nouveau is loaded:
 # After restarting, run lsmod | grep -i nouveau again.
 # The output should now contain "nouveau", confirming it's loaded. 
+
+
+
+# LAST
+# https://sysadmin102.com/2023/06/uninstalling-nvidia-and-reinstall-nouveau-driver/
 # Explanation:
 # Blacklisting: Blacklisting prevents a module from loading during system boot. In this case, we blacklist nvidiafb and nouveau to ensure the NVIDIA driver is not loaded and the nouveau driver is not inadvertently loaded alongside the NVIDIA driver.
 # sudo modprobe -r: This command removes a kernel module from memory.
