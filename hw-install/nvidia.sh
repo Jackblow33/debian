@@ -88,6 +88,7 @@ OPTION=enable    #disable, status
     #glxinfo | egrep "OpenGL vendor|OpenGL renderer*"    # Check if using Mesa driver instead of the NVIDIA one on Wayland sessions - NVIDIA expected
     #glxinfo | grep NVIDIA
     #lsmod | grep nouveau
+    #lspci -nn | egrep -i "3d|display|vga" #gpu identification
     #nvidia-smi
 
     #If you plan to use suspend/hibernate functionality under KDE desktop environment, you may want to add another option to avoid graphics "glitches" after wakeup/restore:
