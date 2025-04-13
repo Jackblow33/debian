@@ -20,14 +20,14 @@
 #fi
 
     timer_start
-    #apt update           # && apt upgrade -y
-    #apt-get remove --purge '^nvidia-.*'
-    #apt purge libnvidia-*
-    #apt autoremove
-    #apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
+    apt update           # && apt upgrade -y
+    apt-get remove --purge '^nvidia-.*'
+    apt purge libnvidia-*
+    apt autoremove
+    apt autoremove $(dpkg -l nvidia-driver* |grep ii |awk '{print $2}')
     
-                      #Working too apt install -y pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
-    sudo apt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
+    apt install pkg-config libglvnd-dev dkms build-essential libegl-dev libegl1 libgl-dev libgl1 libgles-dev libgles1 libglvnd-core-dev libglx-dev libopengl-dev gcc make pkg-config linux-headers-$(uname -r)
+                     # WasWorkingapt install linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config
                      #WORKING apt install -y linux-headers-$(uname -r) gcc make acpid dkms libglvnd-core-dev libglvnd0 libglvnd-dev libc-dev pkg-config
     wget https://us.download.nvidia.com/XFree86/Linux-x86_64/570.133.07/NVIDIA-Linux-x86_64-"$NV_VER".run
     sudo chmod +x NVIDIA-Linux-x86_64-"$NV_VER".run
@@ -42,13 +42,13 @@
 
     
 ./NVIDIA-Linux-x86_64-"$NV_VER".run
-#sudo update-initramfs -u
+sudo update-initramfs -u
     
-    sudo cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
-    sudo rm -f /etc/default/grub.d/nvidia-modeset.cfg
-    sudo echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' >> /etc/default/grub.d/nvidia-modeset.cfg
-    #nano /etc/default/grub.d/nvidia-modeset.cfg
-    sudo update-grub
+    cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
+    rm -f /etc/default/grub.d/nvidia-modeset.cfg
+    echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' >> /etc/default/grub.d/nvidia-modeset.cfg
+    nano /etc/default/grub.d/nvidia-modeset.cfg
+    update-grub
 
 # FIX Gnome - source https://wiki.archlinux.org/title/GDM#Wayland_and_the_proprietary_NVIDIA_driver    
     ln -s /dev/null /etc/udev/rules.d/61-gdm.rules   #sudo ???
@@ -56,16 +56,16 @@
 
 # FIX NVIDIA - Graphical glitches and unresponsive after waking from sleep
 # Source  https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Preserve_video_memory_after_suspend
-  sudo echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' >>  /etc/modprobe.d/nvidia-power-management.conf
-  sudo echo '#NVreg_TemporaryFilePath=/var/tmp' >>  /etc/modprobe.d/nvidia-power-management.conf
-  #nano /etc/modprobe.d/nvidia-power-management.conf
+  echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' >>  /etc/modprobe.d/nvidia-power-management.conf
+  echo '#NVreg_TemporaryFilePath=/var/tmp' >>  /etc/modprobe.d/nvidia-power-management.conf
+  nano /etc/modprobe.d/nvidia-power-management.conf
 
 # Making sure next 3 services are enable  --options enable(default), disable & status
 #VARIABLE
 OPTION=enable    #disable, status
-  sudo systemctl $OPTION nvidia-suspend.service
-  sudo systemctl $OPTION nvidia-hibernate.service
-  sudo systemctl $OPTION nvidia-resume.service 
+  systemctl $OPTION nvidia-suspend.service
+  systemctl $OPTION nvidia-hibernate.service
+  systemctl $OPTION nvidia-resume.service 
 
    timer_stop
    clear
