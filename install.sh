@@ -62,7 +62,7 @@ while true; do
     echo "                                                      4. Install custom kernel $KERNEL from USB"
     echo "                                                      5. Install Gnome"
     echo "                                                      6. Exit"
-    read -p "                                                     Enter your choice (1-5): " choice
+    read -p "                                                     Enter your choice (1-6): " choice
     
     case $choice in
         
