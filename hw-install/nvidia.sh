@@ -95,7 +95,7 @@ OPTION=enable    #disable, status
 
 
 #Blacklist Nouveau driver ---DISABLE--- Nvidia installer seems to do it properly
-    #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau.conf.$TIMESTAMP
+    #cp /etc/modprobe.d/blacklist-nvidia-nouveau.conf /etc/modprobe.d/blacklist-nvidia-nouveau_$TIMESTAMP.conf
     #bash -c "echo blacklist nouveau > /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
     #bash -c "echo options nouveau modeset=0 >> /etc/modprobe.d/blacklist-nvidia-nouveau.conf"
     #cat <<EOF | sudo tee /etc/modprobe.d/blacklist-nvidia-nouveau.conf 
