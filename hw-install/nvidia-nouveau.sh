@@ -10,6 +10,8 @@
   sudo apt-get purge nvidia*
   sudo apt-get autoremove
 # Blacklist the NVIDIA kernel module
+  sudo rm -f /etc/modprobe.d/nvidia*    # delete nvidia* config files from previous install
+  sudo rm -f /etc/modprobe.d/blacklist-nvidia.conf delete if present and generate a new one
   echo 'blacklist nvidia' >> /etc/modprobe.d/blacklist-nvidia.conf
   echo 'blacklist nvidia-modeset' >> /etc/modprobe.d/blacklist-nvidia.conf
   echo 'blacklist nvidia-drm' >> /etc/modprobe.d/blacklist-nvidia.conf
@@ -23,4 +25,7 @@
 
   # After rebooting, the Nouveau driver should be loaded automatically.
   # If you encounter any issues, you can check the Xorg logs for more information
-  #cat /var/log/Xorg.0.log
+    #cat /var/log/Xorg.0.log
+
+  # Check
+    #lsmod | grep nouveau
