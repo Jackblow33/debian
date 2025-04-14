@@ -17,7 +17,7 @@ handle_error() {
 timer_start
 
 # Update package list and install necessary packages
-apt update && apt install -y linux-headers-$(uname -r) build-essential libglvnd-dev pkg-config || handle_error
+apt update && apt install -y linux-headers-$(uname -r) linux-image-$(uname -r) build-essential libglvnd-dev pkg-config || handle_error
 
 # Download NVIDIA driver
 # NV_VER="570.133.07"  # Set your NVIDIA version here if you are not using install.sh to reach this script.
