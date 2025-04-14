@@ -1,0 +1,9 @@
+ls -l /boot
+
+
+
+dpkg -l | grep linux-image
+sudo apt-get purge linux-image-6.14.1-tkg-eevdf
+sudo apt-get purge linux-headers-6.14.1-tkg-eevdf
+sudo apt-get autoremove
+sudo update-grub
