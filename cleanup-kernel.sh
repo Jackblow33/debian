@@ -49,7 +49,7 @@ done
 # Clean up
 sudo apt-get autoremove -y
 
-# Update GRUB
+# GRUB bootloader update
 echo "Updating GRUB..."
 sudo update-grub
 
