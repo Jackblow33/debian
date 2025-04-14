@@ -7,19 +7,7 @@
 # Install Nvidia driver
 
 
-# Check if the script is running as root
-#if [ "$EUID" -ne 0 ]; then
-#    echo "This script must be run as root."
-#    exit 1
-#fi
-
-# Check if the script is running as root
-#if [ "$EUID" -ne 0 ]; then
-#    echo "This script must be run as root."
-#    exit 1
-#fi
-
-    timer_start
+timer_start
     #apt update           # && apt upgrade -y
     #apt-get remove --purge '^nvidia-.*'
     #apt purge libnvidia-*
@@ -43,7 +31,7 @@
 
     
 ./NVIDIA-Linux-x86_64-"$NV_VER".run
-sudo update-initramfs -u
+
     
     cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
     rm -f /etc/default/grub.d/nvidia-modeset.cfg
@@ -67,21 +55,16 @@ OPTION=enable    #disable, status
   systemctl $OPTION nvidia-suspend.service
   systemctl $OPTION nvidia-hibernate.service
   systemctl $OPTION nvidia-resume.service 
+  
+  sudo update-initramfs -u
+timer_stop
+  clear
+  echo ''
+  echo ''
+  echo ''
+  read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
+#sudo shutdown -r now    #reboot
 
-   timer_stop
-   clear
-   echo ''
-   echo ''
-   echo ''
-   read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
-    #sudo shutdown -r now    #reboot
-
-
-    
-    
-    
-    
-    
     # Checks
     #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable (modeset=1)
     #sudo cat /sys/module/nvidia_drm/parameters/fbdev     #Nothing expected there. fbdev driver is generally considered deprecated in favor of DRM (modeset=1)
@@ -92,7 +75,37 @@ OPTION=enable    #disable, status
     #lspci -nn | egrep -i "3d|display|vga" #gpu identification
     #nvidia-smi
 
-    #If you plan to use suspend/hibernate functionality under KDE desktop environment, you may want to add another option to avoid graphics "glitches" after wakeup/restore:
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    #If you plan to use suspend/hibernate functionality under KDE-Gnome desktop environment, you may want to add another option to avoid graphics "glitches" after wakeup/restore:
 ### Warning: skip this step if you have Optimus hybrid graphics
 #sudo echo "options nvidia NVreg_PreserveVideoMemoryAllocations=1" >> /etc/modprobe.d/nvidia-options.conf
 
