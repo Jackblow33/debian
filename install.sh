@@ -71,7 +71,7 @@ while true; do
             echo "Press [enter] to continue "; read enterKey
             ;;
         2)
-            source /home/$USR/debian/hw-install/nvidia.sh
+            source /home/$USR/debian/hw-install/nvidia-ai.sh
             ;;
         3)
             source /home/$USR/debian/hw-install/wifiinstall.sh
