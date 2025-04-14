@@ -25,14 +25,14 @@ wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/NVIDIA-Linux
 chmod +x "NVIDIA-Linux-x86_64-${NV_VER}.run"
 
 # Stop display manager services
-systemctl stop gdm gdm3 lightdm  # Error expected
+systemctl stop gdm gdm3 lightdm  # error expected
 
 #read -p "Press Enter to start installing NVIDIA driver ............................>>>"
 # Install NVIDIA driver
 ./NVIDIA-Linux-x86_64-"$NV_VER".run || handle_error
 
 # Backup and update GRUB configuration
-cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$(date +%Y%m%d%H%M%S)
+cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$(date +%Y%m%d%H%M%S)  # error expected
 echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' > /etc/default/grub.d/nvidia-modeset.cfg
 update-grub || handle_error
 
