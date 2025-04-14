@@ -25,7 +25,7 @@ wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/NVIDIA-Linux
 chmod +x "NVIDIA-Linux-x86_64-${NV_VER}.run"
 
 # Stop display manager services
-systemctl stop gdm gdm3 lightdm
+systemctl stop gdm gdm3 lightdm  # Error expected
 
 read -p "Press Enter to start installing NVIDIA driver ............................>>>"
 # Install NVIDIA driver
