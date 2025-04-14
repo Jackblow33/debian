@@ -63,7 +63,7 @@ timer_stop
   echo ''
   echo ''
   read -p "$(echo -e $GREEN"Installation completed! Press Enter ...........................>>> "$NC)"
-#sudo shutdown -r now    #reboot
+ #sudo shutdown -r now    #reboot
 
     # Checks
     #sudo cat /sys/module/nvidia_drm/parameters/modeset   #Y is expected nvidia-drm modeset is enable (modeset=1)
@@ -75,6 +75,7 @@ timer_stop
     #lspci -nn | egrep -i "3d|display|vga" #gpu identification
     #nvidia-smi
 
+#---------------------------------------------------------------------------------------------------------------------
     
     
     
