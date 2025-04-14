@@ -54,7 +54,7 @@ timer_stop
 echo -e "\n\n"
 read -p "Press Enter to reboot and load kernel $KERNEL............................>>>"
 # Uncomment the following line to reboot
-# sudo shutdown -r now
+sudo shutdown -r now
 
 # Optional: Update initramfs and GRUB configuration if needed
 # Uncomment the following lines if the system does not boot to the new kernel
