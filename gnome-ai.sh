@@ -62,4 +62,4 @@ echo -e "\n\n\nInstallation completed! Press Enter to reboot..."
 read -r
 
 # Uncomment the following line to reboot
-# sudo shutdown -r now
+sudo shutdown -r now
