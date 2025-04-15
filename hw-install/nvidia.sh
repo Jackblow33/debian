@@ -25,8 +25,14 @@ apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvu
 
 # Download NVIDIA driver
 # NV_VER="570.133.07"  # Set your NVIDIA version here if you are not using install.sh to reach this script.
-wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/NVIDIA-Linux-x86_64-${NV_VER}.run" || handle_error
-chmod +x "NVIDIA-Linux-x86_64-${NV_VER}.run"
+
+# Check if the NVIDIA driver file is already present
+if [ -f "Linux-x86_64/${NV_VER}/NVIDIA-Linux-x86_64-${NV_VER}.run" ]; then
+    echo "NVIDIA driver file already present, skipping download."
+else
+    wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/NVIDIA-Linux-x86_64-${NV_VER}.run" || handle_error
+    chmod +x "NVIDIA-Linux-x86_64-${NV_VER}.run"
+fi
 
 # Stop display manager services
 systemctl stop gdm gdm3 lightdm  # error expected
