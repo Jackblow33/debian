@@ -59,7 +59,7 @@ for service in nvidia-suspend.service nvidia-hibernate.service nvidia-resume.ser
 done
 
 # Update initramfs
-update-initramfs -u || handle_error
+#update-initramfs -u || handle_error
 
 # Stop timer
 timer_stop
