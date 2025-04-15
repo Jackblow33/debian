@@ -6,7 +6,8 @@
 
 # Execute as root
 # Linux kernel 6.11 and beyond required
-# Switch to the terminal view of your system by pressing Ctrl + Alt + F3.
+# Switch to text console tty1 by pressing (Ctrl+Alt+F1)  
+.
 # chmod +x nvidia.sh
 # Then launch the script:   ./nvidia.sh
 
