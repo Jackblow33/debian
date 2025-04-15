@@ -44,7 +44,7 @@ if systemctl is-active gdm || systemctl is-active gdm3 || systemctl is-active li
     echo "Stopping display manager services..."
     systemctl stop gdm gdm3 lightdm
 else
-    echo "No display manager services are running."
+    echo -e "${GREEN}No display manager services are running.${NC}"
 fi
 
 
