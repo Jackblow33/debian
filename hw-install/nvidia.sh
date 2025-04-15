@@ -41,8 +41,25 @@ systemctl stop gdm gdm3 lightdm  # error expected
 # Install NVIDIA driver
 ./NVIDIA-Linux-x86_64-"$NV_VER".run || handle_error
 
+
+
 # Backup and update GRUB configuration
-cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$(date +%Y%m%d%H%M%S)  # error expected
+#cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$(date +%Y%m%d%H%M%S)  # error expected
+#echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' > /etc/default/grub.d/nvidia-modeset.cfg
+#update-grub || handle_error
+
+
+
+
+
+# Backup and update GRUB configuration
+if [ -f /etc/default/grub.d/nvidia-modeset.cfg ]; then
+    echo "Backing up /etc/default/grub.d/nvidia-modeset.cfg to /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP"
+    cp /etc/default/grub.d/nvidia-modeset.cfg /etc/default/grub.d/nvidia-modeset.cfg.$TIMESTAMP
+else
+    echo "Creating /etc/default/grub.d/nvidia-modeset.cfg"
+fi
+
 echo 'GRUB_CMDLINE_LINUX="$GRUB_CMDLINE_LINUX nvidia-drm.modeset=1"' > /etc/default/grub.d/nvidia-modeset.cfg
 update-grub || handle_error
 
