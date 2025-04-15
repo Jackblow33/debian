@@ -35,7 +35,21 @@ else
 fi
 
 # Stop display manager services
-systemctl stop gdm gdm3 lightdm  # error expected
+#systemctl stop gdm gdm3 lightdm  # error expected
+
+
+
+# Stop display manager services
+if systemctl is-active gdm || systemctl is-active gdm3 || systemctl is-active lightdm; then
+    echo "Stopping display manager services..."
+    systemctl stop gdm gdm3 lightdm
+else
+    echo "No display manager services are running."
+fi
+
+
+
+
 
 #read -p "Press Enter to start installing NVIDIA driver ............................>>>"
 # Install NVIDIA driver
