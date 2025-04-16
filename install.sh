@@ -1,11 +1,7 @@
 #!/bin/bash
-#2025-04-14
+#2025-04-16
 
 # Execute as root
-
-# EDIT THIS VARIABLE ######################################
-#USR="jack"    # Put your own user there instead of jack
-###########################################################
 
 # VARIABLES
 TIMESTAMP=$(date +%Y%m%d.%R)
