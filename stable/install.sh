@@ -36,7 +36,9 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Make all scripts in the debian folder executable recursively
-find "/home/$USR/debian" -type f -name "*.sh" -exec chmod +x {} \;
+#find "/home/$USR/debian" -type f -name "*.sh" -exec chmod +x {} \;
+# Grant read, write, and execute permissions recursively to the root and user, and read permissions only to others.
+sudo chmod -R 775 /home/$USR/debian
 
 # Main menu loop
 while true; do
