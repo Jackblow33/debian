@@ -15,7 +15,7 @@ handle_error() {
 }
 
 clear
-echo -e "\n\n\n\n\n\n\n\n\n\n"  # Clear the screen with new lines
+echo -e "\n\n\n\n\n\n\n\n\n\n"
 echo -e '\033[1;31mTo fix some power management issue and enable drm modeset the file nvidia-options.conf would be created into /etc/default/grub.d\033[0m'
 echo -e "\n\n\n"
 read -p "Press Enter to continue or 'x' to exit: " input
