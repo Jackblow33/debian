@@ -11,6 +11,7 @@
 TIMESTAMP=$(date +%Y%m%d.%R)
 NV_VER="570.133.07"  # Nvidia Driver version
 KERNEL="6.14.1-tkg-eevdf"
+USR=$(logname) 
 
 # Colors
 GREEN='\033[0;32m'
@@ -29,9 +30,6 @@ timer_stop() {
     echo "Time elapsed: $MINS:$(printf %02d $SECS)"
 }
 
-
-# Get user name
-USR=$(logname)
 
 # Check if the script is being run as root
 if [ "$EUID" -ne 0 ]; then
