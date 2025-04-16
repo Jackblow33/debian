@@ -33,12 +33,6 @@ if [ "$EUID" -ne 0 ]; then
   exit 1
 fi
 
-# Perform the desired actions here
-#echo "Hello, $USR!"
-#echo "The path is: /home/$USR/debian"
-# Add your script logic here
-
-
 # Grant read, write, and execute permissions recursively to the root and user, and read permissions only to others.
 sudo chmod -R 775 /home/$USR/debian
 
