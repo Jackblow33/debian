@@ -4,7 +4,7 @@
 # Execute as root
 
 # EDIT THIS VARIABLE ######################################
-USR="jack"    # Put your own user there instead of jack
+#USR="jack"    # Put your own user there instead of jack
 ###########################################################
 
 # VARIABLES
@@ -29,11 +29,21 @@ timer_stop() {
     echo "Time elapsed: $MINS:$(printf %02d $SECS)"
 }
 
-# Check if the script is running as root
+
+# Get user name
+USR=$(logname)
+
+# Check if the script is being run as root
 if [ "$EUID" -ne 0 ]; then
-    echo "This script must be run as root."
-    exit 1
+  echo "This script must be run as root."
+  exit 1
 fi
+
+# Perform the desired actions here
+#echo "Hello, $USR!"
+#echo "The path is: /home/$USR/debian"
+# Add your script logic here
+
 
 # Grant read, write, and execute permissions recursively to the root and user, and read permissions only to others.
 sudo chmod -R 775 /home/$USR/debian
