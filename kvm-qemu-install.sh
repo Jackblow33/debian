@@ -16,6 +16,16 @@ sudo apt update
 sudo apt install qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtinst virt-manager
 read -p "Press enter to start"
 
+
+# Append iommu in grub
+# Backup the original /etc/default/grub file
+cp /etc/default/grub /etc/default/grub.bak
+
+# Edit the /etc/default/grub file
+sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="$.*$"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on"/' /etc/default/grub
+update-grub
+echo "The /etc/default/grub file has been updated with 'intel_iommu=on' added to the GRUB_CMDLINE_LINUX_DEFAULT variable."
+
 #Enable libvirtd
 systemctl --now enable libvirtd
 read -p "Press enter to start"
@@ -63,9 +73,9 @@ read -p "Press enter to start"
 
 ##Now, let's view our KVM networks again:
 #sudo virsh net-list
-read -p "Reboot"
+echo "The GRUB configuration has been updated. Please reboot your system for the changes to take effect."
+read -p "Press enter to reboot"
 #reboot
-read -p "Press enter to start"
 
 
 
