@@ -61,19 +61,19 @@ while true; do
             ;;
         2)
             echo "Installing NVIDIA driver $NV_VER..."
-            source "/home/$USR/debian/hw-install/nvidia.sh"
+            source "/home/$USR/debian/stable/nvidia.sh"
             ;;
         3)
             echo "Installing WiFi BCM4360..."
-            source "/home/$USR/debian/hw-install/wifi-bcm43xx.sh"
+            source "/home/$USR/debian/stable/wifi-bcm43xx.sh"
             ;;
         4)
             echo "Installing custom kernel $KERNEL from USB..."
-            source "/home/$USR/debian/kernel-install.sh"
+            source "/home/$USR/debian/stable/kernel-install.sh"
             ;;
         5)
             echo "Installing Gnome..."
-            source "/home/$USR/debian/gnome.sh"
+            source "/home/$USR/debian/stable/gnome.sh"
             ;;
         6)
             echo "Exiting..."
