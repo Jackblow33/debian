@@ -14,17 +14,25 @@ lscpu | grep Virtualization
 read -p "Press enter to start"
 sudo apt update
 sudo apt install qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtinst virt-manager
-read -p "Press enter to start"
 
 
-# Append iommu in grub
+# Append iommu entrie in the grub file.
 # Backup the original /etc/default/grub file
 cp /etc/default/grub /etc/default/grub.bak
 
-# Edit the /etc/default/grub file
-sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="$.*$"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on"/' /etc/default/grub
-update-grub
-echo "The /etc/default/grub file has been updated with 'intel_iommu=on' added to the GRUB_CMDLINE_LINUX_DEFAULT variable."
+# Check if 'intel_iommu=on' is already present.
+if ! grep -q 'intel_iommu=on' /etc/default/grub; then
+    # Edit the /etc/default/grub file
+    sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="$.*$"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on"/' /etc/default/grub
+    
+    # Update the GRUB configuration
+    update-grub
+    
+    echo "The /etc/default/grub file has been updated with 'intel_iommu=on' added to the GRUB_CMDLINE_LINUX_DEFAULT variable."
+    echo "The GRUB configuration has been updated. Please reboot your system for the changes to take effect."
+else
+    echo "The 'intel_iommu=on' option is already present in the GRUB_CMDLINE_LINUX_DEFAULT variable. No changes made."
+fi
 
 #Enable libvirtd
 systemctl --now enable libvirtd
