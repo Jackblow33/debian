@@ -115,3 +115,7 @@ read
 # lsmod | grep nouveau
 # lspci -nn | egrep -i "3d|display|vga"
 # nvidia-smi
+
+# To verify that NVreg_PreserveVideoMemoryAllocations is enabled, execute the following:
+# cat /proc/driver/nvidia/params | sort
+
