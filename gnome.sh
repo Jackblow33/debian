@@ -40,12 +40,12 @@ timer_start
 
 # Update package list and upgrade installed packages
 echo "Updating package list and upgrading installed packages..."
-sudo apt update && sudo apt upgrade -y
+apt update && apt upgrade -y
 
 # INSTALL PACKAGES
 for PKG in "${INSTALL_PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
-    sudo apt install "$PKG" -y || { echo "Failed to install $PKG"; exit 1; }
+    apt install "$PKG" -y || { echo "Failed to install $PKG"; exit 1; }
 done
 # ADD BRAVE REPO AND INSTALL BRAVE WEB BROWSER
 echo "Installing Brave browser..."
@@ -53,14 +53,14 @@ source /home/$USR/debian/brave.sh
 # UNINSTALL PACKAGES
 for PKG in "${UNINSTALL_PKGS[@]}"; do
     echo "UNINSTALLING: ${PKG}"
-    sudo apt purge -y "$PKG" || { echo "Failed to uninstall $PKG"; exit 1; }
+    apt purge -y "$PKG" || { echo "Failed to uninstall $PKG"; exit 1; }
 done
 # REMOVE UNUSED DEPENDENCIES
-sudo apt autoremove -y
+apt autoremove -y
 
 # Edit NetworkManager configuration
 echo "Configuring NetworkManager..."
-sudo sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
+sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
 # Prepare lm-sensors
 echo "Setting up lm-sensors..."
@@ -68,7 +68,7 @@ sensors-detect --auto
 
 # Add function to right-click and create a new text file
 # Does not work: create a template for new text file
-# sudo touch /home/$USR/Templates/Text.txt
+# touch /home/$USR/Templates/Text.txt
 
 # Stop the timer
 timer_stop
@@ -77,5 +77,5 @@ timer_stop
 echo -e "\n\n\nInstallation completed! Press Enter to reboot..."
 read -r
 
-# Uncomment the following line to reboot
-sudo shutdown -r now
+# Comment/Uncomment the following line to reboot or not
+shutdown -r now
