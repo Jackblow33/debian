@@ -1,15 +1,12 @@
 #!/bin/bash
-#2025-04-16
-
-# Execute as root
+#2025-04-17
 
 # VARIABLES
 TIMESTAMP=$(date +%Y%m%d.%R)
 NV_VER="570.133.07"  # Nvidia Driver version
 KERNEL="6.14.1-tkg-eevdf"
 USR=$(logname) 
-
-# Colors
+# Color
 GREEN='\033[0;32m'
 NC='\033[0m'  # No color
 
@@ -27,7 +24,7 @@ timer_stop() {
 }
 
 
-# Check if the script is being run as root
+# Root check
 if [ "$EUID" -ne 0 ]; then
   echo "This script must be run as root."
   exit 1
@@ -36,7 +33,7 @@ fi
 # Grant read, write, and execute permissions recursively to the root and user, and read permissions only to others.
 sudo chmod -R 775 /home/$USR/debian
 
-# Main menu loop
+# Main menu
 while true; do
     clear
     echo -e "\n\n\n\n\n\n\n\n\n\n"  # Clear the screen with new lines
@@ -46,9 +43,10 @@ while true; do
     echo "                               3. Install WiFi BCM4360"
     echo "                               4. Install custom kernel $KERNEL from USB"
     echo "                               5. Install Gnome"
-    echo "                               6. Exit"
+    echo "                               6. Install Qemu-Kvm virtualization"
+    echo "                               7. Exit"
 
-    read -p "                             Enter your choice (1-6): " choice
+    read -p "                             Enter your choice (1-7): " choice
 
     case $choice in
         1)
@@ -74,6 +72,10 @@ while true; do
             source "/home/$USR/debian/gnome.sh"
             ;;
         6)
+            echo "Installing qenu-kvm..."
+            source "/home/$USR/debian/kvm-qemu-install.sh"    
+            ;;
+        7)
             echo "Exiting..."
             exit 0
             ;;
