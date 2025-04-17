@@ -62,13 +62,15 @@ apt autoremove -y
 echo "Configuring NetworkManager..."
 sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
-# Prepare lm-sensors
+# Prepare lm-sensors to generate values for freon
 echo "Setting up lm-sensors..."
 sensors-detect --auto
+#freon gnome-shell-extension-sensors install
+apt install  gnome-shell-extension-freon
 
 # Add function to right-click and create a new text file
 # Does not work: create a template for new text file
-# touch /home/$USR/Templates/Text.txt
+touch /home/$USR/Templates/Text.txt
 
 # Stop the timer
 timer_stop
