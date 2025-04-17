@@ -68,7 +68,7 @@ sensors-detect --auto
 #freon gnome-shell-extension-sensors install
 apt install  gnome-shell-extension-freon
 
-# Disable hot corner
+# Disable gnome hot corner
 # Check if GNOME is running
 if pgrep -x "gnome-shell" > /dev/null; then
     # Disable hot corners
