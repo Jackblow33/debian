@@ -81,7 +81,7 @@ else
         echo "Hot corners disabled in GNOME configuration file."
     else
         echo "GNOME is not running and the configuration file was not found."
-        exit 1
+        exit 0
     fi
 fi
 
