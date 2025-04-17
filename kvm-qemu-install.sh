@@ -5,6 +5,7 @@
 ######################################
 #Mostly based on: https://github.com/daveprowse/virtualization/blob/main/kvm/kvm-install-debian-12/kvm-install-debian-12.md
 
+USR=$(logname) 
 
 echo '##Cpu core count##'
 egrep -c '(vmx|svm)' /proc/cpuinfo
@@ -58,7 +59,6 @@ sudo virt-host-validate
 #It is normal to have freezer FAIL and secure guest support WARN. Qemu related lines have to be green.
 read -p "Press enter to start"
 
-USR=$
 # Add a user to the libvirt group so that it can create and modify virtual machines.
 sudo usermod -aG libvirt $USR
 #sudo usermod -aG libvirt-qemu $USR
