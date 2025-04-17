@@ -68,6 +68,24 @@ sensors-detect --auto
 #freon gnome-shell-extension-sensors install
 apt install  gnome-shell-extension-freon
 
+# Disable hot corner
+# Check if GNOME is running
+if pgrep -x "gnome-shell" > /dev/null; then
+    # Disable hot corners
+    gsettings set org.gnome.desktop.interface enable-hot-corners false
+    echo "Hot corners disabled in GNOME."
+else
+    # Modify GNOME configuration file directly
+    if [ -f ~/.config/dconf/user ]; then
+        dconf write /org/gnome/desktop/interface/enable-hot-corners false
+        echo "Hot corners disabled in GNOME configuration file."
+    else
+        echo "GNOME is not running and the configuration file was not found."
+        exit 1
+    fi
+fi
+
+
 # Add function to right-click and create a new text file
 # Does not work: create a template for new text file
 touch /home/$USR/Templates/Text.txt
