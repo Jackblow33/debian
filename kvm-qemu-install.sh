@@ -21,19 +21,16 @@ sudo apt install qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virti
 cp /etc/default/grub /etc/default/grub.bak
 
 # Check if 'intel_iommu=on' is already present in GRUB_CMDLINE_LINUX_DEFAULT
-if ! grep -q 'intel_iommu=on' /etc/default/grub; then
-    # Edit the /etc/default/grub file
-    grep -q 'GRUB_CMDLINE_LINUX_DEFAULT' /etc/default/grub || echo 'GRUB_CMDLINE_LINUX_DEFAULT=""' >> /etc/default/grub
-    echo "GRUB_CMDLINE_LINUX_DEFAULT=\"\$GRUB_CMDLINE_LINUX_DEFAULT intel_iommu=on\"" >> /etc/default/grub
+#if ! grep -q 'intel_iommu=on' /etc/default/grub; then
+#    # Edit the /etc/default/grub file
+#    grep -q 'GRUB_CMDLINE_LINUX_DEFAULT' /etc/default/grub || echo 'GRUB_CMDLINE_LINUX_DEFAULT=""' >> /etc/default/grub
+#    echo "GRUB_CMDLINE_LINUX_DEFAULT=\"\$GRUB_CMDLINE_LINUX_DEFAULT intel_iommu=on\"" >> /etc/default/grub
     
     # Update the GRUB configuration
-    update-grub
+#    update-grub
     
-    echo "The /etc/default/grub file has been updated with 'intel_iommu=on' added to the GRUB_CMDLINE_LINUX_DEFAULT variable."
-    echo "The GRUB configuration has been updated. Please reboot your system for the changes to take effect."
-else
-    echo "The 'intel_iommu=on' option is already present in the GRUB_CMDLINE_LINUX_DEFAULT variable. No changes made."
-fi
+#    echo "The /etc/default/grub file has been updated with 'intel_iommu=on' added to the GRUB_CMDLINE_LINUX_DEFAULT variable."
+#    echo "The GRUB configuration has been updated. Please reboot your system for the changes to take effect."
 
 #Enable libvirtd
 systemctl --now enable libvirtd
