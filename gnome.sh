@@ -1,25 +1,39 @@
 #!/bin/bash
-#2025-04-14
+#2025-04-17
 
 # Script to install GNOME and related packages on Debian
 # References:
 # https://wiki.debian.org/Gnome
 # https://www.youtube.com/watch?v=zy-5UHC3t-Q
 
-# VARIABLES
-PKGS=(
-    'gnome-core'                # Core components of the GNOME Desktop environment
-    'kate'                      # KDE advanced text editor
-    'make'                      # General purpose dependency solver
-    'gettext'                   # Build dependencies for dash-to-dock
-    'sassc'                     # Build dependencies for dash-to-dock
-    'fastfetch'                 # Fetching system information in terminal
-    'gparted'                   # Partition utility
-    'timeshift'                 # Program for system backups/snapshots
-    'vlc'                       # Free software to play, transcode, and broadcast video and audio files
-    'lm-sensors'                # Hardware health monitoring
+# PACKAGES TO INSTALL
+INSTALL_PKGS=(
+    'gnome-core'
+    'kate'
+    'make'
+    'gettext'
+    'sassc'
+    'fastfetch'
+    'gparted'
+    'timeshift'
+    'vlc'
+    'lm-sensors'
 )
 
+# PACKAGES TO UNINSTALL
+UNINSTALL_PKGS=(
+    'ifupdown'
+    'gnome-tour'
+    'totem'
+    'totem-plugins'
+    'systemsettings'
+    'gnome-weather'
+    'gnome-contacts'
+    'gnome-maps'
+    'simple-scan'
+    'firefox-esr'
+    'cheese'
+)
 
 # Start the timer
 timer_start
@@ -28,19 +42,20 @@ timer_start
 echo "Updating package list and upgrading installed packages..."
 sudo apt update && sudo apt upgrade -y
 
-# Install packages
-for PKG in "${PKGS[@]}"; do
+# INSTALL PACKAGES
+for PKG in "${INSTALL_PKGS[@]}"; do
     echo "INSTALLING: ${PKG}"
     sudo apt install "$PKG" -y || { echo "Failed to install $PKG"; exit 1; }
 done
-
-# Install Brave browser
+# ADD BRAVE REPO AND INSTALL BRAVE WEB BROWSER
 echo "Installing Brave browser..."
 source /home/$USR/debian/brave.sh
-
-# Remove unnecessary applications
-echo "Removing unnecessary applications..."
-sudo apt purge ifupdown gnome-tour totem totem-plugins systemsettings -y
+# UNINSTALL PACKAGES
+for PKG in "${UNINSTALL_PKGS[@]}"; do
+    echo "UNINSTALLING: ${PKG}"
+    sudo apt purge -y "$PKG" || { echo "Failed to uninstall $PKG"; exit 1; }
+done
+# REMOVE UNUSED DEPENDENCIES
 sudo apt autoremove -y
 
 # Edit NetworkManager configuration
