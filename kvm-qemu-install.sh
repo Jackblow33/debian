@@ -16,14 +16,15 @@ sudo apt update
 sudo apt install qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtinst virt-manager
 
 
-# Append iommu entrie in the grub file.
+# Append iommu entrie in the grub file
 # Backup the original /etc/default/grub file
 cp /etc/default/grub /etc/default/grub.bak
 
-# Check if 'intel_iommu=on' is already present.
+# Check if 'intel_iommu=on' is already present in GRUB_CMDLINE_LINUX_DEFAULT
 if ! grep -q 'intel_iommu=on' /etc/default/grub; then
     # Edit the /etc/default/grub file
-    sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="$.*$"/GRUB_CMDLINE_LINUX_DEFAULT="\1 intel_iommu=on"/' /etc/default/grub
+    grep -q 'GRUB_CMDLINE_LINUX_DEFAULT' /etc/default/grub || echo 'GRUB_CMDLINE_LINUX_DEFAULT=""' >> /etc/default/grub
+    echo "GRUB_CMDLINE_LINUX_DEFAULT=\"\$GRUB_CMDLINE_LINUX_DEFAULT intel_iommu=on\"" >> /etc/default/grub
     
     # Update the GRUB configuration
     update-grub
