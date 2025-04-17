@@ -2,6 +2,47 @@
 
 # Gnome extensions install
 
+# Dash to Dock
+EXTENSION_NAME="dash-to-dock@micxgx.gmail.com"
+EXTENSION_DIR="/home/$USR/.local/share/gnome-shell/extensions/$EXTENSION_NAME"
+
+# Check if the extension is already installed
+if [ -d "$EXTENSION_DIR" ]; then
+    echo "Dash to Dock extension is already installed."
+else
+    # Install Dash to Dock extension
+    echo "Installing Dash to Dock extension..."
+    mkdir -p "$EXTENSION_DIR" || handle_error
+    git clone https://github.com/micheleg/dash-to-dock.git "$EXTENSION_DIR" || handle_error
+    cd "$EXTENSION_DIR" || handle_error
+    make || handle_error
+    make install || handle_error
+    echo "Dash to Dock extension installed."
+fi
+
+# Disable hot corners
+# Check if GNOME is running
+if pgrep -x "gnome-shell" > /dev/null; then
+    # Disable hot corners
+    gsettings set org.gnome.desktop.interface enable-hot-corners false || handle_error
+    echo "Hot corners disabled in GNOME."
+else
+    # Modify GNOME configuration file directly
+    if [ -f "/home/$USR/.config/dconf/user" ]; then
+        dconf write /org/gnome/desktop/interface/enable-hot-corners false || handle_error
+        echo "Hot corners disabled in GNOME configuration file."
+    else
+        echo "GNOME is not running and the configuration file was not found."
+    fi
+fi
+
+
+
+
+
+
+
+
 # dash-to-dock
 mkdir '/home/'$USR'/.local/share/gnome-shell/extensions/'
 git clone https://github.com/micheleg/dash-to-dock.git
