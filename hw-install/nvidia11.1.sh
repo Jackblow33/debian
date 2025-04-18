@@ -9,6 +9,17 @@
 # chmod +x nvidia.sh
 # Then launch the script:   ./nvidia.sh
 
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n"
+echo -e '\033[1;31mTo fix some power management issue and enable drm modeset the file nvidia-options.conf would be created into /etc/default/grub.d\033[0m'
+echo -e "\n\n\n"
+read -p "Press Enter to continue or 'x' to exit: " input
+if [ "$input" = "x" ]; then
+    exit
+else
+    echo "Continuing..."
+fi
+
 # Function to handle errors
 handle_error() {
     echo "Error occurred in the script. Exiting."
