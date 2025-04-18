@@ -23,6 +23,11 @@ timer_stop() {
     echo "Time elapsed: $MINS:$(printf %02d $SECS)"
 }
 
+# Function to handle errors
+handle_error() {
+    echo "Error occurred in the script. Exiting."
+    exit 1
+}
 
 # Root check
 if [ "$EUID" -ne 0 ]; then
