@@ -32,10 +32,19 @@ timer_start
 # apt update && apt install -y linux-headers-$(uname -r) build-essential dkms libglvnd-dev pkg-config || handle_error
 apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 pkg-config libglvnd-dev || handle_error   #libglvnd-core-dev libglvnd0 libglvnd-dev libc-dev
 
-
-
 # Fix Gnome that only boot in x11 and not giving the option to select Wayland on gdm instead.
 ln -sf /dev/null /etc/udev/rules.d/61-gdm.rules || handle_error
+
+# Backup the current GRUB configuration file
+cp /etc/default/grub /etc/default/grub.$TIMESTAMP
+
+# Modify the GRUB configuration file
+if grep -q 'nvidia-drm modeset=1' /etc/default/grub; then
+    echo "'/etc/default/grub' already contains 'nvidia-drm modeset=1'"
+else
+    sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="$.*$"/GRUB_CMDLINE_LINUX_DEFAULT="\1 nvidia-drm modeset=1"/' /etc/default/grub
+    echo "Added 'nvidia-drm modeset=1' to /etc/default/grub"
+fi
 
 # Fix sleep, hbibernate problem and enable drm modeset /etc/default/grub.d/nvidia-options.conf
 # Check if /etc/default/grub.d/nvidia-options.conf exists, if not create it and append the necessary options
@@ -71,9 +80,6 @@ fi
 # Update the GRUB configuration
 update-grub
 
-
-
-
 # Download NVIDIA driver
 # Create the NVIDIA-driver directory if it doesn't exist
 if [ ! -d "/home/$USR/debian/hw-install/NVIDIA-driver" ]; then
@@ -91,8 +97,6 @@ fi
 
 # Install NVIDIA driver
 /home/$USR/debian/hw-install/NVIDIA-driver/NVIDIA-Linux-x86_64-"$NV_VER".run || handle_error
-
-
 
 
 # Enable necessary services
