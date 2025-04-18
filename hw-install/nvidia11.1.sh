@@ -43,6 +43,7 @@ install_dependencies() {
 
 # Create a directory for NVIDIA drivers
 create_driver_directory() {
+    USR=$(logname) 
     local driver_dir="/home/$USR/debian/hw-install/nvidia-drivers"
     mkdir -p "$driver_dir" || handle_error
     echo "Driver directory created at: $driver_dir"
@@ -52,6 +53,7 @@ create_driver_directory() {
 download_nvidia_driver() {
     local nv_ver="${1:-570.133.07}"  # Default NVIDIA version
     local driver_file="NVIDIA-Linux-x86_64-${nv_ver}.run"
+    USR=$(logname) 
     local driver_dir="/home/$USR/debian/hw-install/nvidia-drivers"
 
     # Create the driver directory
