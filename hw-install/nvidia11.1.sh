@@ -6,7 +6,6 @@
 
 # Execute as root
 # Linux kernel 6.11 and beyond required
-# Switch to the terminal view of your system by pressing Ctrl + Alt + F3.
 # chmod +x nvidia.sh
 # Then launch the script:   ./nvidia.sh
 
@@ -35,9 +34,16 @@ install_dependencies() {
 download_nvidia_driver() {
     local nv_ver="${1:-570.133.07}"  # Set your NVIDIA version here if you are not using install.sh to reach this script.
     local driver_file="NVIDIA-Linux-x86_64-${nv_ver}.run"
-    wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}" || handle_error
-    chmod +x "${driver_file}"
+
+    # Check if the driver file already exists
+    if [ -f "${driver_file}" ]; then
+        echo "Driver file '${driver_file}' already exists. Skipping download."
+    else
+        wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}" || handle_error
+        chmod +x "${driver_file}"
+    fi
 }
+
 
 # Install NVIDIA driver
 install_nvidia_driver() {
