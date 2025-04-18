@@ -24,6 +24,7 @@ INSTALL_PKGS=(
 UNINSTALL_PKGS=(
     'ifupdown'
     'gnome-tour'
+    'yelp'
     'totem'
     'totem-plugins'
     'systemsettings'
