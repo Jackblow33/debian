@@ -22,7 +22,7 @@ INSTALL_PKGS=(
 
 # PACKAGES TO UNINSTALL
 UNINSTALL_PKGS=(
-    'ifupdown'
+    'ifupdown'   # Mandatory all the next uninstall variables are optional
     'gnome-tour'
     'yelp'
     'totem'
