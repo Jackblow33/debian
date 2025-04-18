@@ -13,11 +13,11 @@ ENABLE_EXTENSIONS=true
 
 # Dash to Panel extension
 PANEL_EXTENSION_NAME="dash-to-panel@jderose9.github.com"
-PANEL_EXTENSION_DIR="/home/$USER/.local/share/gnome-shell/extensions/$PANEL_EXTENSION_NAME"
+PANEL_EXTENSION_DIR="/home/$USR/.local/share/gnome-shell/extensions/$PANEL_EXTENSION_NAME"
 
 # Dash to Dock extension
 DOCK_EXTENSION_NAME="dash-to-dock@micxgx.gmail.com"
-DOCK_EXTENSION_DIR="/home/$USER/.local/share/gnome-shell/extensions/$DOCK_EXTENSION_NAME"
+DOCK_EXTENSION_DIR="/home/$USR/.local/share/gnome-shell/extensions/$DOCK_EXTENSION_NAME"
 
 # Freon extension
 FREON_EXTENSION_NAME="freon@UshakovVasilii_Github.yahoo.com"
@@ -87,5 +87,13 @@ if [ "$ENABLE_EXTENSIONS" = true ]; then
     echo "Enabling extensions and customizing settings..."
     gnome-extensions-app enable "$DOCK_EXTENSION_NAME" || handle_error
     gnome-extensions-app enable "$FREON_EXTENSION_NAME" || handle_error
-    gsettings set org.gnome.
+    gsettings set org.gnome.shell disable-extension-version-validation true || handle_error
+    gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close' || handle_error
+    gsettings set org.gnome.shell.extensions.dash-to-dock show-volume false  || handle_error
+    gsettings set org.gnome.shell.extensions.dash-to-dock show-device false  || handle_error
+    gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false  || handle_error
+fi
 
+echo "Script execution complete."
+read -p "Press Enter to exit..."
+exit
