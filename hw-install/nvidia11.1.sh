@@ -38,7 +38,7 @@ timer_stop() {
 
 # Update package list and install necessary packages
 install_dependencies() {
-    apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 #libglvnd-core-dev libglvnd0 libglvnd-dev libc-dev pkg-config || handle_error
+    apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 || handle_error        #libglvnd-core-dev libglvnd0 libglvnd-dev libc-dev pkg-config 
 }
 
 # Create a directory for NVIDIA drivers
