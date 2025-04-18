@@ -32,7 +32,6 @@ UNINSTALL_PKGS=(
     'gnome-maps'
     'simple-scan'
     'firefox-esr'
-    'cheese'
 )
 
 # Start the timer
