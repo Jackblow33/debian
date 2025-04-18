@@ -20,7 +20,7 @@ else
     echo "Continuing..."
 fi
 
-# Get the username
+# Get the username dynamic variable
 USR=$(logname)
 
 # Function to handle errors
