@@ -6,6 +6,7 @@
 # To be tested and made compatible soon in Ubuntu 25.04
 
 # Execute as root
+# Could be run as standalone script
 # Linux kernel 6.11 and beyond required
 # chmod +x nvidia.sh
 # Then launch the script:   ./nvidia.sh
