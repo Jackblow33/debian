@@ -3,6 +3,7 @@
 #2025-04-18
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
+# To be tested and made compatible soon in Ubuntu 25.04
 
 # Execute as root
 # Linux kernel 6.11 and beyond required
