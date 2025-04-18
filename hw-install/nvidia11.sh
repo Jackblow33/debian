@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2025-04-14
+#2025-04-17
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
 
@@ -45,6 +45,7 @@ install_nvidia_driver() {
     ./"${driver_file}" || handle_error
 }
 
+
 # Backup and update GRUB configuration
 update_grub_config() {
     local backup_file="/etc/default/grub.d/nvidia-modeset.cfg.$(date +%Y%m%d%H%M%S)"
@@ -60,8 +61,13 @@ fix_gnome_for_nvidia() {
 
 # Fix NVIDIA graphical glitches after waking from sleep
 fix_nvidia_power_management() {
-    echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' >> /etc/modprobe.d/nvidia-power-management.conf
-    echo '#NVreg_TemporaryFilePath=/var/tmp' >> /etc/modprobe.d/nvidia-power-management.conf
+    local config_file="/etc/modprobe.d/nvidia-power-management.conf"
+    if ! grep -q 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' "$config_file"; then
+        echo 'options nvidia NVreg_PreserveVideoMemoryAllocations=1' >> "$config_file"
+    fi
+    if ! grep -q '#NVreg_TemporaryFilePath=/var/tmp' "$config_file"; then
+        echo '#NVreg_TemporaryFilePath=/var/tmp' >> "$config_file"
+    fi
 }
 
 # Enable necessary services
@@ -76,7 +82,7 @@ update_initramfs() {
     update-initramfs -u || handle_error
 }
 
-# Main script
+# Main script execution
 timer_start
 install_dependencies
 download_nvidia_driver
