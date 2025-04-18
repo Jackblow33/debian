@@ -41,17 +41,28 @@ install_dependencies() {
     apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 #libglvnd-core-dev libglvnd0 libglvnd-dev libc-dev pkg-config || handle_error
 }
 
+# Create a directory for NVIDIA drivers
+create_driver_directory() {
+    local driver_dir="/home/USR/debian/hw-install/nvidia-drivers"
+    mkdir -p "$driver_dir" || handle_error
+    echo "Driver directory created at: $driver_dir"
+}
+
 # Download NVIDIA driver
 download_nvidia_driver() {
-    local nv_ver="${1:-570.133.07}"  # Set your NVIDIA version here if you are not using install.sh to reach this script.
+    local nv_ver="${1:-570.133.07}"  # Default NVIDIA version
     local driver_file="NVIDIA-Linux-x86_64-${nv_ver}.run"
+    local driver_dir="/home/USR/debian/hw-install/nvidia-drivers"
 
-    # Check if the driver file already exists
-    if [ -f "${driver_file}" ]; then
-        echo "Driver file '${driver_file}' already exists. Skipping download."
+    # Create the driver directory
+    create_driver_directory
+
+    # Check if the driver file already exists in the specified directory
+    if [ -f "${driver_dir}/${driver_file}" ]; then
+        echo "Driver file '${driver_file}' already exists in '${driver_dir}'. Skipping download."
     else
-        wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}" || handle_error
-        chmod +x "${driver_file}"
+        wget -P "$driver_dir" "https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}" || handle_error
+        chmod +x "${driver_dir}/${driver_file}"
     fi
 }
 
