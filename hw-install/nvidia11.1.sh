@@ -76,7 +76,7 @@ install_nvidia_driver() {
 }
 
 
-# Backup and update GRUB configuration
+# Backup, add drm.modeset=1 and update GRUB configuration
 update_grub_config() {
     local backup_file="/etc/default/grub.d/nvidia-modeset.cfg.$(date +%Y%m%d%H%M%S)"
     cp /etc/default/grub.d/nvidia-modeset.cfg "${backup_file}"
