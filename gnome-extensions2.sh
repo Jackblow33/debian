@@ -1,9 +1,15 @@
 #!/bin/bash
 #2025-04-17
 
+# Dash to Dock extension enable by default with custom settings
+
+# Install gnome-shell-extension-manager
+apt install gnome-shell-extension-prefs || handle_error
 
 # Enable extensions and customize
 ENABLE_EXTENSIONS=true
+# If ENABLE_EXTENSIONS is set to false, the script will install the extensions without customizing and not enabling them.
+# Could be enable manually after the install via the gnome-shell-extension-manager app.
 
 # Dash to Panel extension
 PANEL_EXTENSION_NAME="dash-to-panel@jderose9.github.com"
@@ -81,5 +87,5 @@ if [ "$ENABLE_EXTENSIONS" = true ]; then
     echo "Enabling extensions and customizing settings..."
     gnome-extensions-app enable "$DOCK_EXTENSION_NAME" || handle_error
     gnome-extensions-app enable "$FREON_EXTENSION_NAME" || handle_error
-    gsettings set org.gnome.shell disable-extension-version-validation true || handle_error
-    gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close' || handle_error
+    gsettings set org.gnome.
+
