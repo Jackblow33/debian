@@ -6,7 +6,7 @@
 # To be tested and made compatible soon in Ubuntu 25.04
 
 # Execute as root
-# Could be run as standalone script
+# Could be run as standalone script without using install.sh
 # Linux kernel 6.11 and beyond required
 # chmod +x nvidia.sh
 # Then launch the script:   ./nvidia.sh
@@ -48,7 +48,6 @@ install_dependencies() {
 
 # Create a directory for NVIDIA drivers
 create_driver_directory() {
-#    USR=$(logname) 
     local driver_dir="/home/$USR/debian/hw-install/nvidia-drivers"
     mkdir -p "$driver_dir" || handle_error
     echo "Driver directory created at: $driver_dir"
@@ -56,7 +55,7 @@ create_driver_directory() {
 
 # Download NVIDIA driver
 download_nvidia_driver() {
-    local nv_ver="${1:-570.133.07}"  # Set your NVIDIA version here if you are not using install.sh to reach this script.
+    local nv_ver="${1:-570.133.07}"  # Default, but you can set your NVIDIA driver version here.
     local driver_file="NVIDIA-Linux-x86_64-${nv_ver}.run"
     wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}" || handle_error
     chmod +x "${driver_file}"
