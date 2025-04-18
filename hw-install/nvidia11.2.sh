@@ -64,13 +64,18 @@ else
     chmod +x "${driver_dir}/${driver_file}"
 fi
 
-
 # Download NVIDIA driver
 download_nvidia_driver() {
-    local nv_ver="${1:-570.133.07}"  # Default, but you can set your NVIDIA driver version here.
+    local nv_ver="570.133.07"
     local driver_file="NVIDIA-Linux-x86_64-${nv_ver}.run"
-    wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}" || handle_error
-    chmod +x "${driver_file}"
+    local driver_url="https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}"
+
+    if [ -f "${driver_dir}/${driver_file}" ]; then
+        echo "Driver file '${driver_file}' already exists in '${driver_dir}'. Skipping download."
+    else
+        wget -P "$driver_dir" "$driver_url" || handle_error
+        chmod +x "${driver_dir}/${driver_file}"
+    fi
 }
 
     # Create the driver directory
