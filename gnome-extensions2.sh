@@ -83,8 +83,15 @@ else
     echo "Installation of Dash to Panel and Dash to Dock extensions skipped."
 fi
 
+# Prepare lm-sensors to generate values for freon extension
+echo "Setting up lm-sensors..."
+sensors-detect --auto || handle_error
+#freon gnome-shell-extension-sensors install
+apt install  gnome-shell-extension-freon || handle_error
+
 if [ "$ENABLE_EXTENSIONS" = true ]; then
     echo "Enabling extensions and customizing settings..."
+#    gnome-extensions-app enable "$PANEL_EXTENSION_NAME" || handle_error
     gnome-extensions-app enable "$DOCK_EXTENSION_NAME" || handle_error
     gnome-extensions-app enable "$FREON_EXTENSION_NAME" || handle_error
     gsettings set org.gnome.shell disable-extension-version-validation true || handle_error
@@ -92,6 +99,7 @@ if [ "$ENABLE_EXTENSIONS" = true ]; then
     gsettings set org.gnome.shell.extensions.dash-to-dock show-volume false  || handle_error
     gsettings set org.gnome.shell.extensions.dash-to-dock show-device false  || handle_error
     gsettings set org.gnome.shell.extensions.dash-to-dock intellihide false  || handle_error
+    gsettings set org.gnome.desktop.interface enable-hot-corners false || handle_error
 fi
 
 echo "Script execution complete."
