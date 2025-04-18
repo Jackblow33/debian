@@ -44,14 +44,26 @@ timer_stop() {
 # Update package list and install necessary packages
 install_dependencies() {
     apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 libglvnd-core-dev pkg-config || handle_error        # libglvnd0 libglvnd-dev libc-dev  
-}
 
 # Create a directory for NVIDIA drivers
 create_driver_directory() {
     local driver_dir="/home/$USR/debian/hw-install/nvidia-drivers"
-    mkdir -p "$driver_dir" || handle_error
-    echo "Driver directory created at: $driver_dir"
+    if [ ! -d "$driver_dir" ]; then
+        mkdir -p "$driver_dir" || handle_error
+        echo "Driver directory created at: $driver_dir"
+    else
+        echo "Driver directory already exists at: $driver_dir"
+    fi
 }
+
+# Check if the driver file already exists in the specified directory
+if [ -f "${driver_dir}/${driver_file}" ]; then
+    echo "Driver file '${driver_file}' already exists in '${driver_dir}'. Skipping download."
+else
+    wget -P "$driver_dir" "https://us.download.nvidia.com/XFree86/Linux-x86_64/${nv_ver}/${driver_file}" || handle_error
+    chmod +x "${driver_dir}/${driver_file}"
+fi
+
 
 # Download NVIDIA driver
 download_nvidia_driver() {
