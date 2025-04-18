@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2025-04-17
+#2025-04-18
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
 
