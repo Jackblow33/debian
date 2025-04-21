@@ -1,0 +1,14 @@
+Linux Best Gaming Benchmarks
+Here are some games that are well-optimized for Linux and have benchmarks available:
+
+Assassin's Creed Odyssey: Linux is 30-40% faster than Windows in this game.
+Cyberpunk 2077: Linux is 12% faster than Windows.
+Shadow of Mordor: Linux is 24% faster than Windows.
+Shadow of the Tomb Raider: Linux is 20% faster than Windows.
+Horizon Zero Dawn: Linux is 8% faster than Windows.
+Red Dead Redemption 2: Linux is 20% faster than Windows.
+Final Fantasy XV: Linux is 10% faster than Windows.
+Final Fantasy XIV: Linux is 39% faster than Windows.
+
+For benchmarking these games, you can use tools like MangoHUD, which is a Vulkan overlay that can monitor CPU, GPU, and RAM usage, as well as minimum, maximum, and average framerates.
+ It can be activated in games running through Steam Proton or in native Linux games using Vulkan.
