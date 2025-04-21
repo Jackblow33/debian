@@ -104,6 +104,11 @@ update_initramfs() {
     update-initramfs -u || handle_error
 }
 
+# Produce /home/$USER/debian/hw-install/nvidia-report.txt
+nvidia_report() {
+    source "/home/$USR/debian/hw-install/nvidia-report.sh" || handle_error
+}
+
 # Main script execution
 timer_start
 install_dependencies
@@ -114,6 +119,7 @@ fix_gnome_for_nvidia
 fix_nvidia_power_management
 enable_nvidia_services
 update_initramfs
+nvidia_report
 timer_stop
 
 # Clear the screen and notify the user
