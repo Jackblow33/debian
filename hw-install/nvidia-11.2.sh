@@ -3,22 +3,12 @@
 #2025-04-20
 # WORKING, close to stable          TODO ADD NOUVEAU BLACKLIST
 
-# Blacklist Nouveau driver
-#echo "blacklist nouveau" > /etc/modprobe.d/blacklist-nouveau.conf
-#echo "options nouveau modeset=0" >> /etc/modprobe.d/blacklist-nouveau.conf
-
-# Update initramfs
-update-initramfs -u
-
-echo "Nouveau driver has been blacklisted. Please reboot your system for the changes to take effect."
-
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
 
 # Execute as root
 # Linux kernel 6.11 and beyond required
-# Switch to the terminal view of your system by pressing Ctrl + Alt + F3.
-# chmod +x nvidia.sh
-# Then launch the script:   ./nvidia.sh
+
+# NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
 
 # Function to handle errors
 handle_error() {
