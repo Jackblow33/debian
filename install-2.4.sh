@@ -80,7 +80,7 @@ while true; do
            
             6)
                 echo "Installing qenu-kvm..."
-                source "/home/$USR/debian/qemu-kvm-0.4.sh"    
+                source "/home/$USR/debian/qemu-kvm-0.5.sh"    
                 ;;
             7)
                 echo "Exiting..."
