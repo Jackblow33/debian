@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #2025-04-21
-# WORKING, close to stable          TODO ADD NOUVEAU BLACKLIST + notif files modifications from 11.1
-                                    # Add MangoHud https://github.com/flightlessmango/MangoHud
+# WORKING, close to stable          # Done! - ADD NOUVEAU BLACKLIST | TODO - notif files modifications from 11.1
+                                    # TODO - Add MangoHud https://github.com/flightlessmango/MangoHud
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
 # Linux kernel 6.11 and beyond required
@@ -136,7 +136,7 @@ timer_stop
 # Optional checks
 # sudo cat /sys/module/nvidia_drm/parameters/modeset
 # sudo cat /proc/driver/nvidia/params | grep "PreserveVideoMemoryAllocations"
+# lsmod | grep nouveau || echo 'Nouveau NVIDIA driver have been blacklisted'
 # glxinfo | egrep "OpenGL vendor|OpenGL renderer*"
-# lsmod | grep nouveau
 # lspci -nn | egrep -i "3d|display|vga"
 # nvidia-smi
