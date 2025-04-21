@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# After first reboot
-# Report.txt path.
-REPORT_PATH='/home/jack/Downloads/nvidia-report.txt'       ###### CHANGE THE PATH ON FINAL VERSION
+# Execute after first reboot
+
+USR=$(logname)
+REPORT_PATH='/home/'$USR'/debian/hw-install/nvidia-report.txt'
 
 # Check if nouveau have been blaclisted properly
 lsmod | grep nouveau
