@@ -44,7 +44,7 @@ apt install -y qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtins
 systemctl --now enable libvirtd || error_handler
 
 # Check the service status:
-systemctl status libvirtd || error_handler
+# systemctl status libvirtd || error_handler
 
 # Add a user to the libvirt group so that it can create and modify virtual machines
 usermod -aG libvirt $USR
