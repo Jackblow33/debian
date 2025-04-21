@@ -25,8 +25,7 @@ GRUB_LINE=$(grep -E '^GRUB_CMDLINE_LINUX_DEFAULT="quiet' "$GRUB_FILE")
 
 # Check if the line was found
 if [ -z "$GRUB_LINE" ]; then
-  echo "Error: Could not find the GRUB_CMDLINE_LINUX_DEFAULT line in $GRUB_FILE."
-  exit 1
+  echo "Error: Could not find the GRUB_CMDLINE_LINUX_DEFAULT line in $GRUB_FILE."  || error_handler
 fi
 
 # Check if the virtualization argument is already present
@@ -55,22 +54,21 @@ apt install -y qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtins
 #Enable libvirtd
 systemctl --now enable libvirtd || error_handler
 
-# Check the service status:
-# systemctl status libvirtd || error_handler
-
-# Add a user to the libvirt group so that it can create and modify virtual machines
-usermod -aG libvirt $USR
-usermod -aG libvirt-qemu $USR
-usermod -aG kvm $USR
-usermod -aG input $USR
-usermod -aG disk $USR
+# Add the user to the necessary groups
+echo "Adding user $USER to the required groups..."
+usermod -aG libvirt $USER
+usermod -aG libvirt-qemu $USER
+usermod -aG kvm $USER
+usermod -aG input $USER
+usermod -aG disk $USER
+echo "User $USER has been added to the required groups."
 
 
 # Set Virsh to autostart whenever the system is rebooted
-sudo virsh net-autostart default
+sudo virsh net-autostart default || error_handler
 
 # Restarting the libvirtd service
-systemctl restart libvirtd
+systemctl restart libvirtd || error_handler
 
 
 
@@ -112,9 +110,13 @@ systemctl restart libvirtd
 
 #echo '##Cpu core count##'
 #egrep -c '(vmx|svm)' /proc/cpuinfo
+
 #echo 'Check if virtualisation is enable in bios  #Intel Cpu should read: Virtualization: VT-x'
 #lscpu | grep Virtualization
-#                                    add check for Intel Amd virtualisation
+
+# Check the service status:
+# systemctl status libvirtd || error_handler
+
 
 
 
