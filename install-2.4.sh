@@ -48,11 +48,10 @@ while true; do
     echo "                               3. Install WiFi BCM4360"
     echo "                               4. Install custom kernel $KERNEL from USB"
     echo "                               5. Install Gnome"
-    echo "                               6. Install Gnome extensions and customization"
-    echo "                               7. Install Qemu-Kvm virtualization"
-    echo "                               8. Exit"
+    echo "                               6. Install Qemu-Kvm virtualization"
+    echo "                               7. Exit"
 
-    read -p "                             Enter your choice (e.g., 1-3-5): " choices
+    read -p "                             Enter your choice (e.g., 1-2-5): " choices
 
     IFS='-' read -ra selected_choices <<< "$choices"
 
@@ -78,15 +77,12 @@ while true; do
                 echo "Installing Gnome..."
                 source "/home/$USR/debian/gnome.sh"
                 ;;
+           
             6)
-                echo "Installing Gnome..."
-                source "/home/$USR/debian/gnome-extensions2.sh"
-                ;;    
-            7)
                 echo "Installing qenu-kvm..."
                 source "/home/$USR/debian/qemu-kvm-0.4.sh"    
                 ;;
-            8)
+            7)
                 echo "Exiting..."
                 exit 0
                 ;;
