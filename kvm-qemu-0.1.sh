@@ -13,8 +13,6 @@ read -p "Press enter to start"
 sudo apt update
 sudo apt install qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtinst virt-manager
 
-#!/bin/bash
-
 # Check if the file exists
 if [ -f /etc/default/grub ]; then
     # Backup the original file
