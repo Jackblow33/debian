@@ -1,11 +1,9 @@
 #!/bin/bash
 
-#2025-04-20
+#2025-04-21
 # WORKING, close to stable          TODO ADD NOUVEAU BLACKLIST
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
-
-# Execute as root
 # Linux kernel 6.11 and beyond required
 
 # NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
