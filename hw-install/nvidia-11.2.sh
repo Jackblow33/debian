@@ -89,7 +89,7 @@ update_grub_config
 fix_gnome_for_nvidia
 fix_nvidia_power_management
 enable_nvidia_services
-update_initramfs
+#update_initramfs
 timer_stop
 
 # Clear the screen and notify the user
