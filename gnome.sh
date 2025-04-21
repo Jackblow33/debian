@@ -63,7 +63,7 @@ sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password
 
 # INSTALL QEMU-KVM - Virtualisation
 echo "Installing QEMU-KVM..."
-source "/home/$USR/debian/qemu-kvm-0.4.sh" || handle_error
+source "/home/$USR/debian/qemu-kvm-0.5.sh" || handle_error
 
 # UNINSTALL PACKAGES
 for PKG in "${UNINSTALL_PKGS[@]}"; do
