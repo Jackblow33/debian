@@ -61,12 +61,12 @@ while true; do
             1)
                 echo "Updating system..."
                 sudo apt update && sudo apt upgrade -y
-                echo "System updated. Press [enter] to continue."
-                read -r enterKey
+                #echo "System updated. Press [enter] to continue."
+                #read -r enterKey
                 ;;
             2)
                 echo "Installing NVIDIA driver $NV_VER..."
-                source "/home/$USR/debian/hw-install/nvidia11.1.sh"
+                source "/home/$USR/debian/hw-install/nvidia-11.2.sh"
                 ;;
             3)
                 echo "Installing WiFi BCM4360..."
