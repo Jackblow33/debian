@@ -43,7 +43,7 @@ while true; do
     clear
     echo -e "\n\n\n\n\n\n\n\n\n\n"  # Clear the screen with new lines
     echo "                             Please select the options separated by a hyphen (-):"
-    echo "                               1. Update System, blacklist nouveau and edit grub boot arguments"
+    echo "                               1. Update System"
     echo "                               2. Install NVIDIA driver $NV_VER"
     echo "                               3. Install WiFi BCM4360"
     echo "                               4. Install custom kernel $KERNEL from USB"
