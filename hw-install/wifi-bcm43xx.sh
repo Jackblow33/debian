@@ -11,11 +11,11 @@
 timer_start
 
 # Backup the original sources.list file
-cp /etc/apt/sources.list "/etc/apt/sources_$TIMESTAMP.list"
+#cp /etc/apt/sources.list "/etc/apt/sources_$TIMESTAMP.list"
 
 # Add the non-free contrib repository to the sources.list file        ####### ADD check if present + automate for sid vs trixie
-echo "Adding non-free contrib repository to sources.list..."
-echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list || handle_error
+#echo "Adding non-free contrib repository to sources.list..."
+#echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list || handle_error
 
 # Update package lists
 echo "Updating package lists..."
