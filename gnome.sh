@@ -24,7 +24,6 @@ INSTALL_PKGS=(
 UNINSTALL_PKGS=(
     'ifupdown'   # Mandatory all the next UNINSTALL_PKG entries are optional
     'gnome-tour'
-    'gnome-camera'
     'gnome-calendar'
     'gnome-clocks'
     'yelp'
@@ -51,9 +50,10 @@ for PKG in "${INSTALL_PKGS[@]}"; do
     apt install "$PKG" -y || { echo "Failed to install $PKG"; handle_error; }
 done
 
-# ADD FIREFOX FROM LATEST PACKAGE FROM MOZILLA WEBSITE
+# ADD FIREFOX NON-ESR
 echo "Installing Firefox browser..."
-source /home/$USR/debian/firefox.sh || handle_error
+apt install firefox || handle_error
+#source /home/$USR/debian/firefox.sh || handle_error
 
 # ADD BRAVE REPO AND INSTALL BRAVE WEB BROWSER
 echo "Installing Brave browser..."
