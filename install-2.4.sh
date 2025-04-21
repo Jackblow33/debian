@@ -6,8 +6,9 @@ TIMESTAMP=$(date +%Y%m%d.%R)
 NV_VER="570.133.07"  # Default Nvidia Driver version
 KERNEL="6.14.1-tkg-eevdf"
 USR=$(logname) 
-# Color
 GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+RED='\033[0;31m'
 NC='\033[0m'  # No color
 
 # Functions
