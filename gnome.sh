@@ -51,15 +51,19 @@ for PKG in "${INSTALL_PKGS[@]}"; do
     apt install "$PKG" -y || { echo "Failed to install $PKG"; handle_error; }
 done
 
-# ADD FIREFOX NON-ESR
+# INSTALL FIREFOX NON-ESR - For debian Trixie
 #echo "Installing Firefox browser..."
 #apt install firefox || handle_error
 #source /home/$USR/debian/firefox.sh || handle_error
 
-# ADD BRAVE REPO AND INSTALL BRAVE WEB BROWSER
+# INSTALL BRAVE REPO AND INSTALL BRAVE WEB BROWSER
 echo "Installing Brave browser..."
 source /home/$USR/debian/brave.sh || handle_error
 sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
+
+# INSTALL QEMU-KVM - Virtualisation
+echo "Installing QEMU-KVM..."
+source "/home/$USR/debian/qemu-kvm-0.4.sh" || handle_error
 
 # UNINSTALL PACKAGES
 for PKG in "${UNINSTALL_PKGS[@]}"; do
