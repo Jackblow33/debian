@@ -46,7 +46,7 @@ install_nvidia_driver() {
     ./"NVIDIA-Linux-x86_64-${NV_VER}.run" || handle_error
 }
 
-# Backup and update GRUB configuration with proper kernel boot flags
+# Blacklist nouveau, backup and update GRUB configuration with new kernel boot flags
 update_grub_config() {
 
 # Check if the blacklist entries are there, if not add them
@@ -59,22 +59,18 @@ update_grub_config() {
     
     echo "Nouveau driver has been blacklisted. System have to be reboot for the changes to take effect."
                 
-                # Check if the grub file exist
-                if [ -f /etc/default/grub ]; then
-                  # Backup the original file
-                  sudo cp /etc/default/grub /etc/default/grub.$TIMESTAMP
+                # Copy before editing /etc/default/grub file.
+                  sudo cp /etc/default/grub /etc/default/grub.$TIMESTAMP || handle_error
 
-                  # Disable original GRUB_CMDLINE_LINUX_DEFAULT line.
-                  sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT/#GRUB_CMDLINE_LINUX_DEFAULT/' /etc/default/grub
+                # Disable original GRUB_CMDLINE_LINUX_DEFAULT line.
+                  sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT/#GRUB_CMDLINE_LINUX_DEFAULT/' /etc/default/grub || handle_error
 
-                  # Add a new GRUB_CMDLINE_LINUX_DEFAULT with options: nvidia-drm.modeset=1  and intel_iommu=on_(use for virtualisation)
-                  echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1 intel_iommu=on"' | sudo tee -a /etc/default/grub      # Add argument "splash" To enable boot splash screen
+                # Add a new GRUB_CMDLINE_LINUX_DEFAULT with options: nvidia-drm.modeset=1  and intel_iommu=on_(use for virtualisation)
+                  echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1 intel_iommu=on"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
 
-                  # Update the GRUB configuration
-                  update-grub
-                else
-                  echo "The file /etc/default/grub does not exist."
-                fi
+                # Update the GRUB configuration
+                  update-grub || handle_error
+              
                 # Checking the kernel boot arguments added to command line
                 # cat /proc/cmdline
 
