@@ -7,6 +7,24 @@
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
 # Linux kernel 6.11 and beyond required
 
+clear
+echo -e "\n\n\n\n\n\n\n\n\n\n"
+echo -e '\033[1;31mTo blacklist nouveau driver the file etc/modprobe.d/blacklist-nouveau.conf gonna be created.\033[0m'
+echo -e '\033[1;31mTo fix some power management issue the file etc/modprobe.d/nvidia-power-management.conf gonna be created.\033[0m'
+echo -e '\033[1;31mnvidia-drm.modeset=1 gonna be added to grub at line: GRUB_CMDLINE_LINUX_DEFAULT in /etc/default\033[0m'
+echo -e "\033[1;31mAnd of course you're gonna taint your kernel with the nvidia proprietary driver\033[0m"
+echo -e "\n\n\n"
+read -p "Press Enter to continue or 'x' to exit: " input
+if [ "$input" = "x" ]; then
+    exit
+else
+    echo "Continuing..."
+fi
+
+# Get the username dynamic variable
+USR=$(logname)
+
+
 # NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
 
 TIMESTAMP=$(date +%Y%m%d.%R)
