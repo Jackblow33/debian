@@ -9,20 +9,24 @@
 
 # NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
 
+TIMESTAMP=$(date +%Y%m%d.%R)
+
 # Function to handle errors
 handle_error() {
     echo "Error occurred in the script. Exiting."
     exit 1
 }
 
-# Start timer
 timer_start() {
-    start_time=$(date +%s)
+    BEGIN=$(date +%s)
 }
 
 timer_stop() {
-    end_time=$(date +%s)
-    echo "Script execution time: $((end_time - start_time)) seconds"
+    NOW=$(date +%s)
+    DIFF=$((NOW - BEGIN))
+    MINS=$((DIFF / 60))
+    SECS=$((DIFF % 60))
+    echo "Time elapsed: $MINS:$(printf %02d $SECS)"
 }
 
 # Update package list and install necessary packages
