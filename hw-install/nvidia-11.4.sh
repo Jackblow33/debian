@@ -65,9 +65,9 @@ update_grub_config() {
                 # Disable original GRUB_CMDLINE_LINUX_DEFAULT line.
                   sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT/#GRUB_CMDLINE_LINUX_DEFAULT/' /etc/default/grub || handle_error
 
-                # Add a new GRUB_CMDLINE_LINUX_DEFAULT with options: nvidia-drm.modeset=1  and intel_iommu=on_(use for virtualisation)
-                  echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1 intel_iommu=on"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
-
+                # Add a new GRUB_CMDLINE_LINUX_DEFAULT with options: nvidia-drm.modeset=1        # and intel_iommu=on_(use for virtualisation)
+                  #echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1 intel_iommu=on"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
+                  echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
                 # Update the GRUB configuration
                   update-grub || handle_error
               
