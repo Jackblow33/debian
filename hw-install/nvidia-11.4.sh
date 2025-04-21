@@ -60,7 +60,7 @@ update_grub_config() {
     echo "Nouveau driver has been blacklisted. System have to be reboot for the changes to take effect."
                 
                 # Copy before editing /etc/default/grub file.
-                  sudo cp /etc/default/grub /etc/default/grub.$TIMESTAMP || handle_error
+                 sudo cp /etc/default/grub /etc/default/grub.BAK_OG_$TIMESTAMP || handle_error
 
                 # Disable original GRUB_CMDLINE_LINUX_DEFAULT line.
                   sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT/#GRUB_CMDLINE_LINUX_DEFAULT/' /etc/default/grub || handle_error
