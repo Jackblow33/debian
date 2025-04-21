@@ -51,6 +51,10 @@ for PKG in "${INSTALL_PKGS[@]}"; do
     apt install "$PKG" -y || { echo "Failed to install $PKG"; handle_error; }
 done
 
+# ADD FIREFOX FROM LATEST PACKAGE FROM MOZILLA WEBSITE
+echo "Installing Firefox browser..."
+source /home/$USR/debian/firefox.sh || handle_error
+
 # ADD BRAVE REPO AND INSTALL BRAVE WEB BROWSER
 echo "Installing Brave browser..."
 source /home/$USR/debian/brave.sh || handle_error
