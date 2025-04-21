@@ -22,8 +22,11 @@ INSTALL_PKGS=(
 
 # PACKAGES TO UNINSTALL
 UNINSTALL_PKGS=(
-    'ifupdown'   # Mandatory all the next uninstall variables are optional
+    'ifupdown'   # Mandatory all the next UNINSTALL_PKG entries are optional
     'gnome-tour'
+    'gnome-camera'
+    'gnome-calendar'
+    'gnome-clocks'
     'yelp'
     'totem'
     'totem-plugins'
@@ -66,7 +69,10 @@ apt autoremove -y || handle_error
 echo "Configuring NetworkManager..."
 sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf || handle_error
 
-# Prepare lm-sensors to generate values for freon extension
+# Install gnome-shell-extension-manager
+apt install gnome-shell-extension-prefs || handle_error
+
+# Prepare lm-sensors to generate values for freon gnome extension
 echo "Setting up lm-sensors..."
 sensors-detect --auto || handle_error
 #freon gnome-shell-extension-sensors install
@@ -74,7 +80,7 @@ apt install  gnome-shell-extension-freon || handle_error
 
 # Add function to right-click and create a new text file
 # Does not work: create a template for new text file
-touch /home/$USR/Templates/Text.txt
+#touch /home/$USR/Templates/Text.txt
 
 # Stop the timer
 timer_stop
