@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2025-04-14
+#2025-04-20
 
 # Execute as root
 # Script to install Broadcom drivers for iMac BCM4360
@@ -15,7 +15,7 @@ cp /etc/apt/sources.list "/etc/apt/sources_$TIMESTAMP.list"
 
 # Add the non-free contrib repository to the sources.list file        ####### ADD check if present + automate for sid vs trixie
 echo "Adding non-free contrib repository to sources.list..."
-echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list || handle_error
 
 # Update package lists
 echo "Updating package lists..."
@@ -25,22 +25,22 @@ apt update
 echo "Installing Broadcom drivers and kernel headers..."
 apt-get install -y linux-image-$(uname -r | sed 's,[^-]*-[^-]*-,,') \
                    linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') \
-                   broadcom-sta-dkms || { echo "Installation failed. Exiting."; exit 1; }
+                   broadcom-sta-dkms || handle_error
 
 # Unload conflicting modules
 echo "Unloading conflicting modules..."
-modprobe -r b44 b43 b43legacy ssb brcmsmac bcma
+modprobe -r b44 b43 b43legacy ssb brcmsmac bcma || handle_error
 
 # Load the Broadcom driver
 echo "Loading Broadcom driver..."
-modprobe -r wl && modprobe wl
+modprobe -r wl && modprobe wl || handle_error
 
 # Stop timer
 timer_stop
 
-# Notify user of completion
-echo -e "\n\nInstallation completed! Press Enter to continue..."
-read -r
+# Pause
+#echo -e "\n\nInstallation completed! Press Enter to continue..."
+#read -r
 
 # Optional: Uncomment the following line to check DKMS modules
 # echo "Checking DKMS modules..."
