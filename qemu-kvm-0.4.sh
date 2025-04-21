@@ -1,9 +1,8 @@
 #!/bin/bash
 
-######################################
-# KVM - Qemu without gpu passtrough ##
-######################################
-#Mostly based on: https://github.com/daveprowse/virtualization/blob/main/kvm/kvm-install-debian-12/kvm-install-debian-12.md
+# qemu-kvm installer - Debian - only work with Intel for now.
+# Mostly based on: https://github.com/daveprowse/virtualization/blob/main/kvm/kvm-install-debian-12/kvm-install-debian-12.md
+# TODO ADD ***AMD virtualisation***
 
 # Copy before editing /etc/default/grub
 GRUB_FILE="/etc/default/grub"
@@ -18,7 +17,7 @@ if [ -z "$GRUB_LINE" ]; then
   exit 1
 fi
 
-# Check if the intel_iommu=on argument is already present                 # ADD AMD ######################################
+# Check if the intel_iommu=on argument is already present                
 if grep -q 'intel_iommu=on' <<< "$GRUB_LINE"; then
   echo "The intel_iommu=on argument is already present in the GRUB_CMDLINE_LINUX_DEFAULT line."
   exit 0
@@ -60,6 +59,18 @@ sudo virsh net-autostart default
 
 # Restarting the libvirtd service
 systemctl restart libvirtd
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Extra checks  ####################################################
