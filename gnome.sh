@@ -18,6 +18,7 @@ INSTALL_PKGS=(
     'timeshift'
     'vlc'
     'lm-sensors'
+    'firefox'
 )
 
 # PACKAGES TO UNINSTALL
@@ -51,8 +52,8 @@ for PKG in "${INSTALL_PKGS[@]}"; do
 done
 
 # ADD FIREFOX NON-ESR
-echo "Installing Firefox browser..."
-apt install firefox || handle_error
+#echo "Installing Firefox browser..."
+#apt install firefox || handle_error
 #source /home/$USR/debian/firefox.sh || handle_error
 
 # ADD BRAVE REPO AND INSTALL BRAVE WEB BROWSER
