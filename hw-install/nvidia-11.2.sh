@@ -93,9 +93,9 @@ update_initramfs
 timer_stop
 
 # Clear the screen and notify the user
-clear
-echo -e "\n\n\nInstallation completed! Press Enter to continue..."
-read
+#clear
+#echo -e "\n\n\nInstallation completed! Press Enter to continue..."
+#read
 
 # Uncomment to reboot automaticaly at the end of the installation
 # shutdown -r now
