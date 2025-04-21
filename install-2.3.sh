@@ -64,7 +64,7 @@ while true; do
                 ;;
             2)
                 echo "Installing NVIDIA driver $NV_VER..."
-                source "/home/$USR/debian/hw-install/nvidia-11.2.sh"
+                source "/home/$USR/debian/hw-install/nvidia-11.3.sh"
                 ;;
             3)
                 echo "Installing WiFi BCM4360..."
