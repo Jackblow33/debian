@@ -60,7 +60,7 @@ while true; do
         case $choice in
             1)
                 echo "Updating system..."
-                sudo apt update && sudo apt upgrade -y
+                apt update && apt upgrade -y
                 #echo "System updated. Press [enter] to continue."
                 #read -r enterKey
                 ;;
