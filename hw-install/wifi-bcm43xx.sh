@@ -3,9 +3,8 @@
 #2025-04-20
 
 # Execute as root
-# Script to install Broadcom drivers for iMac BCM4360
+# Script to install Broadcom drivers for iMac BCM4360 and other models - check wiki
 # Source: https://wiki.debian.org/wl
-
 
 # Start timer
 timer_start
@@ -18,21 +17,21 @@ timer_start
 #echo "deb http://deb.debian.org/debian/ trixie non-free contrib" >> /etc/apt/sources.list || handle_error
 
 # Update package lists
-echo "Updating package lists..."
+echo -e "${YELLOW}Updating package lists...${NC}"
 apt update
 
 # Install necessary packages
-echo "Installing Broadcom drivers and kernel headers..."
+echo -e "${YELLOW}Installing Broadcom drivers and kernel headers...${NC}"
 apt-get install -y linux-image-$(uname -r | sed 's,[^-]*-[^-]*-,,') \
                    linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') \
                    broadcom-sta-dkms || handle_error
 
 # Unload conflicting modules
-echo "Unloading conflicting modules..."
+echo -e "${YELLOW}Unloading conflicting modules...${NC}"
 modprobe -r b44 b43 b43legacy ssb brcmsmac bcma || handle_error
 
 # Load the Broadcom driver
-echo "Loading Broadcom driver..."
+echo -e "${GREEN}Loading Broadcom driver...${NC}"
 modprobe -r wl && modprobe wl || handle_error
 
 # Stop timer
