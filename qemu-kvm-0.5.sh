@@ -55,13 +55,13 @@ apt install -y qemu-kvm qemu-utils libvirt-daemon-system libvirt-clients virtins
 systemctl --now enable libvirtd || error_handler
 
 # Add the user to the necessary groups
-echo "Adding user $USER to the required groups..."
-usermod -aG libvirt $USER
-# usermod -aG libvirt-qemu $USER
-# usermod -aG kvm $USER
-# usermod -aG input $USER
-# usermod -aG disk $USER
-echo "User $USER has been added to the required groups."
+echo "Adding user $USR to the required groups..."
+usermod -aG libvirt $USR
+# usermod -aG libvirt-qemu $USR
+# usermod -aG kvm $USR
+# usermod -aG input $USR
+# usermod -aG disk $USR
+echo "User $USR has been added to the required groups."
 
 
 # Set Virsh to autostart whenever the system is rebooted
