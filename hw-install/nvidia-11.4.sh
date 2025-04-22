@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#2025-04-21
-# WORKING, close to stable          # Done! - ADD NOUVEAU BLACKLIST | TODO - notif files modifications from 11.1
-                                    # TODO - Add MangoHud https://github.com/flightlessmango/MangoHud
+#2025-04-22
+# WORKING, close to stable          
+# TODO - Add MangoHud https://github.com/flightlessmango/MangoHud
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
 # Linux kernel 6.11 and beyond required
