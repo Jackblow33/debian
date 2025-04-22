@@ -62,8 +62,8 @@ source /home/$USR/debian/brave.sh || handle_error
 sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
 
 # INSTALL QEMU-KVM - Virtualisation
-echo "Installing QEMU-KVM..."
-source "/home/$USR/debian/qemu-kvm-0.5.sh" || handle_error
+#echo "Installing QEMU-KVM..."
+#source "/home/$USR/debian/qemu-kvm-0.5.sh" || handle_error
 
 # UNINSTALL PACKAGES
 for PKG in "${UNINSTALL_PKGS[@]}"; do
@@ -95,8 +95,8 @@ apt install  gnome-shell-extension-freon || handle_error
 timer_stop
 
 # Notify user of completion
-echo -e "\n\n\nInstallation completed! Press Enter to reboot..."
-read -r
+#echo -e "\n\n\nInstallation completed! Press Enter to reboot..."
+#read -r
 
 # Comment/Uncomment the following line to reboot or not
-shutdown -r now
+#shutdown -r now
