@@ -50,7 +50,8 @@ while true; do
     echo "                               4. Install custom kernel $KERNEL from USB"
     echo "                               5. Install Gnome"
     echo "                               6. Install Qemu-Kvm virtualization"
-    echo "                               7. Exit"
+    echo "                               7. Reboot system"
+    echo "                               8. Exit"
 
     read -p "                             Enter your choice (e.g., 1-2-5): " choices
 
@@ -83,7 +84,13 @@ while true; do
                 echo "Installing qenu-kvm..."
                 source "/home/$USR/debian/qemu-kvm-0.5.sh"    
                 ;;
+
             7)
+                echo "Reboot system..."
+                shutdown -r now   
+                ;;
+                
+            8)
                 echo "Exiting..."
                 exit 0
                 ;;
