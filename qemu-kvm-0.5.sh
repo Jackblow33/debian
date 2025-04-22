@@ -57,11 +57,15 @@ systemctl --now enable libvirtd || error_handler
 # Add the user to the necessary groups
 echo "Adding user $USR to the required groups..."
 usermod -aG libvirt $USR
-# usermod -aG libvirt-qemu $USR
-# usermod -aG kvm $USR
+usermod -aG kvm $USR
+usermod -aG disk $USR
 # usermod -aG input $USR
-# usermod -aG disk $USR
+# usermod -aG libvirt-qemu $USR
 echo "User $USR has been added to the required groups."
+# Apply the changes immediately in current session without reboot
+newgrp libvirt
+newgrp kvm
+newgrp disk
 
 
 # Set Virsh to autostart whenever the system is rebooted
@@ -70,12 +74,8 @@ sudo virsh net-autostart default || error_handler
 # Restarting the libvirtd service
 systemctl restart libvirtd || error_handler
 
-
-
-
-
-
-
+# Set proper permission for /dev/kvm
+chmod 666 /dev/kvm
 
 
 
