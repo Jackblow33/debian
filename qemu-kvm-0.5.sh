@@ -62,7 +62,7 @@ usermod -aG disk $USR
 # usermod -aG input $USR
 # usermod -aG libvirt-qemu $USR
 echo "User $USR has been added to the required groups."
-# Apply the changes immediately in current session without reboot
+# Apply the changes without reboot
 newgrp libvirt
 newgrp kvm
 newgrp disk
