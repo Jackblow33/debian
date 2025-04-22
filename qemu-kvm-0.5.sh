@@ -17,7 +17,11 @@ elif [[ $VIRTUALIZATION == *"AMD-V"* ]]; then
   echo "AMD virtualization (AMD-V) is enabled."
   GRUB_PARAM="amd_iommu=on"
 else
-  echo "Virtualization is not enabled." || error_handler     #PRESS ENTER TO EXIT-todo
+  echo ""; echo ""; echo "";
+  echo "Virtualization is not enabled."
+  echo 'Virtualization have to be enable trough your bios first.'
+  echo "Press Enter to exit"
+  read
 fi
 
 # Search for the line: GRUB_CMDLINE_LINUX_DEFAULT="quiet*
