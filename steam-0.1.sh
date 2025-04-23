@@ -11,13 +11,8 @@
 #sudo dpkg -i /home/$USR/Downloads/steam.deb || error_handler
 #sudo apt -f install || error_handler
 
-dpkg --add-architecture i386; apt update
-sudo dpkg --configure -a
-sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
-
-
-
-sudo apt update
-sudo apt install software-properties-common apt-transport-https
-sudo add-apt-repository non-free
-sudo apt install -y steam-installer
+dpkg --add-architecture i386
+dpkg --add-architecture i386
+apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+apt install steam-installer
+#  https://wiki.debian.org/Steam
