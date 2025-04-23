@@ -12,6 +12,7 @@
 #sudo apt -f install || error_handler
 
 dpkg --add-architecture i386; apt update
+sudo dpkg --configure -a
 sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
 
 
