@@ -11,8 +11,12 @@
 #sudo dpkg -i /home/$USR/Downloads/steam.deb || error_handler
 #sudo apt -f install || error_handler
 
+dpkg --add-architecture i386; apt update
+sudo apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+
+
 
 sudo apt update
 sudo apt install software-properties-common apt-transport-https
 sudo add-apt-repository non-free
-sudo apt install steam
+sudo apt install -y steam-installer
