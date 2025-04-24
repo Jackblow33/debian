@@ -5,7 +5,7 @@
 # As user
 # If you have it. Put your custom-customization.cfg and/or custom-modprobed.db into /home/$USER/linux-tkg folder
 
-
+#Kernel=xyz
 PATH="/$HOME/linux-tkg/"
 
 while true; do
@@ -17,7 +17,7 @@ while true; do
     echo "3. Use \"custom-customization.cfg\""
     echo "4. Use minimal-modprobed.db"
     echo "5. Use custom-modprobed.db"
-    echo "6. Start TKG-kernel compilation"
+    echo "6. Start Tk-Glitch kernel compilation"
     echo "7. Exit"
 
     read -p "Enter your choice (1-7): " choice
