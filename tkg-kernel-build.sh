@@ -2,8 +2,11 @@
 
 # tkg-kernel-build.sh
 
+# Source: https://www.youtube.com/watch?v=k1LAifKCjWw
+
 # As user
 # If you have it. Put your custom-customization.cfg and/or custom-modprobed.db into /home/$USER/linux-tkg folder
+# NOT WORKING YET. cp customization.cfg $HOME/.source/frogminer/linux-tkg.cfg
 
 #Kernel=xyz
 PATH="/$HOME/linux-tkg/"
