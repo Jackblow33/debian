@@ -9,7 +9,7 @@
 # NOT WORKING YET. cp customization.cfg $HOME/.source/frogminer/linux-tkg.cfg
 
 #Kernel=xyz
-PATH="/$HOME/linux-tkg/"
+PATH="$HOME/linux-tkg/"
 
 while true; do
     clear
@@ -30,17 +30,19 @@ while true; do
         1)
             echo 'Git linux-tkg'
             sudo apt install git
-            cd /$HOME
+            cd $HOME
             git clone https://github.com/Frogging-Family/linux-tkg.git
             read -p "Press Enter to continue" _
             ;;
 
         2)
             echo -e "\e[33medit the \"customization.cfg\" file?\e[0m"
-            sudo nano $PATH/customization.cfg
+            sudo mkdir $HOME/.config/frogminer
+            sudo cp $PATH/customization.cfg $HOME/.config/frogminer/linux-tkg.cfg
+            sudo nano $HOME/.config/frogminer/linux-tkg.cfg
             ;;
         3)
-            echo "Use \"custom-customization.cfg\""
+            echo "Using \"custom-customization.cfg\""
             if [ -f "$PATH/custom-customization.cfg" ]; then
                 if [ -f "$PATH/customization.cfg" ]; then
                     read -p "This will overwrite the existing customization.cfg file. Do you want to continue? (y/n) " confirm
