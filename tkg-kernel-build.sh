@@ -78,4 +78,41 @@ while true; do
         5)
             echo "Using custom-modprobed.db"
             if [ -f "$PATH/custom-modprobed.db" ]; then
-                if [ -f "$HOME/.
+                if [ -f "$HOME/.config/modprobed.db" ]; then
+                    read -p "This will overwrite the existing modprobed.db file. Do you want to continue? (y/n) " confirm
+                    if [ "$confirm" = "y" ]; then
+                        sudo cp $PATH/custom-modprobed.db $HOME/.config/modprobed.db
+                    else
+                        echo "Operation cancelled."
+                        read -p "Press Enter to continue" _
+                    fi
+                else
+                    sudo cp $PATH/custom-modprobed.db $HOME/.config/modprobed.db
+                fi
+            else                
+                echo "custom-modprobed.db not found in $PATH"
+                read -p "Press Enter to continue" _
+            fi
+            ;;
+
+
+        6)
+            echo "Start TKG-kernel compilation"
+            read -p "Kernel compilation may take from 2 minutes to 2 hours. Would you like to proceed? (y/n) " confirm
+            if [ "$confirm" = "y" ]; then
+                $PATH/install.sh install
+            else
+                echo "Operation cancelled."
+                read -p "Press Enter to continue" _
+            fi
+            ;;
+        7)
+            echo "Exiting..."
+            break
+            ;;
+        *)
+            echo "Invalid choice. Please try again."
+            read -p "Press Enter to continue"
+            ;;
+    esac
+done
