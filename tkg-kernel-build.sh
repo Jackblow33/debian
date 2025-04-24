@@ -10,6 +10,7 @@ PATH="/$HOME/linux-tkg/"
 
 while true; do
     clear
+    ech ''; echo ''; echo '';
     echo "What would you like to do?"
     echo "1. Git Frogging-Family/linux-tkg"
     echo "2. Edit the \"customization.cfg\" file?"
