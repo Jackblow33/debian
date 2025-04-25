@@ -4,7 +4,7 @@
 # VARIABLES
 TIMESTAMP=$(date +%Y%m%d.%R)
 NV_VER="570.133.07"  # Default Nvidia Driver version
-KERNEL="6.14.3-tkg-bore"
+KERNEL="KERNEL="6.14.1-tkg-eevdf"
 USR=$(logname) 
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
