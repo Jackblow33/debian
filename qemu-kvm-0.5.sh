@@ -81,9 +81,42 @@ systemctl restart libvirtd || error_handler
 # Set proper permission for /dev/kvm
 chmod 666 /dev/kvm
 
-# Mandatory reboot
-read -p "Press Enter to reboot the system..." -s
-sudo reboot
+echo "Computer is about to reboot. Press ctrl+c to cancel."
+
+for i in {8..1}; do
+    echo "$i..."
+    sleep 1
+done
+echo "Rebooting..."
+reboot
+
+# Countdown before reboot
+#for i in {8..1}
+#do
+#    echo "$i seconds remaining..."
+#    sleep 1
+#done
+#echo "Computer is about to reboot. Press Ctrl+C to cancel."
+#reboot
+
+# V_2
+# Function to display the countdown
+#countdown() {
+#    for i in {8..1}
+#    do
+#        echo "$i seconds remaining..."
+#        sleep 1
+#    done
+#}
+
+# Start the countdown in the background
+#countdown &
+
+# Display the final message
+#echo "Computer is about to reboot. Press Ctrl+C to cancel."
+
+# Wait for the countdown to finish
+#wait
 
 
 
