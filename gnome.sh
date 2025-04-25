@@ -19,6 +19,7 @@ INSTALL_PKGS=(
     'vlc'
     'lm-sensors'
     'firefox'
+    'gnome-shell-extension-prefs'
 )
 
 # PACKAGES TO UNINSTALL
@@ -61,9 +62,11 @@ echo "Installing Brave browser..."
 source /home/$USR/debian/brave.sh || handle_error
 sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
 
-# INSTALL QEMU-KVM - Virtualisation
-#echo "Installing QEMU-KVM..."
-#source "/home/$USR/debian/qemu-kvm-0.5.sh" || handle_error
+# Prepare lm-sensors to generate values for freon gnome extension
+echo "Setting up lm-sensors..."
+sensors-detect --auto || handle_error
+#freon gnome-shell-extension-sensors install
+apt install  gnome-shell-extension-freon || handle_error
 
 # UNINSTALL PACKAGES
 for PKG in "${UNINSTALL_PKGS[@]}"; do
@@ -77,15 +80,6 @@ apt autoremove -y || handle_error
 # Edit NetworkManager configuration
 echo "Configuring NetworkManager..."
 sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf || handle_error
-
-# Install gnome-shell-extension-manager
-apt install gnome-shell-extension-prefs || handle_error
-
-# Prepare lm-sensors to generate values for freon gnome extension
-echo "Setting up lm-sensors..."
-sensors-detect --auto || handle_error
-#freon gnome-shell-extension-sensors install
-apt install  gnome-shell-extension-freon || handle_error
 
 # Add function to right-click and create a new text file
 # Does not work: create a template for new text file
