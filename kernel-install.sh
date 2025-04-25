@@ -53,8 +53,8 @@ fi
 timer_stop
 
 # Prompt user to reboot
-echo -e "\n\n"
-read -p "Press Enter to reboot and load kernel $KERNEL............................>>>"
+# echo -e "\n\n"
+# read -p "Press Enter to reboot and load kernel $KERNEL............................>>>"
 # Uncomment the following line to reboot
 #sudo shutdown -r now
 
