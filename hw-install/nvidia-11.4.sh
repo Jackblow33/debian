@@ -49,8 +49,7 @@ timer_stop() {
 
 # Update package list and install necessary packages
 install_dependencies() {
-    apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 libglvnd-core-dev pkg-config xorg-dev libglvnd0 libglvnd-dev libc-dev || handle_error  #libglvnd0 libglvnd-dev libc-dev
-    # apt install -y mesa-vulkan-drivers
+    apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 libglvnd-core-dev pkg-config || handle_error  #libglvnd0 libglvnd-dev libc-dev
 }
 
 # Download NVIDIA driver
