@@ -81,7 +81,7 @@ systemctl restart libvirtd || error_handler
 # Set proper permission for /dev/kvm
 chmod 666 /dev/kvm
 
-echo "Computer is about to reboot. Press ctrl+c to cancel."
+echo "Will reboot! Press ctrl+c to cancel."
 
 for i in {8..1}; do
     echo "$i..."
