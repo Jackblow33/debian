@@ -41,9 +41,10 @@ fi
 
 # Change to the directory containing the kernel files
 if [ -d "/mnt/usb/_MyFiles/kernels/$KERNEL" ]; then
-    cd "/mnt/usb/_MyFiles/kernels/$KERNEL" || exit
+    cd "/mnt/usb/_MyFiles/kernels/$KERNEL" || handle_error
     echo "Installing kernel packages..."
-    dpkg -i *.deb
+    dpkg -i *.deb || handle_error
+    cd $HOME
 else
     echo "Kernel directory not found: /mnt/usb/_MyFiles/kernels/$KERNEL"
     exit 1
