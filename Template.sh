@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# template.sh
+# Template.sh
 
 TIMESTAMP=$(date +%Y%m%d.%R)
 USR=$(logname)
