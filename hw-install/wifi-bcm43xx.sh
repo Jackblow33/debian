@@ -22,9 +22,7 @@ apt update
 
 # Install necessary packages
 echo -e "${YELLOW}Installing Broadcom drivers and kernel headers...${NC}"
-apt-get install -y linux-image-$(uname -r | sed 's,[^-]*-[^-]*-,,') \
-                   linux-headers-$(uname -r | sed 's,[^-]*-[^-]*-,,') \
-                   broadcom-sta-dkms || handle_error
+apt-get install -y broadcom-sta-dkms || handle_error
 
 # Unload conflicting modules
 echo -e "${YELLOW}Unloading conflicting modules...${NC}"
