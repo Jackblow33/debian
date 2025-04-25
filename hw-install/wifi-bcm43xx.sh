@@ -22,7 +22,7 @@ apt update
 
 # Install
 echo -e "${YELLOW}Installing Broadcom drivers and kernel headers...${NC}"
-apt-get install -y broadcom-sta-dkms || handle_error
+apt-get install -y linux-headers-$(unamer -r) broadcom-sta-dkms || handle_error
 
 # Unload conflicting modules
 echo -e "${YELLOW}Unloading conflicting modules...${NC}"
