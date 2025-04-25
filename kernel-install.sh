@@ -3,13 +3,13 @@
 #2025-04-14
 
 # Define the kernel version (uncomment and set the desired version if not using install.sh to reach this script)
-# 6.14.3-tkg-bore
+# KERNEL="6.14.1-tkg-eevdf"
 
 # Display block devices
 lsblk
 
 # Prompt user for USB device name
-echo -e "\n\n"
+echo -e "\n\n"  # Clear some space in the terminal
 read -p "Enter the USB device name (e.g., sdd1, sdc1): " usb_device_name
 
 # Get information about the specified device
@@ -40,9 +40,8 @@ else
 fi
 
 # Change to the directory containing the kernel files
-PATH="data/kernels/Haswell"
-if [ -d "/mnt/usb/$PATH/$KERNEL" ]; then
-    cd "/mnt/usb/$PATH/$KERNEL" || exit
+if [ -d "/mnt/usb/_MyFiles/kernels/$KERNEL" ]; then
+    cd "/mnt/usb/_MyFiles/kernels/$KERNEL" || exit
     echo "Installing kernel packages..."
     dpkg -i *.deb
 else
