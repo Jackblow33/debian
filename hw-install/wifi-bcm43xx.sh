@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2025-04-20
+#2025-04-24
 
 # Execute as root
 # Script to install Broadcom drivers for iMac BCM4360 and other models - check wiki
