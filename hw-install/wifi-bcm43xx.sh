@@ -20,7 +20,7 @@ timer_start
 echo -e "${YELLOW}Updating package lists...${NC}"
 apt update
 
-# Install necessary packages
+# Install
 echo -e "${YELLOW}Installing Broadcom drivers and kernel headers...${NC}"
 apt-get install -y broadcom-sta-dkms || handle_error
 
