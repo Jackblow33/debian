@@ -36,7 +36,7 @@ done
 
 # Install Brave browser
 echo "Installing Brave browser..."
-source /home/$USR/debian/brave.sh
+source /home/$USR/debian/stable/brave.sh
 
 # Remove unnecessary applications
 echo "Removing unnecessary applications..."
