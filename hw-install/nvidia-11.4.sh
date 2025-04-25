@@ -2,7 +2,7 @@
 
 #2025-04-22
 # WORKING, close to stable          
-# TODO - Add MangoHud https://github.com/flightlessmango/MangoHud
+# TODO - ADD CHECK IF NV HAVE BLACKLIST NOUVEAU ALREADY. Add MangoHud https://github.com/flightlessmango/MangoHud
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 12 - Trixie & Sid. Untested on Stable but might work.
 # Linux kernel 6.11 and beyond required
