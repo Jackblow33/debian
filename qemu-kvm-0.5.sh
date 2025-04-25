@@ -81,6 +81,9 @@ systemctl restart libvirtd || error_handler
 # Set proper permission for /dev/kvm
 chmod 666 /dev/kvm
 
+# Mandatory reboot
+read -p "Press Enter to reboot the system..." -s
+sudo reboot
 
 
 
