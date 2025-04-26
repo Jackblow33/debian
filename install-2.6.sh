@@ -33,7 +33,7 @@ handle_error() {
 }
 
 # Function to display the reboot countdown
-countdown() {
+reboot_countdown() {
     echo "Will reboot (Press ctrl+c to abort)..."
     for i in {30..1}
     do
@@ -105,7 +105,8 @@ while true; do
 
             7)
                 echo "Reboot system..."
-                shutdown -r now   
+                # shutdown -r now
+                reboot_countdown
                 ;;
                 
             8)
