@@ -93,7 +93,7 @@ while true; do
         case $choice in
             1)
                 echo "Updating system..."
-                apt update && apt upgrade -y
+                apt modernize-sources -y && apt update && apt upgrade -y
                 ;;
             2)
                 echo "Installing NVIDIA driver $NV_VER..."
