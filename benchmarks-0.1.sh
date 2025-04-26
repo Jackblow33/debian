@@ -39,17 +39,26 @@ root_check() {
 
 
 unigine_heaven() {
-	wget -P /home/jack/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
-	sudo chmod +x /home/jack/Downloads/Unigine_Heaven-4.0.run
-	sudo mkdir $BENCHMARKS_PATH
+	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
+	chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
+	mkdir $BENCHMARKS_PATH
 	cd $BENCHMARKS_PATH
-	sudo /home/jack/Downloads/Unigine_Heaven-4.0.run
+	/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
+	rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
 
 
 
-item_2() {
-    echo "item_2"
+unigine_superposition() {
+    	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Superposition-1.1.run
+    	chmod a+x /home/$USR/Downloads/Unigine_Superposition-1.1.run
+	#mkdir $BENCHMARKS_PATH
+	cd $BENCHMARKS_PATH
+	/home/$USR/Downloads/Unigine_Superposition-1.1.run
+	# /home/$USR/Benchmarks/Unigine_Superposition-1.1/Superposition
+	# /opt/home/jack/Downloads/Unigine_Superposition-1.1/bin/Superposition
+
+	
 }
 
 
@@ -64,7 +73,7 @@ item_3() {
 # Main script execution
 #root_check
 timer_start
-unigine_heaven
-item_2
+#unigine_heaven
+unigine_superposition
 item_3
 timer_stop
