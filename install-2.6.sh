@@ -33,14 +33,27 @@ handle_error() {
 }
 
 # Function to display the reboot countdown
-reboot_countdown() {
-    echo "Will reboot (Press ctrl+c to abort)..."
-    for i in {30..1}
-    do
-        echo "$i seconds remaining..."
+countdown_reboot() {
+    local countdown_time=15
+
+    # Function to handle Ctrl+C signal
+    handle_sigint() {
+        echo "Countdown interrupted. Exiting..."
+        exit 0
+    }
+
+    # Trap the Ctrl+C signal and call the handle_sigint function
+    trap handle_sigint SIGINT
+
+    # Countdown loop
+    for ((i=$countdown_time; i>0; i--)); do
+        clear
+        echo "Rebooting in $i seconds. Press Ctrl+C to cancel."
         sleep 1
     done
-    echo "Rebooting now..."
+
+    # Reboot the system if Ctrl+C was not pressed
+    echo "Rebooting system..."
     reboot
 }
 
@@ -106,7 +119,7 @@ while true; do
             7)
                 echo "Reboot system..."
                 # shutdown -r now
-                reboot_countdown
+                countdown_reboot
                 ;;
                 
             8)
