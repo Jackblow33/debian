@@ -62,11 +62,8 @@ echo "Installing Brave browser..."
 source /home/$USR/debian/brave.sh || handle_error
 sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
 
-# Prepare lm-sensors to generate values for freon gnome extension
-echo "Setting up lm-sensors..."
-sensors-detect --auto || handle_error
-#freon gnome-shell-extension-sensors install
-apt install  gnome-shell-extension-freon || handle_error
+# Install gnome extensions
+source /home/$USR/debian/gnome-extensions.sh || handle_error
 
 # UNINSTALL PACKAGES
 for PKG in "${UNINSTALL_PKGS[@]}"; do
