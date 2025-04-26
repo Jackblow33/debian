@@ -11,12 +11,12 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m'  # No color
 
-# Function
+# Functions
 timer_start() {
     BEGIN=$(date +%s)
 }
 
-# Function
+# Functions
 timer_stop() {
     NOW=$(date +%s)
     DIFF=$((NOW - BEGIN))
@@ -25,48 +25,25 @@ timer_stop() {
     echo "Time elapsed: $MINS:$(printf %02d $SECS)"
 }
 
-# Function press_enter_to_continue
-press_enter_to_continue() {
-    read -p "Press Enter to continue..." -n1 -s
-    echo
-}
-
-# Function press_enter_to_reboot
-press_enter_to_reboot() {
-    read -p "Press Enter to reboot the system..." -n1 -s
-    echo
-    sudo reboot
-}
-
 # Function to handle errors
 handle_error() {
     echo "Error occurred in the script. Exiting."
     exit 1
 }
 
-# Function reboot countdown
-reboot_countdown() {
-    countdown_time=30
-
-    # Function to handle Ctrl+C signal
-    handle_sigint() {
-        echo "Countdown interrupted. Exiting..."
-        exit 0
-    }
-
-    # Countdown loop
-    for ((i=$countdown_time; i>0; i--)); do
-        clear
-        echo "Rebooting in $i seconds. Press Ctrl+C to cancel."
+# Function to display the reboot countdown
+countdown() {
+    echo "Will reboot (Press ctrl+c to abort)..."
+    for i in {30..1}
+    do
+        echo "$i seconds remaining..."
         sleep 1
     done
-    
-    echo "Rebooting system..."
+    echo "Rebooting now..."
     reboot
 }
 
-
-# Function root checker
+# Root check
 root_check() {
 if [ "$EUID" -ne 0 ]; then
   echo "This script must be run as root."
