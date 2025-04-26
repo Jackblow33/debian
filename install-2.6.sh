@@ -11,12 +11,12 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m'  # No color
 
-# Functions
+# Function
 timer_start() {
     BEGIN=$(date +%s)
 }
 
-# Functions
+# Function
 timer_stop() {
     NOW=$(date +%s)
     DIFF=$((NOW - BEGIN))
@@ -31,7 +31,7 @@ handle_error() {
     exit 1
 }
 
-# Function Reboot countdown
+# Function reboot countdown
 reboot_countdown() {
     countdown_time=30
 
@@ -53,7 +53,7 @@ reboot_countdown() {
 }
 
 
-# Root check
+# Function root checker
 root_check() {
 if [ "$EUID" -ne 0 ]; then
   echo "This script must be run as root."
