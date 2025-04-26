@@ -33,7 +33,7 @@ handle_error() {
 
 # Function to display the reboot countdown
 countdown() {
-    echo "Will reboot! Press ctrl+c to cancel."
+    echo "Will reboot (Press ctrl+c to abort)"
     for i in {30..1}
     do
         echo "$i seconds remaining..."
