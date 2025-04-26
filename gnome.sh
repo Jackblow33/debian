@@ -60,7 +60,7 @@ done
 # INSTALL BRAVE REPO AND INSTALL BRAVE WEB BROWSER
 echo "Installing Brave browser..."
 source /home/$USR/debian/brave.sh || handle_error
-sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
+# sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
 
 # Install gnome extensions
 source /home/$USR/debian/gnome-extensions.sh || handle_error
