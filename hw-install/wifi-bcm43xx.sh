@@ -29,8 +29,8 @@ echo -e "${YELLOW}Unloading conflicting modules...${NC}"
 modprobe -r b44 b43 b43legacy ssb brcmsmac bcma || handle_error
 
 # Load the Broadcom driver
-echo -e "${GREEN}Loading Broadcom driver...${NC}"
-modprobe -r wl && modprobe wl || handle_error
+# echo -e "${GREEN}Loading Broadcom driver...${NC}"
+# modprobe -r wl && modprobe wl || handle_error
 
 # Stop timer
 timer_stop
