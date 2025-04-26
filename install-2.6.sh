@@ -86,7 +86,7 @@ while true; do
                 ;;
             3)
                 echo "Installing WiFi BCM4360..."
-                source "/home/$USR/debian/hw-install/wifi-bcm43xx.sh"
+                source "/home/$USR/debian/hw-install/wifi-bcm43xx-0.1.sh"
                 ;;
             4)
                 echo "Installing custom kernel $KERNEL from USB..."
