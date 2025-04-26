@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Template.sh
+# Date modified: 2025-00-00
 
 TIMESTAMP=$(date +%Y%m%d.%R)
 USR=$(logname)
