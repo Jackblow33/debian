@@ -29,6 +29,7 @@ timer_stop() {
 # Function to handle errors
 handle_error() {
     echo "Error occurred in the script. Exiting."
+    sleep 2
     exit 1
 }
 
