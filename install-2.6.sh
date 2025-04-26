@@ -25,6 +25,19 @@ timer_stop() {
     echo "Time elapsed: $MINS:$(printf %02d $SECS)"
 }
 
+# Function press_enter_to_continue
+press_enter_to_continue() {
+    read -p "Press Enter to continue..." -n1 -s
+    echo
+}
+
+# Function press_enter_to_reboot
+press_enter_to_reboot() {
+    read -p "Press Enter to reboot the system..." -n1 -s
+    echo
+    sudo reboot
+}
+
 # Function to handle errors
 handle_error() {
     echo "Error occurred in the script. Exiting."
