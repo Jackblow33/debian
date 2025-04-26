@@ -41,10 +41,10 @@ root_check() {
 unigine_heaven() {
 	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
 	chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
-	mkdir $BENCHMARKS_PATH
-	cd $BENCHMARKS_PATH
-	/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
-	rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
+	#mkdir $BENCHMARKS_PATH
+	#cd $BENCHMARKS_PATH
+	#/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
+	#rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
 
 
@@ -52,10 +52,10 @@ unigine_heaven() {
 unigine_superposition() {
     	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Superposition-1.1.run
     	chmod a+x /home/$USR/Downloads/Unigine_Superposition-1.1.run
-	mkdir $BENCHMARKS_PATH
-	cd $BENCHMARKS_PATH
-	/home/$USR/Downloads/Unigine_Superposition-1.1.run || handle_error
- 	rm -f /home/$USR/Downloads/Unigine_Superposition-1.1.run
+	#mkdir $BENCHMARKS_PATH
+	#cd $BENCHMARKS_PATH
+	#/home/$USR/Downloads/Unigine_Superposition-1.1.run || handle_error
+ 	#rm -f /home/$USR/Downloads/Unigine_Superposition-1.1.run
 }
 
 
@@ -63,19 +63,19 @@ unigine_superposition() {
 unigine_valley() {
    	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run
    	chmod a+x /home/$USR/Downloads/Unigine_Valley-1.0.run
-   	mkdir $BENCHMARKS_PATH
-	cd $BENCHMARKS_PATH
-	/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
- 	rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
+   	#mkdir $BENCHMARKS_PATH
+	#cd $BENCHMARKS_PATH
+	#/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
+ 	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
 
 
 
 
 # Main script execution
-#root_check
+root_check
 timer_start
 unigine_heaven
-#unigine_superposition
+unigine_superposition
 unigine_valley
 timer_stop
