@@ -64,9 +64,10 @@ install_nvidia_driver() {
     ./"NVIDIA-Linux-x86_64-${NV_VER}.run" || handle_error
 }
 
+
+
 # Blacklist nouveau, backup and update GRUB configuration with new kernel boot flags
 update_grub_config() {
-
 # Check if the blacklist entries are there, if not add them
     if ! grep -q "blacklist nouveau" "/etc/modprobe.d/blacklist-nouveau.conf"; then
     echo "blacklist nouveau" >> /etc/modprobe.d/blacklist-nouveau.conf
@@ -74,25 +75,31 @@ update_grub_config() {
     if ! grep -q "options nouveau modeset=0" "/etc/modprobe.d/blacklist-nouveau.conf"; then
         echo "options nouveau modeset=0" >> /etc/modprobe.d/blacklist-nouveau.conf
     fi
-    
     echo "Nouveau driver has been blacklisted. System have to be reboot for the changes to take effect."
                 
-                # Copy before editing /etc/default/grub file.
-                 sudo cp /etc/default/grub /etc/default/grub.BAK_OG_$TIMESTAMP || handle_error
 
-                # Disable original GRUB_CMDLINE_LINUX_DEFAULT line.
-                  sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT/#GRUB_CMDLINE_LINUX_DEFAULT/' /etc/default/grub || handle_error
 
-                # Add a new GRUB_CMDLINE_LINUX_DEFAULT with options: nvidia-drm.modeset=1        # and intel_iommu=on_(use for virtualisation)
-                  #echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1 intel_iommu=on"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
-                  echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
-                # Update the GRUB configuration
-                  update-grub || handle_error
+
+
+# Copy before editing /etc/default/grub file.
+    sudo cp /etc/default/grub /etc/default/grub.BAK_OG_$TIMESTAMP || handle_error
+# Disable original GRUB_CMDLINE_LINUX_DEFAULT line.
+    sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT/#GRUB_CMDLINE_LINUX_DEFAULT/' /etc/default/grub || handle_error
+# Add a new GRUB_CMDLINE_LINUX_DEFAULT with options: nvidia-drm.modeset=1        # and intel_iommu=on_(use for virtualisation)
+                  #OLD  #echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1 intel_iommu=on"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
+    echo 'GRUB_CMDLINE_LINUX_DEFAULT="quiet nvidia-drm.modeset=1"' | sudo tee -a /etc/default/grub || handle_error   # Add argument "splash" To enable boot splash screen
+# Update the GRUB configuration
+    update-grub || handle_error
               
-                # Checking the kernel boot arguments added to command line
-                # cat /proc/cmdline
+# Checking the kernel boot arguments added to command line
+    # cat /proc/cmdline
 
 }
+
+
+
+
+
 
 # Fix Gnome for NVIDIA
 fix_gnome_for_nvidia() {
