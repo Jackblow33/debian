@@ -19,7 +19,7 @@ INSTALL_PKGS=(
     'vlc'
     'lm-sensors'
     'firefox'
-    'gnome-shell-extension-prefs'
+#    'gnome-shell-extension-prefs'
 )
 
 # PACKAGES TO UNINSTALL
