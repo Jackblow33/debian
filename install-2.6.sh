@@ -33,9 +33,9 @@ handle_error() {
     exit 1
 }
 
-# Function to display the reboot countdown
+# Function reboot countdown 10sec.
 countdown_reboot() {
-    local countdown_time=15
+    local countdown_time=10
 
     # Function to handle Ctrl+C signal
     handle_sigint() {
@@ -109,7 +109,7 @@ while true; do
                 ;;
             5)
                 echo "Installing Gnome..."
-                source "/home/$USR/debian/gnome.sh"
+                source "/home/$USR/debian/gnome-0.1.sh"
                 ;;
            
             6)
@@ -119,7 +119,6 @@ while true; do
 
             7)
                 echo "Reboot system..."
-                # shutdown -r now
                 countdown_reboot
                 ;;
                 
