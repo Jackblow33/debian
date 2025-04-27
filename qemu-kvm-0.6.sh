@@ -80,8 +80,6 @@ systemctl restart libvirtd || error_handler
 # Set proper permission for /dev/kvm
 #chmod 666 /dev/kvm
 
-countdown
-
 
 
 # Extra checks  ####################################################
