@@ -9,7 +9,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m'  # No color
-BENCHMARKS_PATH="/home/jack/Benchmarks"
+BENCHMARKS_PATH="/home/$USR/Benchmarks"
 
 timer_start() {
     BEGIN=$(date +%s)
@@ -71,11 +71,23 @@ unigine_valley() {
 
 
 
+geekbench() 
+   	wget -P /home/$USR/Downloads https://cdn.geekbench.com/Geekbench-6.4.0-Linux.tar.gz
+    	tar -xvf /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
+   	#mkdir $BENCHMARKS_PATH
+    	mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $BENCHMARKS_PATH
+	#cd $BENCHMARKS_PATH
+ 	#rm -f /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
+}
+
+
+
 
 # Main script execution
 root_check
 timer_start
 unigine_heaven
-unigine_superposition
+#unigine_superposition
 unigine_valley
+geekbench
 timer_stop
