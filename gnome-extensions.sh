@@ -37,6 +37,12 @@ fi
 }
 
 
+ext_manager() {
+apt install -y gnome-shell-extension-prefs
+}
+
+
+
 
 gnome_check() {
     # Check if the user is running GNOME
@@ -100,6 +106,7 @@ freon() {
 # Main script execution
 root_check
 timer_start
+ext_manager
 #gnome_check
 #dash_to_panel
 dash_to_dock
