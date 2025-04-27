@@ -83,6 +83,9 @@ geekbench()
 
 
 
+
+
+
 # Main script execution
 root_check
 timer_start
