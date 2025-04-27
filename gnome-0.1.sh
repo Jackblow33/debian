@@ -25,6 +25,7 @@ UNINSTALL_PKGS=(
     'gnome-tour'
     'gnome-calendar'
     'gnome-clocks'
+    'gnome-keyring'
     'yelp'
     'totem'
     'totem-plugins'
