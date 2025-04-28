@@ -1,12 +1,13 @@
 
 #!/bin/bash
-#2025-04-27
+#2025-04-28
 
 # VARIABLES
+USR=$(logname)
+SH_PATH="/home/$USR/debian"
 TIMESTAMP=$(date +%Y%m%d.%R)
 NV_VER="570.133.07"  # Default Nvidia Driver version
 KERNEL="6.14.3-tkg-bore"
-USR=$(logname) 
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 RED='\033[0;31m'
@@ -68,8 +69,8 @@ fi
 
 root_check
 
-# Grant read, write, and execute permissions recursively to the root and user, and read permissions only to others.
-sudo chmod -R 775 /home/$USR/debian
+# Grant read, write, and execute permissions recursively to the root, user and others.
+sudo chmod -R 777 $SH_PATH
 
 # Main menu
 while true; do
@@ -97,24 +98,24 @@ while true; do
                 ;;
             2)
                 echo "Installing NVIDIA driver $NV_VER..."
-                source "/home/$USR/debian/hw-install/nvidia-11.4.sh"
+                source "$SH_PATH/hw-install/nvidia-11.4.sh"
                 ;;
             3)
                 echo "Installing WiFi BCM4360..."
-                source "/home/$USR/debian/hw-install/wifi-bcm43xx-0.1.sh"
+                source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
                 ;;
             4)
                 echo "Installing custom kernel $KERNEL from USB..."
-                source "/home/$USR/debian/kernel-install.sh"
+                source "$SH_PATH/kernel-install.sh"
                 ;;
             5)
                 echo "Installing Gnome..."
-                source "/home/$USR/debian/gnome-0.1.sh"
+                source "$SH_PATH/gnome-0.1.sh"
                 ;;
            
             6)
                 echo "Installing qenu-kvm..."
-                source "/home/$USR/debian/qemu-kvm-0.6.sh"    
+                source "$SH_PATH/qemu-kvm-0.6.sh"    
                 ;;
 
             7)
