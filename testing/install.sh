@@ -71,8 +71,8 @@ fi
 
 root_check
 
-# Grant read, write, and execute permissions recursively to the root and user, and read permissions only to others.
-sudo chmod -R 77 /home/$USR/debian
+# Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
+sudo chmod -R 777 /home/$USR/debian
 
 # Main menu
 while true; do
