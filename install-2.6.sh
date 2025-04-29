@@ -69,8 +69,8 @@ fi
 
 root_check
 
-# Grant read, write, and execute permissions recursively to the root, user and others.
-sudo chmod -R 777 $SH_PATH
+# Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
+chmod -R 777 $SH_PATH
 
 # Main menu
 while true; do
@@ -94,7 +94,7 @@ while true; do
         case $choice in
             1)
                 echo "Updating system..."
-                apt modernize-sources -y && apt update && apt upgrade -y
+                apt update && apt upgrade -y
                 ;;
             2)
                 echo "Installing NVIDIA driver $NV_VER..."
