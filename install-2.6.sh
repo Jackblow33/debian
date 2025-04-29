@@ -62,10 +62,24 @@ countdown_reboot() {
 # Root check
 root_check() {
 if [ "$EUID" -ne 0 ]; then
-  echo "This script must be run as root."
+  echo "This script must be executed as root!! Exiting......."
   exit 1
 fi
 }
+
+
+# User check. If root, script will exit
+user_check() {
+if [[ $EUID -eq 0 ]]; then
+    echo "This script should be executed as root!! Exiting......."
+    exit 1
+fi
+}
+
+
+###############################################################################################################
+
+
 
 root_check
 
