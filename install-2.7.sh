@@ -98,6 +98,10 @@ while true; do
 
     if [ $? -eq 0 ]; then
         IFS=' ' read -ra selected_choices <<< "$choices"
+        if [ ${#selected_choices[@]} -eq 0 ]; then
+            echo "No options selected. Exiting..."
+            exit 0
+        fi
         for choice in "${selected_choices[@]}"; do
             case $choice in
                 "Update System")
