@@ -88,50 +88,45 @@ chmod -R 777 $SH_PATH
 # Main menu
 while true; do
     choices=$(whiptail --title "Main Menu" --checklist "Please select the options:" 20 78 10 \
-        "1" "Update System" off \
-        "2" "Install NVIDIA driver $NV_VER" off \
-        "3" "Install WiFi BCM4360" off \
-        "4" "Install custom kernel $KERNEL from USB" off \
-        "5" "Install Gnome" off \
-        "6" "Install Qemu-Kvm virtualization" off \
-        "7" "Reboot system" off \
-        "8" "Exit" off 3>&1 1>&2 2>&3)
+        "Update System" off \
+        "Install NVIDIA driver $NV_VER" off \
+        "Install WiFi BCM4360" off \
+        "Install custom kernel $KERNEL from USB" off \
+        "Install Gnome" off \
+        "Install Qemu-Kvm virtualization" off \
+        "Reboot system" off 3>&1 1>&2 2>&3)
 
     if [ $? -eq 0 ]; then
         IFS=' ' read -ra selected_choices <<< "$choices"
         for choice in "${selected_choices[@]}"; do
             case $choice in
-                1)
+                "Update System")
                     echo "Updating system..."
                     apt update && apt upgrade -y
                     ;;
-                2)
+                "Install NVIDIA driver $NV_VER")
                     echo "Installing NVIDIA driver $NV_VER..."
                     source "$SH_PATH/hw-install/nvidia-11.4.sh"
                     ;;
-                3)
+                "Install WiFi BCM4360")
                     echo "Installing WiFi BCM4360..."
                     source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
                     ;;
-                4)
+                "Install custom kernel $KERNEL from USB")
                     echo "Installing custom kernel $KERNEL from USB..."
                     source "$SH_PATH/kernel-install.sh"
                     ;;
-                5)
+                "Install Gnome")
                     echo "Installing Gnome..."
                     source "$SH_PATH/gnome-0.1.sh"
                     ;;
-                6)
+                "Install Qemu-Kvm virtualization")
                     echo "Installing qenu-kvm..."
                     source "$SH_PATH/qemu-kvm-0.6.sh"
                     ;;
-                7)
+                "Reboot system")
                     echo "Reboot system..."
                     countdown_reboot
-                    ;;
-                8)
-                    echo "Exiting..."
-                    exit 0
                     ;;
                 *)
                     echo "Invalid choice. Please try again."
