@@ -75,19 +75,6 @@ if [[ $EUID -eq 0 ]]; then
 fi
 }
 
-# Function to display menu
-display_menu() {
-    local menu_choice
-    menu_choice=$(whiptail --title "System Configuration Menu" --menu "Choose an option:" 20 78 12 \
-        "Update system" "Updating system..." \
-        "Install NVIDIA driver $NV_VER" "Installing NVIDIA driver $NV_VER..." \
-        "Install WiFi BCM4360" "Installing WiFi BCM4360..." \
-        "Install custom kernel $KERNEL from USB" "Installing custom kernel $KERNEL from USB..." \
-        "Install Gnome" "Installing Gnome..." \
-        "Install Qemu-Kvm virtualization" "Installing qemu-kvm..." \
-        "Reboot system" "Rebooting system..." \
-        "Exit" "Exiting..." 3>&1 1>&2 2>&3)
-
 
 ###############################################################################################################
 
@@ -95,34 +82,47 @@ display_menu() {
 # Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
 chmod -R 777 $SH_PATH
 
-  case $menu_choice in
+# Function to display the menu
+display_menu() {
+    local menu_choice
+    menu_choice=$(whiptail --title "System Configuration Menu" --menu "Choose an option:" 20 78 12 \
+        "Update system"                                 "Updating system..." \
+        "Install NVIDIA driver $NV_VER"                 "Installing NVIDIA driver $NV_VER..." \
+        "Install WiFi BCM4360"                           "Installing WiFi BCM4360..." \
+        "Install custom kernel $KERNEL from USB"        "Installing custom kernel $KERNEL from USB..." \
+        "Install Gnome"                                  "Installing Gnome..." \
+        "Install Qemu-Kvm virtualization"               "Installing qemu-kvm..." \
+        "Reboot system"                                  "Rebooting system..." \
+        "Exit"                                           "Exiting..." 3>&1 1>&2 2>&3)
+
+    case $menu_choice in
         "Update system")
             echo "Updating system..."
             apt update && apt upgrade -y
             ;;
         "Install NVIDIA driver $NV_VER")
             echo "Installing NVIDIA driver $NV_VER..."
-            source "$SH_PATH/hw-install/nvidia-11.4.sh"
+            source "/path/to/your/scripts/hw-install/nvidia-11.4.sh"
             ;;
         "Install WiFi BCM4360")
             echo "Installing WiFi BCM4360..."
-            source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
+            source "/path/to/your/scripts/hw-install/wifi-bcm43xx-0.1.sh"
             ;;
         "Install custom kernel $KERNEL from USB")
             echo "Installing custom kernel $KERNEL from USB..."
-            source "$SH_PATH/kernel-install.sh"
+            source "/path/to/your/scripts/kernel-install.sh"
             ;;
         "Install Gnome")
             echo "Installing Gnome..."
-            source "$SH_PATH/gnome-0.1.sh"
+            source "/path/to/your/scripts/gnome-0.1.sh"
             ;;
         "Install Qemu-Kvm virtualization")
             echo "Installing qemu-kvm..."
-            source "$SH_PATH/qemu-kvm-0.6.sh"
+            source "/path/to/your/scripts/qemu-kvm-0.6.sh"
             ;;
         "Reboot system")
             echo "Rebooting system..."
-            countdown_reboot
+            reboot
             ;;
         "Exit")
             echo "Exiting..."
@@ -132,8 +132,9 @@ chmod -R 777 $SH_PATH
             echo "Invalid choice. Please try again."
             ;;
     esac
-} 
+}
 
 # Call the display_menu function
 root_check
 display_menu
+
