@@ -77,6 +77,10 @@ if [[ $EUID -eq 0 ]]; then
 fi
 }
 
+# Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
+set_permission() {
+    chmod -R 777 $SH_PATH
+}
 
 # Function to display the menu
 display_menu() {
@@ -131,11 +135,9 @@ display_menu() {
 }
 
 
-# Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
-chmod -R 777 $SH_PATH
-
-
-
-# Call the display_menu function
+# Main script execution
 root_check
+set_permission
 display_menu
+
+
