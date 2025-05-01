@@ -86,14 +86,14 @@ chmod -R 777 $SH_PATH
 display_menu() {
     local menu_choice
     menu_choice=$(whiptail --title "System Configuration Menu" --menu "Choose an option:" 20 78 12 \
-        "Update system"                                 "Updating system..." \
-        "Install NVIDIA driver $NV_VER"                 "Installing NVIDIA driver $NV_VER..." \
-        "Install WiFi BCM4360"                           "Installing WiFi BCM4360..." \
-        "Install custom kernel $KERNEL from USB"        "Installing custom kernel $KERNEL from USB..." \
-        "Install Gnome"                                  "Installing Gnome..." \
-        "Install Qemu-Kvm virtualization"               "Installing qemu-kvm..." \
-        "Reboot system"                                  "Rebooting system..." \
-        "Exit"                                           "Exiting..." 3>&1 1>&2 2>&3)
+        "Update system"                           
+        "Install NVIDIA driver $NV_VER"          
+        "Install WiFi BCM4360"                   
+        "Install custom kernel $KERNEL from USB"       
+        "Install Gnome"                             
+        "Install Qemu-Kvm virtualization"             
+        "Reboot system"                      
+        "Exit"
 
     case $menu_choice in
         "Update system")
