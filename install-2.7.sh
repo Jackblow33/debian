@@ -94,9 +94,6 @@ display_menu() {
 ###############################################################################################################
 
 
-
-root_check
-
 # Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
 chmod -R 777 $SH_PATH
 
@@ -154,4 +151,5 @@ chmod -R 777 $SH_PATH
 #}
 
 # Call the display_menu function
+root_check
 display_menu
