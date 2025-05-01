@@ -1,5 +1,7 @@
 #!/bin/bash
-#2025-04-30
+
+# 2025-04-30
+# install-2.7.sh
 
 # VARIABLES
 USR=$(logname)
@@ -76,65 +78,60 @@ fi
 }
 
 
-###############################################################################################################
+# Function to display the menu
+display_menu() {
+    local menu_choice
+    menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 7 \
+        "Update system" "" ON \
+        "Install NVIDIA driver $NV_VER" "" OFF \
+        "Install WiFi BCM4360" "" OFF \
+        "Install custom kernel $KERNEL from USB" "" OFF \
+        "Install Gnome" "" ON \
+        "Install Qemu-Kvm virtualization" "" OFF \
+        "Reboot system" "" ON 3>&1 1>&2 2>&3)
+
+    case $menu_choice in
+        *"Update system"*)
+            echo "Updating system..."
+            apt update && apt upgrade -y
+            ;;
+        *"Install NVIDIA driver $NV_VER"*)
+            echo "Installing NVIDIA driver $NV_VER..."
+            source "/path/to/your/scripts/hw-install/nvidia-11.4.sh"
+            ;;
+        *"Install WiFi BCM4360"*)
+            echo "Installing WiFi BCM4360..."
+            source "/path/to/your/scripts/hw-install/wifi-bcm43xx-0.1.sh"
+            ;;
+        *"Install custom kernel $KERNEL from USB"*)
+            echo "Installing custom kernel $KERNEL from USB..."
+            source "/path/to/your/scripts/kernel-install.sh"
+            ;;
+        *"Install Gnome"*)
+            echo "Installing Gnome..."
+            source "/path/to/your/scripts/gnome-0.1.sh"
+            ;;
+        *"Install Qemu-Kvm virtualization"*)
+            echo "Installing qemu-kvm..."
+            source "/path/to/your/scripts/qemu-kvm-0.6.sh"
+            ;;
+        *"Reboot system"*)
+            echo "Rebooting system..."
+            reboot
+            ;;
+        *)
+            echo "Exiting."
+            ;;
+    esac
+}
+
 
 
 # Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
 chmod -R 777 $SH_PATH
 
-# Function to display the menu
-display_menu() {
-    local menu_choice
-    menu_choice=$(whiptail --title "System Configuration Menu" --menu "Choose an option:" 20 78 12 \
-        "Update system"                           
-        "Install NVIDIA driver $NV_VER"          
-        "Install WiFi BCM4360"                   
-        "Install custom kernel $KERNEL from USB"       
-        "Install Gnome"                             
-        "Install Qemu-Kvm virtualization"             
-        "Reboot system"                      
-        "Exit"
 
-    case $menu_choice in
-        "Update system")
-            echo "Updating system..."
-            apt update && apt upgrade -y
-            ;;
-        "Install NVIDIA driver $NV_VER")
-            echo "Installing NVIDIA driver $NV_VER..."
-            source "/path/to/your/scripts/hw-install/nvidia-11.4.sh"
-            ;;
-        "Install WiFi BCM4360")
-            echo "Installing WiFi BCM4360..."
-            source "/path/to/your/scripts/hw-install/wifi-bcm43xx-0.1.sh"
-            ;;
-        "Install custom kernel $KERNEL from USB")
-            echo "Installing custom kernel $KERNEL from USB..."
-            source "/path/to/your/scripts/kernel-install.sh"
-            ;;
-        "Install Gnome")
-            echo "Installing Gnome..."
-            source "/path/to/your/scripts/gnome-0.1.sh"
-            ;;
-        "Install Qemu-Kvm virtualization")
-            echo "Installing qemu-kvm..."
-            source "/path/to/your/scripts/qemu-kvm-0.6.sh"
-            ;;
-        "Reboot system")
-            echo "Rebooting system..."
-            reboot
-            ;;
-        "Exit")
-            echo "Exiting..."
-            exit 0
-            ;;
-        *)
-            echo "Invalid choice. Please try again."
-            ;;
-    esac
-}
 
 # Call the display_menu function
 root_check
 display_menu
-
