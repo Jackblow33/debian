@@ -75,20 +75,18 @@ if [[ $EUID -eq 0 ]]; then
 fi
 }
 
-
-# Function to display the menu
+# Function to display menu
 display_menu() {
-    local menu_options=(
-        "Update system"
-        "Install NVIDIA driver $NV_VER"
-        "Install WiFi BCM4360"
-        "Install custom kernel $KERNEL from USB"
-        "Install Gnome"
-        "Install Qemu-Kvm virtualization"
-        "Reboot system"
-        "Exit"
-    )
-
+    local menu_choice
+    menu_choice=$(whiptail --title "System Configuration Menu" --menu "Choose an option:" 20 78 12 \
+        "Update system" "Updating system..." \
+        "Install NVIDIA driver $NV_VER" "Installing NVIDIA driver $NV_VER..." \
+        "Install WiFi BCM4360" "Installing WiFi BCM4360..." \
+        "Install custom kernel $KERNEL from USB" "Installing custom kernel $KERNEL from USB..." \
+        "Install Gnome" "Installing Gnome..." \
+        "Install Qemu-Kvm virtualization" "Installing qemu-kvm..." \
+        "Reboot system" "Rebooting system..." \
+        "Exit" "Exiting..." 3>&1 1>&2 2>&3)
 
 
 ###############################################################################################################
@@ -97,10 +95,7 @@ display_menu() {
 # Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
 chmod -R 777 $SH_PATH
 
-    local choice
-    choice=$(whiptail --title "System Configuration Menu" --menu "Choose an option:" 20 78 12 "${menu_options[@]}" 3>&1 1>&2 2>&3)
-
-    case $choice in
+  case $menu_choice in
         "Update system")
             echo "Updating system..."
             apt update && apt upgrade -y
@@ -137,18 +132,7 @@ chmod -R 777 $SH_PATH
             echo "Invalid choice. Please try again."
             ;;
     esac
-}
-
-# Function to display a countdown and reboot the system
-#countdown_reboot() {
-#    local countdown=10
-#    while [ $countdown -gt 0 ]; do
-#        echo "Rebooting in $countdown seconds..."
-#        countdown=$((countdown - 1))
-#        sleep 1
-#    done
-#    reboot
-#}
+} 
 
 # Call the display_menu function
 root_check
