@@ -76,6 +76,21 @@ fi
 }
 
 
+# Function to display the menu
+display_menu() {
+    local menu_options=(
+        "Update system"
+        "Install NVIDIA driver $NV_VER"
+        "Install WiFi BCM4360"
+        "Install custom kernel $KERNEL from USB"
+        "Install Gnome"
+        "Install Qemu-Kvm virtualization"
+        "Reboot system"
+        "Exit"
+    )
+
+
+
 ###############################################################################################################
 
 
@@ -85,61 +100,58 @@ root_check
 # Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
 chmod -R 777 $SH_PATH
 
-# Main menu
-while true; do
-    choices=$(whiptail --title "Main Menu" --checklist "Please select the options:" 20 78 10 \
-        "Update System" off \
-        "Install NVIDIA driver $NV_VER" off \
-        "Install WiFi BCM4360" off \
-        "Install custom kernel $KERNEL from USB" off \
-        "Install Gnome" off \
-        "Install Qemu-Kvm virtualization" off \
-        "Reboot system" off 3>&1 1>&2 2>&3)
+    local choice
+    choice=$(whiptail --title "System Configuration Menu" --menu "Choose an option:" 20 78 12 "${menu_options[@]}" 3>&1 1>&2 2>&3)
 
-    if [ $? -eq 0 ]; then
-        IFS=' ' read -ra selected_choices <<< "$choices"
-        if [ ${#selected_choices[@]} -eq 0 ]; then
-            echo "No options selected. Exiting..."
+    case $choice in
+        "Update system")
+            echo "Updating system..."
+            apt update && apt upgrade -y
+            ;;
+        "Install NVIDIA driver $NV_VER")
+            echo "Installing NVIDIA driver $NV_VER..."
+            source "$SH_PATH/hw-install/nvidia-11.4.sh"
+            ;;
+        "Install WiFi BCM4360")
+            echo "Installing WiFi BCM4360..."
+            source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
+            ;;
+        "Install custom kernel $KERNEL from USB")
+            echo "Installing custom kernel $KERNEL from USB..."
+            source "$SH_PATH/kernel-install.sh"
+            ;;
+        "Install Gnome")
+            echo "Installing Gnome..."
+            source "$SH_PATH/gnome-0.1.sh"
+            ;;
+        "Install Qemu-Kvm virtualization")
+            echo "Installing qemu-kvm..."
+            source "$SH_PATH/qemu-kvm-0.6.sh"
+            ;;
+        "Reboot system")
+            echo "Rebooting system..."
+            countdown_reboot
+            ;;
+        "Exit")
+            echo "Exiting..."
             exit 0
-        fi
-        for choice in "${selected_choices[@]}"; do
-            case $choice in
-                "Update System")
-                    echo "Updating system..."
-                    apt update && apt upgrade -y
-                    ;;
-                "Install NVIDIA driver $NV_VER")
-                    echo "Installing NVIDIA driver $NV_VER..."
-                    source "$SH_PATH/hw-install/nvidia-11.4.sh"
-                    ;;
-                "Install WiFi BCM4360")
-                    echo "Installing WiFi BCM4360..."
-                    source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
-                    ;;
-                "Install custom kernel $KERNEL from USB")
-                    echo "Installing custom kernel $KERNEL from USB..."
-                    source "$SH_PATH/kernel-install.sh"
-                    ;;
-                "Install Gnome")
-                    echo "Installing Gnome..."
-                    source "$SH_PATH/gnome-0.1.sh"
-                    ;;
-                "Install Qemu-Kvm virtualization")
-                    echo "Installing qenu-kvm..."
-                    source "$SH_PATH/qemu-kvm-0.6.sh"
-                    ;;
-                "Reboot system")
-                    echo "Reboot system..."
-                    countdown_reboot
-                    ;;
-                *)
-                    echo "Invalid choice. Please try again."
-                    sleep 2
-                    ;;
-            esac
-        done
-    else
-        echo "No options selected. Exiting..."
-        exit 0
-    fi
-done
+            ;;
+        *)
+            echo "Invalid choice. Please try again."
+            ;;
+    esac
+}
+
+# Function to display a countdown and reboot the system
+#countdown_reboot() {
+#    local countdown=10
+#    while [ $countdown -gt 0 ]; do
+#        echo "Rebooting in $countdown seconds..."
+#        countdown=$((countdown - 1))
+#        sleep 1
+#    done
+#    reboot
+#}
+
+# Call the display_menu function
+display_menu
