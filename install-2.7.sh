@@ -97,27 +97,27 @@ display_menu() {
             ;;
         *"Install NVIDIA driver $NV_VER"*)
             echo "Installing NVIDIA driver $NV_VER..."
-            source "/path/to/your/scripts/hw-install/nvidia-11.4.sh"
+            source "$SH_PATH/hw-install/nvidia-11.4.sh"
             ;;
         *"Install WiFi BCM4360"*)
             echo "Installing WiFi BCM4360..."
-            source "/path/to/your/scripts/hw-install/wifi-bcm43xx-0.1.sh"
+            source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
             ;;
         *"Install custom kernel $KERNEL from USB"*)
             echo "Installing custom kernel $KERNEL from USB..."
-            source "/path/to/your/scripts/kernel-install.sh"
+            source "$SH_PATH/kernel-install.sh"
             ;;
         *"Install Gnome"*)
             echo "Installing Gnome..."
-            source "/path/to/your/scripts/gnome-0.1.sh"
+            source "$SH_PATH/gnome-0.1.sh"
             ;;
         *"Install Qemu-Kvm virtualization"*)
             echo "Installing qemu-kvm..."
-            source "/path/to/your/scripts/qemu-kvm-0.6.sh"
+            source "$SH_PATH/qemu-kvm-0.6.sh"
             ;;
         *"Reboot system"*)
             echo "Rebooting system..."
-            reboot
+            countdown_reboot
             ;;
         *)
             echo "Exiting."
