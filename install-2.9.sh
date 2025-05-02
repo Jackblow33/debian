@@ -117,7 +117,7 @@ display_menu() {
 
     if [[ $menu_choice == *"Install Gnome"* ]]; then
         echo "Installing Gnome..."
-        source "$SH_PATH/gnome-0.1.sh"
+        source "$SH_PATH/gnome-0.2.sh"
     fi
 
     if [[ $menu_choice == *"Install Qemu-Kvm virtualization"* ]]; then
