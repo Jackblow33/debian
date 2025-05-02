@@ -92,26 +92,27 @@ network_edit() {
 }
 
 
+# weak volume default = 40%(0.064) to default = 100%(1.0)
+config_file="/usr/share/wireplumber/wireplumber.conf"
+override_volume_tweak="/home/$USR/.config/wireplumber"
+
 update_wireplumber_config() {
-    # Get the current user's home directory
-    home_dir="/home/$USR"
-    file_path="/home/$USR/.config/wireplumber/wireplumber.conf"
-    config_file="$home_dir/.config/wireplumber/wireplumber.conf"
-
-    # Check if the file exists
-    if [ -f "$config_file" ]; then
-        # Backup the original file
-        backup_file="$config_file.bak"
-        cp "$config_file" "$backup_file"
-
-        # Replace the default value
-        sed -i 's/default = 0.064/default = 1.0/g' "$config_file"
-
-        echo "The wireplumber.conf file has been updated."
-        echo "A backup of the original file has been created at $backup_file."
+    # Check if the directory exists
+    if [ ! -d "$override_volume_tweak" ]; then
+        # Create directory if it does not exist
+        mkdir -p "$override_volume_tweak" || { echo "Failed to create directory: $override_volume_tweak"; exit 1; }
+        echo "Directory created: $override_volume_tweak"
     else
-        echo "The wireplumber.conf file does not exist in $home_dir/.config/wireplumber/"
+        echo "Directory already exists: $override_volume_tweak"
     fi
+
+    # Copy the original file to the user's config directory
+    cp "$config_file" "$override_volume_tweak/wireplumber.conf" || { echo "Failed to copy $config_file to $override_volume_tweak/wireplumber.conf"; exit 1; }
+
+    # Replace the default value in the copied file
+    sed -i 's/default = 0.064/default = 1.0/g' "$override_volume_tweak/wireplumber.conf" || { echo "Failed to update $override_volume_tweak/wireplumber.conf"; exit 1; }
+
+    echo "The wireplumber.conf file has been updated in $override_volume_tweak."
 }
 
 
