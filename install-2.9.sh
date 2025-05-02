@@ -51,8 +51,8 @@ countdown_reboot() {
     # Countdown loop
     for ((i=$countdown_time; i>0; i--)); do
         clear
-        echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-        echo "Rebooting in $i seconds. Press Ctrl+C to cancel."
+        echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+        echo "                                                                                      Rebooting in $i seconds. Press Ctrl+C to cancel."
         sleep 1
     done
 
