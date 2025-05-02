@@ -92,7 +92,7 @@ network_edit() {
 }
 
 
-# weak volume default = 40%(0.064) to default = 100%(1.0)
+# Tweak volume default = 40%(0.064) to default = 100%(1.0)
 config_file="/usr/share/wireplumber/wireplumber.conf"
 override_volume_tweak="/home/$USR/.config/wireplumber"
 
@@ -124,7 +124,7 @@ update_upgrade
 install_pkg
 brave_browser
 gnome_extensions
-uninstall_pkg
+# uninstall_pkg
 rm_unused_dep
 network_edit
 update_wireplumber_config
