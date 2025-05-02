@@ -66,7 +66,7 @@ UNINSTALL_PKGS=(
 #    'yelp'
 #    'totem'
 #    'totem-plugins'
-    'systemsettings'
+    'systemsettings'  # related to kate kde
 #    'gnome-weather'
 #    'gnome-contacts'
 #    'gnome-maps'
