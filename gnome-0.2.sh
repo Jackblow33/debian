@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# gnome-0.1.sh
-# Date modified: 2025-04-27
+# gnome-0.2.sh
+# Date modified: 2025-05-01
 
 
 # PACKAGES TO INSTALL
