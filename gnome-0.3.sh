@@ -47,6 +47,7 @@ INSTALL_PKGS=(
   'gnome-user-share'
   'kate'
   'make'
+  'sassc'
   'gettext'
   'fastfetch'
   'gparted'
