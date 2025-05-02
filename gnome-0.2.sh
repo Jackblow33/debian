@@ -125,7 +125,7 @@ install_pkg
 brave_browser
 gnome_extensions
 # uninstall_pkg
-rm_unused_dep
+# rm_unused_dep
 network_edit
 update_wireplumber_config
 timer_stop
