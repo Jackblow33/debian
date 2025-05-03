@@ -88,9 +88,9 @@ display_menu() {
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 7 \
         "Update system" "" OFF \
         "Install NVIDIA driver" "" OFF \
+        "Install Gnome" "" OFF \
         "Install WiFi BCM4360" "" OFF \
         "Install custom kernel $KERNEL from USB" "" OFF \
-        "Install Gnome" "" OFF \
         "Install Qemu-Kvm virtualization" "" OFF \
         "Reboot system" "" OFF 3>&1 1>&2 2>&3)
 
@@ -105,6 +105,11 @@ display_menu() {
         source "$SH_PATH/hw-install/nvidia-11.7.sh"
     fi
 
+    if [[ $menu_choice == *"Install Gnome"* ]]; then
+        echo "Installing Gnome..."
+        source "$SH_PATH/gnome-0.4.sh"
+    fi
+
     if [[ $menu_choice == *"Install WiFi BCM4360"* ]]; then
         echo "Installing WiFi BCM4360..."
         source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
@@ -113,11 +118,6 @@ display_menu() {
     if [[ $menu_choice == *"Install custom kernel $KERNEL from USB"* ]]; then
         echo "Installing custom kernel $KERNEL from USB..."
         source "$SH_PATH/kernel-install.sh"
-    fi
-
-    if [[ $menu_choice == *"Install Gnome"* ]]; then
-        echo "Installing Gnome..."
-        source "$SH_PATH/gnome-0.4.sh"
     fi
 
     if [[ $menu_choice == *"Install Qemu-Kvm virtualization"* ]]; then
@@ -129,9 +129,6 @@ display_menu() {
         echo "Rebooting system..."
         countdown_reboot
     fi
-
-    # Display the menu again
-    display_menu
 }
 
 
