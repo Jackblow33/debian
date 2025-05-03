@@ -4,7 +4,7 @@
 
 # Set the input file path
 #USR=$(logname)
-input_file="/home/$USR/pkgs-tools/pkgs.list"
+input_file="/home/$USR/debian/pkgs-tools/pkgs.list"
 start_time=$SECONDS
 
 if ! whiptail --title "Debian 13 sid Installation" --yesno "You are about to install Debian 13 sid packages. Would you like to proceed?" 8 60; then
