@@ -109,6 +109,6 @@ timer_start
 dependencies
 #gnome_check
 #dash_to_panel
-dash_to_dock
+#dash_to_dock
 freon
 timer_stop
