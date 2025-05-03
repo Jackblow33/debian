@@ -28,6 +28,7 @@ packages=(
 #    ifupdown
     libreoffice-*
     malcontent
+    shotwell
     simple-scan
     systemsettings
     totem
