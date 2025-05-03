@@ -8,7 +8,7 @@
 # Linux kernel 6.11 and beyond required
 
 USR=$(logname)
-NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
+NV_VER="570.133.07"  # Default Nvidia Driver version 
 TIMESTAMP=$(date +%Y%m%d.%R)
 
 # Display the NVIDIA driver installation warning!
