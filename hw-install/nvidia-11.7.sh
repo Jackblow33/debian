@@ -10,9 +10,9 @@
 # nvidia.sh - Script to install NVIDIA drivers on Debian 13 - Trixie & Sid. Untested on Stable but might work.
 # Linux kernel 6.11 and beyond required
 
-USR=$(logname)
 NV_VER="570.133.07"  # Default Nvidia Driver version
 driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
+USR=$(logname)
 TIMESTAMP=$(date +%Y%m%d.%R)
 
 
