@@ -33,7 +33,7 @@ gnome_extensions() {
 }
 
 debloat() {
-    source /home/$USR/debian/pkgs-tools/debloat.sh || handle_error
+    source /home/$USR/debian/pkgs-tools/debloat-1.0.sh || handle_error
 }
 
 rm_unused_dep() {
