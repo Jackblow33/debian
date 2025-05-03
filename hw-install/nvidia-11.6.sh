@@ -8,7 +8,7 @@
 # Linux kernel 6.11 and beyond required
 
 USR=$(logname)
-# NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
+NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
 TIMESTAMP=$(date +%Y%m%d.%R)
 
 # Display the NVIDIA driver installation warning!
@@ -58,9 +58,9 @@ download_nvidia_driver() {
     local driver_file="NVIDIA-Linux-x86_64-${NV_VER}.run"
     # Check if the driver file already exists
     if [ -f "$driver_file" ]; then
-        echo "The driver file '$driver_file' already exists in the download path. Skipping download."
+        echo "The driver file '$driver_file' already exist. Skipping download."
     else
-        wget -P $download_path "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/${driver_file}" || handle_error
+        wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/${driver_file}" || handle_error
         chmod +x "${driver_file}"
     fi
 }
