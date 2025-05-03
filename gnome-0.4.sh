@@ -17,7 +17,7 @@ tasksel || handle_error
 
 kate() {
    echo "Installing Kate text editor..."
-   apt install kate || handle_error
+   apt install -y kate || handle_error
 }
 
 
