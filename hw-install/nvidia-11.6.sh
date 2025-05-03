@@ -60,7 +60,7 @@ download_nvidia_driver() {
     mkdir -p $download_path
     # Check if the driver file already exists
     if [ -f "$driver_file" ]; then
-        echo "The driver file '$driver_file' already exists in the download path."
+        echo "The driver file '$driver_file' already exists in the download path. Skipping download."
     else
         wget -P $download_path "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/${driver_file}" || handle_error
         chmod +x "${driver_file}"
