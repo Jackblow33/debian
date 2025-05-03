@@ -15,6 +15,11 @@ install_desktop_environment() {
 tasksel || handle_error
 }
 
+kate() {
+   echo "Installing Kate text editor..."
+   apt install kate || handle_error
+}
+
 
 brave_browser() {
    echo "Installing Brave browser..."
