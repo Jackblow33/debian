@@ -37,8 +37,8 @@ fi
 }
 
 
-ext_manager() {
-apt install -y gnome-shell-extension-prefs
+dependencies() {
+apt install -y gnome-shell-extension-prefs sassc
 }
 
 
@@ -106,7 +106,7 @@ freon() {
 # Main script execution
 root_check
 timer_start
-ext_manager
+dependencies
 #gnome_check
 #dash_to_panel
 dash_to_dock
