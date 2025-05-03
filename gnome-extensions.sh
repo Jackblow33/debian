@@ -97,7 +97,7 @@ freon() {
     echo "Setting up lm-sensors..."
     sensors-detect --auto || handle_error
     echo "Installing freon gnome-shell-extension"
-    apt install  gnome-shell-extension-freon || handle_error
+    apt install -y gnome-shell-extension-freon || handle_error
     echo "freon gnome-shell-extension installed"
 
 }
