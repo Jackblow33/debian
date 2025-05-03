@@ -19,7 +19,7 @@ packages=(
     gnome-user-docs
     gnome-weather
     gnome
-    ifupdown
+#    ifupdown
     libreoffice-*
     simple-scan
     totem
