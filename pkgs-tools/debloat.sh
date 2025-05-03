@@ -22,6 +22,7 @@ packages=(
 #    ifupdown
     libreoffice-*
     simple-scan
+    systemsettings
     totem
     totem-plugins
     yelp
@@ -39,7 +40,7 @@ sudo apt-get autoremove -y
 
 # Optionally, clean up package cache
 echo "Cleaning up package cache..."
-sudo apt-get clean
+sudo apt-get clean -y
 
 # Configuring NetworkManager
 sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
