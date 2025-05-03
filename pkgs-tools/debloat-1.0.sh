@@ -14,6 +14,7 @@ packages=(
     gnome-calendar
     gnome-clocks
     gnome-contacts
+    gnome-control-center
     gnome-keyring
     gnome-keyring-pkcs11
     gnome-maps
