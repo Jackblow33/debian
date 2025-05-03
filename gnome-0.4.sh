@@ -83,7 +83,7 @@ brave_browser
 debloat
 rm_unused_dep
 # network_edit
-# update_wireplumber_config
+update_wireplumber_config
 timer_stop
 
 
