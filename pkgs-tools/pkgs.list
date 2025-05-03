@@ -1215,6 +1215,7 @@ libzstd1
 libzvbi-common
 libzvbi0t64
 libzxing3
+lm-sensors
 locales-all
 loupe
 low-memory-monitor
@@ -1325,6 +1326,7 @@ rygel
 samba-libs
 sane-airscan
 sane-utils
+sassc
 sgml-base
 shim-signed
 shim-unsigned
