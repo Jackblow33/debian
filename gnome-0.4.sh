@@ -11,10 +11,8 @@ update_upgrade() {
 }
 
 
-install_packages() {
-input_file="/home/$USR/debian/pkgs-tools/pkgs.list"
-# Install the packages
-sudo apt-get install -y $(cat "$input_file") || handle_error
+install_desktop_environment() {
+tasksel || handle_error
 }
 
 
@@ -72,12 +70,12 @@ update_wireplumber_config() {
 root_check
 timer_start
 update_upgrade
-install_packages
+install_desktop_environment
 brave_browser
 gnome_extensions
 rm_unused_dep
-network_edit
-update_wireplumber_config
+# network_edit
+# update_wireplumber_config
 timer_stop
 
 
