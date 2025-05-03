@@ -66,7 +66,8 @@ install_nvidia_driver() {
 }
 
 
-
+# Blacklist Nouveau driver
+blacklist_nouveau() {
 # Check if the /etc/modprobe.d/nvidia-installer-disable-nouveau.conf file already exists
 if [ -f "/etc/modprobe.d/nvidia-installer-disable-nouveau.conf" ]; then
     echo "File /etc/modprobe.d/nvidia/installer-disable-nouveau.conf already exists"
@@ -78,12 +79,13 @@ else
     if ! grep -q "options nouveau modeset=0" "/etc/modprobe.d/blacklist-nouveau.conf"; then
         echo "options nouveau modeset=0" | sudo tee -a "/etc/modprobe.d/blacklist-nouveau.conf"
     fi
-    echo "Nouveau driver has been blacklisted. System have to be reboot later for the changes to take effect"
+    echo "Nouveau driver has been blacklisted. System have to be reboot later on for the changes to take effect"
 fi
+}
 
 
-
-
+# Add grub entries including iommu used by qemu-kvm virtualization
+edit_grub_config() {
 # Copy before editing /etc/default/grub file.
     sudo cp /etc/default/grub /etc/default/grub.BAK_OG_$TIMESTAMP || handle_error
 # Disable original GRUB_CMDLINE_LINUX_DEFAULT line.
@@ -98,10 +100,6 @@ fi
     # cat /proc/cmdline
 
 }
-
-
-
-
 
 
 # Fix Gnome for NVIDIA
@@ -138,7 +136,8 @@ timer_start
 install_dependencies
 download_nvidia_driver
 install_nvidia_driver
-update_grub_config
+blacklist_nouveau
+edit_grub_config
 fix_gnome_for_nvidia
 fix_nvidia_power_management
 enable_nvidia_services
