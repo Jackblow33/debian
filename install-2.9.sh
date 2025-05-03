@@ -103,7 +103,7 @@ display_menu() {
 
     if [[ $menu_choice == *"Install NVIDIA driver $NV_VER"* ]]; then
         echo "Installing NVIDIA driver $NV_VER..."
-        source "$SH_PATH/hw-install/nvidia-11.5.sh"
+        source "$SH_PATH/hw-install/nvidia-11.6.sh"
     fi
 
     if [[ $menu_choice == *"Install WiFi BCM4360"* ]]; then
