@@ -27,12 +27,14 @@ gnome_extensions() {
    source /home/$USR/debian/gnome-extensions.sh || handle_error
 }
 
+debloat() {
+    source /home/$USR/debian/pkgs-tools/debloat.sh || handle_error
+}
 
 rm_unused_dep() {
     # REMOVE UNUSED DEPENDENCIES
     apt autoremove -y || handle_error
 }
-
 
 
 network_edit() {
@@ -73,6 +75,7 @@ update_upgrade
 install_desktop_environment
 brave_browser
 gnome_extensions
+debloat
 rm_unused_dep
 # network_edit
 # update_wireplumber_config
