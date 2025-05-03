@@ -7,7 +7,6 @@
 USR=$(logname)
 SH_PATH="/home/$USR/debian"
 TIMESTAMP=$(date +%Y%m%d.%R)
-NV_VER="570.133.07"  # Default Nvidia Driver version
 KERNEL="6.14.3-tkg-bore"
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
@@ -88,7 +87,7 @@ display_menu() {
     local menu_choice
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 7 \
         "Update system" "" OFF \
-        "Install NVIDIA driver $NV_VER" "" OFF \
+        "Install NVIDIA driver" "" OFF \
         "Install WiFi BCM4360" "" OFF \
         "Install custom kernel $KERNEL from USB" "" OFF \
         "Install Gnome" "" OFF \
