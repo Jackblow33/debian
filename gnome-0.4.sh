@@ -74,7 +74,7 @@ timer_start
 update_upgrade
 install_desktop_environment
 brave_browser
-gnome_extensions
+# gnome_extensions
 debloat
 rm_unused_dep
 # network_edit
