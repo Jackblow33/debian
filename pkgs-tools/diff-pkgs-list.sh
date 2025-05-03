@@ -3,7 +3,7 @@
 USR=$(logname)
 
 # Set the directory where the files are located
-dir="/home/$USR/pkgs-tools"
+dir="/home/$USR/debian/pkgs-tools"
 
 # Set the names of the files
 full_pkgs_file="full_pkgs.list"
