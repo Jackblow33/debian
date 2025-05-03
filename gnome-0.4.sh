@@ -78,10 +78,10 @@ root_check
 timer_start
 update_upgrade
 install_desktop_environment
-brave_browser
 # gnome_extensions
 debloat
 rm_unused_dep
+brave_browser
 # network_edit
 update_wireplumber_config
 timer_stop
