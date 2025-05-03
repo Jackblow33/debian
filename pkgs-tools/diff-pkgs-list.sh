@@ -30,7 +30,7 @@ grep -vxFf /tmp/normalized_base_pkgs.list /tmp/normalized_full_pkgs.list > "$OUT
 # Check if the output file was created successfully
 if [[ $? -eq 0 ]]; then
     echo "Comparison complete. Results saved in $OUTPUT_FILE."
-    echo "Number of entries in pkgs.list: $(wc -l < "$OUTPUT_FILE")"
+    echo "Number of packages in pkgs.list: $(wc -l < "$OUTPUT_FILE")"
 else
     echo "Error occurred while generating the output file."
 fi
