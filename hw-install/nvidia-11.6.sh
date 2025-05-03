@@ -143,7 +143,7 @@ fix_nvidia_power_management
 enable_nvidia_services
 # update_initramfs
 timer_stop
-clear
+# clear
 
 # Clear the screen and notify the user
 #clear
