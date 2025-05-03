@@ -100,7 +100,7 @@ display_menu() {
         apt update && apt upgrade -y
     fi
 
-    if [[ $menu_choice == *"Install NVIDIA driver $NV_VER"* ]]; then
+    if [[ $menu_choice == *"Install NVIDIA driver"* ]]; then
         echo "Installing NVIDIA driver $NV_VER..."
         source "$SH_PATH/hw-install/nvidia-11.7.sh"
     fi
