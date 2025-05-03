@@ -5,7 +5,7 @@
 USR=$(logname)
 
 # Set the output file path
-output_file="/home/$USR/pkgs-tools/full_pkgs.list"
+output_file="/home/$USR/debian/pkgs-tools/full_pkgs.list"
 
 # Get the list of installed packages
 installed_packages=$(apt list --installed | cut -d'/' -f1)
