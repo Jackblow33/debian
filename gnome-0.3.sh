@@ -1,81 +1,7 @@
 #!/bin/bash
 
 # gnome-0.3.sh
-# Date modified: 2025-05-02
-
-
-# PACKAGES TO INSTALL
-INSTALL_PKGS=(
-#    'gnome-core'
-  'gnome-backgrounds'
-  'gnome-bluetooth-3-common'
-  'gnome-bluetooth-sendto'
-  'gnome-browser-connector'
-  'gnome-calculator'
-  'gnome-characters'
-  'gnome-connections'
-  'gnome-control-center-data'
-  'gnome-control-center'
-  'gnome-desktop3-data'
-  'gnome-disk-utility'
-  'gnome-font-viewer'
-  'gnome-logs'
-  'gnome-menus'
-  'gnome-online-accounts'
-  'gnome-remote-desktop'
-  'gnome-session-bin'
-  'gnome-session-common'
-  'gnome-session-xsession'
-  'gnome-session'
-  'gnome-settings-daemon-common'
-  'gnome-settings-daemon'
-  'gnome-shell-common'
-  'gnome-shell-extension-freon'
-  'gnome-shell-extension-prefs'
-  'gnome-shell'
-  'gnome-snapshot'
-  'gnome-software-common'
-  'gnome-software-plugin-deb'
-  'gnome-software-plugin-fwupd'
-  'gnome-software'
-  'gnome-sushi'
-  'gnome-system-monitor'
-  'gnome-terminal-data'
-  'gnome-terminal'
-  'gnome-text-editor'
-  'gnome-themes-extra-data'
-  'gnome-user-share'
-  'kate'
-  'make'
-  'sassc'
-  'gettext'
-  'fastfetch'
-  'gparted'
-  'timeshift'
-  'vlc'
-  'lm-sensors'
-  'firefox'
-)
-
-# PACKAGES TO UNINSTALL
-UNINSTALL_PKGS=(
-    'ifupdown'   # Mandatory all the next UNINSTALL_PKG entries are optional
-#    'gnome-tour'
-#    'gnome-calendar'
-#    'gnome-clocks'
-#    'gnome-keyring'
-#    'yelp'
-#    'totem'
-#    'totem-plugins'
-    'systemsettings'  # related to kate kde
-#    'gnome-weather'
-#    'gnome-contacts'
-#    'gnome-maps'
-#    'simple-scan'
-    'firefox-esr'
-)
-
-
+# Date modified: 2025-05-03
 
 
 update_upgrade() {
@@ -85,14 +11,11 @@ update_upgrade() {
 }
 
 
-
-install_pkg() {
-    for PKG in "${INSTALL_PKGS[@]}"; do
-        echo "INSTALLING: ${PKG}"
-        apt install "$PKG" -y || { echo "Failed to install $PKG"; handle_error; }
-    done
+install_packages() {
+input_file="/home/$USR/pkgs-tools/pkgs.list"
+# Install the packages
+sudo apt-get install -y $(cat "$input_file")
 }
-
 
 
 brave_browser() {
@@ -105,16 +28,6 @@ brave_browser() {
 gnome_extensions() {
    source /home/$USR/debian/gnome-extensions.sh || handle_error
 }
-
-
-
-uninstall_pkg() {
-   for PKG in "${UNINSTALL_PKGS[@]}"; do
-        echo "UNINSTALLING: ${PKG}"
-        apt purge -y "$PKG" || { echo "Failed to uninstall $PKG"; handle_error; }
-    done
-}
-
 
 
 rm_unused_dep() {
@@ -159,10 +72,9 @@ update_wireplumber_config() {
 root_check
 timer_start
 update_upgrade
-install_pkg
+install_packages
 brave_browser
 gnome_extensions
-uninstall_pkg
 rm_unused_dep
 network_edit
 update_wireplumber_config
