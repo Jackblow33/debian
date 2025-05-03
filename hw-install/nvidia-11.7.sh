@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#!/bin/bash
+
 # 2025-05-03
 # nvidia-11.7.sh
 # WORKING, close to stable          
@@ -11,6 +13,7 @@
 USR=$(logname)
 NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
 TIMESTAMP=$(date +%Y%m%d.%R)
+driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
 
 # Display the NVIDIA driver installation warning!
 display_nvidia_warning() {
@@ -56,9 +59,8 @@ install_dependencies() {
 
 # Download NVIDIA driver
 download_nvidia_driver() {
-    local driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
-    local driver_file="NVIDIA-Linux-x86_64-${NV_VER}.run"
-    local driver_path="$driver_dir/$driver_file"
+    driver_file="NVIDIA-Linux-x86_64-${NV_VER}.run"
+    driver_path="$driver_dir/$driver_file"
 
     # Check if the driver directory exists, if not, create it
     if [ ! -d "$driver_dir" ]; then
@@ -77,10 +79,6 @@ download_nvidia_driver() {
 
 # Install NVIDIA driver
 install_nvidia_driver() {
-    local driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
-    local driver_file="NVIDIA-Linux-x86_64-${NV_VER}.run"
-    local driver_path="$driver_dir/$driver_file"
-
     if [ -f "$driver_path" ]; then
         chmod +x "$driver_path"
         sh "$driver_path" || { echo "Installation aborted or script have failed to load the Nvidia installer."; exit 1; }
