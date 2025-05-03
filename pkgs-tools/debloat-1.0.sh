@@ -27,6 +27,7 @@ packages=(
     gnome
 #    ifupdown
     libreoffice-*
+    malcontent
     simple-scan
     systemsettings
     totem
