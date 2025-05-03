@@ -56,8 +56,17 @@ install_dependencies() {
 # Download NVIDIA driver
 download_nvidia_driver() {
     local driver_file="NVIDIA-Linux-x86_64-${NV_VER}.run"
-    wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/${driver_file}" || handle_error
-    chmod +x "${driver_file}"
+    download_path="/home/$USR/debian/hw-install/NVIDIA-DRIVERS-ARCHIVES"
+    mkdir -p $download_path
+    cd $download_path
+
+    # Check if the driver file already exists
+    if [ -f "$driver_file" ]; then
+        echo "The driver file '$driver_file' already exists in the download path."
+    else
+        wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/${driver_file}" || handle_error
+        chmod +x "${driver_file}"
+    fi
 }
 
 # Install NVIDIA driver
