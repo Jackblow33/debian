@@ -21,6 +21,7 @@ packages=(
     gnome
     ifupdown
     libreoffice-*
+    shotwell
     simple-scan
     totem
     totem-plugins
