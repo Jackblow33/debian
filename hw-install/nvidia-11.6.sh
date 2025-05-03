@@ -68,11 +68,11 @@ install_nvidia_driver() {
 
 # Blacklist Nouveau driver
 blacklist_nouveau() {
-# Check if the /etc/modprobe.d/nvidia-installer-disable-nouveau.conf file already exists
+# Check if the /etc/modprobe.d/nvidia-installer-disable-nouveau.conf have already been created by nvidia installer
 if [ -f "/etc/modprobe.d/nvidia-installer-disable-nouveau.conf" ]; then
     echo "File /etc/modprobe.d/nvidia/installer-disable-nouveau.conf already exists"
 else
-    # Check if the blacklist entries are there, if not add them
+    # Check if the blacklist entries are in blacklist-nouveau.conf, if not add them
     if ! grep -q "blacklist nouveau" "/etc/modprobe.d/blacklist-nouveau.conf"; then
         echo "blacklist nouveau" | sudo tee -a "/etc/modprobe.d/blacklist-nouveau.conf"
     fi
