@@ -1,4 +1,4 @@
-#!/bin/bash
+fau#!/bin/bash
 
 # gnome-0.4.sh
 # Date modified: 2025-05-03
@@ -10,7 +10,7 @@ update_upgrade() {
     apt update && apt upgrade -y || handle_error
 }
 
-
+# default = gnome
 install_desktop_environment() {
 tasksel || handle_error
 }
