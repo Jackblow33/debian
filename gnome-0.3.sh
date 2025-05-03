@@ -14,7 +14,7 @@ update_upgrade() {
 install_packages() {
 input_file="/home/$USR/pkgs-tools/pkgs.list"
 # Install the packages
-sudo apt-get install -y $(cat "$input_file")
+sudo apt-get install -y $(cat "$input_file") || handle_error
 }
 
 
