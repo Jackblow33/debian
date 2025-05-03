@@ -11,9 +11,10 @@
 # Linux kernel 6.11 and beyond required
 
 USR=$(logname)
-NV_VER="570.133.07"  # Uncomment to set Nvidia Driver version here if runing this script as standalone
-TIMESTAMP=$(date +%Y%m%d.%R)
+NV_VER="570.133.07"  # Default Nvidia Driver version
 driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
+TIMESTAMP=$(date +%Y%m%d.%R)
+
 
 # Display the NVIDIA driver installation warning!
 display_nvidia_warning() {
