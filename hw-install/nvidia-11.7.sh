@@ -83,7 +83,7 @@ install_nvidia_driver() {
         chmod +x "$driver_path"
         sh "$driver_path" || { echo "Installation aborted or script have failed to load the Nvidia installer."; exit 1; }
     else
-        echo "The driver file '$driver_file' does not exist in '$driver_dir'. Please download it first."
+        echo "The driver file '$driver_file' does not exist in '$driver_dir'."
         exit 1
     fi
 }
