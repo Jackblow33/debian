@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Debian sid base gnome desktop environment packages installer (Linux from scratch).
+# Debian sid base gnome desktop environment packages installer (Linux from almost scratch).
 
 # Set the input file path
 #USR=$(logname)
@@ -14,7 +14,18 @@ if ! whiptail --title "Debian 13 sid Installation" --yesno "You are about to ins
     exit 1
 fi
 
+# Gather system information
+cpu_info=$(lscpu | grep "Model name" | awk -F':' '{print $2}' | tr -d ' ')
+gpu_info=$(lspci | grep -i "VGA" | awk -F':' '{print $3}' | tr -d ' ')
+dpu_info=$(lspci | grep -i "co-processor" | awk -F':' '{print $3}' | tr -d ' ')
+os_info=$(lsb_release -d | awk -F':' '{print $2}' | tr -d ' ')
+
 # Install the packages and log the output
+echo "System Information:" | tee -a "$log_file"
+echo "CPU: $cpu_info" | tee -a "$log_file"
+echo "GPU: $gpu_info" | tee -a "$log_file"
+echo "DPU: $dpu_info" | tee -a "$log_file"
+echo "OS: $os_info" | tee -a "$log_file"
 echo "Installing packages. This may take a while, please wait..." | tee -a "$log_file"
 sudo apt-get install -y $(cat "$input_file") 2>&1 | tee -a "$log_file"
 
@@ -25,6 +36,8 @@ elapsed_seconds=$((elapsed_time % 60))
 
 total_time_message="Total time elapsed: $elapsed_minutes minutes and $elapsed_seconds seconds."
 reboot_message="The packages have been installed successfully. A reboot is required to complete the installation. Press Enter to reboot the system."
+
+echo -e "\n$total_time_message" | tee -a "$log_file"
 
 whiptail --title "Installation Complete" --msgbox "$total_time_message\n\nInstallation log saved to: $log_file\n\n$reboot_message" 14 80
 
