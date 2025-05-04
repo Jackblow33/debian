@@ -50,7 +50,7 @@ sudo apt-get clean -y
 #sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
 # install brave web browser
-source /home/jack/debian/brave.sh
+#source /home/jack/debian/brave.sh
 
 # Tweak volume default = 40%(0.064) to default = 100%(1.0)
 config_file="/usr/share/wireplumber/wireplumber.conf"
