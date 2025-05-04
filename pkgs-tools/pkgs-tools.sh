@@ -48,6 +48,7 @@ while true; do
         *)
             echo "Invalid choice. Please try again."
             sleep 2
+            clear
             ;;
     esac
 done
