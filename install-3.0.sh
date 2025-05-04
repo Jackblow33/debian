@@ -122,7 +122,7 @@ display_menu() {
 
     if [[ $menu_choice == *"Install Qemu-Kvm virtualization"* ]]; then
         echo "Installing qemu-kvm..."
-        source "$SH_PATH/qemu-kvm-0.7.sh"
+        source "$SH_PATH/qemu-kvm-0.6.sh"
     fi
 
     if [[ $menu_choice == *"Reboot system"* ]]; then
