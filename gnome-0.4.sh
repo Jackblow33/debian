@@ -80,7 +80,7 @@ update_upgrade
 install_desktop_environment
 # gnome_extensions
 debloat
-rm_unused_dep
+# rm_unused_dep
 brave_browser
 # network_edit
 update_wireplumber_config
