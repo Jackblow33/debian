@@ -38,7 +38,7 @@ fi
 
 
 dependencies() {
-apt install -y gnome-shell-extension-prefs lm-sensors sassc
+apt install -y gnome-shell-extension-prefs lm-sensors sassc make gettext || handle_error
 }
 
 
