@@ -4,8 +4,8 @@
 # 2025-05-04
 
 USR=$(logname)
-sudo mkdir /home/$USR/Downloads/pkgs-tools
-
+dir_tools="/home/$USR/Downloads/pkgs-tools"
+sudo mkdir $dir_tools
 while true; do
     clear
     echo -e "\n\n\n\n\n\n\n\n\n\n"  # Clear the screen with new lines
@@ -21,19 +21,19 @@ while true; do
     case $choice in
         1)
             echo "Building packages list from base installation"
-            source /home/$USR/debian/pkgs-tools/base-pkgs-list.sh
+            source $dir_tools/base-pkgs-list.sh
             ;;
         2)
             echo "Debloating full installation"
-            source /home/$USR/debian/pkgs-tools/debloat.sh
+            source $dir_tools/debloat.sh
             ;;
         3)
             echo "Building packages list from full debloated installation"
-            source /home/$USR/debian/pkgs-tools/full-pkgs-list.sh
+            source $dir_tools/full-pkgs-list.sh
             ;;
         4)
             echo "Building final packages diffs full/base"
-            source /home/$USR/debian/pkgs-tools/diff-pkgs-list.sh
+            source $dir_tools/diff-pkgs-list.sh
             ;;    
         5)
             echo "Exiting..."
