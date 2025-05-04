@@ -16,7 +16,9 @@ if [ $installed_packages -lt 500 ]; then
     package_list=$(apt list --installed | cut -d'/' -f1 | tail -n +2)
 else
     output_file="$output_dir/full_pkgs.list"
-    package_list=$(dpkg --get-selections | awk '{print $1}')
+    #package_list=$(dpkg --get-selections | awk '{print $1}')
+    package_list=$(apt list --installed | cut -d'/' -f1 | tail -n +2)
+    
 fi
 
 # Check if the output file already exists
