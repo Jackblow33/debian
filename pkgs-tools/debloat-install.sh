@@ -53,3 +53,5 @@ sudo apt-get clean -y
 source /home/jack/debian/brave.sh
 
 echo "Uninstallation + installation completed."
+sleep 10
+reboot
