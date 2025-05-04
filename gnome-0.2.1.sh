@@ -118,9 +118,9 @@ root_check
 timer_start
 update_upgrade
 install_pkg
-uninstall_pkg
+#uninstall_pkg
 rm_unused_dep
-brave_browser
+#brave_browser
 gnome_extensions
 network_edit
 update_wireplumber_config
