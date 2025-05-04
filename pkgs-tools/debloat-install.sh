@@ -31,7 +31,7 @@ packages=(
     yelp
 )
 
-apt install kate 
+apt install -y kate 
 # Uninstall each package
 for pkg in "${packages[@]}"; do
     echo "Removing $pkg..."
