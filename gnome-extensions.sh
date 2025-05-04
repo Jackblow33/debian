@@ -38,7 +38,7 @@ fi
 
 
 dependencies() {
-apt install -y gnome-shell-extension-prefs sassc
+apt install -y gnome-shell-extension-prefs lm-sensors sassc
 }
 
 
@@ -94,7 +94,6 @@ DOCK_EXTENSION_DIR="/home/$USR/.local/share/gnome-shell/extensions/$DOCK_EXTENSI
 }
 
 freon() {
-    apt install -y lm-sensors
     echo "Setting up lm-sensors..."
     sensors-detect --auto || handle_error
     echo "Installing freon gnome-shell-extension"
