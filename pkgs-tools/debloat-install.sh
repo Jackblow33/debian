@@ -3,6 +3,7 @@
 # debloat-install.sh
 # Remove packages from a Debian default gnome installation and install some.
 
+USR=$(logname)
 
 # List of packages to uninstall
 packages=(
@@ -50,9 +51,9 @@ sudo apt-get clean -y
 #sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
 # install brave web browser
-source /home/jack/debian/brave.sh
+source /home/$USR/debian/brave.sh
 # Install freon & dash to dock - gnome extensions
-source /home/jack/debian/gnome-extensions.sh
+source /home/$USR/debian/gnome-extensions.sh
 
 
 # Tweak volume default = 40%(0.064) to default = 100%(1.0)
