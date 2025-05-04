@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# pkgs-list.sh
-
+# full-pkgs-list.sh
+# 2024-05-04
 
 # Set the output directory & file path
 USR=$(logname)
