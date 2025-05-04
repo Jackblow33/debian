@@ -50,13 +50,15 @@ sudo apt-get clean -y
 #sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
 # install brave web browser
-#source /home/jack/debian/brave.sh
+source /home/jack/debian/brave.sh
+# Install freon & dash to dock - gnome extensions
+source /home/jack/debian/gnome-extensions.sh
+
 
 # Tweak volume default = 40%(0.064) to default = 100%(1.0)
-config_file="/usr/share/wireplumber/wireplumber.conf"
-override_volume_tweak="/home/$USR/.config/wireplumber"
-
-#update_wireplumber_config() {
+update_wireplumber_config() {
+    local config_file="/usr/share/wireplumber/wireplumber.conf"
+    local override_volume_tweak="/home/$USR/.config/wireplumber"
     # Check if the directory exists
     if [ ! -d "$override_volume_tweak" ]; then
         # Create directory if it does not exist
@@ -73,11 +75,11 @@ override_volume_tweak="/home/$USR/.config/wireplumber"
     sed -i 's/default = 0.064/default = 1.0/g' "$override_volume_tweak/wireplumber.conf" || { echo "Failed to update $override_volume_tweak/wireplumber.conf"; exit 1; }
 
     echo "The wireplumber.conf file has been updated in $override_volume_tweak."
-#}
+}
 
-#update_wireplumber_config
+update_wireplumber_config
 
 
-echo "Uninstallation + installation completed. Rebooting."
+echo "Uninstallation + installation completed. Rebooting in 10 seconds ..."
 sleep 10
 reboot
