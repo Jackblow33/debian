@@ -18,6 +18,7 @@ packages=(
     gnome-keyring-pkcs11
     gnome-maps
     gnome-music
+    gnome-snapshot
     gnome-sound-recorder
     gnome-tour
     gnome-tweaks
