@@ -2,10 +2,12 @@
 
 # pkgs-list.sh
 
-USR=$(logname)
 
-# Set the output file path
-output_file="/home/$USR/debian/pkgs-tools/full_pkgs.list"
+# Set the output directory & file path
+USR=$(logname)
+output_dir="/home/$USR/Downloads/pkgs-tools"
+output_file="$output_dir/full_pkgs.list"
+mkdir $output_dir
 
 # Get the list of installed packages
 installed_packages=$(apt list --installed | cut -d'/' -f1 | tail -n +2)
