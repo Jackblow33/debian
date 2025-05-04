@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# pkgs-list.sh
+# base-pkgs-list.sh
+# 2025-05-04
 
+# Set the output directory & file path
 USR=$(logname)
-
-# Set the output file path
-output_file="/home/$USR/debian/pkgs-tools/base_pkgs.list"
+output_dir="/home/$USR/Downloads/pkgs-tools"
+output_file="$output_dir/base_pkgs.list"
+mkdir $output_dir
 
 # Get the list of installed packages
 installed_packages=$(apt list --installed | cut -d'/' -f1 | tail -n +2)
