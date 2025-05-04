@@ -12,7 +12,7 @@ update_upgrade() {
 
 # default = gnome
 install_desktop_environment() {
-tasksel || handle_error
+tasksel install desktop gnome-desktop  || handle_error
 }
 
 kate() {
