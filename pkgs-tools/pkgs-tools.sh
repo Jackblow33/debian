@@ -4,7 +4,7 @@
 # 2025-05-04
 
 USR=$(logname)
-dir_tools="/home/$USR/Downloads/pkgs-tools"
+dir_tools="/home/$USR/debian/pkgs-tools"
 sudo mkdir $dir_tools
 while true; do
     clear
