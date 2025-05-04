@@ -94,6 +94,7 @@ DOCK_EXTENSION_DIR="/home/$USR/.local/share/gnome-shell/extensions/$DOCK_EXTENSI
 }
 
 freon() {
+    apt install -y lm-sensors
     echo "Setting up lm-sensors..."
     sensors-detect --auto || handle_error
     echo "Installing freon gnome-shell-extension"
