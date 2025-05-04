@@ -75,7 +75,7 @@ update_wireplumber_config() {
     echo "The wireplumber.conf file has been updated in $override_volume_tweak."
 }
 
-update_wireplumber_config
+# update_wireplumber_config
 
 
 echo "Uninstallation + installation completed. Rebooting."
