@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # pkgs-tools.sh
-# 2025-05-03
+# 2025-05-04
 
 USR=$(logname)
-sudo mkdir /home/$USR/debian/pkgs-tools
+sudo mkdir /home/$USR/Downloads/pkgs-tools
 
 while true; do
     clear
@@ -13,7 +13,7 @@ while true; do
     echo "                               1. Build packages list from base installation"
     echo "                               2. Debloat full installation before building the list"
     echo "                               3. Build packages list from full debloated installation"
-    echo "                               4. Build final packages diffs full/base"
+    echo "                               4. Build final packages diffs full - base"
     echo "                               5. Exit"
 
     read -p "                             Enter your choice: " choice
