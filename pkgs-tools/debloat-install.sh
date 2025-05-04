@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# rm-pkgs-debian-full-install.sh
+# debloat-install.sh
 # Remove packages from a Debian default gnome installation and install some.
 
 
@@ -31,6 +31,7 @@ packages=(
     yelp
 )
 
+apt install kate 
 # Uninstall each package
 for pkg in "${packages[@]}"; do
     echo "Removing $pkg..."
@@ -46,6 +47,9 @@ echo "Cleaning up package cache..."
 sudo apt-get clean -y
 
 # Configuring NetworkManager
-sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
+#sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
-echo "Uninstallation complete."
+# install brave web browser
+source /home/jack/debian/brave.sh
+
+echo "Uninstallation + installation completed."
