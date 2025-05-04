@@ -56,7 +56,7 @@ source /home/jack/debian/brave.sh
 config_file="/usr/share/wireplumber/wireplumber.conf"
 override_volume_tweak="/home/$USR/.config/wireplumber"
 
-update_wireplumber_config() {
+#update_wireplumber_config() {
     # Check if the directory exists
     if [ ! -d "$override_volume_tweak" ]; then
         # Create directory if it does not exist
@@ -73,9 +73,9 @@ update_wireplumber_config() {
     sed -i 's/default = 0.064/default = 1.0/g' "$override_volume_tweak/wireplumber.conf" || { echo "Failed to update $override_volume_tweak/wireplumber.conf"; exit 1; }
 
     echo "The wireplumber.conf file has been updated in $override_volume_tweak."
-}
+#}
 
-update_wireplumber_config
+#update_wireplumber_config
 
 
 echo "Uninstallation + installation completed. Rebooting."
