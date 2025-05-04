@@ -107,7 +107,7 @@ display_menu() {
 
     if [[ $menu_choice == *"Install Gnome"* ]]; then
         echo "Installing Gnome..."
-        source "$SH_PATH/gnome-0.4.sh"
+        source "$SH_PATH/gnome-0.2.1.sh"
     fi
 
     if [[ $menu_choice == *"Install WiFi BCM4360"* ]]; then
