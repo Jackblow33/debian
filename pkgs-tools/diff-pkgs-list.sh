@@ -1,9 +1,12 @@
 #!/bin/bash
 
+# diff-pkgs-list.sh
+# 2025-05-04
+
 
 # Set the directory where the files are located and define the file path
 USR=$(logname)
-DIR="/home/$USR/debian/pkgs-tools"
+DIR="/home/$USR/Downloads/pkgs-tools"
 FULL_PKGS="$DIR/full_pkgs.list"
 BASE_PKGS="$DIR/base_pkgs.list"
 OUTPUT_FILE="$DIR/pkgs.list"
