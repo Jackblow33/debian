@@ -42,7 +42,7 @@ while true; do
         5)
             clear
             echo "Exiting..."
-            sleep 3
+            sleep 2
             exit 0
             ;;
         *)
