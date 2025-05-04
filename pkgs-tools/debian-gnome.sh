@@ -9,10 +9,10 @@ start_time=$SECONDS
 timestamp=$(date +"%Y-%m-%d-%H-%M")
 log_file="/home/$USR/debian/pkgs-tools/installation-$timestamp.log"
 
-if ! whiptail --title "Debian 13 sid Installation" --yesno "You are about to install Debian 13 sid packages. Would you like to proceed?" 8 60; then
-    echo "Installation cancelled."
-    exit 1
-fi
+#if ! whiptail --title "Debian 13 sid Installation" --yesno "You are about to install Debian 13 sid packages. Would you like to proceed?" 8 60; then
+#    echo "Installation cancelled."
+#    exit 1
+#fi
 
 # Gather system information
 os_info=$(lsb_release -d | awk -F':' '{print $2}' | tr -d ' ')
