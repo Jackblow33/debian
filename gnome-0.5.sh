@@ -4,6 +4,7 @@
 # Remove packages from a Debian default gnome installation and install some.
 
 USR=$(logname)
+log_file="/home/$USR/debian/LOGS/installation-$timestamp.log"
 
 root_check() {
 if [ "$EUID" -ne 0 ]; then
@@ -40,7 +41,7 @@ packages=(
     totem-plugins
     yelp
 )
-
+mkdir $log_file
 # Gnome installation
 install_desktop_environment() {
 tasksel install desktop gnome-desktop  || handle_error
@@ -51,7 +52,7 @@ sudo apt install -y kate
 # Uninstall packages
 for pkg in "${packages[@]}"; do
     echo "Removing $pkg..."
-    sudo apt-get purge -y "$pkg"
+    sudo apt-get purge -y "$pkg" 2>&1 | tee -a "$log_file"
 done
 
 # Clean up any unused dependencies
