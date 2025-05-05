@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# gnome-0.5.sh     # formerly debloat-install.sh
-# Remove packages from a Debian default gnome installation and install some.
+# gnome-0.5.sh
 
 USR=$(logname)
-log_file="/home/$USR/debian/LOGS/installation-$timestamp.log"
 
 root_check() {
 if [ "$EUID" -ne 0 ]; then
@@ -14,34 +12,6 @@ fi
 }
 root_check
 
-
-# List of packages to uninstall
-packages=(
-    gnome-calendar
-    gnome-clocks
-    gnome-contacts
-    gnome-keyring
-    gnome-keyring-pkcs11
-    gnome-maps
-    gnome-music
-    gnome-snapshot
-    gnome-sound-recorder
-    gnome-tour
-    gnome-tweaks
-    gnome-user-docs
-    gnome-weather
-    gnome
-#    ifupdown
-    libreoffice-*
-    malcontent
-    shotwell
-    simple-scan
-    systemsettings
-    totem
-    totem-plugins
-    yelp
-)
-mkdir $log_file
 # Gnome installation
 install_desktop_environment() {
 tasksel install desktop gnome-desktop  || handle_error
@@ -49,19 +19,6 @@ tasksel install desktop gnome-desktop  || handle_error
 install_desktop_environment
 
 sudo apt install -y kate 
-# Uninstall packages
-for pkg in "${packages[@]}"; do
-    echo "Removing $pkg..."
-    sudo apt-get purge -y "$pkg" 2>&1 | tee -a "$log_file"
-done
-
-# Clean up any unused dependencies
-echo "Cleaning up unused dependencies..."
-sudo apt-get autoremove -y
-
-# Optionally, clean up package cache
-echo "Cleaning up package cache..."
-sudo apt-get clean -y
 
 # Configuring NetworkManager
 #sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
