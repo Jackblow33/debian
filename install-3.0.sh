@@ -88,7 +88,7 @@ display_menu() {
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 7 \
         "Update system" "" ON \
         "Install NVIDIA driver" "" ON \
-        "Install essentials packages and debloat Gnome" "" ON \
+        "Install Gnome and debloat" "" ON \
         "Install WiFi BCM4360" "" ON \
         "Install custom kernel $KERNEL from USB" "" ON \
         "Install Qemu-Kvm virtualization" "" ON \
@@ -105,10 +105,9 @@ display_menu() {
         source "$SH_PATH/hw-install/nvidia-11.7.sh"
     fi
 
-    if [[ $menu_choice == *"Install essentials packages and debloat Gnome"* ]]; then
+    if [[ $menu_choice == *"Install Gnome and debloat"* ]]; then
         echo "Installing Gnome..."
-        #source "$SH_PATH/gnome-0.2.1.sh"
-        source "$SH_PATH/pkgs-tools/debloat-install.sh
+        source "$SH_PATH/gnome-0.5.sh"
     fi
 
     if [[ $menu_choice == *"Install WiFi BCM4360"* ]]; then
