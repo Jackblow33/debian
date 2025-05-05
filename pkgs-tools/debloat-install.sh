@@ -5,6 +5,14 @@
 
 USR=$(logname)
 
+root_check() {
+if [ "$EUID" -ne 0 ]; then
+  echo "This script must be executed as root!! Exiting......."
+  exit 1
+fi
+}
+root_check
+
 # List of packages to uninstall
 packages=(
     gnome-calendar
@@ -32,7 +40,7 @@ packages=(
     yelp
 )
 
-apt install -y kate 
+sudo apt install -y kate 
 # Uninstall each package
 for pkg in "${packages[@]}"; do
     echo "Removing $pkg..."
