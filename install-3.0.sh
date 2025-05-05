@@ -86,9 +86,9 @@ set_permission() {
 display_menu() {
     local menu_choice
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 6 \
-        "Install NVIDIA driver" "" ON \
+        "Install NVIDIA driver" "" OFF \
         "Install Gnome and debloat" "" ON \
-        "Install WiFi BCM4360" "" ON \
+        "Install WiFi BCM4360" "" OFF \
         "Install custom kernel $KERNEL from USB" "" OFF \
         "Install Qemu-Kvm virtualization" "" ON \
         "Reboot system" "" ON 3>&1 1>&2 2>&3)
