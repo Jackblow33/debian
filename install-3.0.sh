@@ -89,9 +89,9 @@ display_menu() {
         "Install NVIDIA driver" "" ON \
         "Install Gnome and debloat" "" ON \
         "Install WiFi BCM4360" "" ON \
-        "Install custom kernel $KERNEL from USB" "" ON \
+        "Install custom kernel $KERNEL from USB" "" OFF \
         "Install Qemu-Kvm virtualization" "" ON \
-        "Reboot system" "" OFF 3>&1 1>&2 2>&3)
+        "Reboot system" "" ON 3>&1 1>&2 2>&3)
 
     # Execute the selected options in sequence
     if [[ $menu_choice == *"Install NVIDIA driver"* ]]; then
