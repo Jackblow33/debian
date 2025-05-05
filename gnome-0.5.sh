@@ -24,8 +24,7 @@ sudo apt install -y kate
 apt purge -y ifupdown
 sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
-# install brave web browser
-#source /home/$USR/debian/brave.sh
+
 # Install freon & dash to dock - gnome extensions
 source /home/$USR/debian/gnome-extensions.sh
 
