@@ -56,3 +56,6 @@ sudo apt-get autoremove -y
 # Optionally, clean up package cache
 echo "Cleaning up package cache..."
 sudo apt-get clean -y
+
+# install brave web browser
+#source /home/$USR/debian/brave.sh
