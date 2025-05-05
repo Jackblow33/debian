@@ -21,7 +21,8 @@ install_desktop_environment
 sudo apt install -y kate 
 
 # Configuring NetworkManager
-#sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
+apt purge -y ifupdown
+sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf
 
 # install brave web browser
 #source /home/$USR/debian/brave.sh
