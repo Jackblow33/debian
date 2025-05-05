@@ -85,8 +85,7 @@ set_permission() {
 # Function to display the menu
 display_menu() {
     local menu_choice
-    menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 7 \
-        "Update system" "" ON \
+    menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 6 \
         "Install NVIDIA driver" "" ON \
         "Install Gnome and debloat" "" ON \
         "Install WiFi BCM4360" "" ON \
@@ -95,11 +94,6 @@ display_menu() {
         "Reboot system" "" OFF 3>&1 1>&2 2>&3)
 
     # Execute the selected options in sequence
-    if [[ $menu_choice == *"Update system"* ]]; then
-        echo "Updating system..."
-        apt update && apt upgrade -y
-    fi
-
     if [[ $menu_choice == *"Install NVIDIA driver"* ]]; then
         echo "Installing NVIDIA driver $NV_VER..."
         source "$SH_PATH/hw-install/nvidia-11.7.sh"
