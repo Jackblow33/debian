@@ -10,10 +10,12 @@ input_file="/home/$USR/debian/pkgs-tools/tasksel_pkgs.list"
 
 start_time=$SECONDS
 
+welcome() {
 if ! whiptail --title "Debian 13 sid Installation" --yesno "You are about to install Debian 13 sid packages. Would you like to proceed?" 8 60; then
     echo "Installation cancelled."
     exit 1
 fi
+}
 
 update_upgrade() {
     # Update package list and upgrade installed packages
@@ -78,14 +80,9 @@ update_wireplumber_config() {
     echo "The wireplumber.conf file has been updated in $override_volume_tweak."
 }
 
-update_upgrade
-install_packages
-brave_browser
-gnome_extensions
-rm_package
-rm_unused_dep
-network_edit
 
+
+ending() {
 end_time=$SECONDS
 elapsed_time=$((end_time - start_time))
 elapsed_minutes=$((elapsed_time / 60))
@@ -95,5 +92,20 @@ total_time_message="Gnone install, total time elapsed: $elapsed_minutes minutes 
 echo "$total_time_message" >> "$LOG_DIR/$LOG_FILE"
 
 echo "$total_time_message"
+}
+
+
+# Main script execution
+welcome
+update_upgrade
+install_packages
+brave_browser
+gnome_extensions
+rm_package
+rm_unused_dep
+network_edit
+update_wireplumber_config
+ending
+
 
 
