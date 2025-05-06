@@ -101,7 +101,7 @@ update_upgrade
 install_packages
 brave_browser
 gnome_extensions
-rm_package
+#rm_package
 rm_unused_dep
 network_edit
 update_wireplumber_config
