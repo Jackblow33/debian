@@ -4,7 +4,7 @@
 
 # Set the input file path
 USR=$(logname)
-input_file="/home/$USR/debian/pkgs-tools/pkgs.list"
+input_file="/home/$USR/debian/pkgs-tools/tasksel_pkgs.list"
 start_time=$SECONDS
 timestamp=$(date +"%Y-%m-%d-%H-%M")
 log_file="/home/$USR/debian/pkgs-tools/installation-$timestamp.log"
