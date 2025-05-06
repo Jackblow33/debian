@@ -2,11 +2,10 @@
 
 # Debian sid base gnome desktop environment packages installer over a base minimal installation.
 
-# Set the input file path
 USR=$(logname)
 LOG_DIR="/home/$USR/debian/LOGS"
 LOG_FILE="install.log"
-mkdir $LOG_FILE
+mkdir $LOG_DIR
 input_file="/home/$USR/debian/pkgs-tools/tasksel_pkgs.list"
 
 start_time=$SECONDS
