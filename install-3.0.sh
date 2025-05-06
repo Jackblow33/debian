@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# 2025-05-04
-# install-3.0.1.sh
+# 2025-05-05
+# install-3.0.2.sh
 
 # VARIABLES
 USR=$(logname)
@@ -86,10 +86,10 @@ set_permission() {
 display_menu() {
     local menu_choice
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 6 \
-        "Install NVIDIA driver" "" OFF \
-        "Install Gnome and debloat" "" ON \
-        "Install WiFi BCM4360" "" OFF \
-        "Install custom kernel $KERNEL from USB" "" OFF \
+        "Install NVIDIA driver" "" ON \
+        "Install Gnome" "" ON \
+        "Install WiFi BCM4360" "" ON \
+        "Install custom kernel $KERNEL from USB" "" ON \
         "Install Qemu-Kvm virtualization" "" ON \
         "Reboot system" "" ON 3>&1 1>&2 2>&3)
 
@@ -99,9 +99,9 @@ display_menu() {
         source "$SH_PATH/hw-install/nvidia-11.7.sh"
     fi
 
-    if [[ $menu_choice == *"Install Gnome and debloat"* ]]; then
+    if [[ $menu_choice == *"Install Gnome"* ]]; then
         echo "Installing Gnome..."
-        source "$SH_PATH/gnome-0.5.sh"
+        source "$SH_PATH/pkgs-tools/alpha-debian-gnome.sh"
     fi
 
     if [[ $menu_choice == *"Install WiFi BCM4360"* ]]; then
