@@ -20,7 +20,7 @@ packages=(
     gnome-user-docs
     gnome-weather
     gnome
-#    ifupdown
+    ifupdown
     libreoffice-*
     malcontent
     shotwell
