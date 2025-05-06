@@ -2,7 +2,6 @@ xorg
 xserver-xorg-video-all
 xserver-xorg-input-all
 desktop-base
-task-gnome-desktop
 xdg-utils
 fonts-symbola
 avahi-daemon
@@ -31,13 +30,11 @@ glib-networking
 gsettings-desktop-schemas
 baobab
 evince
-papers
 gnome-calculator
 gnome-characters
 gnome-connections
 gnome-terminal
 gnome-console
-ptyxis
 gnome-disk-utility
 gnome-font-viewer
 gnome-logs
