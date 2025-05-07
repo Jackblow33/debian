@@ -98,9 +98,9 @@ echo "$total_time_message"
 # Main script execution
 welcome
 update_upgrade
+install_packages
 rm_package
 rm_unused_dep
-install_packages
 brave_browser
 gnome_extensions
 network_edit
