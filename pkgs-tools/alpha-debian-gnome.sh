@@ -29,17 +29,6 @@ sudo apt-get install -y $(cat "$input_file")
 }
 
 
-brave_browser() {
-   echo "Installing Brave browser..."
-   source /home/$USR/debian/brave.sh || handle_error
-}
-
-
-gnome_extensions() {
-   source /home/$USR/debian/gnome-extensions.sh || handle_error
-}
-
-
 rm_package() {
      apt purge -y ifupdown yelp
 }    
@@ -49,6 +38,18 @@ rm_unused_dep() {
     # REMOVE UNUSED DEPENDENCIES
     apt autoremove -y || handle_error
 }
+
+brave_browser() {
+   echo "Installing Brave browser..."
+   apt purge -y gnome-keyring  # dirty tweak
+   source /home/$USR/debian/brave.sh || handle_error
+}
+
+
+gnome_extensions() {
+   source /home/$USR/debian/gnome-extensions.sh || handle_error
+}
+
 
 
 network_edit() {
