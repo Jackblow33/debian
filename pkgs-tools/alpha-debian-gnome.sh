@@ -98,11 +98,11 @@ echo "$total_time_message"
 # Main script execution
 welcome
 update_upgrade
+rm_package
+rm_unused_dep
 install_packages
 brave_browser
 gnome_extensions
-rm_package
-rm_unused_dep
 network_edit
 #update_wireplumber_config  !!! HAVE to be run after first boot.
 ending
