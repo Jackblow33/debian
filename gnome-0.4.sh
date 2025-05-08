@@ -26,7 +26,6 @@ kate() {
 
 brave_browser() {
    echo "Installing Brave browser..."
-   apt purge -y gnome-keyring   # dirty tweak
    source /home/$USR/debian/brave.sh || handle_error
 }
 
