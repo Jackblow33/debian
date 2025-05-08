@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Debian, Ubuntu, Mint - 2025-04-26
+# Debian, Ubuntu, Mint - 2025-05-07
 
 apt purge -y gnome-keyring && apt autoremove
 apt install -y curl
