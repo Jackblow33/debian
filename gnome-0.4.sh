@@ -1,28 +1,32 @@
-fau#!/bin/bash
+#!/bin/bash
 
 # gnome-0.4.sh
-# Date modified: 2025-05-03
+# Date modified: 2025-05-07
 
 
 update_upgrade() {
     # Update package list and upgrade installed packages
     echo "Updating package list and upgrading installed packages..."
-    apt update && apt upgrade -y || handle_error
+    sudo apt update && sudo apt upgrade -y || handle_error
 }
 
-# default = gnome
+# Minimal Gnome packages installation
 install_desktop_environment() {
-tasksel install desktop gnome-desktop  || handle_error
+input_file="/home/$USR/debian/pkgs-tools/tasksel_pkgs.list"
+sudo apt-get install -y $(cat "$input_file")
 }
+
 
 kate() {
    echo "Installing Kate text editor..."
    apt install -y kate || handle_error
+   apt purge -y systemsettings
 }
 
 
 brave_browser() {
    echo "Installing Brave browser..."
+   apt purge -y gnome-keyring   # dirty tweak
    source /home/$USR/debian/brave.sh || handle_error
 }
 
@@ -32,9 +36,6 @@ gnome_extensions() {
    source /home/$USR/debian/gnome-extensions.sh || handle_error
 }
 
-debloat() {
-    source /home/$USR/debian/pkgs-tools/debloat.sh || handle_error
-}
 
 rm_unused_dep() {
     # REMOVE UNUSED DEPENDENCIES
@@ -78,12 +79,12 @@ root_check
 timer_start
 update_upgrade
 install_desktop_environment
-# gnome_extensions
-debloat
-# rm_unused_dep
+gnome_extensions
 brave_browser
-# network_edit
-update_wireplumber_config
+kate
+network_edit
+#update_wireplumber_config
+rm_unused_dep
 timer_stop
 
 
