@@ -83,7 +83,7 @@ gnome_extensions
 brave_browser
 kate
 network_edit
-#update_wireplumber_config
+#update_wireplumber_config    !!! HAVE to be put after first boot
 rm_unused_dep
 timer_stop
 
