@@ -2,7 +2,7 @@
 
 # Debian, Ubuntu, Mint - 2025-05-07
 
-apt purge -y gnome-keyring && apt autoremove
+apt purge -y gnome-keyring && apt autoremove -y
 apt install -y curl
 curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
