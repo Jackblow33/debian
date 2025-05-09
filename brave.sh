@@ -10,4 +10,4 @@ apt update -y
 apt install -y brave-browser
 
 # OLD - Keyring fix - now simply uninstalling gnome-keyring package
-# sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
+sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
