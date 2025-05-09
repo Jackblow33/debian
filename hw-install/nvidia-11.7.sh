@@ -56,8 +56,8 @@ timer_stop() {
 # Update package list and install necessary packages
 install_dependencies() {
     apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 libglvnd-core-dev pkg-config wget || handle_error  #libglvnd0 libglvnd-dev libc-dev
-    dpkg --add-architecture i386 && apt update
-    apt install -y nvidia-driver-libs:i386  #libgl1-nvidia-glx:i386                       #(32 bit ??)
+#    dpkg --add-architecture i386 && apt update
+#    apt install -y nvidia-driver-libs:i386  #libgl1-nvidia-glx:i386    #(32 bit with debian pkg driver???)
 }
 
 # Download NVIDIA driver
