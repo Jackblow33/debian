@@ -131,5 +131,5 @@ display_menu() {
 root_check
 set_permission
 display_menu
-clear
+#clear
 
