@@ -58,9 +58,11 @@ install_dependencies() {
     apt update && apt install -y linux-headers-$(uname -r) gcc make acpid dkms libvulkan1 libglvnd-core-dev pkg-config wget || handle_error  #libglvnd0 libglvnd-dev libc-dev
     # 32 bit libraries
     dpkg --add-architecture i386 && apt update || handle_error
-    #apt-get install multiarch-support libc6:i386 libgl1-mesa-dri:i386 libgl1-mesa-glx:i386 libx11-6:i386 || handle_error    #libgl1-mesa-glx:i386
-    apt-get install libc6:i386 libgl1-mesa-dri:i386 libx11-6:i386 || handle_error 
-#    apt install -y nvidia-driver-libs:i386  #libgl1-nvidia-glx:i386    #(32 bit with debian pkg driver???)
+    # Minimmal
+    apt-get install libc6:i386 libgl1-mesa-dri:i386 libx11-6:i386 || handle_error
+    # Extras
+    apt-get install libc6:i386 libgl1:i386 libgtk2.0-dev:i386 libgtk-3-dev:i386 libglu1-mesa:i386 libsm6:i386 libxext6:i386 libxfixes3:i386 libxi6:i386 libxmu6:i386 libxrender1:i386 libxxf86vm1:i386
+    #    apt install -y nvidia-driver-libs:i386  #libgl1-nvidia-glx:i386    #(32 bit with debian pkg driver???)
 }
 
 # Download NVIDIA driver
