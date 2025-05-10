@@ -17,3 +17,4 @@ apt install steam-installer
 
 # apt install mangohud libxnvctrl0
 # For Steam games, you can add this as a launch option: mangohud %command%
+# Or alternatively, add MANGOHUD=1 to your shell profile (Vulkan only).
