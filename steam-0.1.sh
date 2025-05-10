@@ -24,5 +24,5 @@ sudo chown -R $USER:$USER ~/.local/share/Steam
 
 
 #sudo apt install steam-libs-i386
-sudo mkdir -p ~/.local/share/Steam
-sudo chown -R $USER:$USER ~/.local/share/Steam
+#sudo mkdir -p ~/.local/share/Steam
+#sudo chown -R $USER:$USER ~/.local/share/Steam
