@@ -14,3 +14,6 @@ apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl
 sudo apt install nvidia-driver-libs:i386
 apt install steam-installer
 #  https://wiki.debian.org/Steam
+
+# apt install mangohud libxnvctrl0
+# For Steam games, you can add this as a launch option: mangohud %command%
