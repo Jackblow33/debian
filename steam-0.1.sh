@@ -15,6 +15,6 @@ sudo apt install nvidia-driver-libs:i386
 apt install steam-installer
 #  https://wiki.debian.org/Steam
 
-# apt install mangohud libxnvctrl0
+# apt install mangohud libxnvctrl0 goverlay
 # For Steam games, you can add this as a launch option: mangohud %command%
 # Or alternatively, add MANGOHUD=1 to your shell profile (Vulkan only).
