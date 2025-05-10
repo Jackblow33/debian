@@ -15,6 +15,7 @@ wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/${driver_fil
 chmod +x "$driver_path"
 sh "$driver_path" -x
 cd NVIDIA-Linux-x86_64-$NV_VER/32
+sudo mkdir /usr/lib/nvidia/32
 sudo cp libEGL* libGLESv* libGLX* libnvidia-egl* libnvidia-gl* libnvidia-tls* /usr/lib/nvidia/32
 
 
