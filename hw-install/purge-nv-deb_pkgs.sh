@@ -1,6 +1,7 @@
 #!/bin/bash
 
-#https://www.reddit.com/r/debian/comments/16q9ok0/trying_to_purge_nvidia/?rdt=62828
+# Remove installed debian proprietary driver packages .deb
+# https://www.reddit.com/r/debian/comments/16q9ok0/trying_to_purge_nvidia/?rdt=62828
 
 
 # Remove (add purge) 99% of the nvidia packages
