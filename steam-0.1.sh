@@ -23,11 +23,13 @@ mangohud --version  #0.7.1
 #  https://wiki.debian.org/Steam
 
 apt install libxnvctrl0
-wget https://github.com/flightlessmango/MangoHud/releases/download/v0.8.1/MangoHud-0.8.1.r0.gfea4292.tar.gz -P /home/jack/Downloads
-tar -xzf /home/jack/Downloads/MangoHud-0.8.1.r0.gfea4292.tar.gz
-cd /home/jack/Downloads/MangoHud
-./mangohud-setup.sh
-apt install goverlay     #mangohud 
+##	sudo apt install gcc g++ gcc-multilib g++-multilib ninja-build meson python3-mako python3-setuptools python3-wheel pkg-config mesa-common-dev libx11-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib libxkbcommon-dev libxkbcommon-dev:i386 libwayland-dev libwayland-dev:i386
+git clone https://github.com/flightlessmango/MangoHud.git
+cd MangoHud
+chmod +x *.sh
+./build.sh build
+./build.sh install
+apt install goverlay
 # For Steam games, you can add this as a launch option: mangohud %command%
 # Or alternatively, add MANGOHUD=1 to your shell profile (Vulkan only).
 
