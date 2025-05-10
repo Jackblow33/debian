@@ -21,15 +21,16 @@ sudo cp libEGL* libGLESv* libGLX* libnvidia-egl* libnvidia-gl* libnvidia-tls* /u
 
 # There are some symlinks that should be created (update version numbers as appropriate) (this step might not be necessary?):
 
-#cd /usr/lib/nvidia/32
-#sudo ln -s libEGL_nvidia.so.$NV_VER libEGL_nvidia.so.0
-#sudo ln -s libGLESv1_CM_nvidia.so.$NV_VER libGLESv1_CM_nvidia.so.1
-#sudo ln -s libGLESv2_nvidia.so.$NV_VER libGLESv2_nvidia.so.2
-#sudo ln -s libGLX_nvidia.so.$NV_VER libGLX_indirect.so.0
-#sudo ln -s libGLX_nvidia.so.$NV_VER libGLX_nvidia.so.0
+cd /usr/lib/nvidia/32
+sudo ln -s libEGL_nvidia.so.$NV_VER libEGL_nvidia.so.0
+sudo ln -s libGLESv1_CM_nvidia.so.$NV_VER libGLESv1_CM_nvidia.so.1
+sudo ln -s libGLESv2_nvidia.so.$NV_VER libGLESv2_nvidia.so.2
+sudo ln -s libGLX_nvidia.so.$NV_VER libGLX_indirect.so.0
+sudo ln -s libGLX_nvidia.so.$NV_VER libGLX_nvidia.so.0
 
 #If your /usr/lib32 is not checked for libraries, create the file /etc/ld.so.conf.d/nvidia32.conf with the content:
-#     /usr/lib/nvidia/32
+sudo touch  /etc/ld.so.conf.d/nvidia32.conf
+sudo echo " /usr/lib/nvidia/32" >> /etc/ld.so.conf.d/nvidia32.conf
 
-#You will probably need to run this for the system to detect the new libraries:
+# Probably need to run this for the system to detect the new libraries:
 sudo ldconfig
