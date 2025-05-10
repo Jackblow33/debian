@@ -4,8 +4,8 @@
 
 
 #apt --fix-broken install -y
-#wget https://cdn.cloudflare.steamstatic.com/client/installer/steam.deb -P /home/$USR/Downloads || error_handler
-#sudo dpkg -i /home/$USR/Downloads/steam.deb || error_handler
+#wget https://cdn.cloudflare.steamstatic.com/client/installer/steam.deb -P /home/jack/Downloads || error_handler
+#sudo dpkg -i /home/jack/Downloads/steam.deb || error_handler
 #sudo apt -f install || error_handler
 
 
