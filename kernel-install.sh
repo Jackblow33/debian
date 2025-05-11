@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#2025-04-14
+#2025-05-11
 
 # Define the kernel version (uncomment and set the desired version if not using install.sh to reach this script)
 # KERNEL="6.14.1-tkg-eevdf"
@@ -23,7 +23,8 @@ if [ -n "$usb_device_info" ]; then
     echo "USB device path: $usb_device"
 else
     echo "USB device not found. Please check the device name and try again."
-    exit 1
+    read -p "Press Enter to continue or Ctrl+C to exit..."
+    return
 fi
 
 # Start timer
@@ -36,7 +37,8 @@ if mount "$usb_device" /mnt/usb; then
     echo "USB device mounted successfully."
 else
     echo "Failed to mount USB device. Please check the device and try again."
-    exit 1
+    read -p "Press Enter to continue or Ctrl+C to exit..."
+    return
 fi
 
 # Change to the directory containing the kernel files
@@ -47,7 +49,8 @@ if [ -d "/mnt/usb/_MyFiles/kernels/$KERNEL" ]; then
     cd $HOME
 else
     echo "Kernel directory not found: /mnt/usb/_MyFiles/kernels/$KERNEL"
-    exit 1
+    read -p "Press Enter to continue or Ctrl+C to exit..."
+    return
 fi
 
 # Stop timer
