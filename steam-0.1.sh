@@ -23,9 +23,9 @@ mangohud --version  #0.7.1
 #apt install steam-installer
 #  https://wiki.debian.org/Steam
 
-sudo apt install libxnvctrl0
 ##	sudo apt install gcc g++ gcc-multilib g++-multilib ninja-build meson python3-mako python3-setuptools python3-wheel pkg-config mesa-common-dev libx11-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib libxkbcommon-dev libxkbcommon-dev:i386 libwayland-dev libwayland-dev:i386
-cd Downloads
+sudo apt install libxnvctrl0
+cd /home/jack/Downloads
 git clone https://github.com/flightlessmango/MangoHud.git
 cd MangoHud
 ./build.sh build
@@ -33,8 +33,8 @@ cd MangoHud
 
                #sudo apt install lazarus-4.0
 # Lazarus compilation
-cd /usr/local/bin
 sudo apt-get install fpc
+cd /usr/local/bin
 git clone https://gitlab.com/freepascal.org/lazarus/lazarus.git
 cd lazarus
 make clean all
@@ -43,7 +43,7 @@ make clean all
 
                #sudo apt install goverlay
 # Goverlay compilation
-sudo apt-get install libqt6pas-dev
+sudo apt-get install libqt6pas-dev vulkan-tools mesa-utils vkbasalt
 cd /home/jack/Downloads
 git clone https://github.com/benjamimgois/goverlay.git
 cd goverlay
