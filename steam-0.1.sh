@@ -8,7 +8,8 @@ sudo apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 
 wget https://cdn.cloudflare.steamstatic.com/client/installer/steam.deb -P /home/jack/Downloads || error_handler
 sudo mkdir -p ~/.local/share/Steam
 sudo chown -R $USER:$USER ~/.local/share/Steam
-sudo apt --fix-broken install
+# sudo apt --fix-broken install
+sudo apt install libutempter0  xterm
 sudo dpkg -i /home/jack/Downloads/steam.deb || error_handler
 mangohud --version  #0.7.1
 
