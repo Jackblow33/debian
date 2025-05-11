@@ -9,7 +9,7 @@
 lsblk
 
 # Prompt user for USB device name
-echo -e "\n\n"  # Clear some space in the terminal
+echo -e "\n\n"
 read -p "Enter the USB device name (e.g., sdd1, sdc1): " usb_device_name
 
 # Get information about the specified device
