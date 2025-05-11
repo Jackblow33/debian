@@ -23,14 +23,38 @@ mangohud --version  #0.7.1
 #apt install steam-installer
 #  https://wiki.debian.org/Steam
 
-apt install libxnvctrl0
+sudo apt install libxnvctrl0
 ##	sudo apt install gcc g++ gcc-multilib g++-multilib ninja-build meson python3-mako python3-setuptools python3-wheel pkg-config mesa-common-dev libx11-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib libxkbcommon-dev libxkbcommon-dev:i386 libwayland-dev libwayland-dev:i386
+cd Downloads
 git clone https://github.com/flightlessmango/MangoHud.git
 cd MangoHud
-chmod +x *.sh
 ./build.sh build
 ./build.sh install
-apt install goverlay
+
+               #sudo apt install lazarus-4.0
+# Lazarus compilation
+cd /usr/local/bin
+sudo apt-get install fpc
+git clone https://gitlab.com/freepascal.org/lazarus/lazarus.git
+cd lazarus
+make clean all
+# make clean bigide
+
+
+               #sudo apt install goverlay
+# Goverlay compilation
+sudo apt-get install libqt6pas-dev
+cd /home/jack/Downloads
+git clone https://github.com/benjamimgois/goverlay.git
+cd goverlay
+sudo make
+make install
+
+
+
+
+
+
 # For Steam games, you can add this as a launch option: mangohud %command%
 # Or alternatively, add MANGOHUD=1 to your shell profile (Vulkan only).
 
