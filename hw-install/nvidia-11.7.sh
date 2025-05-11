@@ -60,7 +60,7 @@ install_dependencies() {
     # 32 bit libraries
     dpkg --add-architecture i386 && apt update || handle_error
     # Minimmal
-    apt-get install libc6:i386 libgl1-mesa-dri:i386 libx11-6:i386 || handle_error
+    apt-get install -y libc6:i386 libgl1-mesa-dri:i386 libx11-6:i386 || handle_error
     # Extras
     #apt-get install libc6:i386 libgl1:i386 libgtk2.0-dev:i386 libgtk-3-dev:i386 libglu1-mesa:i386 libsm6:i386 libxext6:i386 libxfixes3:i386 libxi6:i386 libxmu6:i386 libxrender1:i386 libxxf86vm1:i386
     #    apt install -y nvidia-driver-libs:i386  #libgl1-nvidia-glx:i386    #(32 bit with debian pkg driver???)
