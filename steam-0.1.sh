@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Debian Steam install
+# steam-0.1.sh
+# 2025-05-11
 
 
 sudo dpkg --add-architecture i386 && sudo apt update
@@ -11,9 +13,9 @@ sudo chown -R $USER:$USER ~/.local/share/Steam
 # sudo apt --fix-broken install
 sudo apt install libutempter0  xterm
 sudo dpkg -i /home/jack/Downloads/steam.deb || error_handler
-mangohud --version  #0.7.1
 
 
+#mangohud --version  #0.7.1
 #sudo apt -f install || error_handler
 
 
@@ -33,8 +35,8 @@ cd MangoHud
 
                #sudo apt install lazarus-4.0
 # Lazarus compilation
-sudo apt-get install fpc
-cd /usr/local/bin
+sudo apt-get install fpc lazarus-ide
+cd /usr/share
 git clone https://gitlab.com/freepascal.org/lazarus/lazarus.git
 cd lazarus
 make clean all
@@ -51,12 +53,16 @@ sudo make
 make install
 
 
-
-
-
-
 # For Steam games, you can add this as a launch option: mangohud %command%
 # Or alternatively, add MANGOHUD=1 to your shell profile (Vulkan only).
+
+
+
+
+
+
+
+
 
 
 #sudo apt install steam-libs-i386
