@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 2025-05-10
+# 2025-05-11
 # install-3.0.2.sh
 
 # VARIABLES
@@ -89,7 +89,7 @@ display_menu() {
         "Install NVIDIA driver" "" ON \
         "Install Gnome" "" ON \
         "Install WiFi BCM4360" "" ON \
-        "Install custom kernel $KERNEL from USB" "" ON \
+        "Install custom kernel $KERNEL from dropbox" "" ON \
         "Install Qemu-Kvm virtualization" "" ON \
         "Reboot system" "" ON 3>&1 1>&2 2>&3)
 
@@ -110,7 +110,7 @@ display_menu() {
         source "$SH_PATH/hw-install/wifi-bcm43xx-0.1.sh"
     fi
 
-    if [[ $menu_choice == *"Install custom kernel $KERNEL from USB"* ]]; then
+    if [[ $menu_choice == *"Install custom kernel $KERNEL from dropbox"* ]]; then
         echo "Installing custom kernel $KERNEL from USB..."
         # source "$SH_PATH/kernel-install.sh"
         source "$SH_PATH/dropbox-kernel.sh"
