@@ -112,7 +112,8 @@ display_menu() {
 
     if [[ $menu_choice == *"Install custom kernel $KERNEL from USB"* ]]; then
         echo "Installing custom kernel $KERNEL from USB..."
-        source "$SH_PATH/kernel-install.sh"
+        # source "$SH_PATH/kernel-install.sh"
+        source "$SH_PATH/dropbox-kernel.sh"
     fi
 
     if [[ $menu_choice == *"Install Qemu-Kvm virtualization"* ]]; then
