@@ -56,6 +56,33 @@ make install
 # For Steam games, you can add this as a launch option: mangohud %command%
 # Or alternatively, add MANGOHUD=1 to your shell profile (Vulkan only).
 
+# Proton GE compilation    https://github.com/GloriousEggroll/proton-ge-custom?tab=readme-ov-file#building
+BUILD="GE-Proton9-27"
+# build dependency podman
+sudo apt-get update
+sudo apt-get install podman   # podman --version = podman version 5.4.2
+cd /home/jack
+git clone --recurse-submodules http://github.com/gloriouseggroll/proton-ge-custom
+
+# Applying patches
+cd proton-ge-custom
+./patches/protonprep-valve-staging.sh &> patchlog.txt
+# In the main proton-ge-custom directory.
+# Open patchlog.txt and search for "fail" to make sure no patch failures occured. An easy way to do this is like so:
+grep -i fail patchlog.txt
+grep -i error patchlog.txt 
+
+mkdir build && cd build
+../configure.sh --build-name=$BUILD
+# make redist &> log
+make redist
+# Build will be placed within the build directory as $BUILD.tar.gz
+
+# Enabling
+# Right click any game in Steam and click Properties.
+# At the bottom of the Compatibility tab, Check Force the use of a specific Steam Play compatibility tool, then select the desired Proton version.
+# Launch the game.
+
 
 
 
