@@ -20,7 +20,7 @@ dl_kernel() {
 
     # Use curl to download the folder and extract the original file name
     sudo apt install -y curl
-    FOLDER_NAME=$(curl -I "$DROPBOX_FOLDER_PATH" | grep -i "Content-Disposition" | sed -E 's/.*filename="([^"]+)".*/\1/')
+    FOLDER_NAME="6.14.3-tkg-bore"
     DOWNLOAD_PATH="$DOWNLOAD_DIR/$FOLDER_NAME"
     mkdir -p "$DOWNLOAD_PATH"
 
