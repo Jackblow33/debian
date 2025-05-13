@@ -77,6 +77,11 @@ mkdir build && cd build
 # make redist &> log
 make redist
 # Build will be placed within the build directory as $BUILD.tar.gz
+tar -xzf $BUILD.tar.gz
+cd $BUILD
+# ??? #    ./install.sh
+proton-ge-custom --version
+
 
 # Enabling
 # Right click any game in Steam and click Properties.
