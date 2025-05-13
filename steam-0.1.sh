@@ -94,6 +94,11 @@ echo "deb [signed-by=/etc/apt/keyrings/lutris.gpg] https://download.opensuse.org
 wget -q -O- https://download.opensuse.org/repositories/home:/strycore/Debian_12/Release.key | gpg --dearmor | sudo tee /etc/apt/keyrings/lutris.gpg > /dev/null
 sudo apt update
 sudo apt install lutris
+sudo mkdir -p ~/.local/share/lutris
+sudo mkdir -p ~/.local/share/icons
+sudo chown -R jack:jack ~/.local/share/lutris
+sudo chown -R jack:jack ~/.local/share/icons
+
 
 
 
