@@ -5,13 +5,14 @@
 
 
 # My precompiled dropbox Haswell kernel 6.14.3-tkg-bore  (all modules compiled)
+# To update the kernel version simply edit following variables: DROPBOX_FOLDER_PATH & FOLDER_NAME
 
 USR=$(logname)
 DOWNLOAD_DIR="/home/$USR/kernels"
 
 
 dl_kernel() {
-    # Dropbox public folder link
+    # Dropbox public folder link of: Haswell kernel 6.14.3-tkg-bore
     DROPBOX_FOLDER_PATH="https://www.dropbox.com/scl/fo/wu8ffjknu506i1ehachss/AHrRWSPCewap_ZEhvXcvQQo?rlkey=eb6clwlaeh9843v39afdbitzb&st=tp72906w&dl=1"
 
     # Create the download directory if it doesn't exist
