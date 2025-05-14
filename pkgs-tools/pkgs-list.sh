@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # pkgs-list.sh
-# 2025-05-04
+# 2025-05-14
 
 # Set the output directory & file path
 USR=$(logname)
