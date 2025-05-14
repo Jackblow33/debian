@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Debian, Ubuntu, Mint - 2025-05-07
+# Debian, Ubuntu, Mint - 2025-05-14
 
 
 apt install -y curl
