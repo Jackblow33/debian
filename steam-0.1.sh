@@ -101,7 +101,12 @@ sudo chown -R jack:jack ~/.local/share/icons
 
 
 
-
+# Might be usefull info down the road:
+# Concerning warning message "pv-adverb: W:  
+# check if the locale is correctly set up by running the following command:
+# LC_ALL=en_US.UTF-8 perl -e ''
+# If the locale is correctly set up, the command should exit with status 0 and no output.
+# Else select en_US.UTF-8 through: sudo dpkg-reconfigure locales 
 
 
 
