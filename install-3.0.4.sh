@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 2025-05-14
-# install-3.0.4.sh
+# install-3.0.5.sh
 
 # VARIABLES
 USR=$(logname)
@@ -103,7 +103,7 @@ display_menu() {
     
     if [[ $menu_choice == *"Install NVIDIA driver"* ]]; then
         echo "Installing NVIDIA driver $NV_VER..."
-        source "$SH_PATH/hw-install/nvidia-11.7.sh"
+        source "$SH_PATH/hw-install/nvidia-11.7.1.sh"
     fi
 
     if [[ $menu_choice == *"Install WiFi BCM4360"* ]]; then
