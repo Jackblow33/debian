@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 2025-05-14
+# 2025-05-17
 # install-3.0.5.sh
 
 # VARIABLES
@@ -129,9 +129,13 @@ display_menu() {
     fi
 }
 
+post-install-menu() {
+source "$SH_PATH/post-install/post-install-menu.sh"
+}
 
 # Main script execution
 root_check
 set_permission
 display_menu
+post-install-menu
 #clear
