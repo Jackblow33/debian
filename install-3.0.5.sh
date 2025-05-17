@@ -82,7 +82,7 @@ set_permission() {
     chmod -R 777 $SH_PATH
 }
 
-# TODO: add a dialog y/n install the gui installer #########################################
+# TODO: add a dialog y/n > continue the install | install the gui installer #########################################
 # Fuction to install the post install menu. The menu provide a gui to install softwares that might have been stripped-off by this installer.
 # It also provide an easy way to install some usefull softwares not installed by default . eg. gaming, benchmarking  - Because gaming is a thing in Debian ....
 # Management & easy compilation of kernel, system tasks, etc... A work in progress.
