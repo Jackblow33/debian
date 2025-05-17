@@ -82,23 +82,21 @@ set_permission() {
     chmod -R 777 $SH_PATH
 }
 
-# TODO: add a dialog y/n > continue the install | install the gui installer #########################################
-# Fuction to install the post install menu. The menu provide a gui to install softwares that might have been stripped-off by this installer.
+# The option gui custom installer provide a post install menu. The installer menu is a gui to install softwares that might have been stripped-off by this installer.
 # It also provide an easy way to install some usefull softwares not installed by default . eg. gaming, benchmarking  - Because gaming is a thing in Debian ....
 # Management & easy compilation of kernel, system tasks, etc... A work in progress.
-post-install-menu() {
-source "$SH_PATH/post-install/post-install-menu.sh"
-}
+
 
 # Function to display the menu
 display_menu() {
     local menu_choice
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 6 \
-        "Install custom TKG kernel $KERNEL from dropbox" "" ON \
+        "Install custom TKG kernel $KERNEL from dropbox" "" OFF \
         "Install NVIDIA driver" "" ON \
         "Install WiFi BCM4360" "" ON \
         "Install Gnome" "" ON \
         "Install Qemu-Kvm virtualization" "" ON \
+        "Install gui custom installer" "" ON \
         "Reboot system" "" ON 3>&1 1>&2 2>&3)
 
     # Execute the selected options in sequence
@@ -131,6 +129,11 @@ display_menu() {
         source "$SH_PATH/qemu-kvm-0.6.sh"
     fi
 
+     if [[ $menu_choice == *"Install gui custom installer"* ]]; then
+        echo "Installing gui custom installer..."
+        source "$SH_PATH/post-install/post-install-menu.sh"
+    fi
+
     if [[ $menu_choice == *"Reboot system"* ]]; then
         echo "Rebooting system..."
         countdown_reboot
@@ -142,5 +145,4 @@ display_menu() {
 # Main script execution
 root_check
 set_permission
-post-install-menu
 display_menu
