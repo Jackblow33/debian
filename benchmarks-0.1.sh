@@ -102,7 +102,7 @@ unigine_valley() {
     	# Create icon - launcher in  ~/.local/share/applications
 	# Create the startup file shortcut & icon
 	USR=$(logname)
-        unigine_heaven="/home/$USR/.config/autostart/heaven.desktop"
+        unigine_valley="/home/$USR/.config/autostart/valley.desktop"
  	cat << EOF > "$heaven.desktop"
 	[Desktop Entry]
 	Type=Application
@@ -113,7 +113,11 @@ unigine_valley() {
 	Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
 	Terminal=false
 	EOF
- 	
+
+	# Then edit launch script path to reflect the folder move...
+  	sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
+	#sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+  
  	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
 
