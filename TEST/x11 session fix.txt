@@ -1,0 +1,97 @@
+sudo apt-get purge gnome-keyring
+sudo apt-get install gnome-keyring
+
+sudo journalctl -u gdm.service
+
+# Check if the gnome-keyring package is installed:
+sudo apt-get install gnome-keyring
+
+# If the package is installed, try manually starting the gnome-keyring-daemon:
+gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+
+# If the manual start is successful, you can try to enable the gnome-keyring-daemon service to start automatically on boot:
+systemctl enable gnome-keyring-daemon
+
+#If the manual start is not successful, check the logs for any error messages or clues about why the gnome-keyring-daemon is not starting:
+journalctl -u gnome-keyring-daemon
+
+# Ensure that the user "jack" has the necessary permissions to access the GNOME Keyring. You can try running the following commands:
+sudo chown -R jack:jack ~/.local/share/keyrings
+sudo chmod -R 700 ~/.local/share/keyrings
+If the above steps don't resolve the issue, you may need to investigate further into the GNOME Display Manager (GDM) configuration and setup, as the issue could be related to the overall desktop environment setup.
+
+
+
+
+sudo mkdir -p ~/.local/share/keyrings/
+sudo chown -R jack:jack ~/.local/share/keyrings/
+sudo chmod -R 700 ~/.local/share/keyrings/
+sudo systemctl restart gdm.service
+
+
+
+sudo nano /etc/gdm3/daemon.conf
+
+Add the following line under the [daemon] section:
+
+Code
+
+RemoveOtherSessions=false
+
+
+After making the change, restart the GDM service:
+
+Code
+
+sudo systemctl restart gdm.service
+
+
+Check the Keyring Directory Permissions:
+Verify that the ~/.local/share/keyrings/ directory has the correct permissions:
+
+Code
+
+ls -ld ~/.local/share/keyrings/
+
+The output should show the directory with the correct permissions (e.g., drwx------).
+
+Check the System Logs:
+Look for any relevant error messages or clues in the system logs:
+
+Code
+
+    journalctl -xe
+
+    This will show the latest system logs, which may provide more information about the keyring-related issues.
+
+After making this change and restarting the GDM service, the GNOME Keyring should be better integrated with the display manager, and the login issues you were experiencing should be resolved.
+
+
+
+
+
+
+
+
+
+gnome-keyring-daemon --start
+
+Check the GNOME Keyring permissions:
+Ensure that the "jack" user has the necessary permissions to the ~/.local/share/keyrings/ directory. You can do this by running:
+
+Code
+ls -ld ~/.local/share/keyrings/
+
+The output should show that the "jack" user has read and write access to the directory.
+
+Reset the GNOME Keyring:
+If the permissions look correct, you can try resetting the GNOME Keyring as mentioned in my previous response:
+
+Code
+
+jack@debian:~$ gnome-keyring-daemon --stop
+jack@debian:~$ rm -rf ~/.local/share/keyrings/
+jack@debian:~$ gnome-keyring-daemon --start
+
+This will create a new, empty keyring for the "jack" user.
+

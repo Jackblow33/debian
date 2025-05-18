@@ -1,0 +1,10 @@
+sudo journalctl -u gdm.service
+gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+
+journalctl -xe
+sudo touch ~/.local/share/recently-used.xbel
+sudo chown -R jack:jack ~/.local/share/recently-used.xbel
+
+sudo mkdir -p ~/.local/state/wireplumber
+sudo chown -R jack:jack ~/.local/state/wireplumber
+sudo chown -R jack:jack ~/.local

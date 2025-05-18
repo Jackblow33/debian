@@ -1,0 +1,18 @@
+sudo touch ~/.local/share/recently-used.xbel
+sudo chown -R jack:jack ~/.local/share/recently-used.xbel
+
+sudo mkdir -p ~/.local/state/wireplumber
+sudo chown -R jack:jack ~/.local/state/wireplumber
+
+
+
+sudo chown -R jack:jack ~/.local/share
+sudo chown -R jack:jack ~/.local/state/wireplumber
+
+touch ~/.local/share/recently-used.xbel
+sudo chown jack:jack ~/.local/share/recently-used.xbel
+
+sudo mkdir -p ~/.local/share
+sudo mkdir -p ~/.local/state/wireplumber
+sudo chown -R jack:jack ~/.local
+touch ~/.local/share/recently-used.xbel
