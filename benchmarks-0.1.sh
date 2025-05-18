@@ -40,43 +40,42 @@ root_check() {
 
 
 unigine_heaven() {
-	USR=$(logname)
- 	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
- 	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
-	chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
- 	/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
-  	USR=$(logname)
- 	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
- 	sudo mkdir $UNIGINE_PATH
-  	sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH
-   	# sudo cp -i /home/$USR/debian/icons/48_icon.png $UNIGINE_PATH/Unigine_Heaven-4.0
-   	sudo mkdir ~/.local/share/applications
-    	# Create icon - launcher in  ~/.local/share/applications
-	# Create the startup file shortcut & icon
-	USR=$(logname)
-        unigine_valley="/home/$USR/.config/autostart/valley.desktop"
- 	cat << EOF > "$valley.desktop"
-	[Desktop Entry]
-	Type=Application
-	Encoding=UTF-8
-	Name=Heaven
-	Comment=DX11 Benchmark
-	Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
-	Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
-	Terminal=false
-	EOF
- 	# Then edit launch script path to reflect the folder move...
-  	sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
-	#sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
- 	# Reboot to have icon added into gnome ???
-     
-     	#sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
-	#mkdir $BENCHMARKS_PATH
-	#cd $BENCHMARKS_PATH
-	/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
-	#rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
+    USR=$(logname)
+    UNIGINE_PATH="/home/$USR/.local/share/Unigine"
+    wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
+    chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
+    /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
+    USR=$(logname)
+    UNIGINE_PATH="/home/$USR/.local/share/Unigine"
+    sudo mkdir $UNIGINE_PATH
+    sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
+    # sudo cp -i /home/$USR/debian/icons/48_icon.png $UNIGINE_PATH/Unigine_Heaven-4.0
+    sudo mkdir ~/.local/share/applications
+    # Create icon - launcher in  ~/.local/share/applications
+    # Create the startup file shortcut & icon
+    USR=$(logname)
+    unigine_heaven="/home/jack/.local/share/applications/heaven.desktop"
+    cat << EOF > "$unigine_heaven"
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Heaven
+Comment=DX11 Benchmark
+Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
+Terminal=false
+Categories=Game;Benchmark;
+EOF
+    # Then edit launch script path to reflect the folder move...
+    sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+    #sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+    # Reboot to have icon added into gnome ???
+    #sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
+    #mkdir $BENCHMARKS_PATH
+    #cd $BENCHMARKS_PATH
+    /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
+    #rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
-
 
 
 unigine_superposition() {
@@ -103,14 +102,14 @@ unigine_valley() {
 	# Create the startup file shortcut & icon
 	USR=$(logname)
        # unigine_valley="/home/$USR/.config/autostart/valley.desktop"
- 	cat << EOF > "$valley.desktop"
+ 	cat << EOF > "$unigine_valley"
 	[Desktop Entry]
 	Type=Application
 	Encoding=UTF-8
 	Name=Valley
 	Comment=DX11 Benchmark
-	Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
-	Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
+ 	Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
+	Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
 	Terminal=false
 	EOF
 
