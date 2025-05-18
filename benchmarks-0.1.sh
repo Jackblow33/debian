@@ -41,9 +41,14 @@ root_check() {
 unigine_heaven() {
 	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
 	chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
+ 	sudo mkdir /home/$USR/.local/share/Unigine
+  	sudo mv /home/$USR/Unigine_Heaven-4.0 /home/$USR/.local/share/Unigine
+   	sudo mkdir ~/.local/share/applications
+    	# Create icon - launcher in  ~/.local/share/applications
+     	sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
 	#mkdir $BENCHMARKS_PATH
 	#cd $BENCHMARKS_PATH
-	#/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
+	/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
 	#rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
 
