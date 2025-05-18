@@ -10,5 +10,5 @@ apt update -y
 apt install -y brave-browser
 
 # Keyring quirk fix
-apt purge -y gnome-keyring && apt autoremove -y
+# apt purge -y gnome-keyring && apt autoremove -y
 sed -i 's|/usr/bin/brave-browser-stable|/usr/bin/brave-browser-stable --password-store=gnome|g' /usr/share/applications/brave-browser.desktop
