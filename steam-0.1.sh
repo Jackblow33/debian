@@ -108,7 +108,10 @@ meson setup build/
 ninja -C build/
 sudo ninja -C build/ install
 
-# Heroic launcher
+# Heroic game launcher
+# HERO_VER="2.16.1"
+wget https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.16.1/Heroic-2.16.1-linux-amd64.deb
+sudo dpkg -i Heroic_*_amd64.deb
 
 
 
