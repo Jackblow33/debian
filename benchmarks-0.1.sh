@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # benchmarks.sh
-# Date modified: 2025-04-26
+# Date modified: 2025-05-18
 
 TIMESTAMP=$(date +%Y%m%d.%R)
 USR=$(logname)
@@ -10,6 +10,7 @@ YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m'  # No color
 BENCHMARKS_PATH="/home/$USR/Benchmarks"
+UNIGINE_PATH="/home/$USR/.local/share/Unigine"
 
 timer_start() {
     BEGIN=$(date +%s)
@@ -41,10 +42,26 @@ root_check() {
 unigine_heaven() {
 	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
 	chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
- 	sudo mkdir /home/$USR/.local/share/Unigine
-  	sudo mv /home/$USR/Unigine_Heaven-4.0 /home/$USR/.local/share/Unigine
+ 	sudo mkdir $UNIGINE_PATH
+  	sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
    	sudo mkdir ~/.local/share/applications
     	# Create icon - launcher in  ~/.local/share/applications
+	# Create the startup file shortcut & icon
+	USR=$(logname)
+        unigine_heaven="/home/$USR/.config/autostart/heaven.desktop"
+ 	cat << EOF > "$heaven.desktop"
+	[Desktop Entry]
+	Type=Application
+	Encoding=UTF-8
+	Name=Heaven
+	Comment=DX11 Benchmark
+	Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+	Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/48_icon.png
+	Terminal=false
+	EOF
+ 	# Then edit launch script path to reflect the move...
+
+     
      	sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
 	#mkdir $BENCHMARKS_PATH
 	#cd $BENCHMARKS_PATH
