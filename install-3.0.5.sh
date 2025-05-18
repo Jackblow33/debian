@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 2025-05-18
+# 2025-05-14
 # install-3.0.5.sh
 
 # VARIABLES
@@ -51,7 +51,7 @@ countdown_reboot() {
     for ((i=$countdown_time; i>0; i--)); do
         clear
         echo -e "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
-        echo "                                                                                            Rebooting in $i seconds. Press Ctrl+C to cancel."
+        echo "                                                                                      Rebooting in $i seconds. Press Ctrl+C to cancel."
         sleep 1
     done
 
@@ -82,21 +82,15 @@ set_permission() {
     chmod -R 777 $SH_PATH
 }
 
-# The option gui custom installer provide a post install menu. The installer menu is a gui to install softwares that might have been stripped-off by this installer.
-# It also provide an easy way to install some usefull softwares not installed by default . eg. gaming, benchmarking  - Because gaming is a thing in Debian ....
-# Management & easy compilation of kernel, system tasks, etc... A work in progress.
-
-
 # Function to display the menu
 display_menu() {
     local menu_choice
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 6 \
-        "Install custom TKG kernel $KERNEL from dropbox" "" OFF \
-        "Install NVIDIA driver" "" OFF \
-        "Install WiFi BCM4360" "" OFF \
+        "Install custom TKG kernel $KERNEL from dropbox" "" ON \
+        "Install NVIDIA driver" "" ON \
+        "Install WiFi BCM4360" "" ON \
         "Install Gnome" "" ON \
         "Install Qemu-Kvm virtualization" "" ON \
-#        "Install gui custom installer" "" OFF \
         "Reboot system" "" ON 3>&1 1>&2 2>&3)
 
     # Execute the selected options in sequence
@@ -129,17 +123,11 @@ display_menu() {
         source "$SH_PATH/qemu-kvm-0.6.sh"
     fi
 
-#    if [[ $menu_choice == *"Install gui custom installer"* ]]; then
-#        echo "Installing gui custom installer..."
-#        source "$SH_PATH/post-install/post-install-menu.sh"
-#    fi
-
     if [[ $menu_choice == *"Reboot system"* ]]; then
         echo "Rebooting system..."
         countdown_reboot
     fi
 }
-
 
 
 # Main script execution
