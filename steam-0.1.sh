@@ -2,7 +2,7 @@
 
 # Debian Steam install
 # steam-0.1.sh
-# 2025-05-11
+# 2025-05-18
 
 
 sudo dpkg --add-architecture i386 && sudo apt update
