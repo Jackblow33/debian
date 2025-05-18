@@ -96,7 +96,7 @@ display_menu() {
         "Install WiFi BCM4360" "" OFF \
         "Install Gnome" "" ON \
         "Install Qemu-Kvm virtualization" "" ON \
-        "Install gui custom installer" "" OFF \
+#        "Install gui custom installer" "" OFF \
         "Reboot system" "" ON 3>&1 1>&2 2>&3)
 
     # Execute the selected options in sequence
@@ -129,10 +129,10 @@ display_menu() {
         source "$SH_PATH/qemu-kvm-0.6.sh"
     fi
 
-     if [[ $menu_choice == *"Install gui custom installer"* ]]; then
-        echo "Installing gui custom installer..."
-        source "$SH_PATH/post-install/post-install-menu.sh"
-    fi
+#    if [[ $menu_choice == *"Install gui custom installer"* ]]; then
+#        echo "Installing gui custom installer..."
+#        source "$SH_PATH/post-install/post-install-menu.sh"
+#    fi
 
     if [[ $menu_choice == *"Reboot system"* ]]; then
         echo "Rebooting system..."
