@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 2025-05-14
+# 2025-05-18
 # install-3.0.5.sh
 
 # VARIABLES
@@ -114,7 +114,7 @@ display_menu() {
     if [[ $menu_choice == *"Install Gnome"* ]]; then
         echo "Installing Gnome..."
         # source "$SH_PATH/pkgs-tools/alpha-debian-gnome.sh" (STABLE)
-        source "$SH_PATH/gnome-0.4.sh"
+        source "$SH_PATH/gnome-0.4.1.sh"
     fi
 
 
