@@ -40,10 +40,12 @@ root_check() {
 
 
 unigine_heaven() {
-	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
+	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
+ 	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
 	chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
  	sudo mkdir $UNIGINE_PATH
   	sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
+   	sudo cp -i /home/$USR/debian/icons/48_icon.png $UNIGINE_PATH/Unigine_Heaven-4.0
    	sudo mkdir ~/.local/share/applications
     	# Create icon - launcher in  ~/.local/share/applications
 	# Create the startup file shortcut & icon
