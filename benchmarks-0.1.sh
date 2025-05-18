@@ -73,7 +73,6 @@ EOF
     #sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
     #mkdir $BENCHMARKS_PATH
     #cd $BENCHMARKS_PATH
-    /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
     #rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
 
@@ -101,7 +100,7 @@ unigine_valley() {
     	# Create icon - launcher in  ~/.local/share/applications
 	# Create the startup file shortcut & icon
 	USR=$(logname)
-       # unigine_valley="/home/$USR/.config/autostart/valley.desktop"
+        unigine_valley="/home/jack/.local/share/applications/valley.desktop"
  	cat << EOF > "$unigine_valley"
 [Desktop Entry]
 Type=Application
