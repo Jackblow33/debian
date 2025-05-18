@@ -80,9 +80,8 @@ EOF
 unigine_superposition() {
     	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Superposition-1.1.run
     	chmod a+x /home/$USR/Downloads/Unigine_Superposition-1.1.run
-	#mkdir $BENCHMARKS_PATH
-	#cd $BENCHMARKS_PATH
-	#/home/$USR/Downloads/Unigine_Superposition-1.1.run || handle_error
+     	/home/$USR/Downloads/Unigine_Superposition-1.1.run || handle_error
+	
  	#rm -f /home/$USR/Downloads/Unigine_Superposition-1.1.run
 }
 
