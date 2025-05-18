@@ -3,6 +3,13 @@
 # gnome-0.4.1sh
 # Date modified: 2025-05-11
 
+# Check if the installation was successful
+check() {
+if [ $? -ne 0 ]; then
+    echo "Command fail. Press Enter to continue."
+    read -s
+fi
+}
 
 update_upgrade() {
     # Update package list and upgrade installed packages
@@ -13,11 +20,11 @@ update_upgrade() {
 # Minimal Gnome packages installation & settings
 install_desktop_environment() {
 input_file="/home/$USR/debian/pkgs-tools/tasksel_pkgs.list"
-sudo apt-get install -y $(cat "$input_file")
-gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
-sudo mkdir -p /home/$USR/.local/state/wireplumber
-sudo chown -R $USR:$USR /home/$USR/.local/state/wireplumber
-sudo chown -R $USR:$USR /home/$USR/.local
+sudo apt-get install -y $(cat "$input_file") || handle_error
+gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg || check
+sudo mkdir -p /home/$USR/.local/state/wireplumber || check
+sudo chown -R $USR:$USR /home/$USR/.local/state/wireplumber || check
+sudo chown -R $USR:$USR /home/$USR/.local || check
 }
 
 
