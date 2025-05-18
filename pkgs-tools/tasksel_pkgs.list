@@ -17,6 +17,7 @@ gdm3
 gnome-backgrounds
 gnome-bluetooth-sendto
 gnome-control-center
+gnome-keyring
 gnome-menus
 gnome-session
 gnome-settings-daemon
