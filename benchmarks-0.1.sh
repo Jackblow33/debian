@@ -40,25 +40,29 @@ root_check() {
 
 
 unigine_heaven() {
-	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
+	USR=$(logname)
+ 	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
  	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
 	chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
+ 	/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
+  	USR=$(logname)
+ 	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
  	sudo mkdir $UNIGINE_PATH
-  	sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
-   	sudo cp -i /home/$USR/debian/icons/48_icon.png $UNIGINE_PATH/Unigine_Heaven-4.0
+  	sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH
+   	# sudo cp -i /home/$USR/debian/icons/48_icon.png $UNIGINE_PATH/Unigine_Heaven-4.0
    	sudo mkdir ~/.local/share/applications
     	# Create icon - launcher in  ~/.local/share/applications
 	# Create the startup file shortcut & icon
 	USR=$(logname)
-        unigine_heaven="/home/$USR/.config/autostart/heaven.desktop"
- 	cat << EOF > "$heaven.desktop"
+        unigine_valley="/home/$USR/.config/autostart/valley.desktop"
+ 	cat << EOF > "$valley.desktop"
 	[Desktop Entry]
 	Type=Application
 	Encoding=UTF-8
 	Name=Heaven
 	Comment=DX11 Benchmark
-	Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
-	Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/48_icon.png
+	Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
+	Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
 	Terminal=false
 	EOF
  	# Then edit launch script path to reflect the folder move...
@@ -87,11 +91,29 @@ unigine_superposition() {
 
 
 unigine_valley() {
-   	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run
+   	
+    	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run
    	chmod a+x /home/$USR/Downloads/Unigine_Valley-1.0.run
-   	#mkdir $BENCHMARKS_PATH
-	#cd $BENCHMARKS_PATH
-	#/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
+	/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
+ 	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
+  	sudo mkdir $UNIGINE_PATH
+  	sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH
+   	sudo mkdir ~/.local/share/applications
+    	# Create icon - launcher in  ~/.local/share/applications
+	# Create the startup file shortcut & icon
+	USR=$(logname)
+        unigine_heaven="/home/$USR/.config/autostart/heaven.desktop"
+ 	cat << EOF > "$heaven.desktop"
+	[Desktop Entry]
+	Type=Application
+	Encoding=UTF-8
+	Name=Heaven
+	Comment=DX11 Benchmark
+	Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+	Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
+	Terminal=false
+	EOF
+ 	
  	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
 
