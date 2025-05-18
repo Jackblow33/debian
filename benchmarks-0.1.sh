@@ -103,15 +103,15 @@ unigine_valley() {
 	USR=$(logname)
        # unigine_valley="/home/$USR/.config/autostart/valley.desktop"
  	cat << EOF > "$unigine_valley"
-	[Desktop Entry]
-	Type=Application
-	Encoding=UTF-8
-	Name=Valley
-	Comment=DX11 Benchmark
- 	Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
-	Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
-	Terminal=false
-	EOF
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Valley
+Comment=DX11 Benchmark
+Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
+Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
+Terminal=false
+EOF
 
 	# Then edit launch script path to reflect the folder move...
   	sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
