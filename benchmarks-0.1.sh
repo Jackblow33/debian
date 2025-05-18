@@ -59,10 +59,12 @@ unigine_heaven() {
 	Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/48_icon.png
 	Terminal=false
 	EOF
- 	# Then edit launch script path to reflect the move...
-
+ 	# Then edit launch script path to reflect the folder move...
+  	sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+	#sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+ 	# Reboot to have icon added into gnome ???
      
-     	sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
+     	#sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
 	#mkdir $BENCHMARKS_PATH
 	#cd $BENCHMARKS_PATH
 	/home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
