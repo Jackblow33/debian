@@ -99,6 +99,18 @@ sudo mkdir -p ~/.local/share/icons
 sudo chown -R jack:jack ~/.local/share/lutris
 sudo chown -R jack:jack ~/.local/share/icons
 
+# Gamescope compilation
+sudo apt-get update
+sudo apt-get install git meson ninja-build
+git clone https://github.com/ValveSoftware/gamescope.git
+cd gamescope
+meson setup build/
+ninja -C build/
+sudo ninja -C build/ install
+
+# Heroic launcher
+
+
 
 
 # Might be usefull info down the road:
