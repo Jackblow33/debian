@@ -86,7 +86,7 @@ set_permission() {
 display_menu() {
     local menu_choice
     menu_choice=$(whiptail --title "Base Gnome installation & extra programs" --checklist "Make your selection:" 20 80 6 \
-        "Install custom TKG kernel $KERNEL from dropbox" "" ON \
+        "Install custom TKG kernel $KERNEL from dropbox" "" OFF \
         "Install NVIDIA driver" "" ON \
         "Install WiFi BCM4360" "" ON \
         "Install Gnome" "" ON \
