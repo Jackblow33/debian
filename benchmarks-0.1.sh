@@ -102,12 +102,12 @@ unigine_valley() {
     	# Create icon - launcher in  ~/.local/share/applications
 	# Create the startup file shortcut & icon
 	USR=$(logname)
-        unigine_valley="/home/$USR/.config/autostart/valley.desktop"
- 	cat << EOF > "$heaven.desktop"
+       # unigine_valley="/home/$USR/.config/autostart/valley.desktop"
+ 	cat << EOF > "$valley.desktop"
 	[Desktop Entry]
 	Type=Application
 	Encoding=UTF-8
-	Name=Heaven
+	Name=Valley
 	Comment=DX11 Benchmark
 	Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
 	Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
