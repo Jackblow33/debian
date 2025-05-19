@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # benchmarks.sh
-# Date modified: 2025-05-18
+# Date modified: 2025-05-19
+
+# TODO reuse uninstall script from superposition to add uninstall option.
 
 TIMESTAMP=$(date +%Y%m%d.%R)
 USR=$(logname)
@@ -60,8 +62,8 @@ Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
 Terminal=false
 Categories=Game;Benchmark;
 EOF
-    # Then edit launch script path to reflect the folder move...
-    sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+    # Edit launch script path to reflect the folder move...
+sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
     #sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
     # Reboot to have icon added into gnome ???
     #sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
@@ -76,15 +78,13 @@ unigine_valley() {
     	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run
    	chmod a+x /home/$USR/Downloads/Unigine_Valley-1.0.run
 	/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
- 	UNIGINE_PATH="/home/$USR/.local/share/Unigine"
   	sudo mkdir $UNIGINE_PATH
   	sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH
    	sudo mkdir ~/.local/share/applications
     	# Create icon - launcher in  ~/.local/share/applications
 	# Create the startup file shortcut & icon
-	USR=$(logname)
-        unigine_valley="/home/jack/.local/share/applications/valley.desktop"
- 	cat << EOF > "$unigine_valley"
+        unigine_valley="/home/$USR/.local/share/applications/valley.desktop"
+ cat << EOF > "$unigine_valley"
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
@@ -95,8 +95,8 @@ Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
 Terminal=false
 EOF
 
-	# Then edit launch script path to reflect the folder move...
-  	sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
+	# Edit launch script path to reflect the folder move...
+sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
 	#sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
   
  	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
