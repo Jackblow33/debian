@@ -40,22 +40,16 @@ root_check() {
 
 
 unigine_heaven() {
-    USR=$(logname)
-    UNIGINE_PATH="/home/$USR/.local/share/Unigine"
     wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
     chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
     /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
-    USR=$(logname)
-    UNIGINE_PATH="/home/$USR/.local/share/Unigine"
     sudo mkdir $UNIGINE_PATH
     sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
-    # sudo cp -i /home/$USR/debian/icons/48_icon.png $UNIGINE_PATH/Unigine_Heaven-4.0
-    sudo mkdir ~/.local/share/applications
+    sudo mkdir /home/$USR/.local/share/applications
     # Create icon - launcher in  ~/.local/share/applications
     # Create the startup file shortcut & icon
-    USR=$(logname)
     unigine_heaven="/home/jack/.local/share/applications/heaven.desktop"
-    cat << EOF > "$unigine_heaven"
+cat << EOF > "$unigine_heaven"
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
@@ -75,16 +69,6 @@ EOF
     #cd $BENCHMARKS_PATH
     #rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
-
-
-unigine_superposition() {
-    	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Superposition-1.1.run
-    	chmod a+x /home/$USR/Downloads/Unigine_Superposition-1.1.run
-     	/home/$USR/Downloads/Unigine_Superposition-1.1.run || handle_error
-	
- 	#rm -f /home/$USR/Downloads/Unigine_Superposition-1.1.run
-}
-
 
 
 unigine_valley() {
@@ -121,11 +105,12 @@ EOF
 
 
 geekbench() 
+        GEEKBENCH_PATH="/home/$USR/.local/share/Geekbench"
+  	sudo mkdir $GEEKBENCH_PATH
    	wget -P /home/$USR/Downloads https://cdn.geekbench.com/Geekbench-6.4.0-Linux.tar.gz
     	tar -xvf /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
    	#mkdir $BENCHMARKS_PATH
-    	mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $BENCHMARKS_PATH
-	#cd $BENCHMARKS_PATH
+    	mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $GEEKBENCH_PATH
  	#rm -f /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
 }
 
@@ -139,7 +124,6 @@ geekbench()
 root_check
 timer_start
 unigine_heaven
-#unigine_superposition
-unigine_valley
+#unigine_valley
 geekbench
 timer_stop
