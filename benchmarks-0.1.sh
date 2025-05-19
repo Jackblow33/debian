@@ -46,7 +46,7 @@ unigine_heaven() {
     /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
     sudo mkdir $UNIGINE_PATH
     sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
-    sudo mkdir /home/$USR/.local/share/applications
+    sudo mkdir -p /home/$USR/.local/share/applications
     # Create icon - launcher in  ~/.local/share/applications
     # Create the startup file shortcut & icon
     unigine_heaven="/home/jack/.local/share/applications/heaven.desktop"
@@ -77,7 +77,7 @@ unigine_valley() {
     	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run
    	chmod a+x /home/$USR/Downloads/Unigine_Valley-1.0.run
 	/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
-  	sudo mkdir $UNIGINE_PATH
+  	sudo mkdir -p $UNIGINE_PATH
   	sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH
    	sudo mkdir ~/.local/share/applications
     	# Create icon - launcher in  ~/.local/share/applications
@@ -104,15 +104,13 @@ sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\
 
 
 geekbench() {
-        GEEKBENCH_PATH="/home/$USR/.local/share/Geekbench"
-  	sudo mkdir $GEEKBENCH_PATH
-   	wget -P /home/$USR/Downloads https://cdn.geekbench.com/Geekbench-6.4.0-Linux.tar.gz
-    	tar -xvf /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
-   	#mkdir $BENCHMARKS_PATH
-    	mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $GEEKBENCH_PATH
- 	#rm -f /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
+    GEEKBENCH_PATH="/home/$USR/.local/share/Geekbench"
+    sudo mkdir -p $GEEKBENCH_PATH
+    wget -P /home/$USR/Downloads https://cdn.geekbench.com/Geekbench-6.4.0-Linux.tar.gz
+    tar -xvf /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz -C /home/$USR/Downloads
+    mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $GEEKBENCH_PATH
+    # rm -f /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
 }
-
 
 
 
