@@ -92,7 +92,7 @@ timer_start
 update_upgrade
 install_desktop_environment
 gnome_extensions
-brave_browser                       # move this to post installation with: libavcodec-extra vlc
+#brave_browser                       # move this to post installation with: libavcodec-extra vlc
 kate
 network_edit
 #update_wireplumber_config    !!! HAVE to be put after first boot
