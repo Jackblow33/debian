@@ -14,7 +14,7 @@ read -p "" -s
 sudo systemctl daemon-reload
 sudo systemctl start gnome-keyring-daemon
 sudo systemctl enable gnome-keyring-daemon.service
-sudo systemctl status gnome-keyring-daemon.service
+# sudo systemctl status gnome-keyring-daemon.service
 sudo chown -R $USR:$USR /home/$USR/.local
 press_enter
 # Reboot ???
