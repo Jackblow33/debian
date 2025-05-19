@@ -37,19 +37,19 @@ update_upgrade() {
 }
 
 brave_browser() {
-#source /home/$USER/debian/brave.sh
-sudo systemctl daemon-reload
-sudo systemctl start gnome-keyring-daemon
-sudo systemctl enable gnome-keyring-daemon.service
-# sudo systemctl status gnome-keyring-daemon.service
-sudo chown -R $USR:$USR /home/$USR/.local
+    #source /home/$USER/debian/brave.sh
+    sudo systemctl daemon-reload
+    sudo systemctl start gnome-keyring-daemon
+    sudo systemctl enable gnome-keyring-daemon.service
+    # sudo systemctl status gnome-keyring-daemon.service
+    sudo chown -R $USR:$USR /home/$USR/.local
 
-# Install brave
-sudo apt install -y curl || handle_error
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg || handle_error
-sudo echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list || handle_error
-sudo apt update -y || handle_error
-sudo apt install -y brave-browser || handle_error
+    # Install brave
+    sudo apt install -y curl || handle_error
+    sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg || handle_error
+    sudo echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list || handle_error
+    sudo apt update -y || handle_error
+    sudo apt install -y brave-browser || handle_error
 }
 
 
@@ -63,19 +63,19 @@ install_pkg() {
 
 
 fastfetch_tweak() {
-# Check if the .bashrc file exists
-if [ -f "/home/$USER/.bashrc" ]; then
-    # Check if the 'fastfetch' command is already in the .bashrc file
-    if ! grep -q "fastfetch" "/home/$USER/.bashrc"; then
-        # Add the 'fastfetch' command to the end of the .bashrc file
-        echo "fastfetch" >> /home/$USER/.bashrc || { echo "Fail to write fastfetch line into the .bashrc file."; handle_error; }
-        echo "fastfetch has been added to the .bashrc file."
+    # Check if the .bashrc file exists
+    if [ -f "/home/$USER/.bashrc" ]; then
+        # Check if the 'fastfetch' command is already in the .bashrc file
+        if ! grep -q "fastfetch" "/home/$USER/.bashrc"; then
+            # Add the 'fastfetch' command to the end of the .bashrc file
+            echo "fastfetch" >> /home/$USER/.bashrc || { echo "Fail to write fastfetch line into the .bashrc file."; handle_error; }
+            echo "fastfetch has been added to the .bashrc file."
+        else
+            echo "fastfetch is already in the .bashrc file."
+        fi
     else
-        echo "fastfetch is already in the .bashrc file."
+        echo "The .bashrc file does not exist."
     fi
-else
-    echo "The .bashrc file does not exist."
-fi
 
 }
 
