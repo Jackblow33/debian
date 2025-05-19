@@ -29,7 +29,19 @@ update_upgrade() {
 }
 
 brave_browser() {
-source /home/$USER/debian/brave.sh
+#source /home/$USER/debian/brave.sh
+sudo systemctl daemon-reload
+sudo systemctl start gnome-keyring-daemon
+sudo systemctl enable gnome-keyring-daemon.service
+# sudo systemctl status gnome-keyring-daemon.service
+sudo chown -R $USR:$USR /home/$USR/.local
+
+# Install brave
+sudo apt install -y curl
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+sudo echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update -y
+sudo apt install -y brave-browser
 }
 
 
@@ -42,7 +54,7 @@ install_pkg() {
 }
 
 
-fastfetch_tweak() 
+fastfetch_tweak() {
 # Check if the .bashrc file exists
 if [ -f "/home/$USER/.bashrc" ]; then
     # Check if the 'fastfetch' command is already in the .bashrc file
