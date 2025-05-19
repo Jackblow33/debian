@@ -21,7 +21,7 @@ update_upgrade() {
 install_desktop_environment() {
 input_file="/home/$USR/debian/pkgs-tools/tasksel_pkgs.list"
 sudo apt-get install -y $(cat "$input_file") || handle_error
-
+# wireplumber dir and permissions
 sudo mkdir -p /home/$USR/.local/state/wireplumber || check
 sudo chown -R $USR:$USR /home/$USR/.local/state/wireplumber || check
 #sudo chown -R $USR:$USR /home/$USR/.local || check
