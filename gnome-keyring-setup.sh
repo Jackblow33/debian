@@ -25,6 +25,8 @@ WantedBy=graphical.target
 EOF
 
 # Reload systemd daemon and enable the service
+mkdir -p /home/$USR/.local
+sudo chown -R $USR:$USR /home/$USR/.local
 sudo systemctl daemon-reload
 sudo systemctl start gnome-keyring-daemon
 sudo systemctl enable gnome-keyring-daemon.service
