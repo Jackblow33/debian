@@ -103,7 +103,7 @@ sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\
 
 
 
-geekbench() 
+geekbench() {
         GEEKBENCH_PATH="/home/$USR/.local/share/Geekbench"
   	sudo mkdir $GEEKBENCH_PATH
    	wget -P /home/$USR/Downloads https://cdn.geekbench.com/Geekbench-6.4.0-Linux.tar.gz
