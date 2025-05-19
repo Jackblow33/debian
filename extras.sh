@@ -14,6 +14,14 @@ INSTALL_PKGS=(
 )
 
 
+# User check. If root, script will exit
+user_check() {
+if [[ $EUID -eq 0 ]]; then
+    echo "This script should be executed as root!! Exiting......."
+    exit 1
+fi
+}
+
 # Function to handle errors
 handle_error() {
     echo "Error occurred in the script. Exiting."
@@ -71,6 +79,17 @@ fi
 
 }
 
+# Pin apps to favorites ## DO NOT EXECUTE AS ROOT !!!
+pin_apps() {
+    # List
+    # gsettings get org.gnome.shell favorite-apps
+
+    # List results
+    # ['org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop', 'org.kde.kate.desktop', 'brave-browser.desktop']
+
+    # Pin aps
+    gsettings set org.gnome.shell favorite-apps "['org.gnome.Nautilus.desktop', 'org.gnome.Console.desktop', 'org.kde.kate.desktop', 'brave-browser.desktop']"
+}
 
 # Function reboot countdown 10sec.
 countdown_reboot() {
@@ -98,9 +117,11 @@ countdown_reboot() {
     reboot
 }
 
-
+# Main script execution
+user_check
 update_upgrade
 brave_browser
 install_pkg
 fastfetch_tweak
+pin_apps
 countdown_reboot
