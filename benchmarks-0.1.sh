@@ -49,25 +49,21 @@ unigine_heaven() {
     sudo mkdir -p /home/$USR/.local/share/applications
     # Create icon - launcher in  ~/.local/share/applications
     # Create the startup file shortcut & icon
-    unigine_heaven="/home/jack/.local/share/applications/heaven.desktop"
+    unigine_heaven="/home/$USR/.local/share/applications/heaven.desktop"
 cat << EOF > "$unigine_heaven"
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
 Name=Heaven
 Comment=DX11 Benchmark
-Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
-Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
+Exec=/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+Icon=/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
 Terminal=false
 Categories=Game;Benchmark;
 EOF
     # Edit launch script path to reflect the folder move...
 sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven
-    #sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
     # Reboot to have icon added into gnome ???
-    #sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
-    #mkdir $BENCHMARKS_PATH
-    #cd $BENCHMARKS_PATH
     #rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
 
@@ -89,14 +85,13 @@ Type=Application
 Encoding=UTF-8
 Name=Valley
 Comment=DX11 Benchmark
-Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
-Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
+Exec=/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley
+Icon=/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
 Terminal=false
 EOF
 
 	# Edit launch script path to reflect the folder move...
 sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley
-	#sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
   
  	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
@@ -120,7 +115,7 @@ geekbench() {
 # Main script execution
 root_check
 timer_start
-unigine_heaven
-#unigine_valley
-geekbench
+#unigine_heaven
+unigine_valley
+#geekbench
 timer_stop
