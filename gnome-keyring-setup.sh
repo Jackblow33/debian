@@ -9,7 +9,7 @@ read -p "" -s
 }
 
 # Create the service file
-cat << EOF | sudo tee /etc/systemd/system/gnome-keyring-daemon.service
+cat << EOF | sudo tee /etc/systemd/system/gnome-keyring-daemon.service || handle_error
 [Unit]
 Description=GNOME Keyring Daemon
 After=dbus.service
@@ -25,11 +25,11 @@ WantedBy=graphical.target
 EOF
 
 # Reload systemd daemon and enable the service
-mkdir -p /home/$USR/.local
-sudo chown -R $USR:$USR /home/$USR/.local
-sudo systemctl daemon-reload
-sudo systemctl start gnome-keyring-daemon
-sudo systemctl enable gnome-keyring-daemon.service
-sudo systemctl status gnome-keyring-daemon.service
+mkdir -p /home/$USR/.local || handle_error
+sudo chown -R $USR:$USR /home/$USR/.local || handle_error
+sudo systemctl daemon-reload || handle_error
+sudo systemctl start gnome-keyring-daemon || handle_error
+sudo systemctl enable gnome-keyring-daemon.service || handle_error
+sudo systemctl status gnome-keyring-daemon.service || handle_error
 press_enter
 #sudo nano /etc/systemd/system/gnome-keyring-daemon.service
