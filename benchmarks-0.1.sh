@@ -102,21 +102,22 @@ sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\
 
 geekbench() {
     GEEKBENCH_PATH="/home/$USR/.local/share/Geekbench"
-    sudo mkdir -p $GEEKBENCH_PATH
-    wget -P /home/$USR/Downloads https://cdn.geekbench.com/Geekbench-6.4.0-Linux.tar.gz
-    tar -xvf /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz -C /home/$USR/Downloads
-    mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $GEEKBENCH_PATH
+    sudo mkdir -p $GEEKBENCH_PATH || handle_error
+    wget -P /home/$USR/Downloads https://cdn.geekbench.com/Geekbench-6.4.0-Linux.tar.gz || handle_error
+    tar -xvf /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz -C /home/$USR/Downloads || handle_error
+    mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $GEEKBENCH_PATH || handle_error
+    cp /home/$USR/debian/icons/geekbench_6-icon.png /home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux || handle_error
     # rm -f /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
-    geekbench_6="/home/$USR/.local/share/applications/valley.desktop"
+    geekbench_6="/home/$USR/.local/share/applications/geekbench6.desktop"
  cat << EOF > "$geekbench_6" || handle_error
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
 Name=Geekbench 6
-Comment=DX11 Benchmark
-Exec=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux
-Icon=/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
-Terminal=false
+Comment=Benchmark
+Exec=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench6
+Icon=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench_6-icon.png
+Terminal=true
 EOF
 }
 
