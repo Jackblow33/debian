@@ -27,11 +27,11 @@ EOF
 folder_and_permission() {
 mkdir -p /home/$USR/.local || handle_error
 sudo chown -R $USR:$USR /home/$USR/.local || handle_error
-sudo systemctl daemon-reload || handle_error
 }
 
 # Reload systemd daemon and enable the service
 keyring_daemon() {
+sudo systemctl daemon-reload || handle_error
 sudo systemctl start gnome-keyring-daemon || handle_error
 sudo systemctl enable gnome-keyring-daemon.service || handle_error
 sudo systemctl status gnome-keyring-daemon.service
