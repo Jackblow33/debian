@@ -44,7 +44,7 @@ unigine_heaven() {
     wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
     chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
     /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
-    sudo mkdir $UNIGINE_PATH
+    sudo mkdir -p $UNIGINE_PATH
     sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
     sudo mkdir -p /home/$USR/.local/share/applications
     # Create icon - launcher in  ~/.local/share/applications
@@ -73,13 +73,13 @@ unigine_valley() {
     	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run
    	chmod a+x /home/$USR/Downloads/Unigine_Valley-1.0.run
 	/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
-  	sudo mkdir -p $UNIGINE_PATH
-  	sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH
-   	sudo mkdir ~/.local/share/applications
+  	sudo mkdir -p $UNIGINE_PATH || handle_error
+  	sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH || handle_error
+   	sudo mkdir -p /home/$USR.local/share/applications || handle_error
     	# Create icon - launcher in  ~/.local/share/applications
 	# Create the startup file shortcut & icon
         unigine_valley="/home/$USR/.local/share/applications/valley.desktop"
- cat << EOF > "$unigine_valley"
+ cat << EOF > "$unigine_valley" || handle_error
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
@@ -91,7 +91,7 @@ Terminal=false
 EOF
 
 	# Edit launch script path to reflect the folder move...
-sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley
+sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
   
  	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
