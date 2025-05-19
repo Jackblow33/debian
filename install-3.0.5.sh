@@ -79,7 +79,14 @@ fi
 
 # Grant read, write, and execute permissions recursively to the root, user and others. Use at your own risk!!!
 set_permission() {
+    echo"Setting permissions"
     chmod -R 777 $SH_PATH
+}
+
+# Log system specs in /home/$USR/debian/LOGS
+system_log() {
+echo "Logging system specs"
+source /home/$USR/debian/syslog.sh
 }
 
 # Function to display the menu
@@ -133,4 +140,5 @@ display_menu() {
 # Main script execution
 root_check
 set_permission
+system_log
 display_menu
