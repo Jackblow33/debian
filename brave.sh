@@ -4,11 +4,6 @@
 
 USR=$(logname)
 
-press_enter() {
-echo "Press Enter to continue..."
-read -p "" -s
-}
-
 ######gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
 # Reload systemd daemon and enable the service
 sudo systemctl daemon-reload
@@ -16,15 +11,13 @@ sudo systemctl start gnome-keyring-daemon
 sudo systemctl enable gnome-keyring-daemon.service
 # sudo systemctl status gnome-keyring-daemon.service
 sudo chown -R $USR:$USR /home/$USR/.local
-press_enter
-# Reboot ???
+
+# Install brave
 sudo apt install -y curl
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 sudo echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update -y
 sudo apt install -y brave-browser
-press_enter
-sudo reboot
 
 # Keyring quirk fix
 # apt purge -y gnome-keyring && apt autoremove -y
