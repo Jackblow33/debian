@@ -19,6 +19,7 @@ Restart=on-failure
 [Install]
 WantedBy=graphical.target
 EOF
+#sudo nano /etc/systemd/system/gnome-keyring-daemon.service
 }
 
 # Create folder and set permissions
@@ -33,7 +34,6 @@ keyring_daemon() {
 sudo systemctl start gnome-keyring-daemon || handle_error
 sudo systemctl enable gnome-keyring-daemon.service || handle_error
 sudo systemctl status gnome-keyring-daemon.service
-#sudo nano /etc/systemd/system/gnome-keyring-daemon.service
 }
 
 # Main script execution
