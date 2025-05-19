@@ -41,16 +41,17 @@ root_check() {
 
 
 unigine_heaven() {
-    wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run
-    chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run
+    wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Heaven-4.0.run || handle_error
+    chmod +x /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
+    sudo mkdir -p $UNIGINE_PATH || handle_error
+    cd $UNIGINE_PATH || handle_error
     /home/$USR/Downloads/Unigine_Heaven-4.0.run || handle_error
-    sudo mkdir -p $UNIGINE_PATH
-    sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
-    sudo mkdir -p /home/$USR/.local/share/applications
+    #sudo mv /home/$USR/Unigine_Heaven-4.0 $UNIGINE_PATH
+    sudo mkdir -p /home/$USR/.local/share/applications || handle_error
     # Create icon - launcher in  ~/.local/share/applications
     # Create the startup file shortcut & icon
     unigine_heaven="/home/$USR/.local/share/applications/heaven.desktop"
-cat << EOF > "$unigine_heaven"
+cat << EOF > "$unigine_heaven" || handle_error
 [Desktop Entry]
 Type=Application
 Encoding=UTF-8
@@ -62,7 +63,7 @@ Terminal=false
 Categories=Game;Benchmark;
 EOF
     # Edit launch script path to reflect the folder move...
-sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven || handle_error
     # Reboot to have icon added into gnome ???
     #rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
@@ -70,10 +71,10 @@ sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\
 
 unigine_valley() {
    	
-    	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run
-   	chmod a+x /home/$USR/Downloads/Unigine_Valley-1.0.run
+    	wget -P /home/$USR/Downloads https://assets.unigine.com/d/Unigine_Valley-1.0.run || handle_error
+   	chmod a+x /home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
     	sudo mkdir -p $UNIGINE_PATH || handle_error
-    	cd $UNIGINE_PATH
+    	cd $UNIGINE_PATH || handle_error
 	/home/$USR/Downloads/Unigine_Valley-1.0.run || handle_error
   	#sudo mv /home/$USR/Unigine_Valley-1.0 $UNIGINE_PATH || handle_error
    	sudo mkdir -p /home/$USR.local/share/applications || handle_error
@@ -92,7 +93,7 @@ Terminal=false
 EOF
 
 	# Edit launch script path to reflect the folder move...
-#sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
+sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
   
  	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
@@ -106,6 +107,17 @@ geekbench() {
     tar -xvf /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz -C /home/$USR/Downloads
     mv /home/$USR/Downloads/Geekbench-6.4.0-Linux $GEEKBENCH_PATH
     # rm -f /home/$USR/Downloads/Geekbench-6.4.0-Linux.tar.gz
+    geekbench_6="/home/$USR/.local/share/applications/valley.desktop"
+ cat << EOF > "$geekbench_6" || handle_error
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Geekbench 6
+Comment=DX11 Benchmark
+Exec=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux
+Icon=/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
+Terminal=false
+EOF
 }
 
 
