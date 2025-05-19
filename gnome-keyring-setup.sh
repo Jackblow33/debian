@@ -3,7 +3,7 @@
 # gnome-keyring-setup.sh
 # 2025-05-18
 
-sudo nano /etc/systemd/system/gnome-keyring-daemon.service
+
 
 # Create the service file
 cat << EOF | sudo tee /etc/systemd/system/gnome-keyring-daemon.service
@@ -20,7 +20,7 @@ Restart=on-failure
 [Install]
 WantedBy=graphical.target
 EOF
-
+sudo nano /etc/systemd/system/gnome-keyring-daemon.service
 # Reload systemd daemon and enable the service
 sudo systemctl daemon-reload
 sudo systemctl start gnome-keyring-daemon
