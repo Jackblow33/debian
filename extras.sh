@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # extras.sh
+# 2025-05-19
 
 USR=$(logname)
 
