@@ -62,7 +62,7 @@ Terminal=false
 Categories=Game;Benchmark;
 EOF
     # Edit launch script path to reflect the folder move...
-sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven
     #sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
     # Reboot to have icon added into gnome ???
     #sudo cp -i /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven.desktop ~/.local/share/applications
@@ -95,7 +95,7 @@ Terminal=false
 EOF
 
 	# Edit launch script path to reflect the folder move...
-sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
+sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley
 	#sudo nano /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
   
  	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
