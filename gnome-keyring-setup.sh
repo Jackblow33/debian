@@ -3,6 +3,7 @@
 # gnome-keyring-setup.sh
 # 2025-05-19
 
+sudo apt install dbus-x11
 # Create the service file
 service_file() {
 cat << EOF | sudo tee /etc/systemd/system/gnome-keyring-daemon.service || handle_error
