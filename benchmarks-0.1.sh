@@ -129,7 +129,7 @@ EOF
 # Main script execution
 root_check
 timer_start
-#unigine_heaven
+unigine_heaven
 unigine_valley
-#geekbench
+geekbench
 timer_stop
