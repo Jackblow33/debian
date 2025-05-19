@@ -5,9 +5,9 @@
 #sudo chown -R $USR:$USR /home/$USR/.local || check
 #gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
 # Reload systemd daemon and enable the service
-#sudo systemctl daemon-reload
-#sudo systemctl start gnome-keyring-daemon
-#sudo systemctl enable gnome-keyring-daemon.service
+sudo systemctl daemon-reload
+sudo systemctl start gnome-keyring-daemon
+sudo systemctl enable gnome-keyring-daemon.service
 apt install -y curl
 curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
