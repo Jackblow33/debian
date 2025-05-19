@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # gnome-0.4.1sh
-# Date modified: 2025-05-11
+# Date modified: 2025-05-19
 
 # Check if the installation was successful
 check() {
