@@ -1,3 +1,5 @@
+test
+
 sudo journalctl -u gdm.service
 gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
 
