@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # gnome-keyring-setup.sh
-# 2025-05-18
+# 2025-05-19
 
 press_enter() {
 echo "Press Enter to continue..."
@@ -28,5 +28,6 @@ EOF
 sudo systemctl daemon-reload
 sudo systemctl start gnome-keyring-daemon
 sudo systemctl enable gnome-keyring-daemon.service
+sudo systemctl status gnome-keyring-daemon.service
 press_enter
-sudo nano /etc/systemd/system/gnome-keyring-daemon.service
+#sudo nano /etc/systemd/system/gnome-keyring-daemon.service
