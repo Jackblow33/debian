@@ -25,7 +25,8 @@ sudo apt-get install -y $(cat "$input_file") || handle_error
 sudo mkdir -p /home/$USR/.local/state/wireplumber || check
 sudo chown -R $USR:$USR /home/$USR/.local/state/wireplumber || check
 sudo chown -R $USR:$USR /home/$USR/.local || check
-gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+#gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg
+source /home/$USR/debian/gnome-keyring-setup.sh
 }
 
 
