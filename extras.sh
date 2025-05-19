@@ -33,7 +33,7 @@ handle_error() {
 update_upgrade() {
     # Update package list and upgrade installed packages
     echo "Updating package list and upgrading installed packages..."
-    apt update && apt upgrade -y || { echo "Failed to update-upgrade"; handle_error; }
+    sudo apt update && sudo apt upgrade -y || { echo "Failed to update-upgrade"; handle_error; }
 }
 
 brave_browser() {
@@ -57,7 +57,7 @@ brave_browser() {
 install_pkg() {
     for PKG in "${INSTALL_PKGS[@]}"; do
         echo "INSTALLING: ${PKG}"
-        apt install "$PKG" -y || { echo "Failed to install $PKG"; handle_error; }
+        sudo apt install "$PKG" -y || { echo "Failed to install $PKG"; handle_error; }
     done
 }
 
