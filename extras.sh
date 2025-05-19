@@ -37,11 +37,11 @@ sudo systemctl enable gnome-keyring-daemon.service
 sudo chown -R $USR:$USR /home/$USR/.local
 
 # Install brave
-sudo apt install -y curl
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-sudo echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update -y
-sudo apt install -y brave-browser
+sudo apt install -y curl || handle_error
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg || handle_error
+sudo echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list || handle_error
+sudo apt update -y || handle_error
+sudo apt install -y brave-browser || handle_error
 }
 
 
@@ -60,7 +60,7 @@ if [ -f "/home/$USER/.bashrc" ]; then
     # Check if the 'fastfetch' command is already in the .bashrc file
     if ! grep -q "fastfetch" "/home/$USER/.bashrc"; then
         # Add the 'fastfetch' command to the end of the .bashrc file
-        echo "fastfetch" >> /home/$USER/.bashrc
+        echo "fastfetch" >> /home/$USER/.bashrc || { echo "Fail to write fastfetch line into the .bashrc file."; handle_error; }
         echo "fastfetch has been added to the .bashrc file."
     else
         echo "fastfetch is already in the .bashrc file."
