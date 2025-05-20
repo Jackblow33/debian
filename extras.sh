@@ -114,7 +114,7 @@ countdown_reboot() {
 
     # Reboot the system if Ctrl+C was not pressed
     echo "Rebooting system..."
-    reboot
+    sudo reboot
 }
 
 # Main script execution
