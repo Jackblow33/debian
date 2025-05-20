@@ -20,6 +20,13 @@ handle_error() {
     exit 1
 }
 
+# User check. If root, script will exit
+user_check() {
+if [[ $EUID -eq 0 ]]; then
+    echo "This script should be executed as user with root previlege!! Exiting......."
+    exit 1
+fi
+}
 
 update_upgrade() {
     # Update package list and upgrade installed packages
