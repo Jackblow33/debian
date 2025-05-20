@@ -13,15 +13,6 @@ INSTALL_PKGS=(
     'vlc'
 )
 
-
-# User check. If root, script will exit
-user_check() {
-if [[ $EUID -eq 0 ]]; then
-    echo "This script should be executed as root!! Exiting......."
-    exit 1
-fi
-}
-
 # Function to handle errors
 handle_error() {
     echo "Error occurred in the script. Exiting."
