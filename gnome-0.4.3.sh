@@ -68,7 +68,7 @@ Wants=network-online.target
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/gnome-terminal -- /bin/bash -c "/home/$USR/debian/extras.sh; exec /bin/bash"
+ExecStart=/usr/bin/gnome-terminal -- /bin/bash -c "/home/$USR/debian/extras-0.1.sh; exec /bin/bash"
 ExecStart=/bin/touch /var/run/Stage_2_install.flag
 RemainAfterExit=yes
 
