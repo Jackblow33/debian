@@ -9,8 +9,6 @@ packages=(
     gnome-calendar
     gnome-clocks
     gnome-contacts
-    gnome-keyring
-    gnome-keyring-pkcs11
     gnome-maps
     gnome-music
     gnome-snapshot
