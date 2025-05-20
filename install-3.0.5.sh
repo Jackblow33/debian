@@ -121,7 +121,7 @@ display_menu() {
     if [[ $menu_choice == *"Install Gnome"* ]]; then
         echo "Installing Gnome..."
         # source "$SH_PATH/pkgs-tools/alpha-debian-gnome.sh" (STABLE)
-        source "$SH_PATH/gnome-0.4.3.sh"
+        source "$SH_PATH/gnome-0.4.2.sh"
     fi
 
 
