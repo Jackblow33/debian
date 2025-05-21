@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# dropbox-kernel-0.1.sh
-# 2025-05-12
+# dropbox-kernel-0.3.sh
+# 2025-05-20
 
 
 # My precompiled dropbox Haswell kernel 6.14.3-tkg-bore  (all modules compiled)
@@ -55,17 +55,17 @@ extract_kernel() {
 
 install_kernel() {
     # Change to the download directory
-    cd "/home/$USR/kernels/$FOLDER_NAME" || { echo "Failed at line 47"; handle_error; }
+    cd "/home/$USR/kernels/$FOLDER_NAME" || { echo "Failed at line 58"; handle_error; }
 
     # Check if there are any .deb files in the directory
     if [ "$(ls -1 *.deb 2>/dev/null | wc -l)" -gt 0 ]; then
         # Install the kernel packages using dpkg
         for deb_file in *.deb; do
-            sudo dpkg -i "$deb_file" || { echo "Failed at line 51"; handle_error; }
+            sudo dpkg -i "$deb_file" || { echo "Failed at line 64"; handle_error; }
         done
 
         # Update the grub configuration
-        sudo update-grub || { echo "Failed at line 55"; handle_error; }
+        sudo update-grub || { echo "Failed at line 68"; handle_error; }
 
         # Uncomment to reboot the system and load the new kernel
         echo "Kernel installation complete. Rebooting the system..."
@@ -79,6 +79,6 @@ install_kernel() {
 
 
 # Main script execution
-#dl_kernel
-#extract_kernel
+dl_kernel
+extract_kernel
 install_kernel
