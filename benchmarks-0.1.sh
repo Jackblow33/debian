@@ -62,7 +62,7 @@ Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
 Terminal=false
 Categories=Game;Benchmark;
 EOF
-	sudo chmod +x "$unigine_heaven"
+	sudo chmod 775 "$unigine_heaven"
     	# Edit launch script path to reflect the folder move...
 	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven || handle_error
     	# Delete downloaded file
@@ -92,7 +92,7 @@ Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
 Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
 Terminal=false
 EOF
-	sudo chmod +x "$unigine_valley"
+	sudo chmod 775 "$unigine_valley"
 	# Edit launch script path to reflect the folder move...
 	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
 	# Delete downloaded file
@@ -120,7 +120,7 @@ Exec=/home/jack/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench6
 Icon=/home/jack/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench_6-icon.png
 Terminal=true
 EOF
-sudo chmod +x "$geekbench_6"
+sudo chmod 775 "$geekbench_6"
 }
 
 
