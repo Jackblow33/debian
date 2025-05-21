@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # benchmarks.sh
-# Date modified: 2025-05-19
+# Date modified: 2025-05-21
 
 # TODO reuse uninstall script from superposition to add uninstall option.
 
@@ -57,8 +57,8 @@ Type=Application
 Encoding=UTF-8
 Name=Heaven
 Comment=DX11 Benchmark
-Exec="/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven"
-Icon="/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png"
+Exec=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven
+Icon=/home/jack/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
 Terminal=false
 Categories=Game;Benchmark;
 EOF
@@ -88,8 +88,8 @@ Type=Application
 Encoding=UTF-8
 Name=Valley
 Comment=DX11 Benchmark
-Exec="/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley"
-Icon="/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png"
+Exec=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley
+Icon=/home/jack/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
 Terminal=false
 EOF
 	sudo chmod +x "$unigine_valley"
@@ -116,8 +116,8 @@ Type=Application
 Encoding=UTF-8
 Name=Geekbench 6
 Comment=Benchmark
-Exec="/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench6"
-Icon="/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench_6-icon.png"
+Exec=/home/jack/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench6
+Icon=/home/jack/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench_6-icon.png
 Terminal=true
 EOF
 sudo chmod +x "$geekbench_6"
@@ -131,8 +131,8 @@ sudo chmod +x "$geekbench_6"
 # Main script execution
 root_check
 timer_start
-unigine_heaven
-unigine_valley
+#unigine_heaven
+#unigine_valley
 geekbench
 timer_stop
 
