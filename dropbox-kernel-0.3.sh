@@ -39,7 +39,7 @@ dl_kernel() {
 
 extract_kernel() {
     # Extract the downloaded ZIP file
-    sudo apt-get install p7zip-full
+    sudo apt-get install -y p7zip-full
     sudo 7z x /home/$USR/kernels/$FOLDER_NAME/$FOLDER_NAME.zip -o/home/$USR/kernels/$FOLDER_NAME/ || { echo "Failed at line 43"; handle_error; }
 
     # Check if the extraction was successful
@@ -62,14 +62,15 @@ install_kernel() {
         # Install the kernel packages using dpkg
         for deb_file in *.deb; do
             sudo dpkg -i "$deb_file" || { echo "Failed at line 64"; handle_error; }
+            #cd "/home/$USR" || { echo "Failed at line 65"; handle_error; }
         done
 
         # Update the grub configuration
         sudo update-grub || { echo "Failed at line 68"; handle_error; }
 
         # Uncomment to reboot the system and load the new kernel
-        echo "Kernel installation complete. Rebooting the system..."
-        sudo reboot
+        #echo "Kernel installation complete. Rebooting the system..."
+        #sudo reboot
     else
         echo "No .deb files found in the extracted directory. Exiting."
         handle_error
