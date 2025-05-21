@@ -105,7 +105,7 @@ display_menu() {
     if [[ $menu_choice == *"Install custom TKG kernel $KERNEL from dropbox"* ]]; then
         echo "Installing custom kernel $KERNEL from USB..."
         # source "$SH_PATH/kernel-install.sh"
-        source "$SH_PATH/dropbox-kernel-0.1.sh"
+        source "$SH_PATH/dropbox-kernel-0.3.sh"
     fi
     
     if [[ $menu_choice == *"Install NVIDIA driver"* ]]; then
