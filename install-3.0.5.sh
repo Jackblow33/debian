@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# 2025-05-19
-# install-3.0.5.sh
+# 2025-05-20
+# install-3.0.6.sh
 
 # VARIABLES
 USR=$(logname)
