@@ -62,7 +62,7 @@ Icon="/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png"
 Terminal=false
 Categories=Game;Benchmark;
 EOF
-	sudo chmod +x $unigine_heaven
+	sudo chmod +x "$unigine_heaven"
     	# Edit launch script path to reflect the folder move...
 	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven || handle_error
     	# Delete downloaded file
@@ -92,7 +92,7 @@ Exec="/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley"
 Icon="/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png"
 Terminal=false
 EOF
-	sudo chmod +x $unigine_valley
+	sudo chmod +x "$unigine_valley"
 	# Edit launch script path to reflect the folder move...
 	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
 	# Delete downloaded file
@@ -116,11 +116,11 @@ Type=Application
 Encoding=UTF-8
 Name=Geekbench 6
 Comment=Benchmark
-Exec=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench6
-Icon=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench_6-icon.png
+Exec="/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench6"
+Icon="/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench_6-icon.png"
 Terminal=true
 EOF
-sudo chmod +x geekbench_6
+sudo chmod +x "$geekbench_6"
 }
 
 
