@@ -57,15 +57,16 @@ Type=Application
 Encoding=UTF-8
 Name=Heaven
 Comment=DX11 Benchmark
-Exec=/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven
-Icon=/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png
+Exec="/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven"
+Icon="/home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/data/launcher/icon.png"
 Terminal=false
 Categories=Game;Benchmark;
 EOF
-    # Edit launch script path to reflect the folder move...
-sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven || handle_error
-    # Reboot to have icon added into gnome ???
-    #rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
+	sudo chmod +x $unigine_heaven
+    	# Edit launch script path to reflect the folder move...
+	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven || handle_error
+    	# Delete downloaded file
+	sudo rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
 
 
@@ -87,15 +88,15 @@ Type=Application
 Encoding=UTF-8
 Name=Valley
 Comment=DX11 Benchmark
-Exec=/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley
-Icon=/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png
+Exec="/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley"
+Icon="/home/$USR/.local/share/Unigine/Unigine_Valley-1.0/data/launcher/icon.png"
 Terminal=false
 EOF
-
+	sudo chmod +x $unigine_valley
 	# Edit launch script path to reflect the folder move...
-sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
-  
- 	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
+	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
+	# Delete downloaded file
+	rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
 
 
@@ -119,6 +120,7 @@ Exec=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench6
 Icon=/home/$USR/.local/share/Geekbench/Geekbench-6.4.0-Linux/geekbench_6-icon.png
 Terminal=true
 EOF
+sudo chmod +x geekbench_6
 }
 
 
@@ -133,3 +135,25 @@ unigine_heaven
 unigine_valley
 geekbench
 timer_stop
+
+# TODO
+## uninstall Superposition.desktop, icons and current dir
+#read -p "UNIGINE Superposition Benchmark will be completely removed, do you want to continue? [Y/n]: " ans_yn
+#	case "$ans_yn" in
+#		[Yy]|[Yy][Ee][Ss])
+#			echo "Removing..."
+#			INSTALL_DIR="$(dirname "$(readlink -f "$0")")"
+#			rm -f ~/.local/share/applications/Superposition.desktop
+#			rm -f ~/Desktop/Superposition.desktop
+#			rm -f ~/.local/share/icons/Superposition.png
+#			for RES in 16 24 32 48 64 128 256
+#			do
+#				rm -f ~/.local/share/icons/hicolor/"$RES"x"$RES"/apps/Superposition.png
+#			done
+#			cd $INSTALL_DIR/../
+#			rm -rf $INSTALL_DIR;;
+#		*)
+#			echo "Abort"
+#			exit 3;;
+#	esac
+#
