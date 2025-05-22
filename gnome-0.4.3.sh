@@ -61,9 +61,10 @@ network_edit() {
 }
 
 stage_2_installer() {
-    stage_2="/home/$USR/.config/autostart/stage-2-installer.desktop"
-    sudo mkdir "/home/$USR/.config/autostart"
-    cat << EOF > "$stage_2"
+    stage_2=/home/jack/.config/autostart/stage-2-installer.desktop
+    sudo mkdir /home/jack/.config/autostart || { echo "Failed at line 65"; handle_error; }
+    sudo chmod 775 /home/jack/.config/autostart || { echo "Failed at line 66"; handle_error; }
+    cat << EOF > "$stage_2" || { echo "Failed at line 67"; handle_error; }
 [Desktop Entry]
 Name=Stage 2 customm installer
 Exec=/usr/bin/kgx -- /home/jack/debian/extras.sh
