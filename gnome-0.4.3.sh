@@ -69,10 +69,9 @@ stage_2_installer() {
 Name=Stage 2 customm installer
 Exec=/usr/bin/kgx -- /home/jack/debian/extras.sh
 Type=Application
-X-GNOME-Autostart-Phase=Applications
 EOF
 }
-
+# X-GNOME-Autostart-Phase=Applications
 
 # Main script execution
 root_check
@@ -84,7 +83,7 @@ gnome_extensions
 kate
 network_edit
 rm_unused_dep
-#stage_2_installer
+stage_2_installer
 timer_stop
 
 
