@@ -1,6 +1,0 @@
-[Desktop Entry]
-Name=Software Installer
-Exec=python3 /home/jack/Downloads/post-install/menu-0.4.1.py
-Terminal=false
-Type=Application
-Hidden=false
