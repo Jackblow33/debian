@@ -18,7 +18,7 @@ After=graphical.target
 Wants=graphical.target
 
 [Service]
-ExecStart=/usr/bin/gnome-terminal -- /home/jack/debian/extras.sh
+ExecStart=/usr/bin/gnome-console -- /home/jack/debian/extras.sh
 Type=oneshot
 RemainAfterExit=yes
 
