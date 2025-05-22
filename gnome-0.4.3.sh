@@ -1,7 +1,8 @@
+
 #!/bin/bash
 
 # gnome-0.4.3.sh
-# Date modified: 2025-05-19
+# Date modified: 2025-05-21
 
 # Check if the installation was successful
 check() {
@@ -59,24 +60,27 @@ network_edit() {
     sed -i "s/managed=false/managed=true/" /etc/NetworkManager/NetworkManager.conf || handle_error
 }
 
-stage2_install_service_enabler() {
-    sudo bash -c 'cat > /etc/systemd/system/Stage_2_install.service' << EOF
+
+stage_2_installer() {
+    stage_2="/etc/systemd/system/stage-2-installer.service"
+    cat << EOF > "$stage_2" || handle_error
 [Unit]
-Description=Stage_2_install
-After=network-online.target
-Wants=network-online.target
+Description=Stage 2 custom installer script
+After=graphical.target
+Wants=graphical.target
 
 [Service]
+ExecStart=/usr/bin/gnome-terminal -- /home/jack/debian/extras.sh
 Type=oneshot
-ExecStart=/usr/bin/gnome-terminal -- /bin/bash -c "/home/$USR/debian/extras-0.1.sh; exec /bin/bash"
-ExecStart=/bin/touch /var/run/Stage_2_install.flag
 RemainAfterExit=yes
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=graphical.target
 EOF
-    sudo systemctl enable Stage_2_install.service || handle_error
-    sudo systemctl start Stage_2_install.service || handle_error
+
+    sudo systemctl daemon-reload || handle_error
+    sudo systemctl enable stage-2-installer.service || handle_error
+    sudo systemctl start stage-2-installer.service || handle_error
 }
 
 
@@ -90,7 +94,7 @@ gnome_extensions
 kate
 network_edit
 rm_unused_dep
-stage2_install_service_enabler
+stage_2_installer
 timer_stop
 
 
