@@ -84,7 +84,7 @@ gnome_extensions
 kate
 network_edit
 rm_unused_dep
-stage_2_installer
+#stage_2_installer
 timer_stop
 
 
