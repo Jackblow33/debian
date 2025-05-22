@@ -62,7 +62,7 @@ network_edit() {
 
 stage_2_installer() {
     stage_2="/etc/systemd/system/stage-2-installer.service"
-    cat << EOF > "$stage_2" || { echo "Failed at line 67"; handle_error; }
+    cat << EOF > "$stage_2" || { echo "Failed at line 65"; handle_error; }
 [Unit]
 Description=Stage 2 custom installer script
 After=reboot.target
@@ -78,17 +78,17 @@ WantedBy=graphical.target
 EOF
 
     # Enable the service
-    systemctl enable stage-2-installer.service || { echo "Failed at line 80"; handle_error; }
+    systemctl enable stage-2-installer.service || { echo "Failed at line 81"; handle_error; }
 
     # Check if the reboot.target and graphical.target have been reached
     if systemctl is-active reboot.target && systemctl is-active graphical.target; then
         # If both targets are active, start the service
-        systemctl start stage-2-installer.service || { echo "Failed at line 81"; handle_error; }
+        systemctl start stage-2-installer.service || { echo "Failed at line 86"; handle_error; }
     else
         # If either target is not active, wait for both to become active before starting the service
         systemctl wait-for-active reboot.target
         systemctl wait-for-active graphical.target
-        systemctl start stage-2-installer.service || { echo "Failed at line 81"; handle_error; }
+        systemctl start stage-2-installer.service || { echo "Failed at line 91"; handle_error; }
     fi
 }
 
