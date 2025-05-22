@@ -81,7 +81,7 @@ EOF
     
     sudo systemctl daemon-reload || handle_error
     sudo systemctl enable stage-2-installer.service || handle_error
-    sudo systemctl start stage-2-installer.service || handle_error
+    #sudo systemctl start stage-2-installer.service || handle_error
 }
 
 
