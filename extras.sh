@@ -128,5 +128,5 @@ brave_browser
 install_pkg
 fastfetch_tweak
 pin_apps
-rm_stage2_installer
+#rm_stage2_installer
 countdown_reboot
