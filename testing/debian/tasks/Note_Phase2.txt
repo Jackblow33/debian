@@ -1,0 +1,52 @@
+Yes, you can use that command in a GNOME autostart desktop file to launch the `extras.sh` script inside the `kgx` terminal emulator when the user logs in.
+
+Here's how you can set it up:
+
+1. Create a new file in the `~/.config/autostart/` directory (the default GNOME autostart directory) with a `.desktop` extension, for example, `my-autostart-app.desktop`.
+
+2. In the file, add the following content:
+
+```
+[Desktop Entry]
+Name=Phase 2 installer
+Exec=/usr/bin/kgx -- /home/jack/debian/extras.sh
+Type=Application
+```
+
+Explanation:
+
+- `[Desktop Entry]`: This is the header for a desktop entry file.
+- `Name=My Autostart App`: This is the name that will be displayed in the GNOME Startup Applications list.
+- `Exec=/usr/bin/kgx -- /home/jack/debian/extras.sh`: This is the command that will be executed when the user logs in. It will launch the `kgx` terminal emulator and then run the `extras.sh` script.
+- `Type=Application`: This specifies that this desktop entry represents an application.
+
+3. Save the file and log out and back in to GNOME. The "My Autostart App" entry should now appear in the Startup Applications list, and the `extras.sh` script will be executed when the user logs in.
+
+Keep in mind that the `extras.sh` script should be located at the specified path (`/home/jack/debian/extras.sh`) and have the necessary permissions to be executed.
+
+
+
+
+
+
+
+
+To have the application executed only once during the user session, you can add the `X-GNOME-Autostart-Phase=Initialization` line to the desktop file, as we discussed earlier.
+
+Here's the updated desktop file:
+
+```
+[Desktop Entry]
+Name=My Autostart App
+Exec=/usr/bin/kgx -- /home/jack/debian/extras.sh
+Type=Application
+X-GNOME-Autostart-Phase=Applications
+```
+
+The `X-GNOME-Autostart-Phase=Initialization` line tells GNOME to run the application only once during the user session initialization, and not on subsequent logins or reboots.
+
+This is useful for applications that only need to be run once, such as a one-time setup script or a configuration tool that doesn't need to be running continuously.
+
+Keep in mind that the `Initialization` phase is the earliest phase of the GNOME startup process, so the application will be launched before the desktop environment is fully loaded. If your application requires the desktop environment to be fully loaded, you may need to use a different autostart phase, such as `Desktop` or `Applications`.
+
+The key difference between the `Initialization` phase and the default `Applications` phase is that the `Initialization` phase will only run the application once, while the `Applications` phase will run the application every time the user logs in.
