@@ -70,14 +70,15 @@ After=graphical.target
 Wants=graphical.target
 
 [Service]
-ExecStart=/usr/bin/gnome-console -- /home/jack/debian/extras.sh
+ExecStart=/usr/bin/kgx -- /home/jack/debian/extras.sh
 Type=oneshot
 RemainAfterExit=yes
 
 [Install]
 WantedBy=graphical.target
 EOF
-
+# ExecStart=/usr/bin/gnome-console -- /home/jack/debian/extras.sh
+    
     sudo systemctl daemon-reload || handle_error
     sudo systemctl enable stage-2-installer.service || handle_error
     sudo systemctl start stage-2-installer.service || handle_error
