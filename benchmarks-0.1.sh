@@ -4,6 +4,7 @@
 # Date modified: 2025-05-21
 
 # TODO reuse uninstall script from superposition to add uninstall option.
+# TODO remove jack
 
 TIMESTAMP=$(date +%Y%m%d.%R)
 USR=$(logname)
@@ -65,9 +66,9 @@ Categories=Game;Benchmark;
 EOF
 	sudo chmod 777 "$unigine_heaven"
     	# Edit launch script path to reflect the folder move...
-	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Heaven-4.0/heaven || handle_error
+	sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Heaven-4.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Heaven-4.0/heaven || handle_error
     	# Delete downloaded file
-	sudo rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
+	#sudo rm -f /home/$USR/Downloads/Unigine_Heaven-4.0.run
 }
 
 
@@ -95,9 +96,9 @@ Terminal=false
 EOF
 	sudo chmod 777 "$unigine_valley"
 	# Edit launch script path to reflect the folder move...
-	sed -i 's/cd .\/bin/cd \/home\/$USR\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/$USR/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
+	sed -i 's/cd .\/bin/cd \/home\/jack\/.local\/share\/Unigine\/Unigine_Valley-1.0\/bin/1' /home/jack/.local/share/Unigine/Unigine_Valley-1.0/valley || handle_error
 	# Delete downloaded file
-	rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
+	#rm -f /home/$USR/Downloads/Unigine_Valley-1.0.run
 }
 
 
