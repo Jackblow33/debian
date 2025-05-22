@@ -62,13 +62,19 @@ network_edit() {
 
 stage_2_installer() {
     stage_2=/home/jack/.config/autostart/stage-2-installer.desktop
-    #sudo mkdir -p /home/jack/.config/autostart || { echo "Failed at line 65"; handle_error; }
+    sudo mkdir -p /home/jack/.config/autostart || { echo "Failed at line 65"; handle_error; }
     #sudo chmod 775 /home/jack/.config/autostart || { echo "Failed at line 66"; handle_error; }
     cat << EOF > "$stage_2" || { echo "Failed at line 67"; handle_error; }
 [Desktop Entry]
+Encoding=UTF-8
 Name=Stage 2 customm installer
+Comment= Autostart script execute only once to install extra softwares and configure Gnome.
 Exec=/usr/bin/kgx -- /home/jack/debian/extras.sh
+OnlyShowIn=GNOME
 Type=Application
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
+Terminal=false
 EOF
 }
 # X-GNOME-Autostart-Phase=Applications
