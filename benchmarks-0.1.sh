@@ -132,9 +132,9 @@ sudo chmod 777 "$geekbench_6"
 # Main script execution
 root_check
 timer_start
-#unigine_heaven
+unigine_heaven
 #unigine_valley
-geekbench
+#geekbench
 timer_stop
 
 # TODO
