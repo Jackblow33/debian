@@ -61,23 +61,37 @@ network_edit() {
 }
 
 stage_2_installer() {
-    stage_2=/home/jack/.config/autostart/stage-2-installer.desktop
-    sudo mkdir -p /home/jack/.config/autostart || { echo "Failed at line 65"; handle_error; }
-    #sudo chmod 775 /home/jack/.config/autostart || { echo "Failed at line 66"; handle_error; }
+    stage_2="/etc/systemd/system/stage-2-installer.service"
     cat << EOF > "$stage_2" || { echo "Failed at line 67"; handle_error; }
-[Desktop Entry]
-Encoding=UTF-8
-Name=Stage 2 customm installer
-Comment= Autostart script execute only once to install extra softwares and configure Gnome.
-Exec=/usr/bin/kgx -- /home/jack/debian/extras.sh
-OnlyShowIn=GNOME
-Type=Application
-StartupNotify=false
-X-GNOME-Autostart-enabled=true
-Terminal=false
+[Unit]
+Description=Stage 2 custom installer script
+After=reboot.target
+After=graphical.target
+
+[Service]
+ExecStart=/usr/bin/kgx -- /home/jack/debian/extras.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target
 EOF
+
+    # Enable the service
+    systemctl enable stage-2-installer.service || { echo "Failed at line 80"; handle_error; }
+
+    # Check if the reboot.target and graphical.target have been reached
+    if systemctl is-active reboot.target && systemctl is-active graphical.target; then
+        # If both targets are active, start the service
+        systemctl start stage-2-installer.service || { echo "Failed at line 81"; handle_error; }
+    else
+        # If either target is not active, wait for both to become active before starting the service
+        systemctl wait-for-active reboot.target
+        systemctl wait-for-active graphical.target
+        systemctl start stage-2-installer.service || { echo "Failed at line 81"; handle_error; }
+    fi
 }
-# X-GNOME-Autostart-Phase=Applications
+
 
 # Main script execution
 root_check
@@ -89,7 +103,7 @@ gnome_extensions
 kate
 network_edit
 rm_unused_dep
-#stage_2_installer
+stage_2_installer
 timer_stop
 
 
