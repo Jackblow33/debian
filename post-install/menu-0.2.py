@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 # Python menu attempt
-# menu-0.4.1.py
+# menu-0.2.py
 
 import tkinter as tk
 from tkinter import ttk, messagebox
 import subprocess
-import os
 
 def run_command(command):
     try:
@@ -80,69 +79,27 @@ def create_submenu(parent, title, software_list):
         button = ttk.Button(submenu, text=software, command=lambda s=software: install_software(s))
         button.pack(pady=5)
 
-def load_at_boot():
-    startup_file = os.path.expanduser("~/.config/autostart/software_installer.desktop")
-    autostart_dir = os.path.dirname(startup_file)
-
-    # Check if the startup file exists
-    if os.path.exists(startup_file):
-        # The startup file already exists, so set the checkbox to checked
-        boot_checkbox.set(True)
-    else:
-        boot_checkbox.set(False)
-
-    # Enable or disable the functionality based on the checkbox state
-    if boot_checkbox.get():
-        # The checkbox is checked, so enable the functionality
-        if not os.path.exists(autostart_dir):
-            os.makedirs(autostart_dir)
-        if not os.path.exists(startup_file):
-            # Create the startup file
-            with open(startup_file, "w") as f:
-                f.write("[Desktop Entry]\n")
-                f.write("Name=Software Installer\n")
-                f.write("Exec=python3 /home/jack/Downloads/post-install/menu-0.4.1.py\n")
-                f.write("Terminal=false\n")
-                f.write("Type=Application\n")
-                f.write("Hidden=false\n")
-        messagebox.showinfo("Success", "Software Installer will now load at boot.")
-    else:
-        # The checkbox is unchecked, so disable the functionality
-        if os.path.exists(startup_file):
-            os.remove(startup_file)
-        messagebox.showinfo("Success", "Software Installer will no longer load at boot.")
-
-
 root = tk.Tk()
 root.title("Software Installer")
-root.geometry("800x600")
+root.geometry("800x600")  # Increase the window size
 
-# Create the left side buttons
-left_side = ttk.Frame(root)
-left_side.pack(side=tk.LEFT, padx=20, pady=20, fill="both", expand=True)
+# Create the first row of buttons
+first_row = ttk.Frame(root)
+first_row.pack(pady=10)
 
-ttk.Button(left_side, text="Apply GNOME Custom Settings", command=lambda: install_software("gnome_settings")).pack(pady=10)
+ttk.Button(first_row, text="Apply GNOME Custom Settings", command=lambda: install_software("gnome_settings")).pack(side=tk.LEFT, padx=10)
+ttk.Button(first_row, text="Install Brave", command=lambda: install_software("brave")).pack(side=tk.LEFT, padx=10)
+ttk.Button(first_row, text="Install Virt-manager qemu-kvm", command=lambda: install_software("qemu_kvm")).pack(side=tk.LEFT, padx=10)
 
-web_browser_submenu = ["Install Brave", "Future option"]
-create_submenu(left_side, "Web Browsers", web_browser_submenu)
-
-virtualization_submenu = ["Install Virt-manager qemu-kvm", "Future option"]
-create_submenu(left_side, "Virtualization", virtualization_submenu)
-
-# Create the right side buttons
-right_side = ttk.Frame(root)
-right_side.pack(side=tk.RIGHT, padx=20, pady=20, fill="both", expand=True)
+# Create the second row of buttons
+second_row = ttk.Frame(root)
+second_row.pack(pady=10)
 
 benchmarking_tools = ["Install Unigine Heaven", "Install Unigine Superposition", "Install Unigine Valley", "Install Geekbench"]
-create_submenu(right_side, "Benchmarking Tools", benchmarking_tools)
+create_submenu(second_row, "Benchmarking Tools", benchmarking_tools)
 
 gaming_apps = ["Install Steam", "Compile and Install Latest GE Proton"]
-create_submenu(right_side, "Gaming Apps", gaming_apps)
-
-# Add the checkbox to load the script at boot
-boot_checkbox = tk.BooleanVar()
-boot_checkbox_widget = ttk.Checkbutton(root, text="Load at boot", variable=boot_checkbox, command=load_at_boot)
-boot_checkbox_widget.pack(pady=10)
+create_submenu(second_row, "Gaming Apps", gaming_apps)
 
 # Start the main event loop
 root.mainloop()
