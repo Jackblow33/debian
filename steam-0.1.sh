@@ -2,11 +2,11 @@
 
 # Debian Steam install
 # steam-0.1.sh
-# 2025-05-18
+# 2025-05-22
 
 
 sudo dpkg --add-architecture i386 && sudo apt update
-sudo apt install mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+sudo apt install -y mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
 wget https://cdn.cloudflare.steamstatic.com/client/installer/steam.deb -P /home/jack/Downloads || error_handler
 sudo mkdir -p ~/.local/share/Steam
 sudo chown -R $USER:$USER ~/.local/share/Steam
@@ -25,32 +25,36 @@ sudo dpkg -i /home/jack/Downloads/steam.deb || error_handler
 #apt install steam-installer
 #  https://wiki.debian.org/Steam
 
-##	sudo apt install gcc g++ gcc-multilib g++-multilib ninja-build meson python3-mako python3-setuptools python3-wheel pkg-config mesa-common-dev libx11-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib libxkbcommon-dev libxkbcommon-dev:i386 libwayland-dev libwayland-dev:i386
-sudo apt install libxnvctrl0
+##	sudo apt install -y gcc g++ gcc-multilib g++-multilib ninja-build meson python3-mako python3-setuptools python3-wheel pkg-config mesa-common-dev libx11-dev libxnvctrl-dev libdbus-1-dev python3-numpy python3-matplotlib libxkbcommon-dev libxkbcommon-dev:i386 libwayland-dev libwayland-dev:i386
+sudo apt install -y libxnvctrl0
 cd /home/jack/Downloads
 git clone https://github.com/flightlessmango/MangoHud.git
 cd MangoHud
 ./build.sh build
 ./build.sh install
+# To tar up the resulting binaries into a package and create a release tar with installer script, execute:
+#./build.sh package release
+#./build.sh build package release # Or combine
 
                #sudo apt install lazarus-4.0
 # Lazarus compilation
-sudo apt-get install fpc lazarus-ide
-cd /usr/share
-git clone https://gitlab.com/freepascal.org/lazarus/lazarus.git
-cd lazarus
-make clean all
+sudo apt-get install -y fpc lazarus-ide
+#cd /usr/share
+#git clone https://gitlab.com/freepascal.org/lazarus/lazarus.git
+#cd lazarus
+#make clean all
 # make clean bigide
 
 
                #sudo apt install goverlay
 # Goverlay compilation
-sudo apt-get install libqt6pas-dev vulkan-tools mesa-utils vkbasalt
+sudo apt-get install -y libqt6pas-dev vulkan-tools mesa-utils vkbasalt
 cd /home/jack/Downloads
 git clone https://github.com/benjamimgois/goverlay.git
 cd goverlay
 sudo make
-make install
+sudo chmod +x start_goverlay.sh
+sudo make install
 
 
 # For Steam games, you can add this as a launch option: mangohud %command%
