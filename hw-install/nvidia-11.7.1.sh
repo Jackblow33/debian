@@ -14,7 +14,7 @@ SH_VER="nvidia-11.7.1.sh"
 # Linux kernel 6.11 and beyond required
 
 USR=$(logname)
-NV_VER="570.133.07"  # Default Nvidia Driver version
+NV_VER="575.57.08"  # Default Nvidia Driver version
 driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
 TIMESTAMP=$(date +%Y%m%d.%R)
 
@@ -85,6 +85,7 @@ download_nvidia_driver() {
         echo "The driver file '$driver_file' already exists in '$driver_dir'. Skipping download."
     else
         wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/${NV_VER}/${driver_file}" -P "$driver_dir" || { echo "Error downloading the driver file"; exit 1; }
+       # wget "https://us.download.nvidia.com/XFree86/Linux-x86_64/575.57.08/NVIDIA-Linux-x86_64-575.57.08.run"
     fi
 }
 
