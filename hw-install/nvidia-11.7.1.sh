@@ -11,7 +11,7 @@ SH_VER="nvidia-11.7.1.sh"
 # Linux kernel 6.11 and beyond required
 
 USR=$(logname)
-NV_VER="575.57.08"  # Default Nvidia Driver version
+NV_VER="575.57.08"  # Default Nvidia Driver version  # Previous: NV_VER="570.133.07"
 driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
 TIMESTAMP=$(date +%Y%m%d.%R)
 
