@@ -2,13 +2,10 @@
 
 #!/bin/bash
 
-# TODO: 
-# Create modeprobe.d file for modesetting like power management quirk fix
-# Move iommu grub part into kvm script
-
+# nvidia-11.7.1.sh
 # 2025-05-30
+
 SH_VER="nvidia-11.7.1.sh"
-# WORKING, close to stable
 
 # nvidia.sh - Script to install NVIDIA drivers on Debian 13 - Trixie & Sid. Untested on Stable but might work.
 # Linux kernel 6.11 and beyond required
