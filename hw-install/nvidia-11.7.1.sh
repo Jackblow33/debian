@@ -19,12 +19,11 @@ driver_dir="/home/$USR/debian/hw-install/NVIDIA-drivers-archives"
 TIMESTAMP=$(date +%Y%m%d.%R)
 
 
-# Display the NVIDIA driver installation warning!
 display_nvidia_warning() {
-    local MESSAGE="To blacklist nouveau driver, the file: /etc/modprobe.d/blacklist-nouveau.conf gonna be created.\n\n\n\
-To fix some power management issues, the file: /etc/modprobe.d/nvidia-power-management.conf gonna be created.\n\n\n\
-nvidia-drm.modeset=1 gonna be added to grub at line: GRUB_CMDLINE_LINUX_DEFAULT in /etc/default.\n\n\n\
-And of course you're gonna taint your kernel with the nvidia proprietary driver!!!\n\n\n\
+    local MESSAGE="**To blacklist nouveau driver, the file: /etc/modprobe.d/blacklist-nouveau.conf might be created.**\n\n\n\
+**To fix some power management issues, the file: /etc/modprobe.d/nvidia-power-management.conf gonna be created.**\n\n\n\
+**nvidia-drm.modeset=1 gonna be set into /etc/modprobe.d/nvidia-graphics-drivers-kms.conf.**\n\n\n\
+**And of course you're gonna taint your kernel with the nvidia proprietary driver!!!**\n\n\n\
 Would you like to continue? Yes or No."
 
     # Display the message in a yes/no dialog
@@ -36,7 +35,6 @@ Would you like to continue? Yes or No."
         exit 1
     fi
 }
-
 
 # Function to handle errors
 handle_error() {
